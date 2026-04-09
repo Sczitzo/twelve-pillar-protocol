@@ -1,0 +1,32 @@
+cff-version: 1.2.0
+title: "The Twelve-Pillar Protocol v29"
+message: "If you use or reference this work, please cite it using this metadata."
+type: software
+authors:
+  - alias: "Sczitzo"
+    name: "Protocol Author"
+repository-code: "https://github.com/Sczitzo/twelve-pillar-protocol"
+url: "https://github.com/Sczitzo/twelve-pillar-protocol"
+abstract: >
+  A constitutional systems design separating survival, markets, and governance
+  into structurally independent lanes. The protocol guarantees an unconditional
+  humane floor through LC (Life Access Ledger), preserves productive markets
+  through EC (Enterprise Currency), and implements capture-resistant civic
+  governance through DW/CR (Deliberation Weight / Civic Record). Includes
+  a complete adversarial threat register (15 threats), patch log (14 patches),
+  formal acceptance protocol, and bootstrap resolution across six hardening
+  sessions.
+keywords:
+  - constitutional design
+  - governance systems
+  - political economy
+  - non-extractive economics
+  - systems design
+  - civilizational design
+  - threat modeling
+  - governance hardening
+  - humane floor
+  - instrument separation
+license: CC-BY-4.0
+version: "v29-session6"
+date-released: "2026-04-08"
