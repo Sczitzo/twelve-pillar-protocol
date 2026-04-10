@@ -3,9 +3,9 @@
 **Twelve-Pillar Protocol — Founding Instrument: P-013 Bootstrap Resolution**
 
 **Published by:** Threat Register Owner  
-**Challenge window opens:** [DATE]  
-**Challenge window closes:** [DATE + 14 DAYS]  
-**Submit challenges to:** [REPOSITORY ISSUES / DESIGNATED CHANNEL]
+**Challenge window opens:** April 10, 2026  
+**Challenge window closes:** April 24, 2026  
+**Submit challenges to:** [GitHub Issues — label `p014-challenge`](https://github.com/Sczitzo/twelve-pillar-protocol/issues/new?template=p014-challenge.md)
 
 ---
 
@@ -89,7 +89,7 @@ One panel member must have a documented professional history of arguing against 
 
 **Conflict attestation process:** All attestations will be verified by [EXTERNAL VERIFICATION BODY], not self-reported. Verification results will be published before sign-off begins.
 
-> **Note to challengers:** If you have evidence of undisclosed conflicts for any proposed panel member, or believe the adversarial member designation does not meet the independence standard, this challenge window is the correct venue. File via [CHANNEL]. All challenges receive written responses.
+> **Note to challengers:** If you have evidence of undisclosed conflicts for any proposed panel member, or believe the adversarial member designation does not meet the independence standard, this challenge window is the correct venue. File via the [P-014 Challenge template](https://github.com/Sczitzo/twelve-pillar-protocol/issues/new?template=p014-challenge.md). All challenges receive written responses.
 
 ---
 
@@ -101,7 +101,7 @@ If no challenges are filed, or all filed challenges receive written substantive 
 
 | Stage | What happens | AH clause |
 | :--- | :--- | :--- |
-| **Stage 1 (now)** | This document published. 14-day challenge window open. | AH2 |
+| **Stage 1 (now — April 10–24, 2026)** | This document published. 14-day challenge window open. | AH2 |
 | **Stage 2** | Founding panel confirmed. Conflict attestations externally verified. 4/5 sign-off required. | AH3 |
 | **Stage 3** | Substitute evidence standard: desk review of 3+ real-world analogues (selected by adversarial member); adversarial red-team analysis of P-013's remaining exploits; scope-limitation certification; sunset compatibility check. | AH4 |
 | **Stage 4** | P-013 moves to ACTIVE. P-014 closes permanently. Full activation record published immediately. Non-precedent statement embedded with Tier 2 protection. Post-activation audit commissioned (90-day deadline). | AH5 |
@@ -120,10 +120,10 @@ Any written objection identifying a specific flaw in the circular dependency ana
 Objections to P-013's content (those belong in the standard review process once P-013 is ACTIVE). Objections to the protocol's broader design (those belong in repository Issues under the standard critique template).
 
 **How to file:**  
-Open an Issue in this repository with the label `p014-challenge`. Include: the specific claim you are challenging, your reasoning, and your proposed alternative if you have one.
+Open an Issue using the [P-014 Challenge template](https://github.com/Sczitzo/twelve-pillar-protocol/issues/new?template=p014-challenge.md). Include: the specific claim you are challenging, your reasoning, and your proposed alternative if you have one.
 
 **Timeline:**  
-All challenges filed before [DATE + 14 DAYS] will receive written responses before activation proceeds. Challenges filed after the window closes are not part of the pre-activation record but may be addressed as part of the post-activation audit.
+All challenges filed before **April 24, 2026** will receive written responses before activation proceeds. Challenges filed after the window closes are not part of the pre-activation record but may be addressed as part of the post-activation audit.
 
 ---
 
@@ -135,4 +135,4 @@ P-014 is being invoked once, for P-013 only, because no other process was availa
 
 ---
 
-*This document is part of the Twelve-Pillar Protocol document set. The Master Protocol and Annex AH govern in all cases. Challenge window: [DATE] through [DATE + 14 DAYS].*
+*This document is part of the Twelve-Pillar Protocol document set. The Master Protocol and Annex AH govern in all cases. Challenge window: April 10, 2026 through April 24, 2026.*
