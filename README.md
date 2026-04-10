@@ -66,8 +66,9 @@ This repository contains the complete synchronized document set:
 | [`Patch_Log.pdf`](./Patch_Log.pdf) | 12 | Change and mitigation history. 14 patches. |
 | [`Acceptance_Protocol.pdf`](./Acceptance_Protocol.pdf) | 3 | Process for moving patches from design to operation. |
 | [`Audit_Note.pdf`](./Audit_Note.pdf) | 1 | Document integrity verification. |
+| [`Citizen_Facing_Rights_Layer.md`](./Citizen_Facing_Rights_Layer.md) | — | Plain-language summary of citizen rights and protections. |
 
-**Total: 162 pages.** The White Paper (14pp) is the recommended entry point.
+**Total: 162 pages** (PDFs). The White Paper (14pp) is the recommended entry point. The White Paper (14pp) is the recommended entry point.
 
 ## Hardening history
 
@@ -111,7 +112,7 @@ The system's commitment: every failure in these categories is published publicly
 The system is **defensible and documented**. It is not yet **scale-ready**. Scale readiness requires:
 
 - [ ] Formal acceptance of PROPOSED patches (pilot evidence required)
-- [ ] CFRL one-page publication
+- [x] CFRL one-page publication — see [`Citizen_Facing_Rights_Layer.md`](./Citizen_Facing_Rights_Layer.md)
 - [ ] Adversarial narrative simulation
 - [ ] Annual compound simulation
 - [ ] Legitimate founding coalition
