@@ -19,7 +19,7 @@ If you know of a real-world system, historical case, or academic literature that
 The White Paper is intended to be accessible to a general audience. If any section is unclear, ambiguous, or uses unnecessary jargon, open an Issue with the specific passage and a suggested rewrite.
 
 ### Translation
-If you are able to translate the White Paper or the Citizen-Facing Rights Layer into another language, open an Issue to coordinate.
+If you are able to translate the White Paper or the [`Citizen_Facing_Rights_Layer.md`](./Citizen_Facing_Rights_Layer.md) into another language, open an Issue to coordinate.
 
 ## What is not accepted
 
