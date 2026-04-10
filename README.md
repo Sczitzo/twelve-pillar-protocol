@@ -57,20 +57,21 @@ Each pillar has one job. The architecture is intentionally modular so no single 
 
 This repository contains the complete synchronized document set:
 
-| Document | Pages | Purpose |
-|---|---|---|
-| [`Master_Protocol.pdf`](./Master_Protocol.pdf) | 111 | Primary constitutional source of truth. Operative language, all annexes. |
-| [`White_Paper.pdf`](./White_Paper.pdf) | 14 | Plain-language public explanation. Start here. |
-| [`Technical_Reference.pdf`](./Technical_Reference.pdf) | 8 | Systems map with flow diagrams. For reviewers and collaborators. |
-| [`Threat_Register.pdf`](./Threat_Register.pdf) | 15 | Adversarial risk model. 15 threats, all addressed. |
-| [`Patch_Log.pdf`](./Patch_Log.pdf) | 12 | Change and mitigation history. 14 patches. |
-| [`Acceptance_Protocol.pdf`](./Acceptance_Protocol.pdf) | 3 | Process for moving patches from design to operation. |
-| [`Audit_Note.pdf`](./Audit_Note.pdf) | 1 | Document integrity verification. |
-| [`Citizen_Facing_Rights_Layer.md`](./Citizen_Facing_Rights_Layer.md) | — | Plain-language summary of citizen rights and protections. |
-| [`Adversarial_Narrative_Simulation.md`](./Adversarial_Narrative_Simulation.md) | — | 8 simulated narrative attacks with structural responses and residual risks. |
-| [`Annual_Compound_Simulation.md`](./Annual_Compound_Simulation.md) | — | Month-by-month operational year stress-test across all twelve pillars. |
+| Document | Purpose |
+|---|---|
+| [`Master_Protocol.md`](./Master_Protocol.md) | Primary constitutional source of truth. Operative language, all annexes. |
+| [`White_Paper.md`](./White_Paper.md) | Plain-language public explanation. Start here. |
+| [`Technical_Reference.md`](./Technical_Reference.md) | Systems map with flow diagrams. For reviewers and collaborators. |
+| [`Threat_Register.md`](./Threat_Register.md) | Adversarial risk model. 15 threats, all addressed. |
+| [`Patch_Log.md`](./Patch_Log.md) | Change and mitigation history. 14 patches. |
+| [`Acceptance_Protocol.md`](./Acceptance_Protocol.md) | Process for moving patches from design to operation. |
+| [`Audit_Note.md`](./Audit_Note.md) | Document integrity verification. |
+| [`Citizen_Facing_Rights_Layer.md`](./Citizen_Facing_Rights_Layer.md) | Plain-language summary of citizen rights and protections. |
+| [`Adversarial_Narrative_Simulation.md`](./Adversarial_Narrative_Simulation.md) | 8 simulated narrative attacks with structural responses and residual risks. |
+| [`Annual_Compound_Simulation.md`](./Annual_Compound_Simulation.md) | Month-by-month operational year stress-test across all twelve pillars. |
 
-**Total: 162 pages** (PDFs). The White Paper (14pp) is the recommended entry point. The White Paper (14pp) is the recommended entry point.
+**Note:** The core documentation has been converted to high-fidelity Markdown for better readability and version control. Original PDFs are available in the [`archive/`](./archive/) directory.
+
 
 ## Hardening history
 
