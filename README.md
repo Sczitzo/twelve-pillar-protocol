@@ -44,13 +44,13 @@ This repository contains the complete synchronized document set:
 
 | Document | Pages | Purpose |
 |---|---|---|
-| [`Twelve_Pillar_Protocol_v29_Master_Integrated_No_Loss.pdf`](./Twelve_Pillar_Protocol_v29_Master_Integrated_No_Loss.pdf) | 111 | Primary constitutional source of truth. Operative language, all annexes. |
-| [`Twelve_Pillar_Protocol_v29_Public_White_Paper_No_Loss.pdf`](./Twelve_Pillar_Protocol_v29_Public_White_Paper_No_Loss.pdf) | 14 | Plain-language public explanation. Start here. |
-| [`Twelve_Pillar_Protocol_v29_Diagrammed_Technical_Reference_No_Loss.pdf`](./Twelve_Pillar_Protocol_v29_Diagrammed_Technical_Reference_No_Loss.pdf) | 8 | Systems map with flow diagrams. For reviewers and collaborators. |
-| [`Threat_Register_v29_Aligned.pdf`](./Threat_Register_v29_Aligned.pdf) | 15 | Adversarial risk model. 15 threats, all addressed. |
-| [`Patch_Log_v29_Aligned.pdf`](./Patch_Log_v29_Aligned.pdf) | 12 | Change and mitigation history. 14 patches across 6 sessions. |
-| [`Formal_Acceptance_Protocol_v29.pdf`](./Formal_Acceptance_Protocol_v29.pdf) | 3 | Process for moving patches from design to operation. |
-| [`v29_document_audit_note.pdf`](./v29_document_audit_note.pdf) | 1 | Document integrity verification and session summary. |
+| [`Master_Protocol.pdf`](./Master_Protocol.pdf) | 111 | Primary constitutional source of truth. Operative language, all annexes. |
+| [`White_Paper.pdf`](./White_Paper.pdf) | 14 | Plain-language public explanation. Start here. |
+| [`Technical_Reference.pdf`](./Technical_Reference.pdf) | 8 | Systems map with flow diagrams. For reviewers and collaborators. |
+| [`Threat_Register.pdf`](./Threat_Register.pdf) | 15 | Adversarial risk model. 15 threats, all addressed. |
+| [`Patch_Log.pdf`](./Patch_Log.pdf) | 12 | Change and mitigation history. 14 patches across 6 sessions. |
+| [`Acceptance_Protocol.pdf`](./Acceptance_Protocol.pdf) | 3 | Process for moving patches from design to operation. |
+| [`Audit_Note.pdf`](./Audit_Note.pdf) | 1 | Document integrity verification and session summary. |
 
 **Total: 162 pages.** The White Paper (14pp) is the recommended entry point.
 
