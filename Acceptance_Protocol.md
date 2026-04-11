@@ -59,3 +59,25 @@ The nominating body's selection rationale must be published as part of the found
 | 14 | P-020 (Founding window) | **AH2 — operative now** | **YES — governs P-014 execution; no separate FAP required** |
 
 All other Formal Acceptance Protocol provisions (Sections 1–5 of the prior version) are unchanged and remain fully operative. Refer to the prior Formal Acceptance Protocol for the full text of those sections.
+
+---
+
+### Pre-Launch Blocking Gates (Session 11 — explicit registry)
+
+The following items must be complete before any patch can move from PROPOSED to ACTIVE. These are not aspirational milestones — they are hard preconditions. A patch that depends on a blocking gate cannot be activated until the gate is cleared, regardless of pilot evidence quality.
+
+| Gate | Required by | What must be complete | Annex |
+| :--- | :--- | :--- | :--- |
+| **Ombuds Commissioner appointed** | P-015 | Commissioner appointment complete; challenge period closed; Ombuds Oversight Panel seated; manufactured-flag criteria published at least 30 days before first determination | Annex AI |
+| **Ombuds Oversight Panel seated** | P-015 | Panel constituted per Annex AI Section 5.1; initial independence review conducted and published | Annex AI |
+| **Cross-register timing monitor built** | P-015 | Automated infrastructure for flagging enforcement actions within proximity window of sentinel indicator movement; technically implemented, tested, and independently verified | Annex AI §3.3 |
+| **Methodology-class registry published** | P-017 | Initial classification of each accredited oracle node by class; error independence assessments documented; standards-provenance records complete; published before first oracle accreditation | Annex AL |
+| **Standards-body concentration tracking built** | P-017 | Automated system tracking standards-body affiliations per oracle node per essential category; AI supply chain concentration tracking; technically implemented before first oracle accreditation | Annex AL §4 |
+| **Annual review panel constituted** | P-017 | Panel seated with staggered terms; includes adversarial methodologist; before first year of operation | Annex AL §5.1 |
+| **AED founding commitment numbers filled** | P-016 | All [FOUNDING COMMITMENT] fields in Annex AK completed using pilot data; published before scale-up gate | Annex AK |
+| **Contract-commitment parameter values set** | P-023 | All [FOUNDING COMMITMENT] fields in Annex AR completed; EC demurrage rate calibration confirmed; inspector pool commissioned | Annex AR |
+| **P-014 founding window open** | P-013 | Full disclosure package published; oppose-coalition nominating body confirmed; 60-day challenge window running | Annexes AH + AH2 |
+
+**Note on ordering:** The Ombuds gates (rows 1–3) must be cleared before P-015 can be activated. The methodology-class gates (rows 4–6) must be cleared before P-017 can be activated. The AED gate (row 7) must be cleared before P-016 can be activated. The contract-commitment gate (row 8) must be cleared before P-023 can be activated. None of these gates are on the critical path for P-006 or P-009 (Priority 1 and 2 above) — the initial launch sequence can proceed while the later gates are being prepared.
+
+The P-014 gate (row 9) is on the critical path for everything — P-013 must be ACTIVE before the standard FAP governs any patch activation.

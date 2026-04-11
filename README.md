@@ -62,17 +62,20 @@ This repository contains the complete synchronized document set:
 | [`Master_Protocol.md`](./Master_Protocol.md) | Primary constitutional source of truth. Operative language, all annexes. |
 | [`White_Paper.md`](./White_Paper.md) | Plain-language public explanation. Start here. |
 | [`Technical_Reference.md`](./Technical_Reference.md) | Systems map with flow diagrams. For reviewers and collaborators. |
-| [`Threat_Register.md`](./Threat_Register.md) | Adversarial risk model. 25 threats — 4 ACTIVE, 11 PROPOSED, 7 OPEN, 1 FOUNDING. |
-| [`Patch_Log.md`](./Patch_Log.md) | Change and mitigation history. 23 patches. |
+| [`Threat_Register.md`](./Threat_Register.md) | Adversarial risk model. 25 threat IDs (23 active, 2 retired) — 4 ACTIVE, 12 PROPOSED, 7 OPEN. T-017/P-014 is the FOUNDING instrument. |
+| [`Patch_Log.md`](./Patch_Log.md) | Change and mitigation history. 21 patches — 4 ACTIVE, 16 PROPOSED, 1 FOUNDING (P-014). |
 | [`Acceptance_Protocol.md`](./Acceptance_Protocol.md) | Process for moving patches from design to operation. |
 | [`Audit_Note.md`](./Audit_Note.md) | Document integrity verification. |
 | [`Citizen_Facing_Rights_Layer.md`](./Citizen_Facing_Rights_Layer.md) | Plain-language summary of citizen rights and protections. |
 | [`Adversarial_Narrative_Simulation.md`](./Adversarial_Narrative_Simulation.md) | 10 simulated narrative attacks with structural responses and residual risks. |
 | [`REGISTER_DISCLOSURE_PROTOCOL.md`](./REGISTER_DISCLOSURE_PROTOCOL.md) | Annex AO — public/restricted bifurcation framework for the Threat Register. |
 | [`Annual_Compound_Simulation.md`](./Annual_Compound_Simulation.md) | Month-by-month operational year stress-test across all twelve pillars. |
+| [`ANNEX_AI.md`](./ANNEX_AI.md) | Annex AI — Ombuds Office constitution: mandate, independence requirements, manufactured-flag authority, meta-capture prevention. Pre-launch gate for P-015. |
 | [`ANNEX_AJ.md`](./ANNEX_AJ.md) | Annex AJ — above-ledger bypass worked examples across all three instrument boundaries. |
 | [`ANNEX_AK.md`](./ANNEX_AK.md) | Annex AK — identity asymmetric error doctrine: fraud/exclusion rate targets, decision rule, recalibration process. |
+| [`ANNEX_AL.md`](./ANNEX_AL.md) | Annex AL — methodology-class definitions for oracle independence: P-004 protected definitions, three canonical classes with worked examples, anti-monoculture trigger, annual audit. Pre-launch gate for P-017. |
 | [`ANNEX_AR.md`](./ANNEX_AR.md) | Annex AR — contract-commitment architecture parameters: release thresholds, deployment windows, force majeure caps, inspector pool governance. |
+| [`ANNEX_REGISTRY.md`](./ANNEX_REGISTRY.md) | Annex Registry — navigation index for all ~30 referenced annexes: standalone file status, embedded location, pending/blocking gate status. |
 
 **Note:** The core documentation has been converted to high-fidelity Markdown for better readability and version control. Original PDFs are available in the [`archive/`](./archive/) directory.
 
@@ -94,7 +97,7 @@ The system has been adversarially stress-tested:
 | T-022 Electoral Cycle Capture | Hostile successor government routes identified; entrenchment ladder, LC floor persistence, transition protocol designed (P-018) |
 | T-023–T-025 Pilot validity, SQ oracle failure, demurrage capture | External validity gate (P-019), SQ oracle-failure fallback (P-022), demurrage sector-capture resolved: contract-commitment architecture, zero exemptions (P-023) |
 
-**Current status: 4 patches ACTIVE, 18 PROPOSED, 7 OPEN, 1 FOUNDING instrument.** The design continues to harden. What remains is pilot evidence and patch acceptance.
+**Current status: 4 patches ACTIVE, 16 PROPOSED, 1 FOUNDING instrument (P-014), 7 threat IDs OPEN.** 21 patches total. The design continues to harden. What remains is pilot evidence and patch acceptance.
 
 ## What this system is not
 
