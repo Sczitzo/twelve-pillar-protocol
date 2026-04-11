@@ -190,6 +190,52 @@ Each scenario includes:
 | N-006 | "Founding problem" | Cynicism | P-014 founding instrument | Most honestly unresolved risk |
 | N-007 | "Rich will route around it" | Power realism | Technical non-convertibility; T-001 patches | Requires scale validation |
 | N-008 | "Too complex" | Simplicity preference | Modular implementation; one-page CFRL | Needs pilot evidence of operational simplicity |
+| N-009 | "They voted it out — the people have spoken" | Democratic legitimacy | Constitutional entrenchment; P-018 transition protocol | Inseparable from founding legitimacy |
+| N-010 | "The founding panel was corrupt from day one" | Insider capture | Maximum-transparency founding record; post-activation audit | Only operational evidence resolves this over time |
+
+---
+
+## N-009 | "They voted it out — the people have spoken"
+
+**The attack:** The protocol was implemented by one government. A new government won an election campaigning against it. That's democracy. The people have decided they don't want this system. Anyone trying to preserve it against the democratic mandate is the real authoritarian.
+
+**Emotional hook:** Democratic legitimacy is the most powerful political framing available. The attack uses the system's own commitment to non-coercion against it — if the protocol cannot be rejected by democratic vote, it is itself coercive.
+
+**Target audience:** Democratic proceduralists; anyone who accepts electoral outcomes as dispositive; political moderates who distrust technocratic continuity arguments.
+
+**Grain of truth:** This is the most technically acute electoral-framing attack. Electoral mandate is real democratic legitimacy. A constitutional design that survives hostile electoral outcomes requires genuine justification — "we designed it that way" is not sufficient.
+
+**Structural response:**
+- The Tier 1 invariants (survival floor, due process, non-coercion) are not policy choices subject to electoral reversal — they are constitutional rights. Constitutions routinely entrench rights against democratic majorities; this is the same architecture.
+- The incoming government retains full authority to govern within the protocol — to set the EC policy agenda, to contest basket definitions through civic deliberation, to propose Tier 3 changes through the normal amendment process. The protocol does not prevent democratic governance; it prevents one category of action: removing the survival floor without constitutional process.
+- P-018 (Electoral Cycle Resilience, Annex AM) provides for a 180-day transition audit and transition continuity protocol — specifically designed to demonstrate that a new government's mandate is accommodated, not blocked.
+- The self-executing LC floor minimum (70% of founding basket) is the designed response: it does not require the incoming government to fund it affirmatively; it continues unless actively repealed via the full Tier 1 amendment process — which requires a supermajority plus independent constitutional body ratification.
+
+**Residual risk:** The argument that survival rights should be constitutionally entrenched is accepted in theory by most democratic traditions. The challenge is whether this specific protocol's founding coalition is perceived as legitimate enough to have made that constitutional entrenchment. If the founding is perceived as captured, the constitutional entrenchment reads as the founders locking in their preferences. This is the T-022 / N-006 compound: founding legitimacy and electoral resilience are not separable.
+
+**Counter-narrative:** "The election determines who governs. It does not determine whether people eat. Both things can be true simultaneously."
+
+---
+
+## N-010 | "The founding panel was corrupt from day one"
+
+**The attack:** The people who designed the protocol also ran the founding process. They selected the panel members. The "adversarial member" was their friend. The 60-day window was theater. Whatever protections exist were designed to look independent while ensuring the founding coalition retained control. The whole thing was captured before it started.
+
+**Emotional hook:** The attack requires no evidence to land — it is structurally plausible by default. Any founding moment involves insiders. Accusations of insider capture are unfalsifiable in real time. The attack is asymmetric: the burden of proof falls on the founders to demonstrate clean hands, not on the accusers to demonstrate corruption.
+
+**Target audience:** Institutional skeptics; people with direct experience of regulatory capture; anyone who has watched a "transparent process" produce a predetermined outcome; left critics who distrust technical expertise as cover for elite preference.
+
+**Grain of truth:** This is a structurally valid concern. T-017 (Bootstrap Problem) and P-014/P-020 (Founding Instrument and Window Extension) exist precisely because the bootstrap problem is real. The adversarial member could be a friendly adversary. The oppose-coalition nominating body could be a captured organization. The 60-day window could produce only procedurally valid objections, not structurally penetrating ones.
+
+**Structural response:**
+- The founding process is documented in real time and published. Every panel member's affiliations are disclosed. Every objection submitted during the 60-day window is published with the panel's response. The post-activation audit (within 90 days, P-014 AH1.5) uses P-013's own standards and is conducted with an adversarial panel member. This is not a clean-hands guarantee — it is a maximum-transparency architecture.
+- The oppose-coalition nominating requirement (P-020 AH2.3) requires the adversarial member to be nominated by a body structurally opposed to the founding coalition — not just "independent" by affiliation. The nominating body's rationale is published.
+- The post-activation audit can suspend P-013 if it finds compromise. If the founding was corrupt, the system provides a defined path to re-run the founding under the now-operative P-013 standards.
+- The Annual Compound Simulation and Threat Register are public. If the founding was corrupt in ways that produced detectable design biases, those biases are visible to independent reviewers.
+
+**Residual risk:** This narrative attack cannot be fully pre-empted by design. It can only be addressed by the quality of the founding itself and by the accumulation of operational evidence over time. A system that functions as advertised — that actually delivers the LC floor, actually maintains the instrument separations, actually publishes post-mortems — builds credibility that no founding document can substitute for. The ultimate response to N-010 is not argument; it is years of verifiable operation.
+
+**Counter-narrative:** "The founding documentation is public. The objections raised were published and answered. The post-activation audit found no compromise. If you believe the founding was corrupt, here is exactly what you would need to show and here is the process for challenging it."
 
 ---
 

@@ -1,6 +1,6 @@
 # Patch Log
 
-**Running change ledger aligned to the master protocol · Updated: Session 2 hardening cycle (P-005, P-006, P-008)**
+**Running change ledger aligned to the master protocol · Updated: Session 8 red-team hardening cycle (P-015 through P-021 added)**
 
 ---
 
@@ -27,6 +27,18 @@
 | P-005 | T-005 | **PROPOSED** | Critical | Governance throughput: tiered CRP queues, throughput floor, emergency re-declaration. |
 | P-006 | T-006 | **PROPOSED** | Critical | Measurement lag: sentinel mandate, PCRP first-responder authority, SQ unwind symmetry. |
 | P-008 | T-008 | **PROPOSED** | High | Elite formation: legibility audit, diversity mandates, verification independence, cohort cooling. |
+| P-009 | T-009 | **PROPOSED** | Med-High | Grace exploitation: graduated renewal, cross-quarter history, collusion detection, CR slow-decay. |
+| P-011 | T-011 | **PROPOSED** | Critical | Narrative hardening: RPCP, pre-committed failure doctrine, CFRL, adversarial narrative simulation. |
+| P-012 | T-012–T-015 | **PROPOSED** | Critical | Interface hardening: oracle independence, categorical throughput floors, deadlock protocol, demand-context flag. |
+| P-013 | T-016 | **PROPOSED** | Critical | FAP integrity: representativeness standard, deadlock timeline, audit epistemic independence, anti-gaming Tier 2. |
+| P-014 | T-017 | **PROPOSED** | Critical | Bootstrap activation: one-time founding instrument for P-013 activation only. |
+| P-015 | T-018 / T-019 | **PROPOSED** | High | PCRP attack surface: false-trigger escalation path, exhaustion alert, manufactured flag assessment. |
+| P-016 | T-002 | **PROPOSED** | Critical | Identity asymmetric error doctrine: quantified fraud/exclusion rate targets, Tier 2 founding commitment. |
+| P-017 | T-020 / T-021 | **PROPOSED** | Critical | Oracle epistemological and algorithmic independence: methodology-class diversity, AI supply chain transparency, physical ground-truth requirement. |
+| P-018 | T-022 | **PROPOSED** | Critical | Electoral cycle resilience: entrenchment ladder, LC floor minimum persistence, administrative hollowing triggers, transition continuity protocol. |
+| P-019 | T-023 | **PROPOSED** | Med-High | Pilot external validity gate: stress-condition pilot requirement, red-team challenge window, crisis simulation mandate. |
+| P-020 | T-017 (residual) | **PROPOSED** | Critical | Founding window extension: 60-day pre-activation disclosure, oppose-coalition adversarial member nomination. |
+| P-021 | — | **PROPOSED** | High | Register disclosure protocol: bifurcation into public and restricted versions; operational security for detection thresholds. |
 
 ---
 
@@ -224,6 +236,162 @@
 
 ---
 
+## Session 8 Patches — Detailed Entries
+
+*Red-team hardening cycle. All patches PROPOSED. Addresses T-018 through T-023 and closes residual risks identified in T-001, T-002, T-017, and the register's own operational security posture.*
+
+---
+
+| Patch ID | Related Threat | Status | Priority | Change Type |
+| :--- | :--- | :--- | :--- | :--- |
+| P-015 | T-018 / T-019 | **PROPOSED** | High | structural + protocol + escalation path |
+
+### P-015 — PCRP Attack Surface Hardening
+
+- **Change type:** structural + protocol + escalation path.
+- **Addresses:** T-018 (False-Trigger Exhaustion Attack), T-019 (Demand-Context Flag Suppression Attack).
+- **Introduced design:**
+  - *False-trigger escalation path (T-018):* False PCRP triggers accompanied by oracle manipulation evidence or coordination timing signatures do not count toward the 3-trigger audit cap — they escalate immediately to the enforcement track with formal investigation. Cap reset is available via independent audit finding of deliberate manipulation. A "trigger exhaustion alert" fires when 2 of 3 cap slots are consumed within a single quarter, prompting pre-emptive review before the third activation.
+  - *Demand-context manufactured flag assessment (T-019):* Ombuds co-certification during demand-context periods must include an explicit assessment of whether the triggering enforcement action was manufactured or strategically timed; this assessment is a required step with a defined 4-hour timeline, not an optional judgment. A cross-register timing monitor flags any enforcement action initiated within 48 hours of sentinel indicator movement — this does not block the enforcement action but elevates scrutiny on any resulting demand-context flag. If Ombuds finds deliberate flag manufacture, the demand-context designation is lifted and PCRP activation proceeds at standard scope.
+  - *Ombuds constitution pre-condition:* Annex AI (Ombuds Office constitution) must specify explicit authority and decision timeline for manufactured-flag determinations before P-015 is operative.
+- **Clauses to integrate:** AP1–AP4. Amends AC2.3 (false-trigger cap rules). Amends AE2.4 (demand-context Ombuds certification procedure). Annex AI extended.
+- **Dependencies:** Ombuds Office formally constituted with explicit manufactured-flag authority. P-006 PCRP false-trigger tracking infrastructure operative. P-012 demand-context flag register operative.
+- **New risks introduced:** False-trigger escalation path can be weaponized in reverse — a genuine false trigger attributed to manipulation to avoid the audit cap. Mitigated by: escalation requires two independent evidence types (oracle manipulation evidence AND timing cluster), not a single officer judgment. Manufactured-flag assessment timeline (4 hours) creates pressure that could produce errors; mitigated by conservative default (maintain demand-context designation while assessment runs, but PCRP can activate at reduced scope with single-source authorization).
+- **Residual risk:** Real-time distinction between genuine oracle failure and engineered false trigger remains unreliable; escalation path applies retroactively. Low-level demand-context flag suppression using a genuinely valid enforcement action remains possible — accepted as operational leakage below detection threshold.
+- **Compound linkages:** T-018 × T-019 (compound PCRP attack — both simultaneously executed is highest-risk scenario; P-015 must address the compound case explicitly). T-018 × T-013 (audit load from false-trigger investigation consumes CRP capacity).
+
+---
+
+| Patch ID | Related Threat | Status | Priority | Change Type |
+| :--- | :--- | :--- | :--- | :--- |
+| P-016 | T-002 (residual) | **PROPOSED** | Critical | constitutional commitment + quantified doctrine |
+
+### P-016 — Identity Asymmetric Error Doctrine
+
+- **Change type:** constitutional commitment + quantified doctrine.
+- **Addresses:** T-002 open problem — calibrating fraud tolerance without making the system unusable for vulnerable populations. Extends P-003.
+- **Introduced design:** The founding coalition must publish and formally adopt an **Asymmetric Error Doctrine** (AED) as a Tier 2 founding commitment before deployment. The AED must specify:
+  - (a) Maximum acceptable fraud rate per instrument tier (LC, DW, CR) — expressed as a percentage of enrolled population per quarter, with confidence interval.
+  - (b) Maximum acceptable exclusion rate for vulnerable populations (displaced, undocumented, digitally fragile persons) per tier — expressed as a percentage of estimated vulnerable population.
+  - (c) The review trigger when either rate is exceeded — automatic publication and independent audit within 30 days.
+  - (d) The decision rule when the two error types trade off: when reducing fraud exclusion would increase vulnerable-population exclusion by more than a specified ratio, the exclusion reduction takes priority unless the fraud rate exceeds a specified ceiling.
+  - (e) Annual recalibration review by an independent panel with at least one member from a vulnerable-population advocacy organization.
+- **Clauses to integrate:** AK1–AK5. Annex B (identity architecture) extended. AED added to P-004 protected terms registry. Founding preconditions checklist extended (Annex N).
+- **Dependencies:** Identity system operational data required for calibration (cannot be specified without pilot evidence). AED is therefore a Tier 2 *design commitment* at founding — specific numbers are filled in after first-year pilot data, before scale-up gate. The commitment to publish and honor the doctrine is the founding obligation; the specific numbers are an evidence gate.
+- **New risks introduced:** Quantified targets create goodhart's-law gaming — operators optimize to the metric rather than the underlying goal. Mitigated by: AED specifies both rates and requires independent measurement (not self-reported). Published targets also create narrative attack surface ("the system allows X% fraud"). Mitigated by: pre-committed publication converts this from a vulnerability into a transparency demonstration consistent with P-011.
+- **Residual risk:** Some exclusion is structurally unavoidable with any identity system. The AED does not solve this; it makes the trade-off explicit and governable rather than implicit and subject to political manipulation.
+- **Compound linkages:** T-002 × T-011 (AED publication is a narrative attack surface — simultaneously the correct response). T-002 × T-008 (vulnerable population exclusion rates must be tracked independently from the same bodies that operate the identity system — Ombuds Office or equivalent).
+
+---
+
+| Patch ID | Related Threat | Status | Priority | Change Type |
+| :--- | :--- | :--- | :--- | :--- |
+| P-017 | T-020 / T-021 | **PROPOSED** | Critical | measurement architecture + accreditation + supply-chain transparency |
+
+### P-017 — Oracle Epistemological and Algorithmic Independence
+
+- **Change type:** measurement architecture + accreditation standards + supply-chain transparency.
+- **Addresses:** T-020 (Epistemological Oracle Capture), T-021 (Algorithmic Oracle Capture).
+- **Introduced design:**
+  - *Methodology-class diversity mandate (T-020):* RCS accreditation must include at least one measurement node per high-volatility essential category using a fundamentally different methodology class (e.g., community-based participatory research vs. institutional statistical modeling vs. independent physical sampling). The specific methodology classes are defined as a P-004 protected term (Annex AL — "methodology class" definition with worked examples).
+  - *Methodological divergence signal (T-020):* Systematic divergence between methodology classes is a first-order sentinel indicator requiring investigation, not an anomaly requiring suppression. A divergence above a defined threshold triggers an independent methodological review before that category can be used for SQ activation.
+  - *Standards-funding transparency (T-020):* Any RCS-accredited node must disclose funding sources for the methodological standards it relies on, with a three-year lookback. Funding from parties with material interest in oracle outputs triggers additional scrutiny.
+  - *Anti-monoculture review trigger (T-020):* If three or more oracle nodes rely on the same standards body for a given category, an independent methodological review is required before that category can be used for SQ activation.
+  - *AI supply chain transparency (T-021):* Any oracle node using ML or AI components must disclose model provenance, training data sources, and any shared upstream dependencies with other oracle nodes. This disclosure is published and part of the independence certification.
+  - *Algorithmic independence certification (T-021):* Oracle independence audit must include explicit verification that no two corroborating oracle nodes share a common upstream AI model, training dataset, or fine-tuning pipeline.
+  - *Physical ground-truth requirement (T-021):* At least one measurement node per high-volatility category must use direct physical sampling (not model-derived estimates) as its primary measurement method.
+- **Clauses to integrate:** AL1–AL7. Annex M (oracle architecture) extended. "Methodology class" and "algorithmic independence" added to P-004 protected terms registry. RCS accreditation standards document updated.
+- **Dependencies:** P-004 protected terms registry must be operative. Oracle independence audit capacity must include algorithmic supply chain review — new capability requirement. Physical sampling for high-volatility categories requires resource commitment from founding coalition.
+- **New risks introduced:** Methodology-class diversity requirement increases oracle system cost and coordination complexity. Physical sampling is expensive; cost pressure may produce under-investment that weakens the ground-truth requirement over time — addressed by Pillar 11 publication of sampling frequency and method per category. AI supply chain disclosure creates competitive sensitivity concerns for oracle node operators — mitigated by: disclosure is to auditors, not publicly; methodology-level information is published but not proprietary implementation details.
+- **Residual risk:** Defining "fundamentally different methodology class" is subject to T-007 definition drift. 'Methodology class' must be governed as a P-004 protected term with worked examples and an annual audit of the worked examples themselves.
+- **Compound linkages:** T-020 × T-021 (both target oracle epistemological foundations; P-017 addresses both). T-020 × T-012 (structural oracle independence is necessary but not sufficient; P-017 adds the epistemological layer). T-020 × T-008 (epistemic monoculture in oracle methodology parallels elite formation in oversight — P-008 and P-017 share the diversity-mandate logic).
+
+---
+
+| Patch ID | Related Threat | Status | Priority | Change Type |
+| :--- | :--- | :--- | :--- | :--- |
+| P-018 | T-022 | **PROPOSED** | Critical | constitutional architecture + political durability |
+
+### P-018 — Electoral Cycle Resilience
+
+- **Change type:** constitutional architecture + political durability + transition protocol.
+- **Addresses:** T-022 (Electoral Cycle Capture).
+- **Introduced design:**
+  - *Entrenchment ladder (direct repeal route):* Tier 1 invariants require not just a legislative supermajority but concurrent ratification by an independent constitutional body. The constitutional body's composition must be specified at founding such that it cannot be reconstituted entirely by the governing coalition within a single electoral term.
+  - *LC floor minimum persistence (administrative hollowing route):* A minimum LC floor — defined at founding as 70% of the founding basket — is constitutionally self-executing: it does not require legislative appropriation and cannot be suspended by executive action. This floor persists through any governing coalition transition unless repealed via the full Tier 1 amendment process.
+  - *Administrative hollowing triggers:* If a founding institution is unfilled for more than 90 days, or post-mortem publication lapses for more than 30 days, or oracle accreditation count drops below a specified minimum, an automatic constitutional review is triggered that does not require the governing coalition's initiation. The review is initiated by the constitutional body and is self-executing.
+  - *Transition continuity protocol:* When a new governing coalition takes office, a mandatory 180-day transition audit is required before any changes to Tier 2 or Tier 1 provisions. The audit is conducted by the constitutional body, not the incoming government. During the 180-day window, no Tier 2 or higher changes may be made except through emergency deadlock resolution (P-012 AE2.3).
+  - *Treaty override protection (jurisdictional fragmentation route):* International agreements that require modification to the non-convertibility architecture trigger a mandatory Tier 2 impact assessment before ratification. An agreement that would produce cumulative Tier 2 impact (by T-007/P-012 cumulative drift trigger standards) requires the full Tier 2 amendment process for each applicable provision.
+- **Clauses to integrate:** AM1–AM6. Tier 1 amendment process modified (Annex A). LC floor persistence clause added to Pillar 4. Administrative hollowing triggers added to Pillar 11 dashboard as auto-publication requirements. Transition continuity protocol added to Pillar 10.
+- **Dependencies:** Independent constitutional body formally constituted at founding with staggered terms and confirmed independence from governing coalition appointment. LC floor minimum definition requires RCS capacity confirmation.
+- **New risks introduced:** Self-executing LC floor minimum requires RCS capacity to be maintained regardless of political will — if oracle system degrades, the self-executing floor has no measurement basis. Mitigated by: oracle degradation itself triggers an administrative hollowing review. Transition continuity audit creates 180-day governance window — addressed by: audit has a defined 30-day maximum scope for routine transitions; extensions require independent authorization.
+- **Residual risk:** A government with sufficient political will and supermajority can repeal constitutional entrenchment. The designed defense buys time and raises political cost; it cannot prevent determined repeal. Ultimate residual risk: protocol durability depends on political culture. No design can substitute for a political culture that values the commitments.
+- **Compound linkages:** T-022 × T-011 (hostile electoral success often follows narrative attack — P-011 and P-018 are jointly necessary). T-022 × T-008 (elite formation inside institutions may assist administrative hollowing by a hostile government). T-022 × T-017 (T-022 success produces a new bootstrap problem — recursive T-017). T-022 × T-016 (hostile government can capture FAP sign-off authorities).
+
+---
+
+| Patch ID | Related Threat | Status | Priority | Change Type |
+| :--- | :--- | :--- | :--- | :--- |
+| P-019 | T-023 | **PROPOSED** | Med-High | evidence architecture + scale-up gating |
+
+### P-019 — Pilot External Validity Gate
+
+- **Change type:** evidence architecture + scale-up gating + simulation mandate.
+- **Addresses:** T-023 (Pilot External Validity Collapse).
+- **Introduced design:**
+  - *Stress-condition pilot gate:* Scale-up approval requires the pilot evidence record to include at least one each of: an economic stress event (recession, significant unemployment spike, or supply price shock affecting the pilot region); a compound supply disruption (two or more essential categories simultaneously below adequate levels); and documented operation during a formal political opposition campaign against the system. Where a condition could not be tested in the pilot, the evidence record must include: (a) explicit documentation of why it could not be tested; (b) a designated substitute evidence source (e.g., analogous case from another jurisdiction, red-team analysis); (c) a residual-risk statement acknowledging the gap; and (d) a post-scale monitoring commitment specific to the untested condition.
+  - *Red-team challenge window (T-016 companion):* Before any scale-up vote, a mandatory 30-day adversarial challenge window allows independent reviewers to contest the external validity of the evidence base. Challengers must have access to the full evidence record, not just the summary. Responses to challenges are published before the vote.
+  - *Crisis simulation mandate:* The Annual Compound Simulation must include at least one compound-crisis scenario not previously simulated before each scale-up gate. The talent drain scenario and civic legibility scenario added to the simulation in this session fulfill this requirement for the first scale-up gate only.
+- **Clauses to integrate:** AN1–AN5. FAP (Formal Acceptance Protocol) extended — scale-up gate conditions added to evidence requirements. Annex T (simulation mandate) extended. P-013 representativeness standard cross-referenced (stress-condition pilot is a representativeness requirement).
+- **Dependencies:** Annual Compound Simulation must be updated to include new scenarios before each scale-up gate. Red-team challenge window requires independent reviewer access infrastructure.
+- **New risks introduced:** Stress-condition requirement may delay scale-up indefinitely if adverse conditions do not occur in the pilot region within a reasonable window. Mitigated by: substitute evidence pathway is explicitly available; the requirement is for good-faith engagement with external validity, not for a manufactured crisis. Red-team challenge window creates a blocking mechanism — mitigated by: challengers must propose specific residual-risk mitigations, not merely object.
+- **Residual risk:** Some external validity gaps cannot be filled by any pilot. A deliberately engineered crisis to satisfy the stress-condition requirement would satisfy the letter but not the spirit of P-019. Ultimate residual risk: the evidence base for a system of this scale will always be incomplete.
+- **Compound linkages:** T-023 × T-016 (honest insufficient pilot is the complement to dishonest evidence farming — both require evidence quality controls). T-023 × T-011 (scale-up failure after smooth pilot is a maximum-impact narrative attack). T-023 × T-022 (hostile electoral challenge is one of the hardest conditions to include in a controlled pilot; substitute evidence pathway must address this explicitly).
+
+---
+
+| Patch ID | Related Threat | Status | Priority | Change Type |
+| :--- | :--- | :--- | :--- | :--- |
+| P-020 | T-017 (residual) | **PROPOSED** | Critical | founding governance + window extension |
+
+### P-020 — Founding Window Extension
+
+- **Change type:** founding governance amendment — extends P-014 Annex AH.
+- **Addresses:** T-017 residual risk — 14-day pre-activation disclosure window is insufficient for independent critique to organize against a coordinated founding capture attempt.
+- **Introduced design (Annex AH2, amending AH1):**
+  - *60-day pre-activation disclosure (replacing 14-day):* The P-014 pre-activation challenge window is extended from 14 days to 60 days minimum. The 60-day clock begins when the circular dependency analysis, founding exception statement, and panel composition are simultaneously published. No stage of P-014 may proceed until the 60-day window closes with no unresolved structural objections requiring response.
+  - *Oppose-coalition adversarial member nomination:* The adversarial panel member required by P-014 may not be appointed by the same nominating process as the other four panel members. The adversarial member must be nominated by a body that is structurally opposed to or independent from the founding coalition's interests — specifically: (a) a civil liberties or human rights organization not affiliated with the founding coalition; (b) a registered opposition political party or civic organization; or (c) an independent academic institution with no material funding relationship with founding coalition members. The nominating body's selection rationale must be published as part of the founding record.
+  - *Objection response requirement:* Any structural objection submitted during the 60-day window that identifies a specific P-013 standard not met by the P-014 process must receive a written response from the founding panel before the window closes. Unresponded objections extend the window by 14 days, non-cumulatively.
+- **Non-precedent statement (extends AH1 Tier 2 protection):** 'P-020 amends P-014. The 60-day window and oppose-coalition nomination are P-014 requirements only. They do not set a precedent for other patch activations, emergency processes, or governance decisions. Any invocation of P-020 logic for any other purpose requires H-2 amendment process.'
+- **Clauses to integrate:** AH2.1–AH2.4. P-014 founding checklist extended. Annex N founding preconditions updated.
+- **Dependencies:** Oppose-coalition nominating body must be identified before P-014 stage 1 begins. 60-day window requires that the founding timeline allow for this — founding planning should budget 90 days for the P-014 process from first public disclosure to panel sign-off.
+- **New risks introduced:** 60-day window provides more time for coordinated opposition to manufacture procedural objections that are technically valid but strategically motivated. Mitigated by: objection response requirement specifies that only structural objections (identifying a specific P-013 standard not met) require response; procedural objections without structural grounding do not extend the window. Oppose-coalition nomination process requires identifying a legitimate opposition body — in contexts without organized opposition, this may be difficult. Mitigated by: the three pathways (civil liberties org, opposition party, academic institution) provide alternatives.
+- **Residual risk:** A 60-day window with published panel composition still allows founding panel capture if the oppose-coalition nomination process is itself captured. Ultimate residual: founding legitimacy depends on the quality of the political culture and civil society present at the founding moment. No procedural design fully compensates for absent civil society.
+- **Compound linkages:** T-017 × T-022 (T-022 attack recurs as T-017 after a successful dismantling — P-020 hardened founding reduces risk of both initial capture and post-T-022 refounding capture). T-017 × T-011 (60-day public window converts founding moment into sustained transparency demonstration).
+
+---
+
+| Patch ID | Related Threat | Status | Priority | Change Type |
+| :--- | :--- | :--- | :--- | :--- |
+| P-021 | — (operational security) | **PROPOSED** | High | register architecture + disclosure policy |
+
+### P-021 — Register Disclosure Protocol
+
+- **Change type:** register architecture + operational security + transparency calibration.
+- **Addresses:** Open threat register as attack surface — the current register publishes specific detection thresholds, timing windows, and exploit paths that constitute an operational manual for sophisticated attackers. This is not a new threat ID (the vulnerability is architectural, not a distinct attack class); it is a structural change to how the register is maintained.
+- **Introduced design:** The register is bifurcated into:
+  - *Public Register:* Threat categories, mechanisms (described at class level, not with specific thresholds), mitigation approaches, residual risks, risk scores, and compound linkages. The public register is published in the open GitHub repository and is the primary accountability and transparency artifact. The current `Threat_Register.md` is the public register.
+  - *Restricted Register Annex:* Specific detection thresholds (e.g., exact trigger counts and time windows), precise timing windows for exploitation, operational detection patterns and signatures, and calibration data used to set automated alerts. The Restricted Annex is available to: credentialed auditors under NDA; adversarial panel members in the P-013/P-014 acceptance process; the constitutional review body; and Ombuds Office staff. It is not published publicly. It is version-controlled privately with access logs.
+  - *Consistency requirement:* Both versions must be updated simultaneously. Any discrepancy between the public and restricted versions triggers a T-007 definition-drift review. The restricted version is the authoritative operational document; the public version is the transparency artifact.
+  - *Reclassification review:* Annually, the Threat Register Owner reviews whether any restricted-version content can be declassified to the public version (because the window of operational sensitivity has passed) or whether any public-version content should be reclassified to restricted (because specific operational details have been added).
+- **Clauses to integrate:** AO1–AO5. Annex AO (Register Disclosure Protocol) — see `REGISTER_DISCLOSURE_PROTOCOL.md`. P-004 protected terms registry: 'restricted annex' and 'public register' defined.
+- **Dependencies:** Restricted Annex infrastructure (private version-controlled repository with access controls) must be established before P-021 is operative. Threat Register Owner role must be formally constituted with authority to manage both versions.
+- **New risks introduced:** Bifurcation creates an accountability gap — the public cannot verify that the restricted version is consistent with stated mitigations. Mitigated by: credentialed auditors can access restricted version and publish a consistency attestation (not the content) annually. Restricted version existence itself creates an information asymmetry that could be used to claim mitigations are more robust than they are. Mitigated by: consistency attestation is published; any disclosed gap between public claims and restricted reality is a T-007 event.
+- **Residual risk:** The bifurcation design assumes that restricted content stays restricted. Leaks are possible. The design accepts this and treats the restricted version as reducing adversarial advantage, not eliminating it — full security through obscurity is not the goal.
+- **Compound linkages:** P-021 × T-011 (restricted register removes some transparency — P-021 must be communicated publicly as a deliberate operational security choice, not a transparency failure, or it becomes a narrative attack surface).
+
+---
+
 ## Operating Rules for the Patch Log
 
 - Every future patch must reference a threat ID and specify the new risk it creates.
@@ -246,3 +414,15 @@
 | T-005 | P-005 | **PROPOSED** | Annex AC1 |
 | T-006 | P-006 | **PROPOSED** | Annex AC2 |
 | T-008 | P-008 | **PROPOSED** | Annex AC3 |
+| T-009 | P-009 | **PROPOSED** | Annex AF |
+| T-011 | P-011 | **PROPOSED** | Annex AD |
+| T-012–T-015 | P-012 | **PROPOSED** | Annex AE |
+| T-016 | P-013 | **PROPOSED** | Annex AG |
+| T-017 | P-014 | **PROPOSED** | Annex AH |
+| T-018 / T-019 | P-015 | **PROPOSED** | Annex AP |
+| T-002 (residual) | P-016 | **PROPOSED** | Annex AK |
+| T-020 / T-021 | P-017 | **PROPOSED** | Annex AL |
+| T-022 | P-018 | **PROPOSED** | Annex AM |
+| T-023 | P-019 | **PROPOSED** | Annex AN |
+| T-017 (residual) | P-020 | **PROPOSED** | Annex AH2 |
+| — (opsec) | P-021 | **PROPOSED** | Annex AO |

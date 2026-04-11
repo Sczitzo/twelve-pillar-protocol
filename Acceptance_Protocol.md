@@ -1,10 +1,10 @@
 # Twelve-Pillar Protocol
 
-**Formal Acceptance Protocol (Amended by P-013 / AG; Bootstrap resolved by P-014 / AH)**
+**Formal Acceptance Protocol (Amended by P-013 / AG; Bootstrap resolved by P-014 / AH; Founding window extended by P-020 / AH2)**
 
 ---
 
-This document supersedes the Session 5 Formal Acceptance Protocol. One amendment from Session 6: the P-013 bootstrap resolution. All prior content is unchanged.
+This document supersedes the Session 6 Formal Acceptance Protocol. Two amendments from Session 8: (1) the P-020 founding window extension, and (2) the Session 8 patch priority additions. All prior content is unchanged except as explicitly noted.
 
 Governing principle: acceptance is evidence-gated, not calendar-gated. Urgency is a reason to accelerate the pilot, not to skip it. [Tier 2 protected per P-013 AG4]
 
@@ -17,11 +17,32 @@ P-013 cannot be activated through earlier versions of the Formal Acceptance Prot
 -   **P-014 may not be cited as precedent.** [Tier 2 protected per AH1]
 -   **After P-013 ACTIVE:** P-006 and P-009 immediately enter the Formal Acceptance Protocol pilot stage as first-priority patches.
 
-### Priority Acceptance Order (Updated)
+### P-014 Founding Window Amendment (Session 8 — P-020 / Annex AH2)
+
+The original P-014 Annex AH specified a 14-day pre-activation disclosure window. P-020 amends this as follows. **Annex AH2 is operative as of this document version and governs all P-014 executions.**
+
+**AH2.1 — Extended disclosure window:** The pre-activation challenge window is extended from 14 days to **60 days minimum**. The 60-day clock begins when all of the following are simultaneously published: (a) the circular dependency analysis; (b) the founding exception statement from the Threat Register Owner; (c) the full proposed panel composition with disclosed affiliations. No stage of P-014 may proceed until the 60-day window closes with no unresolved structural objections.
+
+**AH2.2 — Structural objection response requirement:** Any objection submitted during the 60-day window that identifies a specific P-013 standard not met by the P-014 process must receive a written response from the founding panel before the window closes. An unresponded structural objection extends the window by 14 days (non-cumulative: only one 14-day extension applies regardless of the number of unresponded objections). Procedural objections without structural grounding (i.e., those that do not identify a specific P-013 standard) do not extend the window.
+
+**AH2.3 — Oppose-coalition adversarial member nomination:** The adversarial panel member required by P-014 AH1 may not be appointed by the same nominating process as the other four panel members. The adversarial member must be nominated by a body that is structurally opposed to or independent from the founding coalition's interests. Qualifying nominating bodies:
+- (a) A civil liberties or human rights organization not affiliated with and not funded by the founding coalition;
+- (b) A registered opposition political party, civic organization, or recognized civil society body;
+- (c) An independent academic institution with no material funding relationship with founding coalition members (three-year lookback).
+
+The nominating body's selection rationale must be published as part of the founding record before the 60-day window opens. If no qualifying nominating body can be identified, the founding process may not proceed — this is a pre-condition, not a waivable procedural requirement.
+
+**AH2.4 — Non-precedent statement extension (Tier 2 protected):** 'P-020 amends P-014. The 60-day window and oppose-coalition nomination are P-014 requirements only. They do not establish precedent for other patch activations, emergency processes, or governance decisions. Any invocation of AH2 logic for any purpose other than P-014 execution requires H-2 amendment process.'
+
+**Planning implication:** The founding timeline should budget a minimum of 90 days for the full P-014 process: 30 days to identify and confirm the oppose-coalition nominating body, prepare panel composition, and publish the full disclosure package; 60 days for the challenge window; plus time for panel deliberation and sign-off. Founding coalitions that begin P-014 planning without this timeline have insufficient runway.
+
+---
+
+### Priority Acceptance Order (Updated — Session 8)
 
 | Priority | Patch | Activation Path | Pre-Launch Gate? |
 | :--- | :--- | :--- | :--- |
-| **0** | **P-014 → P-013** | **Annex AH founding instrument** | **YES — must complete first; Formal Acceptance Protocol operative** |
+| **0** | **P-014 → P-013** | **Annex AH + AH2 founding instrument** | **YES — must complete first; 60-day window per AH2** |
 | 1 | P-006 (PCRP) | FAP | YES |
 | 2 | P-009 (Grace exploitation) | FAP | YES — closes T-008 bypass |
 | 3 | P-005 (Governance throughput) | FAP | YES |
@@ -29,5 +50,12 @@ P-013 cannot be activated through earlier versions of the Formal Acceptance Prot
 | 5 | P-008 bootstrap micro-patch | 2-authority expedited (AG6) | YES — enables P-008 full |
 | 6 | P-012 (Interface hardening) | FAP | YES — multi-region operation |
 | 7 | P-008 full package | FAP | YES — requires micro-patch data |
+| 8 | P-016 (Identity AED) | FAP | YES — Tier 2 founding commitment before scale-up |
+| 9 | P-021 (Register disclosure) | FAP | YES — restricted annex infrastructure required |
+| 10 | P-015 (PCRP attack surface) | FAP | YES — requires P-006 ACTIVE |
+| 11 | P-017 (Oracle independence) | FAP | YES — requires oracle accreditation standards update |
+| 12 | P-018 (Electoral resilience) | FAP | YES — constitutional body required at founding |
+| 13 | P-019 (Pilot external validity) | FAP | YES — scale-up gate only; not required for initial pilot |
+| 14 | P-020 (Founding window) | **AH2 — operative now** | **YES — governs P-014 execution; no separate FAP required** |
 
 All other Formal Acceptance Protocol provisions (Sections 1–5 of the prior version) are unchanged and remain fully operative. Refer to the prior Formal Acceptance Protocol for the full text of those sections.
