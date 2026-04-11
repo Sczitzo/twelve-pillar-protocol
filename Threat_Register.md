@@ -44,6 +44,8 @@
 | T-021 | Algorithmic Oracle Capture | **Critical** | **OPEN** | Prevent AI/algorithmic manipulation of measurement systems that satisfies formal independence while being systematically biased. | 60 |
 | T-022 | Electoral Cycle Capture | **Critical** | **OPEN** | Prevent a hostile successor government from repealing or hollowing out the constitutional architecture. | 60 |
 | T-023 | Pilot External Validity Collapse | Med-High | **OPEN** | Prevent scale-up based on pilot evidence that does not include adversarial or crisis conditions. | 32 |
+| T-024 | SQ Oracle-Failure During Active Rationing | **Critical** | **OPEN** | Define system behaviour when the oracle goes dark while SQ is already active — no current resolution path. | 60 |
+| T-025 | Demurrage Sector-Capture via Investment Channel | High | **OPEN** | Prevent EC investment-channel exemptions from becoming milking instruments for construction and capital-intensive sectors. | 48 |
 
 *\* ADDRESSED = mitigation patch designed (PROPOSED) but not yet ACTIVE. Status will update to ACTIVE when patches are integrated into master protocol.*
 
@@ -356,6 +358,40 @@
 
 ---
 
+## Session 9 Threats — Detailed Entries
+
+*Gaps identified after Session 8 implementation review. T-024 is an operational void with no current mitigation path. T-025 is registered pending design discussion.*
+
+---
+
+### T-024 — SQ Oracle-Failure During Active Rationing
+- **Layer:** SQ / oracle / scarcity management
+- **Severity:** Critical
+- **Status:** OPEN
+- **Risk Score:** 5×4×(6-3)=60
+- **Mechanism:** The existing oracle architecture (T-006 / P-006) addresses measurement lag and measurement manipulation. It does not address the specific failure mode where SQ rationing is already active and the oracle system then fails completely — going dark, losing quorum, or entering an unresolvable dispute. In that state: (a) the system has no authoritative measurement of whether the shortage is improving, stable, or worsening; (b) the conservative default (maintain access during disputes) conflicts with the SQ architecture (rationing was activated because supply is genuinely constrained); (c) there is no designated decision-maker with defined authority to escalate, de-escalate, or hold SQ without oracle confirmation; (d) the 90-day SQ maximum has no mechanism to renew or lapse when the renewal justification cannot be verified.
+- **Impact:** SQ rationing either continues without verification (potentially prolonging restriction after recovery) or lapses without verification (potentially removing rationing during ongoing shortage). Both outcomes are harmful; neither is currently governed. If oracle failure is deliberate (manufactured during active SQ), the attacker can force either a false lapse or a false extension depending on which default the system applies.
+- **Detection:** D=4 — oracle failure is observable; the gap is the absence of a decision protocol, not a hidden event.
+- **Mitigation direction (P-022 PROPOSED):** (1) *SQ oracle-failure default:* when the oracle system loses quorum or enters unresolvable dispute while SQ is active, SQ holds at its current level — no escalation, no expansion. This is the conservative hold. (2) *48-hour first-responder window:* the Regional Executive Body (REB, P-006 first-responder authority) may use available non-oracle physical indicators (fill rates, distribution logs, vendor inventory reports) to issue a provisional continuation or provisional lapse within 48 hours. The REB decision is published immediately with the evidence base. (3) *72-hour governance handoff:* if the oracle system is not restored within 72 hours of failure, authority transfers to the emergency deadlock resolution protocol (P-012 AE2.3) for a binding decision. The humane floor bridge is unconditional throughout. (4) *Oracle restoration trigger:* when the oracle system is restored, a mandatory 24-hour reconciliation review assesses whether the provisional decisions were consistent with restored oracle data. Discrepancies are published and trigger a post-mortem. See Annex AQ.
+- **Open problem:** the REB's use of non-oracle physical indicators creates a soft oracle that is not subject to the independence requirements of the main oracle system — this is a controlled exception that must not become a normalised bypass.
+- **Compound linkages:** T-024 × T-006 (oracle failure during SQ is the worst-case T-006 scenario — P-006 does not fully cover it). T-024 × T-014 (triple deadlock can coincide with oracle failure — humane floor bridge must be unconditional regardless). T-024 × T-011 (SQ rationing continuing without oracle verification is a high-visibility narrative attack surface). T-024 × T-018 (deliberate oracle disruption timed to active SQ is the highest-consequence T-018 compound).
+
+---
+
+### T-025 — Demurrage Sector-Capture via Investment Channel
+- **Layer:** EC monetary architecture / demurrage / productive investment
+- **Severity:** High
+- **Status:** OPEN — *pending design discussion; no patch proposed*
+- **Risk Score:** 4×4×(6-3)=48
+- **Note:** This threat was surfaced during the Annual Compound Simulation Scenario A (talent drain) and raised as a design discussion item. No patch is proposed here. The threat is registered to ensure it has a governance handle. The patch direction is under active review — see discussion note below.
+- **Mechanism:** Demurrage (idle EC decay) is designed to discourage passive hoarding and rentier accumulation. The protocol's P-002 design acknowledges that long-horizon productive investment must be exempted or channelled to avoid punishing patient capital. The threat: any investment-channel exemption from demurrage creates a classification that capital-intensive sectors (construction, infrastructure, heavy industry) can exploit. Firms apply for project-account status, escrow windows, or term-pool designation not because they are genuinely building productive capacity but to park EC without decay. The exemption designed for productive planning becomes a hoarding instrument with a legitimating label. Four specific mechanisms: (1) *Project account cycling* — a firm maintains a continuous chain of overlapping project accounts, each nominally productive, such that no EC balance ever becomes "idle." (2) *Escrow window abuse* — firms use escrow windows to hold balances during periods of market uncertainty, effectively suspending demurrage during adverse conditions while continuing to earn returns. (3) *Infrastructure designation capture* — lobbying to broaden the definition of "infrastructure" to include asset classes that are economically closer to rent-extraction than productive construction. (4) *Subsidiary fragmentation* — a single economic actor fragments into multiple legal entities, each holding a project account, collectively holding far more demurrage-exempt EC than any single entity would be permitted.
+- **Impact:** Demurrage fails to break passive accumulation among sophisticated actors while continuing to penalise unsophisticated savers (workers, small enterprises) who cannot access investment-channel exemptions. This recreates the wealth concentration the protocol was designed to prevent, through the mechanism designed to prevent it.
+- **Detection:** D=3 — investment channel utilisation is observable in aggregate; cycling and fragmentation patterns are detectable with cross-entity tracking.
+- **Discussion note:** The design question is whether investment-channel exemptions are the correct response to the demurrage/productive-capital tension at all. An alternative architecture would not exempt capital from demurrage but would instead ensure that genuinely productive deployment happens *fast enough* that demurrage costs are immaterial — removing the incentive to hold rather than deploy. Under this logic, the correct response to sector-specific capital needs is not exemptions but *shorter project timelines and more competitive allocation*, not protected holding periods. This discussion is open. The patch direction depends on the resolution. T-025 is registered here to ensure this tension is governed rather than decided implicitly by implementation choices. See `Patch_Log.md` T-025 entry.
+- **Compound linkages:** T-025 × T-001 (investment channel exemptions are a form of above-ledger boundary manipulation — parallel logic to shadow convertibility). T-025 × T-007 (definition of "productive investment," "infrastructure," and "project account" are subject to drift — all must be P-004 protected terms). T-025 × T-008 (industry capture of investment channel classification is a form of bureaucratic elite formation in the monetary architecture layer).
+
+---
+
 ## T-008 / T-009 / T-016 / T-017 Capture Triad Extended
 
 *The connected capture triad from Session 5 is now a quadruplet:*
@@ -409,7 +445,10 @@
 | T-022 | Electoral Cycle Capture | **Critical** | **OPEN** | P-018 | 60 |
 | T-023 | Pilot External Validity Collapse | Med-High | **OPEN** | P-019 | 32 |
 
-Highest risk score: T-011 (Narrative Surface, score 80). Hardest to detect: T-008, T-016, T-019, T-020, T-021 (D=2). 4 ACTIVE, 10 PROPOSED, 6 OPEN. T-003 and T-010 retired (see Retired and Reserved IDs table). T-001 and T-002 carry Session 8 open-problem additions (Annexes AJ and AK). T-017 carries a founding-window amendment (Annex AH2, P-020).
+| T-024 | SQ Oracle-Failure During Active Rationing | **Critical** | **OPEN** | P-022 | 60 |
+| T-025 | Demurrage Sector-Capture via Investment Channel | High | **OPEN** | — (pending discussion) | 48 |
+
+Highest risk score: T-011 (Narrative Surface, score 80). Hardest to detect: T-008, T-016, T-019, T-020, T-021 (D=2). 4 ACTIVE, 10 PROPOSED, 8 OPEN. T-003 and T-010 retired (see Retired and Reserved IDs table). T-001 and T-002 carry Session 8 open-problem additions (Annexes AJ and AK). T-017 carries a founding-window amendment (Annex AH2, P-020). T-025 patch direction under active design discussion.
 
 ---
 
@@ -422,6 +461,6 @@ Highest risk score: T-011 (Narrative Surface, score 80). Hardest to detect: T-00
 
 ---
 
-*Session 8 complete. T-018, T-019, T-020, T-021, T-022, T-023 are the next patch design targets. P-015 through P-020 enter design phase.*
+*Session 9 complete. T-024 → P-022 (SQ oracle-failure fallback). T-025 patch direction under discussion (demurrage sector-capture). P-016 (identity AED) and P-021 (register disclosure) remain next-priority after P-022.*
 
-*Next priority: P-015 (PCRP attack surface), P-017 (oracle epistemological/algorithmic independence), P-018 (electoral cycle resilience), P-019 (pilot external validity gate), P-020 (founding window extension).*
+*Open design question: T-025 — whether investment-channel demurrage exemptions should exist at all, or whether productive capital should be handled through deployment-speed mechanisms rather than holding-period protections. Resolution determines P-023 direction.*

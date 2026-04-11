@@ -39,6 +39,8 @@
 | P-019 | T-023 | **PROPOSED** | Med-High | Pilot external validity gate: stress-condition pilot requirement, red-team challenge window, crisis simulation mandate. |
 | P-020 | T-017 (residual) | **PROPOSED** | Critical | Founding window extension: 60-day pre-activation disclosure, oppose-coalition adversarial member nomination. |
 | P-021 | — | **PROPOSED** | High | Register disclosure protocol: bifurcation into public and restricted versions; operational security for detection thresholds. |
+| P-022 | T-024 | **PROPOSED** | Critical | SQ oracle-failure fallback: conservative hold, 48h REB first-responder window, 72h governance handoff, restoration reconciliation. |
+| P-023 | T-025 | **PENDING DISCUSSION** | High | Demurrage sector-capture: patch direction under active design review — exemption model vs. deployment-speed alternative. |
 
 ---
 
@@ -392,6 +394,52 @@
 
 ---
 
+## Session 9 Patches — Detailed Entries
+
+*Operational gap closure (P-022) and design-discussion registration (P-023).*
+
+---
+
+| Patch ID | Related Threat | Status | Priority | Change Type |
+| :--- | :--- | :--- | :--- | :--- |
+| P-022 | T-024 | **PROPOSED** | Critical | protocol + authority definition + reconciliation |
+
+### P-022 — SQ Oracle-Failure Fallback Protocol
+
+- **Change type:** protocol + authority definition + oracle reconciliation procedure.
+- **Addresses:** T-024 (SQ Oracle-Failure During Active Rationing) — the operational void where SQ is active and the oracle system fails, loses quorum, or enters an unresolvable dispute with no defined decision path.
+- **Introduced design:**
+  - *Conservative hold default:* When the oracle system loses quorum or enters an unresolvable dispute while SQ is active, SQ holds at its current activation level. No escalation. No expansion to new categories. No automatic lapse. The conservative hold is the designed default — not doing nothing, but doing the least-harm thing until authority is restored.
+  - *48-hour REB first-responder window:* The Regional Executive Body (REB), using its existing P-006 first-responder authority, may issue a provisional continuation or provisional lapse within 48 hours of oracle failure based on non-oracle physical indicators: distribution fill rates, vendor inventory reports, and logistics data. The REB decision is published immediately with the full evidence base. The REB may not expand SQ scope under this authority — only hold or begin a managed lapse. Expansion requires oracle quorum.
+  - *72-hour governance handoff:* If the oracle system is not restored within 72 hours of failure, the matter transfers to the emergency deadlock resolution protocol (P-012 AE2.3) for a binding decision. The 3-member arbitration panel has authority to issue a time-bound SQ continuation or staged lapse. The humane floor bridge (P-012 AE2.3) is unconditional throughout oracle failure — LC baseline access is never contingent on oracle availability.
+  - *Oracle restoration reconciliation:* When the oracle system is restored, a mandatory 24-hour reconciliation review assesses whether provisional REB decisions were consistent with the restored oracle data. Where the provisional decision was inconsistent with what the oracle would have indicated, the discrepancy is published as a post-mortem with a root-cause analysis. Persistent REB-oracle divergence triggers an independent review of the non-oracle physical indicator methodology.
+  - *Deliberate-failure escalation:* If oracle failure during active SQ is found to be deliberately engineered (oracle manipulation evidence per T-012/T-018), the matter escalates immediately to enforcement — the conservative hold and first-responder window both continue, but the investigation runs in parallel without waiting for oracle restoration.
+- **Clauses to integrate:** AQ1–AQ5. Amends Annex U (SQ termination and continuation procedures). Amends AC2 (P-006 PCRP/REB authority — SQ oracle failure is a distinct REB authority from PCRP). Pillar 11 dashboard extended: oracle status must include a live SQ-active indicator so oracle failure during active SQ is publicly visible in real time.
+- **Dependencies:** REB formally constituted with defined authority for non-oracle physical indicator assessments. Non-oracle physical indicator methodology must be published and reviewed annually. P-012 AE2.3 emergency deadlock protocol must be operative before P-022 is operative.
+- **New risks introduced:** REB use of non-oracle physical indicators creates a soft-oracle channel not subject to the independence requirements of the main oracle system. Mitigated by: (1) REB authority under P-022 is explicitly scoped to hold-or-lapse decisions only — no scope expansion; (2) REB decisions are published immediately with evidence base; (3) reconciliation review after oracle restoration creates accountability for REB accuracy; (4) the non-oracle indicator methodology is published and periodically reviewed. Risk: consistent REB-oracle agreement could be engineered by an adversary who also controls the physical indicator sources. Mitigated by: physical indicators (fill rates, inventory reports) are collected from distributed vendor networks — harder to simultaneously compromise than a concentrated oracle system.
+- **Residual risk:** A deliberate oracle failure timed to active SQ, combined with physical indicator manipulation, could force a harmful REB decision during the 48-hour window. This is the highest-consequence compound attack on the SQ system. The 72-hour governance handoff provides a backstop, but 72 hours of incorrect SQ operation during a genuine shortage is a real harm. Accepted as the best available outcome given the operational constraint that a governance decision cannot be made faster than the arbitration panel can convene.
+- **Compound linkages:** T-024 × T-006 (P-022 extends P-006 to cover oracle failure during SQ — P-006 covers measurement lag; P-022 covers measurement absence). T-024 × T-014 (triple deadlock during SQ oracle failure is the worst-case scenario — humane floor bridge must be explicitly unconditional regardless of deadlock status). T-024 × T-018 (deliberate false-trigger exhaustion designed to overlap with active SQ is the highest-risk T-018 compound).
+
+---
+
+| Patch ID | Related Threat | Status | Priority | Change Type |
+| :--- | :--- | :--- | :--- | :--- |
+| P-023 | T-025 | **PENDING DISCUSSION** | High | EC monetary architecture / demurrage design |
+
+### P-023 — Demurrage and Productive Capital (Pending Design Direction)
+
+- **Status:** PENDING DISCUSSION. No patch is proposed here. This entry registers the design tension for governance and records the open question formally.
+- **Threat addressed:** T-025 (Demurrage Sector-Capture via Investment Channel).
+- **The tension:** Demurrage discourages idle EC hoarding. Long-horizon productive activity (construction, infrastructure) requires holding capital over extended periods. If holding is always penalised, genuine productive planning is harmed alongside rent-seeking. The original P-002 design addresses this by creating investment channels (project accounts, escrow windows, term pools) that exempt qualifying capital from demurrage. T-025 identifies that these exemptions become the exploitable surface: sophisticated actors — particularly construction firms and capital-intensive enterprises — apply for investment-channel status not to build but to park.
+- **Design question under review:** Whether investment-channel exemptions are the correct response to this tension, or whether an alternative architecture is more robust. Two candidate directions:
+  - *Direction A — Hardened exemptions:* Keep investment-channel exemptions but add strict eligibility controls: time-limited with mandatory deployment milestones, cross-entity consolidation rules to prevent subsidiary fragmentation, independent verification of productive activity, and penalties for exemption abuse. The exemption exists; its capture is prevented by enforcement.
+  - *Direction B — Deployment-speed architecture:* Remove investment-channel exemptions entirely. Instead, ensure that genuinely productive capital deployment happens fast enough that demurrage costs are immaterial — through competitive allocation mechanisms, shorter project timelines, and accessible capital markets that reduce the need to hold large balances. Under this logic, if demurrage is costing a firm significantly, that is a signal the firm is holding more than it needs to deploy. The design question is whether demurrage pressure improves capital velocity without harming genuinely productive long-horizon activity.
+- **Current assessment:** Direction B is architecturally cleaner — it removes the capture surface entirely rather than hardening it. However, it requires empirical validation: are there genuinely productive activities that require large EC balances over long periods that cannot be served by staged capital allocation? Construction of major infrastructure may be one such case. The Annual Compound Simulation Scenario A surfaced this as a live concern. Design resolution requires: (a) empirical analysis of capital holding periods across essential-delivery sectors; (b) assessment of whether staged allocation models can serve those needs without concentrated holding; (c) explicit decision by the founding coalition on the trade-off between capture-prevention and productive-capital access.
+- **Next step:** Design discussion to determine patch direction. P-023 moves from PENDING DISCUSSION to PROPOSED once direction is determined.
+- **Compound linkages:** T-025 × T-001 (investment-channel exemptions as above-ledger boundary manipulation). T-025 × T-007 (definitions of "productive investment," "infrastructure," and "project account" must be P-004 protected terms regardless of direction chosen). T-025 × T-008 (industry capture of investment-channel classification is elite formation in the monetary layer).
+
+---
+
 ## Operating Rules for the Patch Log
 
 - Every future patch must reference a threat ID and specify the new risk it creates.
@@ -426,3 +474,5 @@
 | T-023 | P-019 | **PROPOSED** | Annex AN |
 | T-017 (residual) | P-020 | **PROPOSED** | Annex AH2 |
 | — (opsec) | P-021 | **PROPOSED** | Annex AO |
+| T-024 | P-022 | **PROPOSED** | Annex AQ |
+| T-025 | P-023 | **PENDING DISCUSSION** | — |

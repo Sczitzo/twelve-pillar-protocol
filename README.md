@@ -62,12 +62,13 @@ This repository contains the complete synchronized document set:
 | [`Master_Protocol.md`](./Master_Protocol.md) | Primary constitutional source of truth. Operative language, all annexes. |
 | [`White_Paper.md`](./White_Paper.md) | Plain-language public explanation. Start here. |
 | [`Technical_Reference.md`](./Technical_Reference.md) | Systems map with flow diagrams. For reviewers and collaborators. |
-| [`Threat_Register.md`](./Threat_Register.md) | Adversarial risk model. 15 threats, all addressed. |
-| [`Patch_Log.md`](./Patch_Log.md) | Change and mitigation history. 14 patches. |
+| [`Threat_Register.md`](./Threat_Register.md) | Adversarial risk model. 25 threats — 4 ACTIVE, 10 PROPOSED, 8 OPEN, 1 FOUNDING. |
+| [`Patch_Log.md`](./Patch_Log.md) | Change and mitigation history. 23 patches. |
 | [`Acceptance_Protocol.md`](./Acceptance_Protocol.md) | Process for moving patches from design to operation. |
 | [`Audit_Note.md`](./Audit_Note.md) | Document integrity verification. |
 | [`Citizen_Facing_Rights_Layer.md`](./Citizen_Facing_Rights_Layer.md) | Plain-language summary of citizen rights and protections. |
-| [`Adversarial_Narrative_Simulation.md`](./Adversarial_Narrative_Simulation.md) | 8 simulated narrative attacks with structural responses and residual risks. |
+| [`Adversarial_Narrative_Simulation.md`](./Adversarial_Narrative_Simulation.md) | 10 simulated narrative attacks with structural responses and residual risks. |
+| [`REGISTER_DISCLOSURE_PROTOCOL.md`](./REGISTER_DISCLOSURE_PROTOCOL.md) | Annex AO — public/restricted bifurcation framework for the Threat Register. |
 | [`Annual_Compound_Simulation.md`](./Annual_Compound_Simulation.md) | Month-by-month operational year stress-test across all twelve pillars. |
 
 **Note:** The core documentation has been converted to high-fidelity Markdown for better readability and version control. Original PDFs are available in the [`archive/`](./archive/) directory.
@@ -84,9 +85,13 @@ The system has been adversarially stress-tested:
 | T-012–T-015 (Interface threats) | Compound tests revealed triple-deadlock risk; oracle independence requirement; demand-context flag |
 | T-009 Grace Exploitation Loop | Graduated renewal intensity; CR slow-decay; hardship attestation collusion detection |
 | T-016 Formal Acceptance Process Capture | Evidence farming, sign-off deadlock, urgency exploit, audit capture all patched |
-| T-017 Bootstrap Problem | One-time founding instrument (P-014) resolves P-013 circular dependency; acceptance sequence unblocked |
+| T-017 Bootstrap Problem | One-time founding instrument (P-014) resolves P-013 circular dependency; founding window extended to 60 days |
+| T-018–T-019 PCRP Attack Surface | False-trigger exhaustion and demand-context suppression attacks registered and patched (P-015) |
+| T-020–T-021 Oracle Independence | Epistemological and algorithmic oracle capture registered; methodology-class diversity and AI supply-chain transparency required (P-017) |
+| T-022 Electoral Cycle Capture | Hostile successor government routes identified; entrenchment ladder, LC floor persistence, transition protocol designed (P-018) |
+| T-023–T-025 Pilot validity, SQ oracle failure, demurrage capture | External validity gate (P-019), SQ oracle-failure fallback (P-022), demurrage sector-capture (P-023 pending discussion) |
 
-**Current status: 4 patches ACTIVE, 10 PROPOSED, 1 FOUNDING instrument.** The design is complete. What remains is pilot evidence.
+**Current status: 4 patches ACTIVE, 17 PROPOSED, 8 OPEN, 1 FOUNDING instrument.** The design continues to harden. What remains is pilot evidence and patch acceptance.
 
 ## What this system is not
 
