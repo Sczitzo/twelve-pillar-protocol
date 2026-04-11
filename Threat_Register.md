@@ -448,7 +448,7 @@
 | T-024 | SQ Oracle-Failure During Active Rationing | **Critical** | **OPEN** | P-022 | 60 |
 | T-025 | Demurrage Sector-Capture via Investment Channel | High | **PROPOSED** | P-023 | 48 |
 
-Highest risk score: T-011 (Narrative Surface, score 80). Hardest to detect: T-008, T-016, T-019, T-020, T-021 (D=2). 4 ACTIVE, 11 PROPOSED, 7 OPEN. T-003 and T-010 retired (see Retired and Reserved IDs table). T-001 and T-002 carry Session 8 open-problem additions (Annexes AJ and AK). T-017 carries a founding-window amendment (Annex AH2, P-020). T-025 addressed by P-023 (contract-commitment architecture, zero exemptions).
+Highest risk score: T-011 (Narrative Surface, score 80). Hardest to detect: T-008, T-016, T-019, T-020, T-021 (D=2). 4 ACTIVE, 12 PROPOSED, 7 OPEN. 25 total IDs — 23 active, 2 retired (T-003, T-010). T-017 (Bootstrap Problem) is PROPOSED status; its patch P-014 is the FOUNDING instrument. T-001 and T-002 carry Session 8 open-problem additions (Annexes AJ and AK). T-025 addressed by P-023 (contract-commitment architecture, zero exemptions).
 
 ---
 
