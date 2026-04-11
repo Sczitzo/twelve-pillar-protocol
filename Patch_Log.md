@@ -39,6 +39,8 @@
 | P-019 | T-023 | **PROPOSED** | Med-High | Pilot external validity gate: stress-condition pilot requirement, red-team challenge window, crisis simulation mandate. |
 | P-020 | T-017 (residual) | **PROPOSED** | Critical | Founding window extension: 60-day pre-activation disclosure, oppose-coalition adversarial member nomination. |
 | P-021 | — | **PROPOSED** | High | Register disclosure protocol: bifurcation into public and restricted versions; operational security for detection thresholds. |
+| P-022 | T-024 | **PROPOSED** | Critical | SQ oracle-failure fallback: conservative hold, 48h REB first-responder window, 72h governance handoff, restoration reconciliation. |
+| P-023 | T-025 | **PROPOSED** | High | Demurrage sector-capture: contract-commitment architecture, zero exemptions, demurrage-as-discipline, milestone escrow. |
 
 ---
 
@@ -392,6 +394,94 @@
 
 ---
 
+## Session 9 Patches — Detailed Entries
+
+*Operational gap closure (P-022) and design-discussion registration (P-023).*
+
+---
+
+| Patch ID | Related Threat | Status | Priority | Change Type |
+| :--- | :--- | :--- | :--- | :--- |
+| P-022 | T-024 | **PROPOSED** | Critical | protocol + authority definition + reconciliation |
+
+### P-022 — SQ Oracle-Failure Fallback Protocol
+
+- **Change type:** protocol + authority definition + oracle reconciliation procedure.
+- **Addresses:** T-024 (SQ Oracle-Failure During Active Rationing) — the operational void where SQ is active and the oracle system fails, loses quorum, or enters an unresolvable dispute with no defined decision path.
+- **Introduced design:**
+  - *Conservative hold default:* When the oracle system loses quorum or enters an unresolvable dispute while SQ is active, SQ holds at its current activation level. No escalation. No expansion to new categories. No automatic lapse. The conservative hold is the designed default — not doing nothing, but doing the least-harm thing until authority is restored.
+  - *48-hour REB first-responder window:* The Regional Executive Body (REB), using its existing P-006 first-responder authority, may issue a provisional continuation or provisional lapse within 48 hours of oracle failure based on non-oracle physical indicators: distribution fill rates, vendor inventory reports, and logistics data. The REB decision is published immediately with the full evidence base. The REB may not expand SQ scope under this authority — only hold or begin a managed lapse. Expansion requires oracle quorum.
+  - *72-hour governance handoff:* If the oracle system is not restored within 72 hours of failure, the matter transfers to the emergency deadlock resolution protocol (P-012 AE2.3) for a binding decision. The 3-member arbitration panel has authority to issue a time-bound SQ continuation or staged lapse. The humane floor bridge (P-012 AE2.3) is unconditional throughout oracle failure — LC baseline access is never contingent on oracle availability.
+  - *Oracle restoration reconciliation:* When the oracle system is restored, a mandatory 24-hour reconciliation review assesses whether provisional REB decisions were consistent with the restored oracle data. Where the provisional decision was inconsistent with what the oracle would have indicated, the discrepancy is published as a post-mortem with a root-cause analysis. Persistent REB-oracle divergence triggers an independent review of the non-oracle physical indicator methodology.
+  - *Deliberate-failure escalation:* If oracle failure during active SQ is found to be deliberately engineered (oracle manipulation evidence per T-012/T-018), the matter escalates immediately to enforcement — the conservative hold and first-responder window both continue, but the investigation runs in parallel without waiting for oracle restoration.
+- **Clauses to integrate:** AQ1–AQ5. Amends Annex U (SQ termination and continuation procedures). Amends AC2 (P-006 PCRP/REB authority — SQ oracle failure is a distinct REB authority from PCRP). Pillar 11 dashboard extended: oracle status must include a live SQ-active indicator so oracle failure during active SQ is publicly visible in real time.
+- **Dependencies:** REB formally constituted with defined authority for non-oracle physical indicator assessments. Non-oracle physical indicator methodology must be published and reviewed annually. P-012 AE2.3 emergency deadlock protocol must be operative before P-022 is operative.
+- **New risks introduced:** REB use of non-oracle physical indicators creates a soft-oracle channel not subject to the independence requirements of the main oracle system. Mitigated by: (1) REB authority under P-022 is explicitly scoped to hold-or-lapse decisions only — no scope expansion; (2) REB decisions are published immediately with evidence base; (3) reconciliation review after oracle restoration creates accountability for REB accuracy; (4) the non-oracle indicator methodology is published and periodically reviewed. Risk: consistent REB-oracle agreement could be engineered by an adversary who also controls the physical indicator sources. Mitigated by: physical indicators (fill rates, inventory reports) are collected from distributed vendor networks — harder to simultaneously compromise than a concentrated oracle system.
+- **Residual risk:** A deliberate oracle failure timed to active SQ, combined with physical indicator manipulation, could force a harmful REB decision during the 48-hour window. This is the highest-consequence compound attack on the SQ system. The 72-hour governance handoff provides a backstop, but 72 hours of incorrect SQ operation during a genuine shortage is a real harm. Accepted as the best available outcome given the operational constraint that a governance decision cannot be made faster than the arbitration panel can convene.
+- **Compound linkages:** T-024 × T-006 (P-022 extends P-006 to cover oracle failure during SQ — P-006 covers measurement lag; P-022 covers measurement absence). T-024 × T-014 (triple deadlock during SQ oracle failure is the worst-case scenario — humane floor bridge must be explicitly unconditional regardless of deadlock status). T-024 × T-018 (deliberate false-trigger exhaustion designed to overlap with active SQ is the highest-risk T-018 compound).
+
+---
+
+| Patch ID | Related Threat | Status | Priority | Change Type |
+| :--- | :--- | :--- | :--- | :--- |
+| P-023 | T-025 | **PROPOSED** | High | EC monetary architecture / demurrage design |
+
+### P-023 — Contract-Commitment Architecture (Demurrage, Zero Exemptions)
+
+- **Status:** PROPOSED
+- **Threat addressed:** T-025 (Demurrage Sector-Capture via Investment Channel).
+- **Direction adopted:** Direction B — deployment-speed architecture. Investment-channel exemptions are removed entirely. Genuine long-horizon capital needs are served by contract-commitment architecture; demurrage pressure remains universal.
+- **Red-team pre-analysis:** Ten attack vectors identified and resolved before this patch was written. Vectors: (1) escrow control ambiguity, (2) milestone definition gaming, (3) "working capital" as new exemption label, (4) advance procurement rebranded as hoarding, (5) subcontractor chain gaming, (6) essential-sector carve-out pressure, (7) multi-jurisdiction pooling ambiguity, (8) force majeure as wedge for permanent exemptions, (9) sector definitional creep, (10) milestone oracle capture. All resolved in patch rules below.
+
+**P-023.1 — Zero Exemption Principle**
+No entity, sector, or project type receives an exemption from EC demurrage. The investment-channel exemption architecture from the original P-002 design is deprecated. The concept of "investment-channel status" is removed. No project account, escrow window, or term pool designation may shield EC from demurrage.
+
+**P-023.2 — Contract-Commitment Architecture**
+Long-horizon projects are financed through milestone escrow:
+- The commissioning authority deposits EC into an independent escrow account at project initiation.
+- Demurrage applies to escrowed EC at the standard rate. The commissioning authority bears the carrying cost, creating institutional incentive for timely contracting and completion.
+- EC is released to the contractor only upon independently verified milestone completion.
+- The contractor holds only current working capital. Demurrage is the natural discipline — no ceiling rule is defined; the price signal is the mechanism.
+
+**P-023.3 — Independent Escrow Agent**
+Escrow accounts are administered by an independent escrow agent designated by the CRP. The contractor, any entity in the contractor's supply chain, and any entity with a financial interest in the project's outcome may not administer, co-administer, or materially influence the escrow account.
+
+**P-023.4 — Output Milestone Standard**
+Milestones eligible to trigger escrow releases must satisfy all of the following:
+- Physical deliverables only — no process milestones, no self-certified planning stages, no administrative completions.
+- Independently inspected and certified by a rotating inspector pool; the contractor does not select inspectors. Pool is administered by the escrow agent under P-017 oracle-independence standards.
+- Defined at contract signing and P-004-locked. No renegotiation of milestone definitions after contract execution.
+- High-value releases (above the threshold defined in Annex AR) require multiple independent verifiers and physical inspection with full audit trail.
+
+**P-023.5 — Procurement Clarification**
+Advance procurement of materials means actual purchase: EC exits the contractor's hands at the transaction. Holding EC "in reserve for future procurement" is hoarding and receives no protective treatment. Supply chain uncertainty is addressed through competitive procurement, staged purchasing, and futures commitments — not EC balance reserves.
+
+**P-023.6 — Universal Scope**
+P-023 applies at every tier of the supply chain: prime contractors, subcontractors, sub-subcontractors, and all entities receiving EC for project work are subject to the same architecture. There is no sector-specific carve-out. Eligibility for contract-commitment structure is determined by deliverable characteristics (verifiable physical milestones + commissioning authority), not sector identity.
+
+**P-023.7 — Mandatory Deployment Timeline (Commissioning Authorities)**
+Commissioning authorities must contract idle escrowed funds within the deployment window defined in Annex AR. Funds held beyond this window without active contracting trigger mandatory CRP review. Demurrage continues regardless. This is an accountability mechanism, not an exemption.
+
+**P-023.8 — Multi-Jurisdiction Lead Authority**
+For projects with multiple commissioning authorities pooling EC, a lead authority must be designated at contract signing. The lead authority bears all demurrage on pooled escrow. Internal cost-sharing between participating authorities is a private arrangement; external accountability runs through the lead authority only.
+
+**P-023.9 — Force Majeure Escrow Freeze**
+Verified external delays may trigger a temporary escrow freeze:
+- Qualifying events: permitting delays attributable to regulatory bodies outside the project's control; certified supply chain disruptions (independent third-party certification required); declared natural disasters.
+- Process: contractor applies with documented evidence; an independent assessment panel certifies the external cause and its temporal scope. Panel composition and selection use P-017 oracle-independence standards.
+- Effect: demurrage on the affected escrow account is paused for the certified duration only.
+- Limits: freeze is time-limited to the verified external condition; total cumulative freeze time per project is capped at the period defined in Annex AR; freeze does not stack across overlapping events.
+- Gaming deterrent: misrepresentation in a freeze application is an audit trigger and grounds for contractor disqualification from future escrow eligibility.
+
+**P-023.10 — P-004 Protected Terms**
+The following terms are added to the P-004 protected vocabulary: *milestone*, *physical deliverable*, *commissioning authority*, *independent escrow agent*, *force majeure* (for protocol purposes), *lead authority*, *verified external delay*, *deployment window*. Definitions may not be modified without a Tier 2 (H-2) amendment.
+
+- **Risk introduced:** (1) Force majeure certification panel is a new oracle — capture target per T-020/T-021; mitigated by P-017 independence requirements. (2) Mandatory deployment timelines may pressure commissioning authorities to rush contracting rather than hold idle; mitigated by requiring contracts to pass standard procurement integrity checks before they satisfy the timeline. (3) Inspector pool is a new oracle; mitigated by rotating pool under P-017 standards and escrow-agent administration. (4) P-023.4 output-only milestone standard may be challenged as too rigid for novel infrastructure categories; mitigated by P-004 protection — any redefinition requires H-2 amendment, raising the cost of definitional drift.
+- **Annex:** AR (contract-commitment architecture specification — high-value release thresholds, deployment window periods, force majeure cumulative freeze cap, inspector pool governance, escrow agent designation process).
+- **Compound linkages:** T-025 × T-001 resolved (no investment-channel exemptions means no above-ledger boundary manipulation through exemption classification). T-025 × T-007 mitigated (P-004 protection on all P-023.10 terms). T-025 × T-008 mitigated (no classification to capture — sector identity is irrelevant to escrow eligibility).
+
+---
+
 ## Operating Rules for the Patch Log
 
 - Every future patch must reference a threat ID and specify the new risk it creates.
@@ -426,3 +516,5 @@
 | T-023 | P-019 | **PROPOSED** | Annex AN |
 | T-017 (residual) | P-020 | **PROPOSED** | Annex AH2 |
 | — (opsec) | P-021 | **PROPOSED** | Annex AO |
+| T-024 | P-022 | **PROPOSED** | Annex AQ |
+| T-025 | P-023 | **PROPOSED** | Annex AR |

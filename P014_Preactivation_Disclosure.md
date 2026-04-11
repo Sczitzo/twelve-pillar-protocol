@@ -4,12 +4,12 @@
 
 **Published by:** Threat Register Owner  
 **Challenge window opens:** April 10, 2026  
-**Challenge window closes:** April 24, 2026  
+**Challenge window closes:** June 9, 2026  
 **Submit challenges to:** [GitHub Issues — label `p014-challenge`](https://github.com/Sczitzo/twelve-pillar-protocol/issues/new?template=p014-challenge.md)
 
 ---
 
-> This document fulfills the Stage 1 disclosure requirement of Annex AH (AH2). It opens a 14-day public challenge window. No activation steps may proceed until this window closes and all filed challenges have received written substantive responses.
+> This document fulfills the Stage 1 disclosure requirement of Annex AH and AH2 (P-020). It opens a **60-day** public challenge window per AH2.1. No activation steps may proceed until this window closes and all filed structural challenges have received written substantive responses. An unresponded structural challenge extends the window by 14 days (non-cumulative).
 
 ---
 
@@ -85,7 +85,13 @@ One panel member must have a documented professional history of arguing against 
 | **Ombuds Office Officer** | [NAME] | Ex officio Ombuds designee | [Standard Ombuds conflict screening — results published] |
 | **Public-Interest Advocate** | [NAME — lot-drawn] | Lot-drawn from founding petition pool; no affiliation with institutions that co-designed or funded P-013 work | [Attestation + external verification] |
 
-**Adversarial member designation:** [NAME] is proposed as the adversarial panel member. Their documented professional record includes [SPECIFIC EXAMPLES of publicly criticizing process-hardening designs similar to P-013]. Their full written dissent will be published in the activation record regardless of their vote.
+**Adversarial member designation (AH2.3 — oppose-coalition nomination required):** The adversarial panel member may not be nominated by the same process as the other four members. Per P-020 (Annex AH2.3), they must be nominated by a body structurally opposed to or independent from the founding coalition. The nominating body and its selection rationale must be published before the 60-day window opens.
+
+| Adversarial Member Seat | Proposed Nominating Body | Qualifying Pathway | Rationale Published? |
+| :--- | :--- | :--- | :--- |
+| **Adversarial Member** | [NOMINATING BODY NAME] | [Civil liberties org / Opposition party or civic org / Independent academic institution — circle one] | [YES / NO — must be YES before window opens] |
+
+[NAME] is proposed as the adversarial panel member, nominated by the body above. Their documented professional record includes [SPECIFIC EXAMPLES of publicly criticizing process-hardening designs similar to P-013]. Their full written dissent will be published in the activation record regardless of their vote.
 
 **Conflict attestation process:** All attestations will be verified by [EXTERNAL VERIFICATION BODY], not self-reported. Verification results will be published before sign-off begins.
 
@@ -101,7 +107,7 @@ If no challenges are filed, or all filed challenges receive written substantive 
 
 | Stage | What happens | AH clause |
 | :--- | :--- | :--- |
-| **Stage 1 (now — April 10–24, 2026)** | This document published. 14-day challenge window open. | AH2 |
+| **Stage 1 (now — April 10 – June 9, 2026)** | This document published. 60-day challenge window open (AH2.1). Oppose-coalition nominating body and rationale published (AH2.3). | AH2 |
 | **Stage 2** | Founding panel confirmed. Conflict attestations externally verified. 4/5 sign-off required. | AH3 |
 | **Stage 3** | Substitute evidence standard: desk review of 3+ real-world analogues (selected by adversarial member); adversarial red-team analysis of P-013's remaining exploits; scope-limitation certification; sunset compatibility check. | AH4 |
 | **Stage 4** | P-013 moves to ACTIVE. P-014 closes permanently. Full activation record published immediately. Non-precedent statement embedded with Tier 2 protection. Post-activation audit commissioned (90-day deadline). | AH5 |
@@ -122,8 +128,12 @@ Objections to P-013's content (those belong in the standard review process once 
 **How to file:**  
 Open an Issue using the [P-014 Challenge template](https://github.com/Sczitzo/twelve-pillar-protocol/issues/new?template=p014-challenge.md). Include: the specific claim you are challenging, your reasoning, and your proposed alternative if you have one.
 
-**Timeline:**  
-All challenges filed before **April 24, 2026** will receive written responses before activation proceeds. Challenges filed after the window closes are not part of the pre-activation record but may be addressed as part of the post-activation audit.
+**Structural vs. procedural challenges (AH2.2):**
+A *structural challenge* identifies a specific P-013 standard not met by the P-014 process. It must receive a written response before the window closes. An unresponded structural challenge extends the window by 14 days (non-cumulative).
+A *procedural challenge* that does not identify a specific P-013 standard gap will be acknowledged but does not extend the window.
+
+**Timeline:**
+All structural challenges filed before **June 9, 2026** will receive written responses before activation proceeds. Challenges filed after the window closes are not part of the pre-activation record but may be addressed as part of the post-activation audit.
 
 ---
 
@@ -135,4 +145,4 @@ P-014 is being invoked once, for P-013 only, because no other process was availa
 
 ---
 
-*This document is part of the Twelve-Pillar Protocol document set. The Master Protocol and Annex AH govern in all cases. Challenge window: April 10, 2026 through April 24, 2026.*
+*This document is part of the Twelve-Pillar Protocol document set. The Master Protocol and Annexes AH and AH2 govern in all cases. Challenge window: April 10, 2026 through June 9, 2026 (60 days, per P-020 / AH2.1). Structural challenges extend the window by 14 days if unanswered.*
