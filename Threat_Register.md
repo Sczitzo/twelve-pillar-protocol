@@ -1,6 +1,6 @@
 # Threat Register
 
-**Running adversarial control layer aligned to the master protocol · Updated: Session 2 (T-005, T-006, T-008 addressed; statuses updated)**
+**Running adversarial control layer aligned to the master protocol · Updated: Session 8 (Red Team — T-018 through T-023 added; T-001/T-002/T-017 updated; Register Disclosure Protocol introduced)**
 
 ---
 
@@ -13,6 +13,8 @@
 - **RESOLVED** = closed after evidence-backed testing.
 
 **Scoring convention.** Risk Score = I × L × (6 − D) where I = Impact, L = Likelihood, D = Detectability (each 1–5; higher D = more detectable = lower risk multiplier).
+
+**Disclosure policy.** This register is bifurcated per the Register Disclosure Protocol (see `REGISTER_DISCLOSURE_PROTOCOL.md`). Specific detection thresholds, timing windows, and operational exploit paths are published only in the Restricted Annex, available to auditors, oversight panels, and adversarial panel members. This public version records threat categories, mechanisms, mitigations, and risk scores. The restricted version adds precise calibration data. Both versions must remain consistent; any discrepancy is treated as a T-007 definition-drift event.
 
 ---
 
@@ -27,8 +29,21 @@
 | T-006 | Measurement Lag / Supply Shock | **Critical** | **ADDRESSED*** | Force graceful degradation when reality data is noisy, incomplete, or lagged. | 60 |
 | T-007 | Political Definition Drift | **Critical** | **PARTIAL** | Stop semantic capture through definitions, classifications, and technical relabeling. | 60 |
 | T-008 | Bureaucratic Elite Formation | High | **ADDRESSED*** | Prevent process insiders from becoming a durable managerial class. | 64 |
-| T-009 | Grace Exploitation Loop | Med-High | **OPEN** | Keep humane recovery paths from becoming durable exploit channels. | — |
-| T-010 | Narrative Attack Surface | **Critical** | **OPEN** | Make the system intelligible before hostile framing fixes public perception. | — |
+| T-009 | Grace Exploitation Loop | Med-High | **ADDRESSED*** | Keep humane recovery paths from becoming durable exploit channels. | 48 |
+| T-010 | Narrative Attack Surface | **Critical** | **ADDRESSED*** | Make the system intelligible before hostile framing fixes public perception. | 80 |
+| T-011 | Narrative Attack Surface | **Critical** | **ADDRESSED*** | (See T-010/T-011 combined entry.) | 80 |
+| T-012 | PCRP Oracle Poisoning | **Critical** | **ADDRESSED*** | Prevent single-source oracle corruption from triggering false public emergency. | 60 |
+| T-013 | Throughput Starvation | High | **ADDRESSED*** | Prevent multi-crisis competition from starving guaranteed governance capacity. | 48 |
+| T-014 | Triple Deadlock | **Critical** | **ADDRESSED*** | Prevent simultaneous protective mechanisms from creating un-resolvable governance block. | 30 |
+| T-015 | Demand Oracle Poisoning | High | **ADDRESSED*** | Distinguish genuine supply shocks from demand-side distortions in oracle signals. | 48 |
+| T-016 | FAP Capture | **Critical** | **ADDRESSED*** | Prevent capture of the patch acceptance process itself. | 60 |
+| T-017 | Bootstrap Problem | **Critical** | **ADDRESSED*** | Resolve P-013 circular dependency without normalizing urgency bypass. | 45 |
+| T-018 | PCRP False-Trigger Exhaustion | High | **OPEN** | Prevent deliberate engineering of false triggers to exhaust the audit-cap and suppress real responses. | 36 |
+| T-019 | Demand-Context Flag Suppression | High | **OPEN** | Prevent strategically timed enforcement actions from suppressing legitimate PCRP activation. | 48 |
+| T-020 | Epistemological Oracle Capture | **Critical** | **OPEN** | Prevent methodology-standard capture that biases oracle outputs without touching data directly. | 60 |
+| T-021 | Algorithmic Oracle Capture | **Critical** | **OPEN** | Prevent AI/algorithmic manipulation of measurement systems that satisfies formal independence while being systematically biased. | 60 |
+| T-022 | Electoral Cycle Capture | **Critical** | **OPEN** | Prevent a hostile successor government from repealing or hollowing out the constitutional architecture. | 60 |
+| T-023 | Pilot External Validity Collapse | Med-High | **OPEN** | Prevent scale-up based on pilot evidence that does not include adversarial or crisis conditions. | 32 |
 
 *\* ADDRESSED = mitigation patch designed (PROPOSED) but not yet ACTIVE. Status will update to ACTIVE when patches are integrated into master protocol.*
 
@@ -46,6 +61,7 @@
 - **Detection:** cluster anomalies, synchronized redemption patterns, broker signatures, and consumption deviation scoring.
 - **Mitigation direction:** LC-only essential access, non-delegable redemption, context-locked use, tolerance for low-level leakage, and broker-focused enforcement. → P-001 ACTIVE.
 - **Open problem:** define the acceptable leakage threshold and verify that containment does not quietly become surveillance.
+- **Session 8 addition:** Informal convertibility that does not touch the ledger (e.g., a landlord who allocates better units exclusively to LC-holders) is not captured by current detection. P-004 protected-term worked-example annex (Annex AJ) must enumerate at least three above-ledger bypass patterns per instrument boundary as prohibited. Annex AJ is a pre-launch gate. → See P-015 Annex AJ requirement.
 
 ---
 
@@ -59,6 +75,7 @@
 - **Detection:** cross-signal deduplication, recovery anomaly review, impossible-use patterns, and staged assurance mismatches.
 - **Mitigation direction:** four-tier identity assurance model, multi-evidence thresholding, no master credential, recovery safety ladder, humane-floor continuity during disputes. → P-003 ACTIVE.
 - **Open problem:** calibrate fraud tolerance without making the system unusable for displaced, undocumented, or digitally fragile people.
+- **Session 8 addition — Asymmetric Error Doctrine required:** The current mitigation does not specify quantified targets. Before deployment, the founding coalition must publish and formally adopt an Asymmetric Error Doctrine that specifies: (a) maximum acceptable fraud rate per instrument tier (LC, DW, CR); (b) maximum acceptable exclusion rate for vulnerable populations (displaced, undocumented, digitally fragile) per tier; (c) the review trigger when either rate is exceeded; (d) the decision rule when the two error types trade off. Without explicit numbers, calibration is permanently subject to political pressure. The Asymmetric Error Doctrine is a Tier 2 founding commitment. → See P-016 (Annex AK).
 
 ---
 
@@ -240,8 +257,102 @@
 - **Impact:** Without resolution: all 10 PROPOSED patches remain frozen permanently. The system is locked at its current design state. With uncontrolled resolution: a founding exception normalizes urgency bypass, defeating P-013's core purpose before it takes effect.
 - **Detection:** D=3 — the bootstrap problem is logically visible once the FAP and P-013 are examined together. It does not require adversarial action to surface.
 - **Mitigation direction:** P-014 PROPOSED: 5-stage founding instrument with 14-day pre-activation disclosure, heightened 5-member panel with external conflict verification and adversarial member, substitute evidence standard (desk review + red-team analysis), permanent sealing with Tier 2 non-precedent statement, mandatory post-activation audit within 90 days. See Annex AH.
-- **Residual risk:** Desk review case selection; founding panel capture during 14-day window; post-activation audit self-reference if activation was compromised. All mitigated by adversarial member, external verification, and Formal Acceptance Protocol fallback during any suspension.
-- **Compound linkages:** T-017 × T-016 (bootstrap paradox is the exploit surface T-016 bad actors use for indefinite delay). T-017 × T-011 (bootstrap paradox is a narrative attack surface — P-014 converts it into a transparency demonstration).
+- **Residual risk:** Desk review case selection; founding panel capture during 14-day window; post-activation audit self-reference if activation was compromised. All mitigated by adversarial member, external verification, and Formal Acceptance Protocol fallback during any suspension. **Session 8 update:** The 14-day pre-activation disclosure window is insufficient for independent critique to organize against a coordinated founding capture attempt. P-020 (Founding Window Extension, Annex AH2) extends this to 60 days minimum and requires the adversarial panel member to be nominated by a body structurally *opposed* to the founding coalition's interests — not appointed by the same process as the other four panel members.
+- **Compound linkages:** T-017 × T-016 (bootstrap paradox is the exploit surface T-016 bad actors use for indefinite delay). T-017 × T-011 (bootstrap paradox is a narrative attack surface — P-014 converts it into a transparency demonstration). T-017 × T-022 (a successful T-022 attack requires a new founding moment — T-017 recurs; recursive bootstrap is a second-order T-022 consequence).
+
+---
+
+## Session 7 Threats — Detailed Entries
+
+*New threats identified during corpus audit (Session 7). Both are OPEN pending patch design. They represent second-order attacks on existing mitigations rather than attacks on the system directly.*
+
+### T-018 — PCRP False-Trigger Exhaustion Attack
+- **Layer:** PCRP / governance / measurement
+- **Severity:** High
+- **Status:** OPEN
+- **Risk Score:** 4×3×(6-3)=36
+- **Mechanism:** P-006 introduces false-trigger tracking: 3 false PCRP activations within 4 quarters triggers a mandatory independent audit. A coordinated actor *deliberately engineers* 3 false triggers in rapid succession to (a) trigger an audit that consumes governance bandwidth, (b) drain the system's capacity to respond during a concurrent genuine crisis, or (c) exhaust the 3-trigger threshold so operators hesitate to activate PCRP during a real supply shock.
+- **Impact:** PCRP hesitation during a genuine supply shock; governance bandwidth drain; audit as a distraction weapon during compound crises.
+- **Detection:** D=3. Coordination-pattern flag on back-to-back PCRP activations within short windows detectable post-hoc.
+- **Mitigation direction:** (1) False triggers accompanied by oracle manipulation evidence or coordination signatures do not count toward the 3-trigger cap — escalate directly to enforcement. (2) Cap reset available via independent audit finding of deliberate manipulation. (3) "Trigger exhaustion alert" fires when 2 of 3 cap slots consumed within a single quarter. → P-015 PROPOSED.
+- **Open problem:** Distinguishing genuine oracle failure from engineered false trigger requires post-hoc forensics; real-time distinction is not reliable. Mitigation accepts this and applies escalation retroactively.
+- **Compound linkages:** T-018 × T-006 (false-trigger exhaustion defeats PCRP during real supply shock). T-018 × T-013 (audit load from T-018 consumes CRP capacity during multi-crisis). T-018 × T-011 (publicly visible false-trigger manipulation is a narrative attack surface). T-018 × T-019 (compound execution of both is highest-risk PCRP attack surface).
+
+---
+
+### T-019 — Demand-Context Flag Suppression Attack
+- **Layer:** PCRP / enforcement / measurement
+- **Severity:** High
+- **Status:** OPEN
+- **Risk Score:** 4×3×(6-2)=48
+- **Note:** Identified as residual risk in T-015 (P-012 AE2.4) but requires separate registration — distinct mechanism and control profile.
+- **Mechanism:** A coordinated actor *initiates a small, technically valid enforcement action* strategically timed to activate the demand-context flag, which then blocks PCRP Ombuds co-certification during a genuine supply shock. The enforcement action itself causes no significant harm; its purpose is flag activation to suppress emergency response.
+- **Impact:** PCRP blocked during a genuine supply shock. Potential double-deprivation: enforcement reduces EC availability while false demand-context flag reduces LC availability simultaneously.
+- **Detection:** D=2. The enforcement action is legitimate by construction; manipulation visible only by examining *timing* relative to supply indicators — requires cross-register monitoring not currently specified.
+- **Mitigation direction:** (1) Ombuds co-certification during demand-context periods must explicitly assess whether the triggering enforcement action was manufactured or strategically timed — required step, not optional. (2) Cross-register timing monitor flags enforcement actions initiated within 48 hours of sentinel indicator movement. (3) If Ombuds finds deliberate flag manufacture, demand-context designation is lifted. → P-015 PROPOSED.
+- **Open problem:** Ombuds assessment of "deliberate manufacture" requires judgment under time pressure. Criteria must be specified in advance in Annex AI (Ombuds Office constitution) with explicit authority and defined timeline.
+- **Compound linkages:** T-019 × T-015 (demand-context flag is the legitimate mitigation T-019 exploits). T-019 × T-008 (Ombuds determination quality depends on Ombuds independence). T-019 × T-018 (compound execution is highest-risk PCRP attack surface).
+
+---
+
+## Session 8 Threats — Detailed Entries
+
+*New threats identified during red-team review (Session 8). All are OPEN pending patch design. T-020 and T-021 target the measurement architecture's epistemological foundations. T-022 targets the political durability of the constitutional architecture. T-023 targets the evidentiary basis for scale-up decisions.*
+
+### T-020 — Epistemological Oracle Capture
+- **Layer:** Measurement / RCS / oracle accreditation
+- **Severity:** Critical
+- **Status:** OPEN
+- **Risk Score:** 5×4×(6-3)=60
+- **Mechanism:** A well-resourced actor does not manipulate oracle outputs directly (addressed by T-012). Instead, they fund and shape the *methodological standards bodies* that define what counts as valid measurement for RCS accreditation. Three pipelines: (1) Standards Funding — sustained funding of the academic and technical bodies that define housing price indices, nutritional equivalence standards, and care-delivery measurement frameworks, gradually orienting methodology toward favorable outputs. (2) Peer Review Capture — dominating the journals and conference venues whose approval is required for methodological legitimacy. (3) Technical Vocabulary Absorption — introducing new technical terms through legitimate standards processes that encode favorable assumptions without appearing to change definitions. None of these require illegal action or direct oracle contact.
+- **Impact:** Oracle outputs are systematically biased while satisfying all formal independence requirements. The measurement layer reports what the captor wants while appearing to report physical reality. Every downstream system (LC issuance, SQ activation, RCS confidence bands) is corrupted. T-012 (oracle independence) and T-015 (demand-context) protections become ineffective because the manipulation precedes the data, not the channel.
+- **Detection:** D=2 (very low). Epistemic monoculture is invisible under current monitoring. Methodological homogeneity across formally independent oracle nodes is not currently tracked. The P-008 concentration dashboard (PROPOSED) tracks human diversity; it does not track *methodological* diversity.
+- **Mitigation direction:** P-017 PROPOSED: (1) Methodology-class diversity mandate — RCS accreditation must include at least one measurement node using a fundamentally different methodology class (community-based participatory research vs. institutional statistical modeling vs. independent physical sampling). (2) Methodological divergence signal — systematic divergence between methodology classes is a first-order sentinel indicator, not a failure requiring suppression. (3) Standards-funding transparency requirement — any RCS accredited node must disclose funding sources for the methodological standards it relies on, with a three-year lookback. (4) Anti-monoculture review trigger — if three or more oracle nodes rely on the same standards body for a given category, an independent methodological review is required before that category can be used for SQ activation. See Annex AL.
+- **Open problem:** Defining "fundamentally different methodology class" is itself subject to definition drift (T-007). 'Methodology class' must be a P-004 protected term with worked examples.
+- **Compound linkages:** T-020 × T-007 (methodology-class definition is subject to definitional capture). T-020 × T-012 (structural oracle independence is necessary but not sufficient — epistemological independence is the missing layer). T-020 × T-008 (epistemic monoculture in oracle methodology parallels epistemic monoculture in oversight bodies). T-020 × T-011 (a revealed epistemological capture event would be a catastrophic narrative attack surface).
+
+---
+
+### T-021 — Algorithmic Oracle Capture
+- **Layer:** Measurement / RCS / algorithmic systems
+- **Severity:** Critical
+- **Status:** OPEN
+- **Risk Score:** 5×3×(6-2)=60
+- **Mechanism:** The measurement layer is a concentration point for AI-driven manipulation at scale. A sophisticated actor who controls training data, model weights, or fine-tuning pipelines for any RCS measurement system can produce oracle outputs that satisfy formal independence requirements (different institutions, different hardware, different personnel) while being systematically biased through shared upstream AI infrastructure. Three specific attack surfaces: (1) Training Data Poisoning — gradual corruption of the historical datasets used to train forecasting models, producing models that systematically underestimate or overestimate specific categories. (2) Model Weight Manipulation — supply chain compromise of pre-trained model components used across multiple oracle nodes. (3) Shared API Exploitation — multiple "independent" oracle nodes that rely on a common commercial AI API introduce a shared dependency that is not visible in institutional independence audits.
+- **Impact:** Systematic measurement bias that passes oracle independence certification because the manipulation precedes the institutional layer. The oracle system reports false physical capacity with high internal consistency (making cross-publisher divergence detection fail). SQ activations, LC issuance, and PCRP triggers are all corrupted. This attack is increasingly realistic as measurement systems adopt ML pipelines.
+- **Detection:** D=2. Standard oracle independence checks do not examine upstream AI infrastructure. The attack is only detectable through cross-methodology comparison (T-020 mitigation) or direct audit of AI supply chains — neither of which is currently required.
+- **Mitigation direction:** P-017 PROPOSED (shared with T-020): (1) AI supply chain transparency requirement — any oracle node using ML or AI components must disclose: model provenance, training data sources, and any shared upstream dependencies with other oracle nodes. (2) Algorithmic independence certification — oracle independence audit must include explicit verification that no two corroborating oracle nodes share a common upstream AI model, training dataset, or fine-tuning pipeline. (3) Physical ground-truth requirement — at least one measurement node per high-volatility category must use direct physical sampling (not model-derived estimates) as its primary measurement method. See Annex AL.
+- **Open problem:** AI supply chains are complex and often opaque. "Independent" in algorithmic terms requires definition (P-004 protected term). Physical sampling is expensive and may not be feasible for all categories.
+- **Compound linkages:** T-021 × T-020 (both target the epistemological foundations of the measurement layer; P-017 addresses both). T-021 × T-012 (oracle independence requirements do not currently cover algorithmic supply chains). T-021 × T-006 (corrupted oracle outputs defeat measurement lag controls because the corruption precedes the signal). T-021 × T-016 (evidence farming for patch acceptance could use algorithmically biased measurement systems).
+
+---
+
+### T-022 — Electoral Cycle Capture
+- **Layer:** Constitutional architecture / political durability
+- **Severity:** Critical
+- **Status:** OPEN
+- **Risk Score:** 5×4×(6-3)=60
+- **Mechanism:** The protocol assumes durable institutional commitment from the political coalitions that implement it. It does not model what happens when a hostile successor government — one that campaigned against the protocol — wins a democratic election and has both the political mandate and the institutional access to dismantle or hollow out the architecture. Four specific routes: (1) Direct Constitutional Repeal — the Tier 1 invariants are designed to resist this, but constitutional repeal via supermajority is legally possible. (2) Administrative Hollowing — the successor government does not formally repeal anything; it appoints adversarial actors to founding institutions, defunds oracle nodes, and stops publishing post-mortems until the system becomes non-functional without any formal change. (3) Jurisdictional Fragmentation — the successor government transfers authority to sub-jurisdictional entities that are not bound by the protocol. (4) Treaty Override — the successor government signs international agreements that require modifications to the non-convertibility architecture as a condition of participation, triggering Tier 3 changes that accumulate into Tier 2 impact (T-012 cumulative drift trigger, applied to treaty obligations). The amendment ladder (Tier 1/2/3) was calibrated for incremental drift, not organized political reversal.
+- **Impact:** The most complete failure mode. If a hostile successor government succeeds in dismantling the protocol through legal means, the system has no recovery path short of a new founding moment — with all the bootstrap problems that entails (T-017 recurrence). The people who depended on LC floor guarantees face sudden withdrawal after having structured their lives around the system.
+- **Detection:** D=3. Electoral outcomes are public. The threat is visible in advance through normal political monitoring. The problem is not detection but *structural response*.
+- **Mitigation direction:** P-018 PROPOSED: (1) Entrenchment ladder — Tier 1 invariants require not just supermajority legislative amendment but concurrent ratification by an independent constitutional body (not appointable by the current governing coalition). (2) LC floor minimum persistence — regardless of political change, a minimum LC floor (70% of founding basket) is constitutionally self-executing: it does not require legislative appropriation and cannot be suspended by executive action. (3) Administrative hollowing triggers — if a founding institution is unfilled for >90 days, or if post-mortem publication lapses for >30 days, or if oracle accreditation count drops below a specified minimum, an automatic constitutional review is triggered that does not require the governing coalition's initiation. (4) Transition continuity protocol — when a new governing coalition takes office, a mandatory 180-day transition audit is required before any changes to Tier 2 or Tier 1 provisions. The audit is conducted by the constitutional body, not the incoming government. See Annex AM.
+- **Open problem:** A government with sufficient political will can repeal constitutional entrenchment. The designed defense buys time and raises the political cost; it cannot prevent determined repeal. The residual risk is that the protocol's durability depends on political culture as well as constitutional design.
+- **Compound linkages:** T-022 × T-011 (hostile electoral narrative is a T-011 attack that succeeds — T-022 is T-011 operating through democratic channels). T-022 × T-008 (elite formation inside founding institutions may accelerate administrative hollowing if the elite aligns with the successor government). T-022 × T-016 (a hostile government can capture the FAP by appointing aligned sign-off authorities). T-022 × T-017 (a successful T-022 attack requires a new founding moment — recursive bootstrap problem).
+
+---
+
+### T-023 — Pilot External Validity Collapse
+- **Layer:** Evidence base / scale-up decision-making
+- **Severity:** Med-High
+- **Status:** OPEN
+- **Risk Score:** 4×4×(6-4)=32
+- **Note on impact:** The risk score understates the consequence of acting on false confidence. A scale-up decision based on a pilot that did not include crisis conditions is not a statistical error — it is a structural commitment that may be irreversible.
+- **Mechanism:** T-016 (FAP Capture) addresses evidence farming — deliberately piloting in favorable regions. T-023 is distinct: an *honest* pilot that succeeds, is genuinely representative, and produces valid evidence — but in a pre-crisis period. The evidence base does not include: (a) economic shock or recession; (b) compound supply disruption across multiple categories simultaneously; (c) an organized political opposition campaign against the system; (d) a hostile successor government transition; (e) a technology failure in an oracle or identity system at scale. When the system is deployed at scale and the first real compound crisis hits, the pilot evidence does not apply. This is the fundamental problem of external validity in social systems: controlled conditions do not generalize to adversarial conditions.
+- **Impact:** Scale-up proceeds based on Year 1 smooth-operation data. Year 3 encounters the first genuine compound crisis. The system's untested responses fail at scale in ways the pilot never revealed. The narrative attack (N-008: "too complex to work") is now supported by evidence.
+- **Detection:** D=4 (relatively detectable — the absence of adversarial conditions in the pilot is visible in the evidence record). The problem is that the absence of adverse conditions looks like evidence of robustness, not evidence of an evidence gap.
+- **Mitigation direction:** P-019 PROPOSED: (1) Stress-condition pilot gate — scale-up approval requires the pilot evidence record to include at least one of each: an economic stress event, a compound supply disruption, and a formal political opposition campaign, or explicit documentation of why each condition could not be tested and a designated substitute evidence source. (2) Red-team challenge window — before any scale-up vote, a mandatory 30-day adversarial challenge window allows independent reviewers to contest the external validity of the evidence base. (3) Crisis simulation requirement — the Annual Compound Simulation (this document) must include at least one compound-crisis scenario not previously simulated before each scale-up gate. See Annex AN.
+- **Open problem:** It is not possible to pilot a hostile successor government or a large-scale economic recession deliberately. Some external validity gaps cannot be filled; they can only be acknowledged and planned for explicitly.
+- **Compound linkages:** T-023 × T-016 (evidence farming produces favorable pilot data; T-023 is the honest-but-insufficient version of the same failure). T-023 × T-011 (scale-up failure after smooth pilot is a maximum-impact narrative attack). T-023 × T-022 (electoral cycle hostility is one of the hardest conditions to include in a controlled pilot).
 
 ---
 
@@ -272,7 +383,7 @@
 
 ---
 
-## Complete Register Summary — Session 5
+## Complete Register Summary — Session 8
 
 | ID | Title | Severity | Status | Patch | Score |
 | :--- | :--- | :--- | :--- | :--- | :--- |
@@ -290,11 +401,27 @@
 | T-014 | Triple Deadlock | **Critical** | **PROPOSED** | P-012 | 30 |
 | T-015 | Demand Oracle Poisoning | High | **PROPOSED** | P-012 | 48 |
 | T-016 | FAP Capture | **Critical** | **PROPOSED** | P-013 | 60 |
+| T-017 | Bootstrap Problem | **Critical** | **PROPOSED** | P-014 / P-020 | 45 |
+| T-018 | PCRP False-Trigger Exhaustion | High | **OPEN** | P-015 | 36 |
+| T-019 | Demand-Context Suppression | High | **OPEN** | P-015 | 48 |
+| T-020 | Epistemological Oracle Capture | **Critical** | **OPEN** | P-017 | 60 |
+| T-021 | Algorithmic Oracle Capture | **Critical** | **OPEN** | P-017 | 60 |
+| T-022 | Electoral Cycle Capture | **Critical** | **OPEN** | P-018 | 60 |
+| T-023 | Pilot External Validity Collapse | Med-High | **OPEN** | P-019 | 32 |
 
-Highest risk score: T-011 (Narrative Surface, score 80). Hardest to detect: T-008 and T-016 (D=2 on key exploit surfaces). All 14 threats have mitigation designs. 4 ACTIVE, 10 PROPOSED.
+Highest risk score: T-011 (Narrative Surface, score 80). Hardest to detect: T-008, T-016, T-019, T-020, T-021 (D=2). 4 ACTIVE, 10 PROPOSED, 6 OPEN. T-003 and T-010 retired (see Retired and Reserved IDs table). T-001 and T-002 carry Session 8 open-problem additions (Annexes AJ and AK). T-017 carries a founding-window amendment (Annex AH2, P-020).
 
 ---
 
-*Session 4 complete. All named threats now have mitigation designs.*
+## Retired and Reserved IDs
 
-*Next priority: White Paper sync (mandatory pre-launch gate), Technical Reference diagram update, then formal acceptance process for Annexes AC–AF.*
+| ID | Status | Reason |
+| :--- | :--- | :--- |
+| T-003 | **RETIRED** | Scope fully absorbed into T-002 (Identity Exploits) before formal register versioning. ID permanently retired. |
+| T-010 | **RENUMBERED** | Consolidated with T-011 (Narrative Attack Surface) during Session 3. References to T-010 resolve to T-011. |
+
+---
+
+*Session 8 complete. T-018, T-019, T-020, T-021, T-022, T-023 are the next patch design targets. P-015 through P-020 enter design phase.*
+
+*Next priority: P-015 (PCRP attack surface), P-017 (oracle epistemological/algorithmic independence), P-018 (electoral cycle resilience), P-019 (pilot external validity gate), P-020 (founding window extension).*
