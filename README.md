@@ -70,6 +70,9 @@ This repository contains the complete synchronized document set:
 | [`Adversarial_Narrative_Simulation.md`](./Adversarial_Narrative_Simulation.md) | 10 simulated narrative attacks with structural responses and residual risks. |
 | [`REGISTER_DISCLOSURE_PROTOCOL.md`](./REGISTER_DISCLOSURE_PROTOCOL.md) | Annex AO — public/restricted bifurcation framework for the Threat Register. |
 | [`Annual_Compound_Simulation.md`](./Annual_Compound_Simulation.md) | Month-by-month operational year stress-test across all twelve pillars. |
+| [`ANNEX_AJ.md`](./ANNEX_AJ.md) | Annex AJ — above-ledger bypass worked examples across all three instrument boundaries. |
+| [`ANNEX_AK.md`](./ANNEX_AK.md) | Annex AK — identity asymmetric error doctrine: fraud/exclusion rate targets, decision rule, recalibration process. |
+| [`ANNEX_AR.md`](./ANNEX_AR.md) | Annex AR — contract-commitment architecture parameters: release thresholds, deployment windows, force majeure caps, inspector pool governance. |
 
 **Note:** The core documentation has been converted to high-fidelity Markdown for better readability and version control. Original PDFs are available in the [`archive/`](./archive/) directory.
 

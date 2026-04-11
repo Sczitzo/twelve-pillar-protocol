@@ -517,4 +517,4 @@ The following terms are added to the P-004 protected vocabulary: *milestone*, *p
 | T-017 (residual) | P-020 | **PROPOSED** | Annex AH2 |
 | — (opsec) | P-021 | **PROPOSED** | Annex AO |
 | T-024 | P-022 | **PROPOSED** | Annex AQ |
-| T-025 | P-023 | **PROPOSED** | Annex AR |
+| T-025 | P-023 | **PROPOSED** | Annex AR (this session) |
