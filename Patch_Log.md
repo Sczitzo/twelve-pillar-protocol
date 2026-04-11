@@ -40,7 +40,7 @@
 | P-020 | T-017 (residual) | **PROPOSED** | Critical | Founding window extension: 60-day pre-activation disclosure, oppose-coalition adversarial member nomination. |
 | P-021 | — | **PROPOSED** | High | Register disclosure protocol: bifurcation into public and restricted versions; operational security for detection thresholds. |
 | P-022 | T-024 | **PROPOSED** | Critical | SQ oracle-failure fallback: conservative hold, 48h REB first-responder window, 72h governance handoff, restoration reconciliation. |
-| P-023 | T-025 | **PENDING DISCUSSION** | High | Demurrage sector-capture: patch direction under active design review — exemption model vs. deployment-speed alternative. |
+| P-023 | T-025 | **PROPOSED** | High | Demurrage sector-capture: contract-commitment architecture, zero exemptions, demurrage-as-discipline, milestone escrow. |
 
 ---
 
@@ -424,19 +424,61 @@
 
 | Patch ID | Related Threat | Status | Priority | Change Type |
 | :--- | :--- | :--- | :--- | :--- |
-| P-023 | T-025 | **PENDING DISCUSSION** | High | EC monetary architecture / demurrage design |
+| P-023 | T-025 | **PROPOSED** | High | EC monetary architecture / demurrage design |
 
-### P-023 — Demurrage and Productive Capital (Pending Design Direction)
+### P-023 — Contract-Commitment Architecture (Demurrage, Zero Exemptions)
 
-- **Status:** PENDING DISCUSSION. No patch is proposed here. This entry registers the design tension for governance and records the open question formally.
+- **Status:** PROPOSED
 - **Threat addressed:** T-025 (Demurrage Sector-Capture via Investment Channel).
-- **The tension:** Demurrage discourages idle EC hoarding. Long-horizon productive activity (construction, infrastructure) requires holding capital over extended periods. If holding is always penalised, genuine productive planning is harmed alongside rent-seeking. The original P-002 design addresses this by creating investment channels (project accounts, escrow windows, term pools) that exempt qualifying capital from demurrage. T-025 identifies that these exemptions become the exploitable surface: sophisticated actors — particularly construction firms and capital-intensive enterprises — apply for investment-channel status not to build but to park.
-- **Design question under review:** Whether investment-channel exemptions are the correct response to this tension, or whether an alternative architecture is more robust. Two candidate directions:
-  - *Direction A — Hardened exemptions:* Keep investment-channel exemptions but add strict eligibility controls: time-limited with mandatory deployment milestones, cross-entity consolidation rules to prevent subsidiary fragmentation, independent verification of productive activity, and penalties for exemption abuse. The exemption exists; its capture is prevented by enforcement.
-  - *Direction B — Deployment-speed architecture:* Remove investment-channel exemptions entirely. Instead, ensure that genuinely productive capital deployment happens fast enough that demurrage costs are immaterial — through competitive allocation mechanisms, shorter project timelines, and accessible capital markets that reduce the need to hold large balances. Under this logic, if demurrage is costing a firm significantly, that is a signal the firm is holding more than it needs to deploy. The design question is whether demurrage pressure improves capital velocity without harming genuinely productive long-horizon activity.
-- **Current assessment:** Direction B is architecturally cleaner — it removes the capture surface entirely rather than hardening it. However, it requires empirical validation: are there genuinely productive activities that require large EC balances over long periods that cannot be served by staged capital allocation? Construction of major infrastructure may be one such case. The Annual Compound Simulation Scenario A surfaced this as a live concern. Design resolution requires: (a) empirical analysis of capital holding periods across essential-delivery sectors; (b) assessment of whether staged allocation models can serve those needs without concentrated holding; (c) explicit decision by the founding coalition on the trade-off between capture-prevention and productive-capital access.
-- **Next step:** Design discussion to determine patch direction. P-023 moves from PENDING DISCUSSION to PROPOSED once direction is determined.
-- **Compound linkages:** T-025 × T-001 (investment-channel exemptions as above-ledger boundary manipulation). T-025 × T-007 (definitions of "productive investment," "infrastructure," and "project account" must be P-004 protected terms regardless of direction chosen). T-025 × T-008 (industry capture of investment-channel classification is elite formation in the monetary layer).
+- **Direction adopted:** Direction B — deployment-speed architecture. Investment-channel exemptions are removed entirely. Genuine long-horizon capital needs are served by contract-commitment architecture; demurrage pressure remains universal.
+- **Red-team pre-analysis:** Ten attack vectors identified and resolved before this patch was written. Vectors: (1) escrow control ambiguity, (2) milestone definition gaming, (3) "working capital" as new exemption label, (4) advance procurement rebranded as hoarding, (5) subcontractor chain gaming, (6) essential-sector carve-out pressure, (7) multi-jurisdiction pooling ambiguity, (8) force majeure as wedge for permanent exemptions, (9) sector definitional creep, (10) milestone oracle capture. All resolved in patch rules below.
+
+**P-023.1 — Zero Exemption Principle**
+No entity, sector, or project type receives an exemption from EC demurrage. The investment-channel exemption architecture from the original P-002 design is deprecated. The concept of "investment-channel status" is removed. No project account, escrow window, or term pool designation may shield EC from demurrage.
+
+**P-023.2 — Contract-Commitment Architecture**
+Long-horizon projects are financed through milestone escrow:
+- The commissioning authority deposits EC into an independent escrow account at project initiation.
+- Demurrage applies to escrowed EC at the standard rate. The commissioning authority bears the carrying cost, creating institutional incentive for timely contracting and completion.
+- EC is released to the contractor only upon independently verified milestone completion.
+- The contractor holds only current working capital. Demurrage is the natural discipline — no ceiling rule is defined; the price signal is the mechanism.
+
+**P-023.3 — Independent Escrow Agent**
+Escrow accounts are administered by an independent escrow agent designated by the CRP. The contractor, any entity in the contractor's supply chain, and any entity with a financial interest in the project's outcome may not administer, co-administer, or materially influence the escrow account.
+
+**P-023.4 — Output Milestone Standard**
+Milestones eligible to trigger escrow releases must satisfy all of the following:
+- Physical deliverables only — no process milestones, no self-certified planning stages, no administrative completions.
+- Independently inspected and certified by a rotating inspector pool; the contractor does not select inspectors. Pool is administered by the escrow agent under P-017 oracle-independence standards.
+- Defined at contract signing and P-004-locked. No renegotiation of milestone definitions after contract execution.
+- High-value releases (above the threshold defined in Annex AR) require multiple independent verifiers and physical inspection with full audit trail.
+
+**P-023.5 — Procurement Clarification**
+Advance procurement of materials means actual purchase: EC exits the contractor's hands at the transaction. Holding EC "in reserve for future procurement" is hoarding and receives no protective treatment. Supply chain uncertainty is addressed through competitive procurement, staged purchasing, and futures commitments — not EC balance reserves.
+
+**P-023.6 — Universal Scope**
+P-023 applies at every tier of the supply chain: prime contractors, subcontractors, sub-subcontractors, and all entities receiving EC for project work are subject to the same architecture. There is no sector-specific carve-out. Eligibility for contract-commitment structure is determined by deliverable characteristics (verifiable physical milestones + commissioning authority), not sector identity.
+
+**P-023.7 — Mandatory Deployment Timeline (Commissioning Authorities)**
+Commissioning authorities must contract idle escrowed funds within the deployment window defined in Annex AR. Funds held beyond this window without active contracting trigger mandatory CRP review. Demurrage continues regardless. This is an accountability mechanism, not an exemption.
+
+**P-023.8 — Multi-Jurisdiction Lead Authority**
+For projects with multiple commissioning authorities pooling EC, a lead authority must be designated at contract signing. The lead authority bears all demurrage on pooled escrow. Internal cost-sharing between participating authorities is a private arrangement; external accountability runs through the lead authority only.
+
+**P-023.9 — Force Majeure Escrow Freeze**
+Verified external delays may trigger a temporary escrow freeze:
+- Qualifying events: permitting delays attributable to regulatory bodies outside the project's control; certified supply chain disruptions (independent third-party certification required); declared natural disasters.
+- Process: contractor applies with documented evidence; an independent assessment panel certifies the external cause and its temporal scope. Panel composition and selection use P-017 oracle-independence standards.
+- Effect: demurrage on the affected escrow account is paused for the certified duration only.
+- Limits: freeze is time-limited to the verified external condition; total cumulative freeze time per project is capped at the period defined in Annex AR; freeze does not stack across overlapping events.
+- Gaming deterrent: misrepresentation in a freeze application is an audit trigger and grounds for contractor disqualification from future escrow eligibility.
+
+**P-023.10 — P-004 Protected Terms**
+The following terms are added to the P-004 protected vocabulary: *milestone*, *physical deliverable*, *commissioning authority*, *independent escrow agent*, *force majeure* (for protocol purposes), *lead authority*, *verified external delay*, *deployment window*. Definitions may not be modified without a Tier 2 (H-2) amendment.
+
+- **Risk introduced:** (1) Force majeure certification panel is a new oracle — capture target per T-020/T-021; mitigated by P-017 independence requirements. (2) Mandatory deployment timelines may pressure commissioning authorities to rush contracting rather than hold idle; mitigated by requiring contracts to pass standard procurement integrity checks before they satisfy the timeline. (3) Inspector pool is a new oracle; mitigated by rotating pool under P-017 standards and escrow-agent administration. (4) P-023.4 output-only milestone standard may be challenged as too rigid for novel infrastructure categories; mitigated by P-004 protection — any redefinition requires H-2 amendment, raising the cost of definitional drift.
+- **Annex:** AR (contract-commitment architecture specification — high-value release thresholds, deployment window periods, force majeure cumulative freeze cap, inspector pool governance, escrow agent designation process).
+- **Compound linkages:** T-025 × T-001 resolved (no investment-channel exemptions means no above-ledger boundary manipulation through exemption classification). T-025 × T-007 mitigated (P-004 protection on all P-023.10 terms). T-025 × T-008 mitigated (no classification to capture — sector identity is irrelevant to escrow eligibility).
 
 ---
 
@@ -475,4 +517,4 @@
 | T-017 (residual) | P-020 | **PROPOSED** | Annex AH2 |
 | — (opsec) | P-021 | **PROPOSED** | Annex AO |
 | T-024 | P-022 | **PROPOSED** | Annex AQ |
-| T-025 | P-023 | **PENDING DISCUSSION** | — |
+| T-025 | P-023 | **PROPOSED** | Annex AR |

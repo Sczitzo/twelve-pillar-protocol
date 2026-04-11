@@ -62,7 +62,7 @@ This repository contains the complete synchronized document set:
 | [`Master_Protocol.md`](./Master_Protocol.md) | Primary constitutional source of truth. Operative language, all annexes. |
 | [`White_Paper.md`](./White_Paper.md) | Plain-language public explanation. Start here. |
 | [`Technical_Reference.md`](./Technical_Reference.md) | Systems map with flow diagrams. For reviewers and collaborators. |
-| [`Threat_Register.md`](./Threat_Register.md) | Adversarial risk model. 25 threats — 4 ACTIVE, 10 PROPOSED, 8 OPEN, 1 FOUNDING. |
+| [`Threat_Register.md`](./Threat_Register.md) | Adversarial risk model. 25 threats — 4 ACTIVE, 11 PROPOSED, 7 OPEN, 1 FOUNDING. |
 | [`Patch_Log.md`](./Patch_Log.md) | Change and mitigation history. 23 patches. |
 | [`Acceptance_Protocol.md`](./Acceptance_Protocol.md) | Process for moving patches from design to operation. |
 | [`Audit_Note.md`](./Audit_Note.md) | Document integrity verification. |
@@ -89,9 +89,9 @@ The system has been adversarially stress-tested:
 | T-018–T-019 PCRP Attack Surface | False-trigger exhaustion and demand-context suppression attacks registered and patched (P-015) |
 | T-020–T-021 Oracle Independence | Epistemological and algorithmic oracle capture registered; methodology-class diversity and AI supply-chain transparency required (P-017) |
 | T-022 Electoral Cycle Capture | Hostile successor government routes identified; entrenchment ladder, LC floor persistence, transition protocol designed (P-018) |
-| T-023–T-025 Pilot validity, SQ oracle failure, demurrage capture | External validity gate (P-019), SQ oracle-failure fallback (P-022), demurrage sector-capture (P-023 pending discussion) |
+| T-023–T-025 Pilot validity, SQ oracle failure, demurrage capture | External validity gate (P-019), SQ oracle-failure fallback (P-022), demurrage sector-capture resolved: contract-commitment architecture, zero exemptions (P-023) |
 
-**Current status: 4 patches ACTIVE, 17 PROPOSED, 8 OPEN, 1 FOUNDING instrument.** The design continues to harden. What remains is pilot evidence and patch acceptance.
+**Current status: 4 patches ACTIVE, 18 PROPOSED, 7 OPEN, 1 FOUNDING instrument.** The design continues to harden. What remains is pilot evidence and patch acceptance.
 
 ## What this system is not
 
