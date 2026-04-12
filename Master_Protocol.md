@@ -4,6 +4,34 @@
 
 ---
 
+## Philosophical Preamble
+
+Every system that governs human survival makes a claim about what value is and who it belongs to. Most systems make that claim implicitly, buried inside institutional arrangements that appear neutral. This protocol makes it explicitly, because the claim drives every architectural decision that follows.
+
+There are two categories of value that human societies generate. The first is produced value — the product of individual effort, skill, and productive activity. A person who builds something has a traceable causal relationship to what they built. A claim on that value is logically coherent because the grounding relationship exists. This is why ownership of what one produces is not merely a legal convention but a structural fact: the causal chain from individual action to outcome is real and traceable.
+
+The second category is value that exists prior to and independently of individual action. Land does not become valuable because any single person improved it — it becomes valuable because a society grew around it. The electromagnetic spectrum was not created by its licensees. Environmental capacity was not manufactured by those who consume it. The accumulated knowledge passed between generations was not authored by any living individual. These are encountered conditions, not produced outcomes. A private claim on this value — what we call the Commons — asserts a causal relationship between individual effort and outcome that simply does not exist.
+
+This is not a moral argument. It is a structural one. The distinction between produced and unproduced value is a distinction in kind, not in degree. It holds regardless of legal convention, historical practice, or political agreement, because it refers to something those things cannot alter: whether or not a specific human action brought a specific value into existence.
+
+Modern monetary systems collapse this distinction. A single instrument — money — carries claims on produced value, claims on unproduced Commons value, and claims on the future labor of people who had no voice in the obligations those claims impose. When all three ride on the same instrument, the system becomes self-referential. The Commons is privately enclosed. Measurement adapts to conceal the growing gap between monetary claims and physical reality. Labor ceases to be voluntary and becomes the mechanism through which prior obligations — obligations the laborer did not incur — are serviced. Wealth converts into coercion not through malice or moral failure, but through the normal operation of a system whose instruments were never separated.
+
+Policy cannot correct this. A tax on land value reduces the symptom while the structural condition persists. A reformed price index makes the measurement more honest while the thing being measured remains unchanged. Better legal protections for workers operate within the system that transforms labor into obligation in the first place. Corrections that operate within a structure are subject to its logic. They can slow the failure mode; they cannot alter the condition that produces it.
+
+Structural failure requires structural correction.
+
+The correction this protocol proposes is instrument separation. Rather than attempting to make money better, it removes the survival function from money entirely. The Life Access Ledger is not a cash transfer denominated in better currency. It is a non-monetary entitlement, denominated in physical basket units, that never enters the price system. A landlord cannot raise rent to absorb it because it is not money. A government cannot quietly defund it through a budget line because it is not a budget line. An employer cannot suppress wages in anticipation of it because it does not flow through the labor market. It does not carry prior claims on anyone's future labor because it is not a debt. It is access — direct, physical, unconditional.
+
+The Enterprise Currency runs markets. It carries claims on produced value and is subject to demurrage — a time-cost on idle accumulation — so that the compulsion to hoard is structural rather than merely discouraged. The Civic Layer carries bounded governance influence that cannot convert into economic power or survival leverage. And in verified scarcity, emergency rationing replaces price-spike exclusion. Each instrument has one job. The walls between them are the system.
+
+What remains unresolved in this design is not its architecture but its founding. The protocol acknowledges openly that constituting a legitimate founding coalition without already having the governance system one is trying to found is a circular dependency it can manage but not dissolve. It acknowledges that measurement systems can satisfy every formal criterion for independence while sharing the same epistemological foundations. It acknowledges that every layer added to prevent capture creates a new surface for capture. These are not failures of design. They are permanent operating conditions that honest design accounts for, documents, and publishes before the system ever runs.
+
+This protocol was built in public, stress-tested adversarially, and released without restriction. If it is wrong, it should be possible to show that. If it is incomplete, it should be possible to extend it. The measure of its legitimacy is not that it claims to have solved what no one has solved, but that it is honest about what it has and has not.
+
+*Philosophical grounding informed in part by Marc Wolf's Economic Trilogy (2026), which derives from first principles the distinction between produced and unproduced value and the structural failure of debt-based monetary systems. The protocol extends that derivation into institutional architecture, particularly the conclusion that monetary dispersal of Commons value remains capturable by the mechanisms Wolf documents in Part 2 — and that non-monetary instrument separation is the structural completion of the correction his framework points toward.*
+
+---
+
 **Build integrity statement:** this file preserves the full predecessor constitutional working text and adds the hardening layers as integrated controlling annex material. It is not a restart, not a reduction, and not a replacement summary.
 
 ### Authoritative document set (current)

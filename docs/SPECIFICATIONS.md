@@ -321,6 +321,20 @@ Above-ledger bypass risk:
   informal barter at instrument boundaries) are not preventable by
   ledger enforcement alone. This is the primary residual risk (T-001).
   P-001 addresses enforcement mechanisms above the ledger layer.
+
+Philosophical basis for non-convertibility:
+  The LC's non-monetary design addresses a structural failure that monetary
+  dispersal — however well-grounded — cannot escape. When currency carries
+  claims on produced and unproduced value simultaneously, it becomes the
+  mechanism through which prior obligations are imposed on labor. Individuals
+  must service claims they did not incur as the price of remaining within the
+  system. A Commons-backed currency with equal monetary dispersal reduces
+  this pressure but does not eliminate it — the dispersal flows into the
+  reflexive domain through rent increases, subscription price adjustments, and
+  wage suppression. Instrument separation is the structural completion of that
+  correction: the survival floor exits the monetary domain entirely, carrying
+  no prior claims on future labor and entering no price system that can absorb
+  it. *(Wolf, Economic Trilogy Part 2: Manifestation and Part 3: Resolution, 2026)*
 ```
 
 ---
@@ -354,6 +368,22 @@ Independence requirements (Annex AL):
     3. Standards provenance
   AND produce materially different error structures (error independence test).
   Formal independence without structural independence is insufficient.
+
+Measurement drift defense:
+  The oracle independence requirement addresses a failure mode in which
+  measurement systems gradually decouple from the physical reality they are
+  meant to represent through incremental methodological adjustment. This is
+  not a hypothetical risk — modern price indices employ substitution and
+  hedonic adjustments that systematically obscure declining purchasing power,
+  confirming that measurement adaptation is the primary concealment mechanism
+  of systems operating beyond their physical constraints. The Tier-3 physical
+  sampling requirement exists specifically because statistical and institutional
+  methodologies can converge on shared assumptions while appearing formally
+  independent — only direct physical sampling is epistemologically incapable
+  of sharing foundations with pure statistical approaches. The oracle system
+  is the point where the non-reflexive domain is translated into system inputs.
+  If that translation is captured, the entire grounding of LC issuance fails.
+  *(Wolf, Economic Trilogy Part 1: Foundation, 2026)*
 ```
 
 ---

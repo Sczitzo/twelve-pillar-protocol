@@ -36,7 +36,7 @@ Invariants are distinguished from policy parameters (which may be tuned) and fou
 - DW/CR → EC or LC conversion: prohibited
 - Cross-instrument collateralization: prohibited
 
-**Why this is load-bearing:** Convertibility is the mechanism by which wealth becomes coercion. A single conversion pathway, however narrow, restores the attack surface that instrument separation was designed to eliminate. The above-ledger bypass (T-001 residual) exploits proximity to this boundary without crossing it; the invariant defines where the boundary is.
+**Why this is load-bearing:** When survival and market participation ride the same instrument, currency becomes a mechanism for imposing prior claims on future labor — the structural transformation Wolf's Economic Trilogy (Part 2) traces as the terminal condition of debt-based monetary systems. A single conversion pathway, however narrow, restores that mechanism. The LC escapes this failure mode precisely because it is non-monetary: it never enters the price system and therefore cannot carry the coercive structure that money inherits from its reflexive domain. The above-ledger bypass (T-001 residual) exploits proximity to this boundary without crossing it; the invariant defines where the boundary is.
 
 **Attack vectors that target this invariant:** T-001, T-025, residual above-ledger bypass
 
@@ -72,7 +72,9 @@ Invariants are distinguished from policy parameters (which may be tuned) and fou
 
 **Mechanical boundary:** LC issued ≤ verified physical capacity at time of issuance. The capacity figure must be confirmed by at least one Tier-3 (physical sampling) oracle node.
 
-**Why this is load-bearing:** If issuance is decoupled from physical capacity, LC becomes a financial instrument subject to inflation, speculation, and supply manipulation. The survival floor becomes nominal rather than real.
+**Philosophical grounding:** A legitimate system must be constrained by conditions it did not produce and cannot redefine. The physical delivery capacity of food, shelter, healthcare, and transit exists independently of the monetary system and cannot be inflated by belief, expectation, or financial engineering. LC issuance against verified physical capacity keeps the survival floor anchored to the non-reflexive domain — the domain of facts that exist whether or not anyone believes in them. This distinction, between the reflexive domain (prices, credit, expectations shaped by participant beliefs) and the non-reflexive domain (physical resources and capacity that exist independently), provides the foundational justification for this invariant. A system that issues survival claims against reflexive-domain assets — against financial instruments, projections, or promises — inherits those assets' susceptibility to measurement drift and self-referential failure. The Tier-3 physical sampling requirement ensures that at least one grounding point cannot be relocated into the reflexive domain through methodological redefinition. *(Philosophical grounding: Wolf, Economic Trilogy Part 1: Foundation, 2026)*
+
+**Why this is load-bearing:** If issuance is decoupled from physical capacity, LC becomes a financial instrument subject to inflation, speculation, and supply manipulation. The survival floor becomes nominal rather than real — a promise denominated in a unit that drifts from what it claims to represent, precisely the failure mode this protocol was designed to correct.
 
 **Attack vectors that target this invariant:** T-006 (measurement lag), T-012 (PCRP oracle poisoning), T-020/T-021 (epistemological/algorithmic oracle capture), T-024 (SQ oracle failure)
 
