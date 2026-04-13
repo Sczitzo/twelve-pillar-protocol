@@ -556,18 +556,23 @@ class ProtocolModel(Model):
 # SCENARIO RUNNER
 # =============================================================================
 
-def run_baseline(n_steps: int = 365) -> dict:
-    """Baseline run: standard parameters, no adversarial stress."""
-    model = ProtocolModel(CONFIG, adversarial_intensity=0.01)
-    results = model.run(n_steps)
+def _format_results(scenario_name: str, results) -> dict:
+    """Standardizes scenario result extraction."""
     return {
-        "scenario": "BASELINE",
+        "scenario": scenario_name,
         "final_ec_circulation": results["Total_EC_Circulation"].iloc[-1],
         "avg_lc_redemption_rate": results["LC_Redemption_Rate"].mean(),
         "oracle_failures": results["Oracle_Failures"].iloc[-1],
         "bypass_successes": results["Bypass_Successes"].iloc[-1],
-        "csm_violations": results["CSM_Violations"].sum(),  # must be 0
+        "csm_violations": results["CSM_Violations"].sum(),
     }
+
+
+def run_baseline(n_steps: int = 365) -> dict:
+    """Baseline run: standard parameters, no adversarial stress."""
+    model = ProtocolModel(CONFIG, adversarial_intensity=0.01)
+    results = model.run(n_steps)
+    return _format_results("BASELINE", results)
 
 
 def run_oracle_stress(n_steps: int = 365) -> dict:
@@ -579,14 +584,7 @@ def run_oracle_stress(n_steps: int = 365) -> dict:
     stressed_config["oracle_failure_rate"] = 0.15  # elevated failure
     model = ProtocolModel(stressed_config, adversarial_intensity=0.05)
     results = model.run(n_steps)
-    return {
-        "scenario": "ORACLE_STRESS",
-        "final_ec_circulation": results["Total_EC_Circulation"].iloc[-1],
-        "avg_lc_redemption_rate": results["LC_Redemption_Rate"].mean(),
-        "oracle_failures": results["Oracle_Failures"].iloc[-1],
-        "bypass_successes": results["Bypass_Successes"].iloc[-1],
-        "csm_violations": results["CSM_Violations"].sum(),
-    }
+    return _format_results("ORACLE_STRESS", results)
 
 
 def run_high_demurrage(n_steps: int = 365) -> dict:
@@ -598,14 +596,7 @@ def run_high_demurrage(n_steps: int = 365) -> dict:
     high_demurrage_config["demurrage_rate_monthly"] = 0.02
     model = ProtocolModel(high_demurrage_config, adversarial_intensity=0.01)
     results = model.run(n_steps)
-    return {
-        "scenario": "HIGH_DEMURRAGE",
-        "final_ec_circulation": results["Total_EC_Circulation"].iloc[-1],
-        "avg_lc_redemption_rate": results["LC_Redemption_Rate"].mean(),
-        "oracle_failures": results["Oracle_Failures"].iloc[-1],
-        "bypass_successes": results["Bypass_Successes"].iloc[-1],
-        "csm_violations": results["CSM_Violations"].sum(),
-    }
+    return _format_results("HIGH_DEMURRAGE", results)
 
 
 def run_adversarial_stress(n_steps: int = 365) -> dict:
@@ -617,14 +608,7 @@ def run_adversarial_stress(n_steps: int = 365) -> dict:
     adversarial_config["n_adversarial_actors"] = 50  # 10% adversarial population
     model = ProtocolModel(adversarial_config, adversarial_intensity=0.10)
     results = model.run(n_steps)
-    return {
-        "scenario": "ADVERSARIAL_STRESS",
-        "final_ec_circulation": results["Total_EC_Circulation"].iloc[-1],
-        "avg_lc_redemption_rate": results["LC_Redemption_Rate"].mean(),
-        "oracle_failures": results["Oracle_Failures"].iloc[-1],
-        "bypass_successes": results["Bypass_Successes"].iloc[-1],
-        "csm_violations": results["CSM_Violations"].sum(),
-    }
+    return _format_results("ADVERSARIAL_STRESS", results)
 
 
 # =============================================================================
