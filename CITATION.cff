@@ -13,8 +13,9 @@ abstract: >
   humane floor through LC (Life Access Ledger), preserves productive markets
   through EC (Enterprise Currency), and implements capture-resistant civic
   governance through DW/CR (Deliberation Weight / Civic Record). Includes
-  a complete adversarial threat register (15 threats), patch log (14 patches),
-  and formal acceptance protocol.
+  a complete adversarial threat register (25 threats), patch log (21 patches),
+  formal state machine specifications, constitutional invariants, and a formal
+  acceptance protocol.
 keywords:
   - constitutional design
   - governance systems
