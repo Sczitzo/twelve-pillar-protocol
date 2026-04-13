@@ -91,6 +91,9 @@ class LCState:
     SUSPENDED = "SUSPENDED"
     RETIRED = "RETIRED"
 
+# Predefined for performance optimization
+LC_EXCLUDED_STATES = {LCState.REDEEMED, LCState.PENDING}
+
 class DWState:
     INACTIVE = "INACTIVE"
     ACTIVE = "ACTIVE"
@@ -522,7 +525,7 @@ class ProtocolModel(Model):
     def _total_ec(self):
         return sum(
             a.ec_balance for a in self.schedule.agents
-            if a.ec_state not in [ECState.RETIRED]
+            if a.ec_state != ECState.RETIRED
         )
 
     def _lc_redemption_rate(self):
@@ -548,7 +551,7 @@ class ProtocolModel(Model):
             1 for a in self.schedule.agents
             if isinstance(a, CitizenAgent)
             and a.lc_redeemed_today is False
-            and a.lc_state not in [LCState.REDEEMED, LCState.PENDING]
+            and a.lc_state not in LC_EXCLUDED_STATES
         )
 
 
