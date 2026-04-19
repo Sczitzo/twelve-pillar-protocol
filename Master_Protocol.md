@@ -120,6 +120,10 @@ The next red-team queue, to be continued through the running documents, is prior
 - **Constitutional Survival Minimum:** no ordinary process may reduce the humane floor below the explicit survival minima defined in Annex Y; only H-3 refounding authority may amend that floor.
 - **Human worth is not measured:** no score can gate personhood, dignity, or access to essentials.
 - **Separation of concerns:** survival, enterprise, and governance use distinct instruments with strict non-convertibility.
+- **Money creation is a public function:** only protocol-authorized issuance bodies may create EC or EC-equivalent purchasing power.
+- **No taxes on ordinary life:** survival access, ordinary labor, and basic household exchange may not be taxed as routine revenue sources.
+- **Families may pass continuity, not domination:** homes, tools, and modest succession may be protected, but perpetual dynastic wealth structures and inherited ruling claims are prohibited.
+- **Ownership is stewardship, not tribute:** land, housing, and enterprise rights may reward use, risk, and contribution, but may not justify perpetual passive extraction from others' necessity or labor.
 - **Influence cannot be purchased:** governance influence is earned through verified stewardship and decays over time.
 - **Reality anchoring:** issuance of survival instruments is capped by verified physical capacity with conservative safety margins.
 - **Due process and auditability:** enforcement is constrained by transparent rules, appeal paths, and independent oversight.
@@ -189,9 +193,11 @@ To prevent corruption and category errors, the protocol uses four separated inst
 ### 1) Enterprise Currency (EC) - The Currency
 - **Purpose:** production, trade, innovation, non-essential consumption, payroll, procurement, and settlement.
 - **Nature:** EC is the sole general-purpose currency and the common accounting denominator for market pricing and public finance.
-- **Issuance rule:** EC is issued only against verified productive commitments through the Annex X channels - payroll, milestone-bound project escrow, essential-services procurement, public infrastructure windows, and tightly bounded continuity backstops. All issuance is provenance-tagged at audit level, approved under dual-key review (and enhanced review above threshold), and released with a published unwind path.
+- **Form rule:** EC operates primarily as a public digital currency secured by cryptographic methods, while physical cash or equivalent offline bearer instruments remain permanently available for privacy, resilience, and universal access.
+- **Issuance rule:** EC is issued only against verified productive commitments through the Annex X channels - payroll, milestone-bound project escrow, essential-services procurement, public infrastructure windows, and tightly bounded continuity backstops. All issuance is provenance-tagged at audit level, approved under dual-key review (and enhanced review above threshold), and released with a published unwind path. Private banks, funds, and lenders may lend or intermediate existing EC, but may not create new EC, EC-denominated deposit substitutes, or other currency-like purchasing power by debt expansion.
 - **Circulation rule:** EC may transfer freely within lawful market activity, but remains subject to anti-hoarding, anti-monopoly, and anti-rent-seeking constraints.
 - **Idle-value rule:** EC decay is a calibrated anti-hoarding tool, not a punishment for productive planning. The default Option B rate is 0.5% per month on idle balances above a published operating-float exemption, with review inside a 0.25%-1.00% corridor based on hoarding signals, investment blockage, and concentration metrics.
+- **Banking rule:** basic payments, custody, wage receipt, transfers, and cash access operate on public infrastructure funded through Pillar 12 (PFCR); any licensed retail provider serving the public must offer the baseline public banking floor on the common rail.
 - **Investment channel:** protected capital treatment is not a blanket exemption. Time-bound project escrows, build accounts, term-finance pools, catastrophe reserves, and public infrastructure windows may hold EC without ordinary idle decay only while funds remain preregistered, ring-fenced, milestone-reviewed by independent auditors, and subject to reversion if purpose drifts or deadlines become circular.
 
 ### 2) Life Access Ledger (LC) - The Guarantee
@@ -228,7 +234,7 @@ This section defines the twelve pillars as the system’s separation-of-concerns
 9. **Civic Deliberation & Decision Systems** - Quarterly priority setting + proposal pipeline + anti-capture weighting.
 10. **Operations & Service Delivery** - Rule-bound execution with safety rails, audits, SLAs, incident response.
 11. **Information Commons & Trust Transparency** - Real-time public dashboards (privacy-preserving), definitions, change logs.
-12. **Resilience, Regeneration & Adaptation** - Reserves, redundancy, circularity, net-positive ecological targets.
+12. **Public Finance & Commons Revenue (PFCR)** - Funds public operations, banking rails, and commons stewardship through non-extractive structural revenue rather than taxes on survival or ordinary labor.
 
 ### Pillar interfaces
 *Pillar + Interfaces ↔ Boundary (cannot touch)*
@@ -255,8 +261,8 @@ This section defines the twelve pillars as the system’s separation-of-concerns
     - (9),(5) \-\> Implemented services/programs + enforcement; Cannot exercise discretionary coercion.
 11. **Information Commons & Trust Transparency**
     - All (aggregate signals) \-\> Public accountability layer; Cannot publish re-identifiable data.
-12. **Resilience, Regeneration & Adaptation**
-    - (3),(7),(11) \-\> Reserves + regeneration targets; Cannot trade away resilience guarantees.
+12. **Public Finance & Commons Revenue (PFCR)**
+    - (1),(5),(6),(7),(10),(11) \-\> Public funding, banking-rail support, and commons revenue discipline; Cannot tax survival or ordinary labor, and cannot hide debt or off-ledger obligations.
 
 ---
 
@@ -266,9 +272,13 @@ This section defines the twelve pillars as the system’s separation-of-concerns
 - **Survival is unconditional:** baseline essentials are guaranteed and cannot be withdrawn as punishment.
 - **Human worth is not measured:** no score or metric can gate dignity, personhood, or survival access.
 - **Due process:** enforcement requires transparent rules, appeal paths, and independent oversight.
+- **No taxes on ordinary life:** survival access, ordinary labor, and basic household exchange may not be taxed as routine revenue sources.
 - **Separation-of-concerns:** survival (LC), enterprise (EC), and the civic layer (DW/CR) remain distinct and non-convertible.
+- **Money creation is public:** only protocol-authorized issuance bodies may create EC or EC-equivalent purchasing power.
+- **Families may pass continuity, not domination:** modest succession may be protected, but perpetual dynastic wealth structures, trusts, and inherited ruling claims are prohibited.
 - **Anti-capture oversight:** independent audits, rotation, conflict-of-interest rules, and funded red-teaming are mandatory system features.
 - **Non-coercion:** DW, CR, and EC can never purchase or condition constitutional rights.
+- **Ownership is stewardship, not tribute:** rights in land, housing, and enterprise may reward use, risk, and contribution, but may not justify perpetual passive extraction from others' necessity or labor.
 
 #### Pillar 2: Personhood, Identity & Continuity
 - **One-person-one-core-wallet** to prevent Sybil attacks and duplicate LC claims.
@@ -291,22 +301,30 @@ This section defines the twelve pillars as the system’s separation-of-concerns
 #### Pillar 5: Monetary Architecture (EC / LC / civic layer / SQ)
 **Core boundary rule**
 - **Instruments are non-convertible** by default; any exception requires amendment-level authorization, narrow scope, and explicit anti-capture constraints.
+- **EC form:** public digital currency is primary, secured by cryptographic methods, with physical cash or equivalent offline EC instruments maintained as a permanent resilience and privacy layer.
 - **EC demurrage:** default 0.5% per month on idle balances above the constitutional operating-float exemption, with review inside a 0.25%-1.00% corridor and anti-evasion treatment for equivalent non-EC value stores above threshold.
-- **EC issuance:** new EC originates only through Annex X channels. Private banks and ordinary balance-sheet lenders may intermediate or recycle existing EC, but may not create new EC by debt expansion alone. Issuance must remain polycentric, provenance-tagged at audit level, and bounded by channel ceilings, dual-key review, and unwind discipline.
+- **EC issuance:** new EC originates only through Annex X channels. Private banks and ordinary balance-sheet lenders may intermediate or recycle existing EC, but may not create new EC, EC-denominated deposit substitutes, or other currency-like claims by debt expansion. Issuance must remain polycentric, provenance-tagged at audit level, and bounded by channel ceilings, dual-key review, and unwind discipline.
 - **Civic layer minting and decay:** CR is earned through verified stewardship and service readiness; DW governs bounded quarterly agenda influence. Both remain bounded by caps, decay rules, category balancing, and hardship-safe continuity safeguards.
+- **Public banking utility:** baseline payments, custody, wage receipt, bill pay, cash conversion, and fraud recovery run on PFCR-funded public infrastructure with a guaranteed public option and interoperable licensed providers.
+- **Household finance rule:** compounding interest on household ordinary-life debt is prohibited. No household debt instrument may securitize the humane floor, rely on revolving traps, or survive through hidden fee chains that recreate survival coercion.
 - **Wallet partitioning:** protect payroll/essential obligations from broad freezes; target enforcement narrowly.
-- **Investment channel:** transparent equity-like instruments; default prohibition on compounding interest as systemic extraction.
+- **Investment channel:** transparent equity-like, revenue-share, or milestone-bound instruments with capped, redeemable, or sunset claims; default prohibition on compounding interest as systemic extraction and on perpetual extractive ownership claims.
 
 #### Pillar 6: Land, Housing & Commons (Use-Rights)
 - **Housing/land governed as use-rights/leases** (not speculative ownership).
 - **Transparent allocation rules**; renewal depends on occupancy and a closed-list stewardship standard limited to vacancy, damage beyond normal wear, verified illegal use of the premises, or clearly defined health/safety violations after remediation opportunity.
+- **Family continuity protected without dynastic landlordism:** ordinary household continuity may be preserved, but housing and land rights may not be warehoused through trusts, shell entities, or absentee succession structures detached from active stewardship.
 - **Anti-vacancy carrying costs** and accumulation limits to block rent-seeking.
 - **Commons stewardship:** water, energy commons, and ecological assets governed with regenerative targets and auditability.
+- **Beneficial ownership transparency:** every housing, land, and commons claim must resolve to natural persons or chartered public/community bodies; entity wrappers may not obscure effective control.
 - **Dispute resolution + appeals** for allocation decisions (no hidden gatekeeping).
 
 #### Pillar 7: Enterprise & Production Platform
-- **Competitive enterprise:** firms compete on quality and efficiency using EC.
+- **Competitive and cooperative enterprise:** firms compete on quality and efficiency using EC, while worker-owned, cooperative, and mission-locked structures receive structural preference where public finance, procurement, or succession pathways are involved.
 - **Anti-monopoly:** merger controls, open standards, and interoperability requirements reduce platform capture.
+- **Bounded capital claims:** outside capital may fund enterprise, but investor claims must be capped, redeemable, sunset, or otherwise bounded so ownership cannot become a perpetual extraction right over labor or necessity.
+- **Worker-preference tools:** PFCR-backed financing, worker buyout pathways, cooperative retained-earnings pools, and founder-exit conversion rules should favor stewardship succession over absentee control.
+- **Natural monopoly track:** water, energy, communications, rail, and similar infrastructure sectors require a regulated utility governance model rather than ordinary competition logic.
 - **Regenerative production:** repairability, take-back/extended responsibility, and circularity incentives where feasible.
 - **Anti-hoarding economics:** demurrage + transparent registries for high-value assets to deter shadow accumulation.
 
@@ -324,7 +342,7 @@ This section defines the twelve pillars as the system’s separation-of-concerns
 - **Minimum civic floor:** one-person-one-vote for constitutional matters and survival-adjacent outcomes; DW affects only bounded budget prioritization and agenda sequencing.
 
 #### Pillar 10: Operations, Oversight & Service Delivery
-- **Mandate:** implement decisions authorized by Pillar 9 using rule-bound workflows (execution without discretion).
+- **Mandate:** implement decisions authorized by Pillar 9 using rule-bound workflows with a published discretion taxonomy, documented reasons, and reviewable boundaries.
 - **Oversight execution:** enforce fraud/coercion/bribery rules proportionally; protect dependents and innocent counterparties; avoid collateral harm.
 - **Safety rails:** staged rollouts, canary deployments, rate limits, and narrow emergency pause mechanisms for critical systems.
 - **Hiring/procurement:** competency-based, audited, and appealable; algorithms must be testable and bias-audited.
@@ -336,11 +354,12 @@ This section defines the twelve pillars as the system’s separation-of-concerns
 - **Transparency:** publish definitions, sources, refresh rates, and a public change log for metrics and methodologies.
 - **Abuse-resistance:** delay/rate-limit gameable signals; disputes trigger conservative issuance and review.
 
-#### Pillar 12: Resilience, Regeneration & Adaptation
-- **Resilience reserves:** buffers for essentials; transparent replenishment rules; drills and stress tests.
-- **Regeneration scorecard (non-punitive):** energy mix, waste-to-landfill, water quality, soil health, ecosystem restoration milestones.
-- **Circularity:** repair-first, reuse, take-back systems; reduce dependence on fragile supply chains.
-- **Agile adaptation:** quarterly plan-\>execute-\>measure-\>patch loop; post-mortems feed policy dial tuning.
+#### Pillar 12: Public Finance & Commons Revenue (PFCR)
+- **Revenue constitution:** public operations are funded through demurrage routing, commons and land-use charges, asset carrying costs, gateway fees, and bounded public issuance tied to real public production - not through taxes on survival, ordinary labor, or basic household exchange.
+- **Public banking infrastructure:** the payment rail, basic custody, wage receipt, cash conversion, and fraud-recovery floor are funded as public infrastructure with a guaranteed postal-bank or public-bank option and interoperable licensed providers.
+- **Budget discipline:** all public funding channels require published service plans, staffing assumptions, source disclosures, and off-ledger obligation prohibitions.
+- **Commons return principle:** exclusive control over commons, scarce public interfaces, or large idle asset positions may incur public charges, but personhood, basic work, and household continuity may not be treated as taxable extraction bases.
+- **Transparency and anti-capture:** PFCR flows, demurrage routing, gateway revenues, and major appropriations are published in aggregate and subject to independent audit, anti-concentration review, and automatic challenge rights when hidden debt or favoritism appears.
 
 ---
 
@@ -410,7 +429,7 @@ Common failure modes in multi-instrument systems and protocol-level patches inte
 
 ### Phase 1: Genesis and Debt Reset
 - **Debt reconciliation:** eliminate or restructure unsustainable personal debts while protecting essential savings and pensions through explicit conversion rules.
-- **Banking conversion:** legacy banks become regulated utilities and custodians for EC payment rails and enterprise underwriting.
+- **Banking conversion:** legacy banks become regulated utilities and custodians on PFCR-funded public payment rails, with a guaranteed public banking option and bounded enterprise-underwriting functions.
 - **Continuity guarantees:** ensure uninterrupted access to essentials (LC) during cutover.
 
 ### Phase 2: Boundary Interface (Legacy Bridge)
@@ -883,12 +902,12 @@ This protocol uses real-time public dashboards for accountability and resilience
 - **[P]** Public audit trails for key decisions and major flows; independent verification encouraged. Audit trail samples.
 - **[I]** Trust signals: SLA compliance, correction latency, dispute rates (aggregate). Dashboards.
 
-#### Pillar 12 - Resilience, Regeneration & Adaptation
-- **[P]** Stress tests and drills for supply shocks and disasters; publish findings and improvements. Exercise reports.
-- **[P]** Regeneration scorecard published quarterly (non-punitive). Scorecard archive.
-- **[P]** Circularity/repair programs reduce fragile dependencies and waste. Program KPIs.
-- **[E]** Resilience guarantees cannot be traded away via external treaties or budget votes. Constraint text.
-- **[P]** Quarterly plan-\>execute-\>measure-\>patch loop ties outcomes to dial tuning. Iteration logs.
+#### Pillar 12 - Public Finance & Commons Revenue (PFCR)
+- **[E]** No taxes on survival access, ordinary labor, or basic household exchange. Constitutional text + judicial review trigger.
+- **[E]** PFCR receipts come only from published structural channels: demurrage routing, commons/use-right charges, asset carrying costs, gateway fees, and bounded public issuance tied to real public production. Revenue-source registry + audit evidence.
+- **[P]** Public banking rails fund a guaranteed public option plus interoperable licensed providers for baseline retail banking. Service-charter evidence + uptime / recovery metrics.
+- **[E]** PFCR may not hide debt or off-ledger obligations. Public cost register + debt-cap compliance.
+- **[I]** Aggregate reporting of demurrage routing, commons revenues, and major public appropriations is live and independently auditable. Dashboard evidence.
 
 ---
 
@@ -947,17 +966,20 @@ Every materially adverse decision must be challengeable by a legible path. Autom
 - **Emergency relief windows** should be measured in hours or days, not months, whenever survival access, identity continuity, or liberty interests are at stake.
 - **Algorithmic systems** must preserve the inputs, rules, and model/version state necessary for retrospective review.
 
-### G4. Public Finance and Budget Constitution
-Public institutions must be funded in a way that is transparent, capacity-aware, and resistant to quiet debt resurrection. The public side may spend, but it may not hide future obligations off-ledger or manufacture permanent emergency dependence.
+### G4. Pillar 12 Public Finance & Commons Revenue Constitution
+Public institutions must be funded in a way that is transparent, capacity-aware, and resistant to quiet debt resurrection. The public side may spend, but it may not hide future obligations off-ledger, manufacture permanent emergency dependence, or fall back to taxing survival, ordinary labor, or basic household exchange.
 
 | Rule area | Default constitutional rule | Anti-capture control |
 | :--- | :--- | :--- |
-| **Operating budgets** | Public institutions receive EC appropriations tied to published service plans, staffing assumptions, and capacity evidence. | Quarterly variance reporting and public change logs. |
-| **Recurring obligations** | Any recurring program expansion must identify a stable funding path and capacity plan before approval. | No unfunded permanent commitments. |
-| **Capital projects** | Long-lived infrastructure may use time-bounded public borrowing only when tied to resilience, productive capacity, or commons maintenance. | Amortization schedule, public cost register, and constitutional debt cap. |
+| **Revenue sources** | PFCR receipts may draw from demurrage routing, commons and land-use charges, asset carrying costs, gateway fees, and bounded public issuance tied to real public production. | Every source must publish methodology, exemptions, and aggregate receipts; hidden levies are void. |
+| **Prohibited tax base** | Survival access, ordinary labor, and basic household exchange may not be taxed as routine revenue sources. | Any measure that functionally backfills PFCR through those bases triggers mandatory judicial review. |
+| **Operating budgets** | Public institutions receive EC appropriations tied to published service plans, staffing assumptions, capacity evidence, and a declared PFCR source mix. | Quarterly variance reporting, source-by-source disclosure, and public change logs. |
+| **Recurring obligations** | Any recurring program expansion must identify a stable PFCR path and capacity plan before approval. | No unfunded permanent commitments and no quiet migration to prohibited taxes. |
+| **Capital projects** | Long-lived infrastructure may use time-bounded public borrowing only when tied to resilience, productive capacity, commons maintenance, or the public banking/payment rail. | Amortization schedule, public cost register, PFCR repayment path, and constitutional debt cap. |
 | **Payroll and compensation** | Public workers receive the universal LC floor like everyone else and any additional compensation through the ordinary EC wage system. | No privileged compensation channel or hidden civic bonuses. |
+| **Basic banking rails** | Payments, basic custody, wage receipt, bill pay, fraud recovery, and cash access are funded as public infrastructure with a guaranteed postal-bank or public-bank option and interoperable licensed providers. | Universal service obligations, retail fee caps above the free baseline, portability rights, and published uptime / recovery metrics. |
 | **Procurement** | Open standards, public bid logic, beneficial ownership disclosure, and conflict-of-interest rules apply by default. | Automatic audit triggers for concentration, overruns, and sole-source exceptions. |
-| **Deficits and emergency spending** | Emergency overspending must be explicitly tagged, time-limited, and paired with a restoration plan. | No rolling emergency status; mandatory sunset and post-mortem. |
+| **Deficits and emergency spending** | Emergency overspending must be explicitly tagged, time-limited, and paired with a restoration plan that does not rely on prohibited taxes or hidden bank privileges. | No rolling emergency status; mandatory sunset, post-mortem, and PFCR correction plan. |
 
 ### G5. Essential Basket, Vendor, and Pricing Protocol
 The essential basket is not a one-time technical specification. It is a permanent constitutional contest zone. The protocol therefore governs how baseline goods and services are defined, challenged, substituted, and revised over time rather than pretending that “basic” is politically neutral.
@@ -1239,8 +1261,6 @@ The system must not confuse the public by making unlike instruments look like in
 - **Public education** may use metaphors - EC as current, LC as a gauge, the civic layer as a pulse, SQ as an emergency ration key - but the law and interfaces must never imply fungibility.
 - **Wallets, dashboards, receipts, and reports** must visually separate money from rights, civic weight, and scarcity permissions.
 
----
-
 ## ANNEX K. Essential Basket Governance and Civic Participation Fairness
 **Purpose.** This annex addresses two persistent risks: first, that the essential basket will be treated as a settled technical list when it is actually a recurring constitutional conflict zone; second, that the civic layer can quietly reward only people whose lives are already legible to institutions.
 
@@ -1489,6 +1509,7 @@ This protocol assumes a hybrid transition path: parallel institution building fi
 - **Protected balances must remain ring-fenced** and may not be used to purchase civic power, survival access, or hidden convertibility privileges.
 - **Protection expires** if funds drift from the declared purpose, fail review repeatedly without justified cause, or become a parking lot for speculative accumulation.
 - **The more patient the capital class**, the stronger the transparency, audit, and conflict-disclosure requirements.
+- **Perpetual dynastic wrappers are prohibited.** Trusts, entity chains, and similar legal structures may preserve continuity for dependents or mission-locked stewardship only within published limits; they may not preserve extractive control across generations.
 
 ### R3. Motivation for exceptional contribution
 The protocol rejects the claim that only extreme extractive upside can motivate excellence. It also rejects the opposite fantasy that intrinsic motivation alone is enough. Exceptional contribution is supported through a bounded mix of economic reward, mission alignment, autonomy, recognition, and reduced precarity.
@@ -1639,7 +1660,7 @@ The protocol rejects the claim that only extreme extractive upside can motivate 
 ### V3. Contract continuity and banking conversion sequence
 - Critical payment rails, payroll continuity, deposit access, and essential provider reimbursement are ring-fenced before any broader banking conversion step.
 - Legacy private contracts remain temporarily recognizable, but enforceability, redenomination, and dispute handling shift to published rules once the relevant phase begins.
-- Banking conversion proceeds in sequence: payments continuity, protected deposits, essential credit functions, enterprise working-capital functions, then broader balance-sheet transformation.
+- Banking conversion proceeds in sequence: payments continuity, protected deposits, public basic-banking utility, safe household bridge-finance functions, enterprise working-capital functions, then broader balance-sheet transformation.
 - Run-prevention tools - including temporary capital controls, withdrawal smoothing for large speculative accounts, and emergency liquidity backstops - must be published before announcement, not improvised after panic begins.
 
 ### V4. Foreign claims and external obligations
@@ -1785,8 +1806,6 @@ LC no longer expires as a single weekly cliff. The weekly baseline is divided in
 - Any change that would narrow ordinary basket coverage while leaving the CSM intact must still publish the functional floor test required by Annex U. Formal compliance without real usability is invalid.
 - Austerity or scarcity measures may change delivery form, substitution order, or timing, but they may not hollow out the CSM through procedural fragmentation, repeated sub-threshold narrowing, or synchronized delivery obstacles.
 - If repeated emergency conditions push ordinary basket provision toward the CSM for multiple cycles, root-cause review becomes mandatory. Permanent near-emergency is a governance failure, not an acceptable steady state.
-
----
 
 ## ANNEX Z. Civic Layer Refactor: Deliberation Weight (DW) and Civic Record (CR)
 

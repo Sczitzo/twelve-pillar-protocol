@@ -1,6 +1,6 @@
 # Patch Log
 
-**Running change ledger aligned to the master protocol · Updated: Session 8 red-team hardening cycle (P-015 through P-021 added)**
+**Running change ledger aligned to the master protocol · Updated: Session 9 economic-governance integration (P-029 through P-033 added)**
 
 ---
 
@@ -44,8 +44,58 @@
 | P-024 | T-009 / TR-07 / T-018 (residual) | **ACTIVE** | Critical | Attestation-at-risk stake mechanism: FC-080 stake ratio, FC-081 audit window, FC-082 graph density threshold, slashed-stake redistribution, graph-density safe harbor for legitimate close-knit communities. Annex AS. |
 | P-025 | T-008 (residual) / meta-capture | **ACTIVE** | Critical | Federated Ombuds constitution: 5 sub-Ombuds (FC-090), 4-of-5 Plenum supermajority (FC-091), 730-day staggered terms (FC-092), Oversight Assembly (7 members, 5-of-7), structural-dispersal criteria, Concentration Response. Annex AI rewritten. Supersedes single-commissioner draft. |
 | P-026 | T-026 / T-027 | **ACTIVE** | Critical | P0 Subsidiarity, Consent & Exit layer: smallest-scale default with three-prong competence test; affirmative consent events at 2/3 supermajority (FC-120); 730-day graceful exit unwind (FC-121) with LC continuity preserved; five-scale hierarchy (FC-122: household/neighborhood ≤500/locality ≤5,000/region ≤500,000/federation); re-entry symmetric, no penalty. `/pillars/P0_subsidiarity/` directory. |
+| P-029 | T-016 / public-funding architecture | **ACTIVE** | Critical | Public Finance & Commons Revenue (PFCR): structural non-tax public funding, demurrage routing, public banking rails as infrastructure, and anti-hidden-debt discipline. |
+| P-030 | PRD-004 / household coercion | **ACTIVE** | Critical | Protocol-only money creation + household finance boundaries: no private EC creation, no compounding household ordinary-life debt, no survival-floor securitization. |
+| P-031 | PRD-009 / dynastic capture | **ACTIVE** | Critical | Anti-dynasty ownership: count-through beneficial ownership, trust prohibition for extractive continuity, succession limited to continuity and stewardship. |
+| P-032 | PRD-009 / rent extraction | **ACTIVE** | High | Stewardship ownership rule: land, housing, and enterprise rights may not become perpetual passive extraction claims. |
+| P-033 | PRD-008 / enterprise governance | **ACTIVE** | High | Worker-owned and mission-locked enterprise preference: financing, procurement, and succession pathways structurally favor stewardship forms over absentee control. |
 
 ---
+
+## Session 9 Patches — Integrated Constitutional Direction
+
+| Patch ID | Related Threat | Status | Priority | Change Type |
+| :--- | :--- | :--- | :--- | :--- |
+| P-029 | T-016 / public-funding architecture | **ACTIVE** | Critical | constitutional fiscal redesign |
+| P-030 | PRD-004 / household coercion | **ACTIVE** | Critical | monetary + retail-finance boundary |
+| P-031 | PRD-009 / dynastic capture | **ACTIVE** | Critical | ownership + succession + anti-circumvention |
+| P-032 | PRD-009 / rent extraction | **ACTIVE** | High | constitutional ownership standard |
+| P-033 | PRD-008 / enterprise governance | **ACTIVE** | High | enterprise-preference and succession design |
+
+### P-029 — Public Finance & Commons Revenue (PFCR)
+
+- **Introduced design:** replaces the former catch-all resilience pillar with a dedicated public-funding pillar. PFCR funds public operations through demurrage routing, commons and land-use charges, asset carrying costs, gateway fees, and bounded public issuance tied to real public production.
+- **Clauses integrated:** no taxes on survival access, ordinary labor, or basic household exchange; public banking rails funded as infrastructure; postal-bank/public-bank option; anti-hidden-debt rules; source-by-source public reporting.
+- **Dependencies:** demurrage routing rule, asset carrying cost enforcement, gateway registry, and budget transparency stack.
+- **New risks introduced:** fiscal dependence on poorly calibrated demurrage or gateway flows; naming disputes over what counts as a prohibited tax. Mitigated by judicial review trigger and source registry.
+
+### P-030 — Protocol-Only Money Creation and Household Finance Boundaries
+
+- **Introduced design:** only protocol-authorized issuance bodies may create EC or EC-equivalent purchasing power. Private institutions may lend existing EC, but may not create new EC, deposit substitutes, or debt-expanded currency-like claims.
+- **Clauses integrated:** compounding interest prohibited on household ordinary-life debt; no securitization of survival-linked household claims; no revolving survival traps; public retail banking floor on the common rail.
+- **Dependencies:** retail-rail charter, prudential supervision of licensed providers, and public option continuity.
+- **New risks introduced:** shadow-credit attempts outside the chartered rail, and pressure to relabel hidden fees as service charges. Mitigated by common-rail enforcement and anti-equivalence review.
+
+### P-031 — Anti-Dynasty Ownership
+
+- **Introduced design:** beneficial ownership always counts through to natural persons or mission-locked/community bodies. Perpetual trusts, shell chains, and equivalent structures may not preserve extractive control across generations.
+- **Clauses integrated:** family continuity protected in modest form, but dynastic landlordism, absentee succession structures, and perpetual extractive wrappers are prohibited.
+- **Dependencies:** beneficial-ownership registry, succession review rules, and housing / enterprise stewardship standards.
+- **New risks introduced:** harder succession planning for legitimate family continuity cases. Mitigated by explicit continuity allowances for homes, tools, dependents, and mission-locked stewardship bodies.
+
+### P-032 — Stewardship Ownership Standard
+
+- **Introduced design:** ownership across land, housing, and enterprise is reframed as stewardship rather than a perpetual tribute right. Capital may be rewarded for risk and contribution, but not for endless passive extraction from necessity or labor.
+- **Clauses integrated:** bounded capital claims, anti-rent use-right logic, and judicially reviewable passive-extraction prohibitions.
+- **Dependencies:** Pillar 6 use-right enforcement, Pillar 7 capital-instrument redesign, and ACC / anti-monopoly enforcement.
+- **New risks introduced:** valuation disputes around what counts as productive stewardship. Mitigated by published criteria, appeal paths, and mission-lock documentation.
+
+### P-033 — Worker-Owned and Mission-Locked Enterprise Preference
+
+- **Introduced design:** worker-owned, cooperative, and mission-locked firms receive structural preference in PFCR-backed finance, procurement, retained-earnings treatment, worker buyout pathways, and founder-exit conversion rules.
+- **Clauses integrated:** natural monopolies moved to a separate regulated-utility track; outside capital claims must be capped, redeemable, sunset, or otherwise bounded.
+- **Dependencies:** procurement rules, cooperative finance tools, public venture / buyout facilities, and utility-governance charter.
+- **New risks introduced:** preferential treatment could be gamed by sham cooperatives. Mitigated by governance-proof requirements, payout constraints, and beneficial-ownership transparency.
 
 ## Session 1 Patches — Detailed Entries
 

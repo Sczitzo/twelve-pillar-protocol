@@ -64,7 +64,7 @@ At a glance, the protocol does three things at once: it guarantees a humane floo
 The old proposal spoke about three currencies. The refined design is cleaner: one true currency, two non-money ledgers, and one temporary emergency instrument.
 
 #### EC | Enterprise Currency
-**What it does:** prices, trade, payroll, contracts, procurement, saving, investment.
+**What it does:** prices, trade, payroll, contracts, procurement, saving, investment, and everyday payments through a public digital currency with physical cash fallback.
 **What it is not:** a path to buy civic power or baseline survival.
 
 #### LC | Life Access Ledger
@@ -97,6 +97,8 @@ The protocol treats money as useful, but not omnipotent. Some social functions a
 
 A one-money system is simpler on paper but unstable in practice. If the same instrument buys food, housing, political access, and institutional immunity, then the system has only one real lane of power. The protocol therefore keeps the lanes separate by design.
 
+EC is public money rather than privately created bank money. Basic banking rails are funded as public infrastructure, with a guaranteed public option and interoperable providers on the same common rail.
+
 ### What this system is trying hard not to become
 
 | Common fear | Protocol response |
@@ -106,6 +108,7 @@ A one-money system is simpler on paper but unstable in practice. If the same ins
 | **A welfare bureaucracy with no limits** | LC is grounded in measured capacity, clear basket rules, and reviewable scarcity procedures. |
 | **A surveillance state** | Identity and dashboards must use minimum necessary data, selective disclosure, and aggregation thresholds. |
 | **A rentier loophole through land and housing** | Land and housing are handled through use-rights, anti-vacancy rules, and commons stewardship rather than speculative accumulation. |
+| **Dynastic wealth hiding behind trusts** | Families may preserve continuity, but perpetual extractive wealth structures and hidden beneficial ownership are prohibited. |
 
 ---
 
@@ -126,7 +129,7 @@ Each pillar has one job. The architecture is intentionally modular so that no si
 9. **Civic Deliberation & Decision Systems**: Runs the public prioritization process with rotation, caps, and anti-capture weighting.
 10. **Operations & Service Delivery**: Executes the rules with SLAs, incident response, and narrow, reviewable enforcement.
 11. **Information Commons & Trust Transparency**: Publishes real-time aggregate dashboards while preserving privacy where individual exposure would create harm.
-12. **Resilience, Regeneration & Adaptation**: Maintains reserves, redundancy, repair, circularity, and long-range adaptation capacity.
+12. **Public Finance & Commons Revenue (PFCR)**: Funds public operations and basic banking rails through structural public revenue rather than taxes on survival, ordinary labor, or basic household exchange.
 
 ---
 

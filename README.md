@@ -39,6 +39,8 @@ The protocol separates three social functions that most systems collapse togethe
 
 The walls between these lanes are the system. Not the instruments themselves.
 
+EC is public money rather than privately created bank money. It is primarily digital, secured with cryptographic methods, and paired with physical cash or equivalent offline instruments for resilience and privacy.
+
 ## The twelve pillars
 
 Each pillar has one job. The architecture is intentionally modular so no single office, ledger, or emergency process can silently absorb the others.
@@ -54,7 +56,7 @@ Each pillar has one job. The architecture is intentionally modular so no single 
 9. **Civic Deliberation & Decision Systems** — Priority-setting with rotation, caps, and anti-capture weighting
 10. **Operations & Service Delivery** — Rule-bound execution with SLAs and reviewable enforcement
 11. **Information Commons & Trust Transparency** — Real-time aggregate dashboards with privacy protection
-12. **Resilience, Regeneration & Adaptation** — Reserves, redundancy, repair, and long-range adaptation
+12. **Public Finance & Commons Revenue (PFCR)** — Structural public funding, public banking rails, and commons-return discipline
 
 ## Pillar authority flow
 
@@ -73,7 +75,7 @@ flowchart TD
     P9["**Pillar 9**\nCivic Deliberation\n& Decision Systems"]:::tier3
     P10["**Pillar 10**\nOperations &\nService Delivery"]:::tier3
     P11["**Pillar 11**\nInformation Commons\n& Trust Transparency"]:::tier3
-    P12["**Pillar 12**\nResilience, Regeneration\n& Adaptation"]:::tier3
+    P12["**Pillar 12**\nPublic Finance &\nCommons Revenue"]:::tier3
     NCE["**Non-Convertibility\nEnforcement Layer**\n(ledger-enforced)"]:::nce
 
     %% Tier 1 constrains everything
@@ -106,8 +108,9 @@ flowchart TD
     P9 -->|"decisions"| P10
     P10 -->|"service data"| P11
     P11 -->|"transparency audit"| P1
-    P12 -->|"resilience reserve"| P4
-    P12 -->|"resilience reserve"| P10
+    P12 -->|"public funding"| P4
+    P12 -->|"banking rail support"| P5
+    P12 -->|"public funding"| P10
     P6 -->|"use-rights registry"| P5
 
     classDef tier1 fill:#1a1a2e,color:#e0e0e0,stroke:#4a4a8a,stroke-width:2px
@@ -127,7 +130,7 @@ flowchart TD
 | [`Master_Protocol.md`](./Master_Protocol.md) | Primary constitutional source of truth. Operative language, all annexes. |
 | [`White_Paper.md`](./White_Paper.md) | Plain-language public explanation. Start here. |
 | [`Threat_Register.md`](./Threat_Register.md) | Adversarial risk model. 25 threat IDs (23 active, 2 retired) — 4 ACTIVE, 12 PROPOSED, 7 OPEN. T-017/P-014 is the FOUNDING instrument. |
-| [`Patch_Log.md`](./Patch_Log.md) | Change and mitigation history. 21 patches — 4 ACTIVE, 16 PROPOSED, 1 FOUNDING (P-014). |
+| [`Patch_Log.md`](./Patch_Log.md) | Change and mitigation history. 26 patches — 9 ACTIVE, 16 PROPOSED, 1 FOUNDING (P-014). |
 | [`Acceptance_Protocol.md`](./Acceptance_Protocol.md) | Process for moving patches from design to operation. |
 | [`Citizen_Facing_Rights_Layer.md`](./Citizen_Facing_Rights_Layer.md) | Plain-language summary of citizen rights and protections. |
 
@@ -217,7 +220,7 @@ The system has been adversarially stress-tested:
 | T-022 Electoral Cycle Capture | Hostile successor government routes identified; entrenchment ladder, LC floor persistence, transition protocol designed (P-018) |
 | T-023–T-025 Pilot validity, SQ oracle failure, demurrage capture | External validity gate (P-019), SQ oracle-failure fallback (P-022), demurrage sector-capture resolved: contract-commitment architecture, zero exemptions (P-023) |
 
-**Current status: 4 patches ACTIVE, 16 PROPOSED, 1 FOUNDING instrument (P-014), 7 threat IDs OPEN.** 21 patches total. The design continues to harden. What remains is pilot evidence and patch acceptance.
+**Current status: 9 patches ACTIVE, 16 PROPOSED, 1 FOUNDING instrument (P-014), 7 threat IDs OPEN.** 26 patches total. The design continues to harden. What remains is pilot evidence and patch acceptance.
 
 ## What this system is not
 

@@ -1,7 +1,7 @@
 # SPECIFICATIONS.md — Formal System Specifications
 
 **Document type:** Technical specification  
-**Scope:** Three-instrument model (EC, LC, DW/CR) — state machine definition, transition rules, decay functions  
+**Scope:** Three-instrument model (EC, LC, DW/CR) — state machine definition, transition rules, decay functions, and public-money constraints
 **Format:** Systems design / formal state machine  
 **Status:** Specification-grade (parameters marked [FOUNDING COMMITMENT] require pilot data before activation)
 
@@ -9,7 +9,7 @@
 
 ## 1. System Overview
 
-The Twelve-Pillar Protocol operates three primary instrument lanes and one emergency instrument. Each lane is a bounded state machine with defined issuance conditions, transition rules, decay functions, and termination states. The lanes are non-convertible by design; the non-convertibility constraint is enforced at the ledger layer, not at the application layer.
+The Twelve-Pillar Protocol operates three primary instrument lanes and one emergency instrument. Each lane is a bounded state machine with defined issuance conditions, transition rules, decay functions, and termination states. The lanes are non-convertible by design; the non-convertibility constraint is enforced at the ledger layer, not at the application layer. EC may exist as public digital balances and as physical/offline bearer instruments inside the same monetary lane.
 
 ```
 ┌──────────────────────────────────────────────────────────────────┐
@@ -42,7 +42,7 @@ The Twelve-Pillar Protocol operates three primary instrument lanes and one emerg
 
 ### 2.1 Definition
 
-EC is the general-purpose market instrument. It is issued against verified productive commitments, circulates freely within the EC lane, and is subject to demurrage (time-decay on idle balances) to discourage hoarding.
+EC is the general-purpose market instrument. It is issued against verified productive commitments, circulates freely within the EC lane, and is subject to demurrage (time-decay on idle balances) to discourage hoarding. EC is protocol-issued public money: private institutions may intermediate existing EC, but may not create new EC or currency-like EC substitutes by debt expansion. EC is primarily digital, with physical cash or equivalent offline bearer instruments maintained for resilience, privacy, and universal access.
 
 ### 2.2 State Machine
 
@@ -71,7 +71,7 @@ Transitions:
 
 ### 2.3 Demurrage Function
 
-Demurrage is a time-decay applied to idle EC balances. It is not a tax — it does not transfer value to a central authority. Decayed EC is retired from circulation.
+Demurrage is a time-decay and carrying charge applied to idle EC balances. It is not assessed on survival access, ordinary labor, or basic household exchange. Charged EC is split between retirement and Pillar 12 Public Finance & Commons Revenue (PFCR) receipts under a published routing rule.
 
 ```
 Let:
@@ -94,12 +94,20 @@ Retirement:
   When B(t) < ε (minimum balance threshold [FOUNDING COMMITMENT]),
   the balance is retired from circulation.
 
+Charge routing:
+  Let C(t) = B_before(t) − B_after(t)
+  Let α = PFCR routing share [FOUNDING COMMITMENT]
+
+  PFCR_receipt(t) = α × C(t)
+  Retired_EC(t)   = (1 − α) × C(t)
+
 Notes:
   - r must be calibrated so that the deployment window produces meaningful
     anti-hoarding signal without suppressing long-horizon productive investment
   - Annex AR Section 2 contains worked examples at r = 0.5%, 1.0%, 2.0% monthly
   - P-023 establishes that investment exemptions are prohibited; demurrage applies
     during escrow periods. The discipline is the point.
+  - α must be published, reviewable, and fiscally bounded under PFCR rules
 ```
 
 ### 2.4 Issuance Constraints
@@ -110,10 +118,30 @@ Issuance conditions (all must be satisfied):
   2. Issuing authority is active and not under audit
   3. Commitment has not been previously issued against
   4. Physical capacity exists to absorb the production (oracle confirmation required)
+  5. No private institution is simultaneously creating a duplicative EC-denominated
+     claim intended to circulate as money against the same commitment
 
 Issuance ceiling:
   Total EC in circulation ≤ f(verified productive commitments)
   [FOUNDING COMMITMENT: exact multiplier function]
+```
+
+### 2.5 Retail Banking and Household Finance Constraints
+
+```
+Retail public-banking floor:
+  - Basic accounts, wage receipt, bill pay, transfers, cash conversion, and
+    fraud recovery operate on PFCR-funded public infrastructure
+  - A guaranteed public postal-bank or public-bank option must remain available
+  - Licensed providers may offer the same baseline retail services on the
+    common public rail if they satisfy interoperability and service rules
+
+Household finance constraints:
+  - Compounding interest on household ordinary-life debt is prohibited
+  - No household debt may be cross-collateralized against the Constitutional
+    Survival Minimum or transformed into a revolving survival trap
+  - Securitization of household survival-linked claims is prohibited
+  - Retail fee chains may not function as hidden interest equivalents
 ```
 
 ---
@@ -265,7 +293,10 @@ Decay function (CR):
           during grace period transitions]
 
 Sector ceiling (P-008):
-  No single sector may hold > 25% of total active CR positions.
+  No single sector may hold > 20% of total active CR positions. (P-025)
+  [Prior specification: 25% — SUPERSEDED. In a 5-sector system, 25% permits a
+   3-sector coalition to reach 75% DW — supermajority control. The ceiling must
+   satisfy 3c < 0.667; c < 22.2%; 20% provides margin. See PRD-006, Test 4.]
   Enforcement: quarterly audit; cooling periods applied proportionally.
 ```
 
@@ -340,6 +371,10 @@ Philosophical basis for non-convertibility:
 ---
 
 ## 7. Oracle Subsystem Specification
+
+*P-024 amendment (Phase 4 adversarial audit): N_min raised from 3 to 5;
+methodology-class floor raised from 2 to 3. Both changes are required simultaneously
+and are mutually reinforcing. See ADVERSARIAL_AUDIT.md PRD-003, Sim D, Finding 7.*
 
 ```
 Purpose: Provide verified physical capacity data to LC issuance and SQ activation systems.
