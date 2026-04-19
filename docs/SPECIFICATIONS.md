@@ -344,29 +344,41 @@ Philosophical basis for non-convertibility:
 ```
 Purpose: Provide verified physical capacity data to LC issuance and SQ activation systems.
 
-Minimum configuration:
-  N ≥ 3 independent oracle nodes
-  Methodology-class diversity required (Annex AL):
+Minimum configuration (per cohort, per essential category; FC-030 / FC-031 / FC-032 / FC-033):
+  N ≥ 5 independent oracle nodes (FC-030 ORACLE_N_MIN)
+  At least 3 distinct methodology classes represented (FC-031 METHODOLOGY_CLASS_MIN):
     - At least one node: Institutional statistical modeling
     - At least one node: Community-based participatory research (CBPR)
     - At least one node: Independent physical sampling (Tier 3, ground-truth)
+  Pairwise error-series correlation ≤ 0.30 Pearson (FC-032 ORACLE_PAIRWISE_CORRELATION_MAX)
+  At least 1 designated adversarial / red-team seat (FC-033 ORACLE_ADVERSARIAL_SEATS_MIN)
+  Rationale: BFT theorem n ≥ 3f + 1; f = 1 gives n ≥ 4; N_MIN = 5 provides one-node margin
+  above the BFT floor so single-node loss does not drop the cohort below tolerance.
 
-Consensus mechanism:
-  LC issuance: majority consensus (≥ ⌈N/2⌉ + 1 nodes in agreement)
-  SQ activation: supermajority (≥ ⌈2N/3⌉ nodes in agreement)
-  SQ deactivation: same threshold as activation
+Consensus mechanism (N = 5 floor; thresholds rounded up):
+  LC issuance: majority consensus ≥ 3 of 5 in agreement (⌈N/2⌉ + 1 general form)
+  SQ activation: supermajority ≥ 4 of 5 in agreement (⌈2N/3⌉ general form; equivalent to 4/5 at N=5)
+  SQ deactivation: same threshold as activation (hysteresis prevents chattering)
 
 Failure modes:
-  - Single node failure: remaining nodes continue; alert triggered
-  - Majority failure: system enters conservative hold; governance notified
-  - Full failure during active SQ: P-022 fallback protocol activates
+  - Single node failure: remaining 4 nodes continue above BFT floor; alert triggered
+  - Two concurrent node failures: below BFT floor (3 < 3f+1 for f=1); SQ consensus suspended;
+    conservative hold engaged until quorum restored
+  - Three or more node failures: P-022 crisis fallback protocol activates; measurement-gated
+    decisions (SQ activation, LC tightening) suspended; Annex Y CSM issuance continues on
+    pre-committed floor values; governance notified within 1 hour
+  - Quorum restoration: FC-100 ORACLE_QUORUM_LOSS_RESTORATION_WINDOW = 14 days of verification
+    required before resumed-oracle readings are consensus-binding (prevents flash-recovery
+    normalization exploit)
 
 Independence requirements (Annex AL):
   Nodes must differ on all three dimensions:
     1. Epistemological foundation
-    2. Data generation process  
+    2. Data generation process
     3. Standards provenance
-  AND produce materially different error structures (error independence test).
+  AND produce materially different error structures (prospective error independence test).
+  AND historical pairwise Pearson correlation on error series ≤ 0.30 (FC-032) once ≥ 18
+  months of overlapping data exists.
   Formal independence without structural independence is insufficient.
 
 Measurement drift defense:
@@ -392,16 +404,28 @@ Measurement drift defense:
 
 | Parameter | Current Value | Status | Authority to Change |
 |---|---|---|---|
-| EC demurrage rate (r) | 0.5%–2.0%/month target range | [FOUNDING COMMITMENT] | Tier 2 (supermajority + adversarial panel) |
-| EC idle threshold (θ) | TBD | [FOUNDING COMMITMENT] | Tier 2 |
+| EC demurrage rate (r) | 0.5%/month (±0.25%/mo corridor) | FC-050 / FC-051 (founding/commitments.md) | Tier 2 (supermajority + adversarial panel) |
+| EC idle threshold (θ) | Resolved in founding/commitments.md | Resolved | Tier 2 |
 | LC validity window | 72 hours | Specified | Tier 2 |
-| CSM basket composition | TBD | [FOUNDING COMMITMENT] | Tier 1 (floor only; composition Tier 2) |
-| DW fast-decay rate (r_dw) | TBD | [FOUNDING COMMITMENT] | Tier 2 |
+| CSM basket composition | Annex Y (canonical) | FC-070, FC-071 (floor is Tier 1) | Tier 1 (downward only); Tier 2 (composition within basket) |
+| DW fast-decay rate (r_dw) | 0.15/day | FC-062 | Tier 2 |
 | CR slow-decay rate (r_cr) | 20% of normal during grace (P-009) | Specified (partial) | Tier 2 |
-| CR sector ceiling | 25% per sector | Specified (P-008) | Tier 2 |
-| Oracle consensus threshold (LC) | ⌈N/2⌉ + 1 | Specified | Tier 2 |
-| Oracle consensus threshold (SQ) | ⌈2N/3⌉ | Specified | Tier 2 |
-| Minimum oracle nodes | N ≥ 3 | Specified | Tier 2 |
+| DW sector ceiling | 0.20 (20%) | FC-060 | Tier 1 |
+| DW per-person per-cycle cap | 300 | FC-061 | Tier 2 |
+| Protected Pause floor | 0.30 DW | FC-020 | Tier 1 |
+| Oracle consensus threshold (LC) | ≥ 3 of 5 (⌈N/2⌉+1) | Specified | Tier 2 |
+| Oracle consensus threshold (SQ) | ≥ 4 of 5 (⌈2N/3⌉) | Specified | Tier 2 |
+| Minimum oracle nodes | N ≥ 5 | FC-030 | Tier 1 |
+| Minimum methodology classes | 3 | FC-031 | Tier 1 |
+| Max pairwise oracle error correlation | 0.30 (Pearson) | FC-032 | Tier 1 |
+| Adversarial oracle seats per cohort | ≥ 1 | FC-033 | Tier 1 |
+| Oracle quorum-loss restoration window | 14 days | FC-100 | Tier 1 |
+| Attestation stake ratio | 0.20 of attestor balance | FC-080 | Tier 2 |
+| Reserve window (CSM×pop×days) | 45 days | FC-070 | Tier 1 |
+| Tier 1 amendment signatures (M-of-N) | 7 of 9 | FC-110 | Tier 1 (recursive) |
+| Tier 1 amendment timelock | 180 days | FC-111 | Tier 1 (recursive) |
+| P0 exit supermajority threshold | 2/3 | FC-120 | Tier 1 |
+| P0 exit unwind window | 730 days | FC-121 | Tier 1 |
 
 ---
 

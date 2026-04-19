@@ -124,6 +124,26 @@ The next red-team queue, to be continued through the running documents, is prior
 - **Reality anchoring:** issuance of survival instruments is capped by verified physical capacity with conservative safety margins.
 - **Due process and auditability:** enforcement is constrained by transparent rules, appeal paths, and independent oversight.
 
+**Architectural enforcement layer (Proposal 1 close-out, 2026-04-18).**
+The above invariants are not only textually protected but **mechanically enforced** via the architecture/ directory:
+- [`architecture/invariants.md`](architecture/invariants.md) — Tier 1 parameter registry with cryptographic hash commitment.
+- [`architecture/amendment_protocol.md`](architecture/amendment_protocol.md) — 7-of-9 holder signatures (FC-110) and 180-day timelock (FC-111) required for any Tier 1 change.
+- [`architecture/drift_chain.md`](architecture/drift_chain.md) — append-only published version history; silent modification is detectable at first operational-node startup.
+- [`architecture/implementation_binding.md`](architecture/implementation_binding.md) — every bound component verifies the drift-chain head on startup and refuses to operate on unverified state (with the CSM-dispensation exception per Annex Y unconditionality).
+
+Changes to Tier 1 invariants require the full architectural process. Changes to the architectural enforcement layer itself are also Tier 1 and subject to the same process (recursive). The architectural layer protects against silent drift below the amendment threshold; it does not and cannot prevent legitimate H-3 amendment by a lawful supermajority of holders, but it guarantees visibility, response time (180 days), and public auditability of any such change.
+
+**Pillar 0 — Subsidiarity, Consent & Exit (Proposal 5 close-out, 2026-04-18).**
+Beneath the twelve operational pillars, this protocol rests on a foundational scale-and-consent layer, **Pillar 0**, that defines who consents to be governed by the protocol, at what scale, and how they withdraw. P0 is Tier 1 architectural:
+- [`pillars/P0_subsidiarity/README.md`](pillars/P0_subsidiarity/README.md) — overview and integration with the twelve pillars.
+- [`pillars/P0_subsidiarity/subsidiarity_rule.md`](pillars/P0_subsidiarity/subsidiarity_rule.md) — decisions default to the smallest competent scale; federation action requires affirmative justification.
+- [`pillars/P0_subsidiarity/consent_protocol.md`](pillars/P0_subsidiarity/consent_protocol.md) — affirmative consent is a published act, not a presumption. Non-consenting units are outside protocol scope except for the CSM floor.
+- [`pillars/P0_subsidiarity/exit_protocol.md`](pillars/P0_subsidiarity/exit_protocol.md) — any locality or larger unit may exit by **2/3 resident-personhood supermajority (FC-120)** with a **730-day graceful unwind (FC-121)**. LC continuity is preserved for individuals during unwind; no exit tax, no forfeiture.
+- [`pillars/P0_subsidiarity/reentry_protocol.md`](pillars/P0_subsidiarity/reentry_protocol.md) — procedurally symmetric re-entry; no penalty for previously-exited units.
+- [`pillars/P0_subsidiarity/jurisdictional_scales.md`](pillars/P0_subsidiarity/jurisdictional_scales.md) — five scales per **FC-122**: household, neighborhood (≤500), locality (≤5,000), region (≤500,000), federation.
+
+P0 is read *through* every operational pillar: each pillar's default resolution scale is the smallest competent unit; federation-scale operation requires affirmative justification under the subsidiarity rule. Tier 1 human-dignity invariants (CSM) are the single exception that binds everywhere regardless of consent — because human dignity is not a subject of vote.
+
 ---
 
 ## How to read this document

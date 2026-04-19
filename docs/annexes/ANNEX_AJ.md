@@ -1,7 +1,7 @@
 # Annex AJ — Above-Ledger Bypass Worked Examples
 
 **Pre-launch gate: required before system deployment · Governed as P-004 protected specification**
-**Status: PROPOSED (referenced by T-001 Session 8 update and P-015)**
+**Status: ACTIVE — penalty schedule bound to Founding Commitments FC-010, FC-040, FC-041 (Proposal 7 close-out, 2026-04-18)**
 
 ---
 
@@ -181,14 +181,92 @@ The purpose of this annex is to enumerate specific prohibited patterns per instr
 
 ---
 
+## Section 4 — Penalty Schedule (Proposal 7 close-out)
+
+The worked examples in Sections 1–3 state what is prohibited. Without a published penalty schedule, "prohibited" is a word without teeth — detection produces cases that have to be adjudicated ex post with no pre-committed sanction, which is itself a drift surface. This section binds each boundary-class pattern to a graduated penalty schedule calibrated on the Founding Commitments.
+
+### 4.1 — Deterrence Calibration (FC-040, FC-041)
+
+**Deterrence identity:** expected value to the violator of a detected-and-sanctioned attempt must be strictly negative. Given detection probability *p* and penalty-to-gain multiplier *k*:
+
+> EV(violation) = (1 − *p*) · gain − *p* · *k* · gain = gain · (1 − *p* − *p*·*k*)
+
+For EV ≤ 0: *k* ≥ (1 − *p*) / *p*. At the assumed detection probability **FC-041 `DETECTION_PROBABILITY_ASSUMED` = 0.85**, break-even is *k* ≈ 0.18. The protocol commits to **FC-040 `BRIBE_DETERRENCE_MULTIPLIER` = 5.0** — meaning the base penalty for any detected above-ledger violation is **5× the detected functional gain**. This produces EV(violation) = gain · (1 − 0.85 − 4.25) = gain · (−4.10), a decisive deterrent. The 5× multiplier also survives a detection-rate collapse to ≈0.17 before EV turns positive, so the schedule is not fragile to realistic detection shortfalls.
+
+**Gain definition.** The "functional gain" is the EC-equivalent value the violator captured through the violation, measured as:
+- For individual/household violations: the EC-market price of the preferential access, goods, or standing secured above the LC/SQ baseline or civic floor.
+- For operator/vendor violations: the incremental revenue or margin attributable to the violating pattern, measured against a non-violating baseline cohort.
+- For institutional violations (employer-sponsored CR accumulation, directed civic positions): the EC-equivalent value of the civic-standing advantage conferred, valued at the cost of securing equivalent standing through non-violating means.
+
+Gain is measured by the enforcement body at the time of adjudication and is documented on the public Enforcement Ledger per Pillar 11 (without PII).
+
+### 4.2 — Graduated Penalty Matrix
+
+Penalties are calibrated per-actor-scale and per-boundary-severity. The scheduled penalty is the base multiplier (5×) times the severity factor in the matrix below, applied to the functional gain and capped or floored at the per-actor amounts shown.
+
+| Pattern | Severity | Actor: Individual | Actor: Operator / Firm | Actor: Institution / Sponsor |
+| :--- | :---: | :--- | :--- | :--- |
+| **AJ-1.1** LC status as allocation preference | 1.0× | 5× gain; CR −0.1 for cycle | 5× gain; 90-day vendor license probation; 2nd offense = vendor ban in essential category | 5× gain; 180-day exclusion from LC-redemption network; public Enforcement Ledger notice |
+| **AJ-1.2** EC premium for LC-equivalent access | 1.2× | 6× gain; CR −0.2 for cycle | 6× gain; 180-day vendor license probation; operator-license review | 6× gain; 365-day exclusion from essential-category redemption; mandatory divestment of LC redemption operations |
+| **AJ-1.3** Social brokerage networks (coordinators) | 1.5× | 7.5× gain against coordinator; network participants liable only on knowing participation | 7.5× gain; operator license revoked for essential-category brokerage | 7.5× gain; criminal referral under convertibility-violation statute where coordination is organised |
+| **AJ-2.1** Civic standing as allocation preference | 1.2× | 6× gain (rare as individual pattern); CR −0.2 | 6× gain; 180-day probation from civic-eligibility data access; vendor loyalty program disqualification | 6× gain; 365-day exclusion from CR-conditioned hiring pools or allocation queues; mandatory audit of prior-period decisions |
+| **AJ-2.2** EC-funded civic standing accumulation | 1.5× | — | 7.5× gain; CR accrued under the pattern is voided for affected accounts; employer barred 365 days from CR-attestation sponsorship | 7.5× gain; all attributable CR accruals voided; 365-day exclusion; mandatory restitution of civic-sponsorship EC flows |
+| **AJ-2.3** Civic position as economic leverage | 2.0× | 10× gain; **civic position vacated; 5-year CR-eligibility suspension; criminal referral** | 10× gain against contracted entity; 365-day procurement exclusion; contract voidance | 10× gain; 5-year exclusion from civic-procurement relationships |
+| **AJ-3.1** SQ allocation as premium service | 1.5× | 7.5× gain; CR −0.3 | 7.5× gain; operator license suspended for duration of SQ period and 180 days post-restoration; 2nd offense = operator license revoked | 7.5× gain; 365-day exclusion from SQ-rationed supply chain; mandatory restitution to underserved recipients |
+| **AJ-3.2** EC exit from SQ scope (during active SQ) | 1.8× | 9× gain; excess quantity returned to SQ pool or forfeit | 9× gain; import/supply license suspended for SQ duration; operator subject to per-unit excise recouping the SQ-pool draw | 9× gain; mandatory contribution to SQ buffer equal to 2× goods acquired |
+| **AJ-3.3** Anticipatory hoarding via EC | 1.5× pre-activation; 2.0× post-activation timing | 7.5×–10× gain; excess inventory forfeit to SQ pool at activation | 7.5×–10× gain; license suspension; mandatory release of hoarded inventory at SQ-activation basket prices | 7.5×–10× gain; 365-day exclusion; mandatory audit of trading activity during the 90 days preceding activation |
+
+**Notes on the matrix:**
+- Severity factor is applied to the FC-040 base multiplier (5×), so AJ-1.1 = 5.0× gain, AJ-1.2 = 6.0× gain, AJ-2.3 = 10.0× gain, etc.
+- "CR −0.X for cycle" is a deduction from the violator's civic record balance proportional to severity; CR deduction is independent of the gain-multiplier and is not netted against it.
+- Vendor/operator license actions are administered by the licensing authority named in Pillar 11 §3; suspension and revocation are appealable only through the Ombuds process per Annex AI.
+- "Criminal referral" indicates a finding that meets the threshold for separate prosecution under the convertibility-violation statute (out of scope of this annex); the civil/administrative penalty in this matrix applies regardless of prosecution outcome.
+
+### 4.3 — Escalation Ladder for Repeat and Systemic Violations
+
+**Repeat offense:** a second adjudicated violation of any AJ pattern by the same actor within 24 months triggers automatic escalation to the next severity band, plus:
+- Individuals: CR deduction doubles; civic-position eligibility suspended for 2 cycles.
+- Operators: license revocation in essential category; 5-year prohibition from operating in LC or SQ supply chains.
+- Institutions: public Enforcement Ledger notice with named leadership; mandatory independent governance audit at institution's cost.
+
+**Systemic violation:** when enforcement data shows AJ-pattern incidence across a vendor class, sector, or region exceeds **FC-010 systemic-review trigger of 7% / annum of LC allocations in the affected scope**, the Ombuds triggers a **sector-level systemic review** under Annex AI. Individual enforcement continues in parallel. The systemic review assesses whether the architecture itself requires hardening (new detection signal, new prohibited pattern) or whether the breach is an enforcement-capacity failure.
+
+The **routine leakage ceiling of 3% / annum (FC-010)** is the operational target. Between 3% and 7%, the Ombuds prioritises detection investment and enforcement acceleration but does not trigger systemic review. Below 3%, the regime is considered in normal operating state.
+
+### 4.4 — Enforcement Body and Process
+
+Penalty adjudication is administered by the **Enforcement Panel** (a sub-body of the authority named in Pillar 11 §3). Process:
+
+1. **Finding.** Detection signal triggers investigation; investigation produces a factual finding with documented evidence.
+2. **Gain quantification.** The enforcement body quantifies the functional gain per §4.1. Quantification methodology is documented and subject to the P-017 oracle-independence standards (Annex AL) where gain estimation requires measurement of market prices or cohort comparisons.
+3. **Notice and response.** The accused actor receives notice with the factual finding, the gain quantification, and the scheduled penalty. Actor has 30 days to contest findings or accept.
+4. **Adjudication.** Contested cases proceed to the Enforcement Panel. Panel composition: 3 seats drawn from the Pillar 11 enforcement staff, 2 seats drawn from the Ombuds roster per Annex AI, 1 seat drawn from the affected-party advocacy roster. No Enforcement Panel member may have a prior relationship with the accused actor within 3 years.
+5. **Appeal.** Adjudicated penalties are appealable once, through the federated Ombuds process per Annex AI §AI-7 (appeal tier). Appeal pauses license actions but not gain-recoupment until resolved.
+6. **Publication.** Final findings are published on the Enforcement Ledger (Pillar 11) in aggregate form, with individual findings published only where necessary for statutory notice or where the actor has consented. PII is stripped per Annex AM.
+
+### 4.5 — Deterrence Audit
+
+The Enforcement Panel publishes an **Annual Deterrence Audit** (parallel to the Ombuds annual audit, Annex AI §AI-8) with:
+- Estimated total functional gain attempted across each AJ pattern (from detection plus estimation of undetected).
+- Actual penalties assessed and collected.
+- Realised penalty-to-gain ratio by pattern.
+- Realised detection probability by pattern.
+- Whether the FC-040 (5.0×) and FC-041 (0.85) assumptions are holding; if detection probability slips below the level at which the 5.0× multiplier yields negative EV, the Panel issues a formal recalibration recommendation to the Founding Coalition for consideration under the Tier 2 amendment ladder.
+
+The Annual Deterrence Audit is the feedback loop that keeps the penalty schedule calibrated. If either the multiplier or the detection assumption drifts, the deterrence identity in §4.1 tells the Coalition exactly how much headroom remains before the regime becomes EV-positive for violators.
+
+---
+
 ## Governance of This Annex
 
 This annex is a **P-004 protected specification**. The worked examples above cannot be removed, narrowed, or recharacterised through ordinary operational updates. Changes to these examples require the same process as changes to core protected terms: semantic effect test, upward classification default, and public definition registry update.
 
-New worked examples may be added through the standard P-004 amendment process as new above-ledger bypass patterns are identified in operation. The annex should be reviewed annually and updated with patterns identified through enforcement activity.
+The numerical values of FC-040 (5.0× multiplier) and FC-041 (0.85 detection probability assumption) are **Tier 2 commitments in `/founding/commitments.md`**. Changes require the Tier 2 amendment ladder with public redlines. FC-010 leakage thresholds (3% / 7%) are likewise Tier 2.
+
+New worked examples may be added through the standard P-004 amendment process as new above-ledger bypass patterns are identified in operation. The annex should be reviewed annually and updated with patterns identified through enforcement activity. Penalty schedule matrix updates for new patterns must maintain deterrence identity (§4.1) and are subject to Tier 2 amendment authority.
 
 **Detection infrastructure requirement:** Pillar 11 monitoring must extend to the social-layer detection signals identified in each worked example above. These signals are not ledger-based; they require vendor-level data collection, population-level outcome analysis, and complaint-pattern monitoring. The specific detection thresholds are maintained in the Restricted Register Annex per P-021 (Annex AO).
 
 ---
 
-*This document is Annex AJ of the master protocol. Operative as a PROPOSED patch until P-015 reaches ACTIVE status through the Formal Acceptance Protocol.*
+*This document is Annex AJ of the master protocol. Operative as an ACTIVE specification as of Proposal 7 close-out. Penalty schedule (§4) and Founding Commitments FC-010, FC-040, FC-041 are binding on the Enforcement Panel per Pillar 11 §3.*
