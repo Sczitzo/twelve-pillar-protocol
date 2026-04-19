@@ -1,7 +1,8 @@
 # Annex AL — Methodology-Class Definitions for Oracle Independence
 
 **Pre-launch blocking gate — required before P-017 is operative · Governed as P-004 protected specification**
-**Status: PROPOSED (referenced by P-017, T-020, T-021)**
+**Status: ACTIVE — founding commitments resolved (FC-030, FC-031, FC-032, FC-033, FC-090, FC-091)**
+**Numerical values derive from `/founding/commitments.md`. Changes to commitments require Tier 1 (H-3) amendment per Proposal 1.**
 
 ---
 
@@ -54,12 +55,14 @@ Two measurement nodes belong to the **same methodology class** if they share any
 Two methodology classes are **fundamentally different** for the purposes of P-017 if and only if:
 
 1. They differ on **all three** characteristics in Section 1.
-2. Neither class's standards provenance has a funding or governance relationship with the other's standards provenance within the prior **[FOUNDING COMMITMENT — e.g., 5 years]**.
+2. Neither class's standards provenance has a funding or governance relationship with the other's standards provenance within the prior **5 years** (lookback window; lengthens to 10 years for standards bodies with material operating ties).
 3. The epistemological foundations predict **materially different error structures** — meaning the systematic errors each approach is most likely to make under manipulation or institutional pressure are not correlated.
 
 Criterion 3 is operationalized through the **error independence test**: given a known manipulation of the measured phenomenon (e.g., artificial suppression of reported food scarcity), would both methods be expected to fail in the same direction? If yes, they are not fundamentally different regardless of formal classification. If no — one would overstate, one would understate, or one would detect when the other does not — they satisfy criterion 3.
 
 The error independence test is applied during RCS accreditation review and documented in the accreditation record. It is a prospective assessment, not a historical one.
+
+**Quantitative corroboration:** wherever the oracle nodes have produced at least 18 months of overlapping time-series data for the measured category, the prospective error independence test is supplemented by a historical **pairwise error correlation** check. The Pearson correlation coefficient between any two nodes' error series (measured against the ensemble median or an independent ground-truth sample) must not exceed **FC-032 = 0.30**. Pairs above this threshold are classified as structurally dependent regardless of formal classification and must be resolved by reducing the count in one class or introducing additional independent nodes before SQ activation is (re-)authorized.
 
 ---
 
@@ -122,11 +125,24 @@ The error independence test is applied during RCS accreditation review and docum
 
 ---
 
-### Section 3.4 — The Three-Class Minimum
+### Section 3.4 — Cohort Composition Requirements (FC-030, FC-031, FC-033)
 
-P-017 requires at least one measurement node using a fundamentally different methodology class per high-volatility essential category. The protocol's minimum standard is **two classes represented** (the existing node, plus at least one different class). However, the three classes above demonstrate a higher standard — three-class coverage — where each class's errors are uncorrelated with the others.
+Per the founding commitments, every oracle cohort for a high-volatility essential category that gates SQ activation must satisfy, jointly, the following structural requirements:
 
-The founding coalition should commit to whether the minimum for scale-up is **[FOUNDING COMMITMENT — e.g., 2 classes or 3 classes]** per high-volatility essential category. Two-class coverage detects manipulation that affects both classes simultaneously (e.g., a standards body controlling both Class 1 and Class 2 measurement standards). Three-class coverage makes simultaneous manipulation across all three epistemological foundations extremely difficult. Three-class coverage is recommended for any essential category that directly gates SQ activation.
+| Requirement | Commitment | Value |
+| :--- | :--- | :--- |
+| Minimum oracle nodes per cohort | **FC-030** `ORACLE_N_MIN` | **5** |
+| Minimum distinct methodology classes per cohort | **FC-031** `METHODOLOGY_CLASS_MIN` | **3** |
+| Maximum pairwise error correlation within cohort | **FC-032** `ORACLE_PAIRWISE_CORRELATION_MAX` | **0.30** (Pearson) |
+| Minimum adversarial (red-team) seats per cohort | **FC-033** `ORACLE_ADVERSARIAL_SEATS_MIN` | **1** |
+
+**Why N = 5.** The Byzantine Fault Tolerance theorem requires n ≥ 3f + 1 to tolerate f simultaneously faulty nodes. At f = 1, the BFT floor is n = 4. Setting N_MIN = 5 provides one node of margin above BFT so the cohort does not drop below tolerance on a single-node loss. This replaces the prior Specifications §7 floor of N ≥ 3, which tolerates zero faulty nodes and is insufficient for SQ-gating measurements.
+
+**Why three classes.** Two-class coverage detects manipulation that affects both classes simultaneously (e.g., a standards body controlling both Class 1 and Class 2 measurement standards). Three-class coverage makes simultaneous manipulation across all three epistemological foundations extremely difficult. This was previously a "recommended" higher standard; it is now the floor for any essential category that directly gates SQ activation.
+
+**Adversarial seats (FC-033).** At least one node in every cohort must be a designated adversarial (red-team) seat whose explicit mandate is to find reasons the cohort's consensus reading might be wrong. The adversarial seat uses one of the three canonical classes (or a newly-added class after Section 5 audit), but is selected and compensated under a separate procurement track from the consensus nodes: shorter terms, explicit "dissent credit" recognition in the Civic Record (CR) for documented manipulation findings, and no funding relationship with the RCS accreditation body itself. The adversarial seat does not reduce the N_MIN count — it is one of the five, with a distinct role.
+
+**Cohort composition example (minimum-compliant):** 5 nodes total = 2 Class 1 (Institutional Statistical) + 2 Class 2 (CBPR) + 1 Class 3 (Independent Physical Sampling), with the Class 3 node designated adversarial seat. Pairwise error correlation verified ≤ 0.30 across all pairs. This is the minimum, not the target — cohorts are encouraged to exceed the floors.
 
 ---
 
@@ -134,7 +150,7 @@ The founding coalition should commit to whether the minimum for scale-up is **[F
 
 ### 4.1 — Standards-Body Concentration Rule
 
-If **[FOUNDING COMMITMENT — e.g., 3 or more]** oracle nodes for a given essential category rely on the same standards body for their validity criteria, an **independent methodological review** is required before that category can be used for SQ activation.
+If **3 or more** oracle nodes for a given essential category rely on the same standards body for their validity criteria, an **independent methodological review** is required before that category can be used for SQ activation.
 
 **Triggering the review:**
 - The RCS accreditation system tracks standards-body affiliations for all accredited nodes per category
@@ -156,7 +172,7 @@ For oracle nodes using AI or ML components, concentration is assessed not only a
 - Shared training dataset (different models, same historical data source) → triggers concentration review
 - Shared commercial AI API (different fine-tunes, same underlying API) → triggers concentration review
 
-The concentration count for AI infrastructure is **[FOUNDING COMMITMENT — e.g., 2 or more]** nodes sharing any single AI upstream dependency. (Lower threshold than standards-body concentration because AI supply chain capture is harder to detect and more catastrophic in impact.)
+The concentration count for AI infrastructure is **2 or more** nodes sharing any single AI upstream dependency. (Lower threshold than standards-body concentration because AI supply chain capture is harder to detect and more catastrophic in impact.)
 
 ---
 
@@ -172,10 +188,11 @@ An independent review panel convenes annually to assess:
 3. Whether any disqualifying variants listed in Section 3 have been miscategorized (in either direction)
 4. Whether any standards-body relationships have changed in ways that affect the independence assessments in Section 3
 
-**Panel composition:**
-- **[FOUNDING COMMITMENT — e.g., 5 members: 1 from each of the three canonical class domains (statistician/quantitative methods expert; community-based research practitioner; physical measurement/metrology expert); 1 independent epistemologist or philosopher of science; 1 adversarial methodologist whose role is to find ways to exploit the current definitions]**
-- Terms: **[FOUNDING COMMITMENT — e.g., 3 years, staggered; no more than 2 consecutive terms]**
-- Nomination process: **[FOUNDING COMMITMENT — e.g., open nomination with confirmation by CRP; no prior affiliation with RCS accreditation body within 3 years]**
+**Panel composition:** **5 members** — one from each of the three canonical class domains (statistician / quantitative methods expert; community-based research practitioner; physical measurement / metrology expert); one independent epistemologist or philosopher of science; one adversarial methodologist whose explicit role is to find ways to exploit the current definitions. The adversarial seat on this panel is distinct from, but parallel to, the FC-033 adversarial seats on oracle cohorts.
+
+**Terms:** **3 years**, staggered across 5 seats so that no more than 2 seats turn over in any single year. **No more than 2 consecutive terms** per individual.
+
+**Nomination process:** Open public nomination with confirmation by the Commons Review Process (CRP). **No prior affiliation with the RCS accreditation body within the prior 3 years** for any seat, and no current funding relationship between a nominee's home institution and any of the concentrated standards bodies the panel will review.
 
 ### 5.2 — What the Audit May and May Not Change
 
@@ -216,7 +233,7 @@ The divergence report is the most operationally significant output. It surfaces 
 
 To complete this annex before deployment, the founding coalition must:
 
-1. **Fill in all [FOUNDING COMMITMENT] fields** in Sections 2, 3, 4, and 5 — particularly the scale-up minimum (2 or 3 classes per SQ-gating category), the AI supply chain concentration threshold, and the annual review panel composition.
+1. ~~**Fill in all [FOUNDING COMMITMENT] fields**~~ — RESOLVED. All numerical commitments are now bound to `/founding/commitments.md` (FC-030 through FC-033, plus AI concentration threshold, panel composition, and lookback windows). Changes to these values require Tier 1 (H-3) amendment per Proposal 1.
 
 2. **Conduct initial methodology-class diversity assessment** before the first oracle set is accredited. The three canonical classes in Section 3 are worked examples, not pre-approved classes — actual oracle nodes must be assessed against the Section 1 and Section 2 standards and documented in accreditation records.
 

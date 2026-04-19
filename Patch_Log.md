@@ -34,13 +34,16 @@
 | P-014 | T-017 | **PROPOSED** | Critical | Bootstrap activation: one-time founding instrument for P-013 activation only. |
 | P-015 | T-018 / T-019 | **PROPOSED** | High | PCRP attack surface: false-trigger escalation path, exhaustion alert, manufactured flag assessment. |
 | P-016 | T-002 | **PROPOSED** | Critical | Identity asymmetric error doctrine: quantified fraud/exclusion rate targets, Tier 2 founding commitment. |
-| P-017 | T-020 / T-021 | **PROPOSED** | Critical | Oracle epistemological and algorithmic independence: methodology-class diversity, AI supply chain transparency, physical ground-truth requirement. |
+| P-017 | T-020 / T-021 | **ACTIVE** | Critical | Oracle epistemological and algorithmic independence: methodology-class diversity, AI supply chain transparency, physical ground-truth requirement. Numerical floors (N≥5, ≥3 classes, ≤0.30 pairwise correlation, ≥1 adversarial seat) bound in `/founding/commitments.md` FC-030/FC-031/FC-032/FC-033. |
 | P-018 | T-022 | **PROPOSED** | Critical | Electoral cycle resilience: entrenchment ladder, LC floor minimum persistence, administrative hollowing triggers, transition continuity protocol. |
 | P-019 | T-023 | **PROPOSED** | Med-High | Pilot external validity gate: stress-condition pilot requirement, red-team challenge window, crisis simulation mandate. |
 | P-020 | T-017 (residual) | **PROPOSED** | Critical | Founding window extension: 60-day pre-activation disclosure, oppose-coalition adversarial member nomination. |
 | P-021 | — | **PROPOSED** | High | Register disclosure protocol: bifurcation into public and restricted versions; operational security for detection thresholds. |
-| P-022 | T-024 | **PROPOSED** | Critical | SQ oracle-failure fallback: conservative hold, 48h REB first-responder window, 72h governance handoff, restoration reconciliation. |
+| P-022 | T-024 | **ACTIVE** | Critical | SQ oracle-failure fallback: conservative hold, 48h REB first-responder window, 72h governance handoff, FC-100 14-day restoration verification, reconciliation review. Annex AQ ACTIVE. |
 | P-023 | T-025 | **PROPOSED** | High | Demurrage sector-capture: contract-commitment architecture, zero exemptions, demurrage-as-discipline, milestone escrow. |
+| P-024 | T-009 / TR-07 / T-018 (residual) | **ACTIVE** | Critical | Attestation-at-risk stake mechanism: FC-080 stake ratio, FC-081 audit window, FC-082 graph density threshold, slashed-stake redistribution, graph-density safe harbor for legitimate close-knit communities. Annex AS. |
+| P-025 | T-008 (residual) / meta-capture | **ACTIVE** | Critical | Federated Ombuds constitution: 5 sub-Ombuds (FC-090), 4-of-5 Plenum supermajority (FC-091), 730-day staggered terms (FC-092), Oversight Assembly (7 members, 5-of-7), structural-dispersal criteria, Concentration Response. Annex AI rewritten. Supersedes single-commissioner draft. |
+| P-026 | T-026 / T-027 | **ACTIVE** | Critical | P0 Subsidiarity, Consent & Exit layer: smallest-scale default with three-prong competence test; affirmative consent events at 2/3 supermajority (FC-120); 730-day graceful exit unwind (FC-121) with LC continuity preserved; five-scale hierarchy (FC-122: household/neighborhood ≤500/locality ≤5,000/region ≤500,000/federation); re-entry symmetric, no penalty. `/pillars/P0_subsidiarity/` directory. |
 
 ---
 
@@ -288,9 +291,10 @@
 
 | Patch ID | Related Threat | Status | Priority | Change Type |
 | :--- | :--- | :--- | :--- | :--- |
-| P-017 | T-020 / T-021 | **PROPOSED** | Critical | measurement architecture + accreditation + supply-chain transparency |
+| P-017 | T-020 / T-021 | **ACTIVE** | Critical | measurement architecture + accreditation + supply-chain transparency |
 
 ### P-017 — Oracle Epistemological and Algorithmic Independence
+**Status: ACTIVE (promoted 2026-04-18 via Proposal 3 close-out).** Numerical floors bound in `/founding/commitments.md` FC-030 (N≥5), FC-031 (≥3 methodology classes), FC-032 (pairwise correlation ≤0.30), FC-033 (≥1 adversarial seat), FC-100 (14-day quorum-loss restoration window). Annex AL promoted to ACTIVE with all [FOUNDING COMMITMENT] placeholders resolved.
 
 - **Change type:** measurement architecture + accreditation standards + supply-chain transparency.
 - **Addresses:** T-020 (Epistemological Oracle Capture), T-021 (Algorithmic Oracle Capture).
@@ -402,9 +406,10 @@
 
 | Patch ID | Related Threat | Status | Priority | Change Type |
 | :--- | :--- | :--- | :--- | :--- |
-| P-022 | T-024 | **PROPOSED** | Critical | protocol + authority definition + reconciliation |
+| P-022 | T-024 | **ACTIVE** | Critical | protocol + authority definition + FC-100 restoration verification + reconciliation |
 
 ### P-022 — SQ Oracle-Failure Fallback Protocol
+**Status: ACTIVE (promoted 2026-04-18 via Proposal 6 close-out).** FC-100 `ORACLE_QUORUM_LOSS_RESTORATION_WINDOW` = 14 days bound in `/founding/commitments.md`. Annex AQ promoted to ACTIVE with full protocol detail, humane floor unconditionality confirmed, Reconciliation Review specified.
 
 - **Change type:** protocol + authority definition + oracle reconciliation procedure.
 - **Addresses:** T-024 (SQ Oracle-Failure During Active Rationing) — the operational void where SQ is active and the oracle system fails, loses quorum, or enters an unresolvable dispute with no defined decision path.
@@ -511,10 +516,33 @@ The following terms are added to the P-004 protected vocabulary: *milestone*, *p
 | T-017 | P-014 | **PROPOSED** | Annex AH |
 | T-018 / T-019 | P-015 | **PROPOSED** | Annex AP; pre-launch gate: Annex AI |
 | T-002 (residual) | P-016 | **PROPOSED** | Annex AK |
-| T-020 / T-021 | P-017 | **PROPOSED** | Annex AL |
+| T-020 / T-021 | P-017 | **ACTIVE** | Annex AL ACTIVE · FC-030/031/032/033/100 |
 | T-022 | P-018 | **PROPOSED** | Annex AM |
 | T-023 | P-019 | **PROPOSED** | Annex AN |
 | T-017 (residual) | P-020 | **PROPOSED** | Annex AH2 |
 | — (opsec) | P-021 | **PROPOSED** | Annex AO |
-| T-024 | P-022 | **PROPOSED** | Annex AQ |
+| T-024 | P-022 | **ACTIVE** | Annex AQ ACTIVE · FC-100 |
 | T-025 | P-023 | **PROPOSED** | Annex AR |
+| T-009 / TR-07 / T-018 residual | P-024 | **ACTIVE** | Annex AS · FC-080/081/082 |
+| T-008 residual / meta-capture | P-025 | **ACTIVE** | Annex AI ACTIVE (rewritten) · FC-090/091/092 |
+| T-026 / T-027 | P-026 | **ACTIVE** | `/pillars/P0_subsidiarity/` ACTIVE · FC-120/121/122 |
+
+---
+
+## Session 9 — Proposal 8 Close-out Detailed Entry
+
+### P-025 — Federated Ombuds Constitution
+
+- **Introduced design:** Single-commissioner Ombuds replaced with a five-node federation. Each sub-Ombuds is structurally dispersed along at least four of five dimensions (jurisdictional, institutional-origin, funding, infrastructure, personnel-recruitment). Operational decisions are handled by a rotating Duty Sub-Ombuds; protocol-level decisions require a 4-of-5 Plenum supermajority (FC-091). Staggered 730-day terms (FC-092) with two-consecutive-term limit. Oversight Assembly of 7 members (5-of-7 threshold) certifies structural dispersal annually and activates Concentration Response on loss of dispersal.
+- **Clauses to integrate:** Full rewrite of Annex AI (previously PROPOSED single-commissioner draft) to Annex AI ACTIVE federated constitution. References from Master Protocol, Threat Register, and other Annexes read through to the federation acting per §3 (operational vs protocol-level classes).
+- **Load-bearing integrations:**
+  - **Proposal 1** — Tier 1 Amendment Integrity Report (Plenum 4-of-5 within 60 days of signature registration under `/architecture/amendment_protocol.md`).
+  - **Proposal 3** — Adversarial oracle seat certification (Annex AL §3.3).
+  - **Proposal 6** — Arbitration panel seat on Annex AQ §3 SQ oracle-failure arbitration.
+  - **Proposal 7** — Enforcement Panel appeals on Annex AJ §4 penalty determinations.
+  - **Proposal 9** — Final adjudication of Annex AS attestation false-claim findings and stake-slashing classification.
+- **Dependencies:** At least four sub-Ombuds seated before any Ombuds-dependent function is operative (§2.1 pre-launch gate). Oversight Assembly seated with ≥5 of 7 before first Plenum vote. Duty rotation schedule published for first 90 days before operational activation. Federation secretariat built before operational activation.
+- **New risks introduced:** Duty rotation scheduling is itself a power locus (mitigated by published-in-advance rotation, non-party-choice rule). Five-node federation increases coordination cost on time-sensitive operational decisions (mitigated by operational/protocol-level bifurcation in §3.1). Plenum deadlock (2 of 5 or 3 of 5) may stall matters (mitigated by conservative-default rule in §3.3 — deadlock favours protection).
+- **Residual risk:** Structural-dispersal criteria can be met formally while capture is achieved through informal coordination (mitigated by Oversight Assembly §5.1 institutional-health reporting; voting-pattern concentration is a published metric). Oversight Assembly itself can be captured at small scale (mitigated by §5.4 meta-capture controls).
+- **Compound linkages:** P-025 × P-008 (federation closes the T-008 open question — "who audits the auditors of elite formation?" — by making the auditor a federation subject to its own dispersal rule); P-025 × P-015 (Ombuds-dependent PCRP flag determinations now robust to single-node capture); P-025 × P-017 (methodology-class adversarial seat certification now clears 4-of-5 threshold rather than single-commissioner signature); P-025 × P-022 (Annex AQ arbitration panel seat rotation is Plenum-certified).
+- **Auto-close clause:** P-025 is standing. It does not auto-close. Changes to the federation structure (FC-090, FC-091, FC-092) require Tier 1 amendment (7-of-9, 180-day timelock).
