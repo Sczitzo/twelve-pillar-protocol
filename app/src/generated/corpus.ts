@@ -33,7 +33,7 @@ export interface CorpusStats {
 }
 
 export const corpusStats: CorpusStats = {
-  "buildStamp": "2026-04-21 05:30:59 UTC",
+  "buildStamp": "2026-04-20T22:37:21-07:00 (6a1a467)",
   "schema": "Founding Order + Articles I-VII",
   "articleCount": 7,
   "foundingOrderDocumentCount": 6,
