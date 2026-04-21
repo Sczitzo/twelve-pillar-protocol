@@ -203,7 +203,7 @@ function OverviewPanels() {
         <MetricCard
           label="Validator"
           value={corpusStats.validatorStatus.toUpperCase()}
-          detail={`Generated ${corpusStats.buildStamp} from the live repository corpus.`}
+          detail={`${corpusStats.buildStamp} generated from the live repository corpus.`}
         />
       </div>
 
@@ -273,9 +273,9 @@ function ValidationPanels({ docs }: { docs: CorpusDoc[] }) {
           detail={`${corpusStats.reservedCommitmentCount} commitments remain intentionally reserved behind activation gates.`}
         />
         <MetricCard
-          label="Build Stamp"
-          value={corpusStats.buildStamp.slice(11, 19)}
-          detail={`Latest generated corpus snapshot: ${corpusStats.buildStamp}.`}
+          label="Snapshot"
+          value={corpusStats.buildStamp}
+          detail="Deterministic content fingerprint for the generated corpus snapshot."
         />
       </div>
 

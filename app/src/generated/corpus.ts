@@ -33,7 +33,6 @@ export interface CorpusStats {
 }
 
 export const corpusStats: CorpusStats = {
-  "buildStamp": "2026-04-20T22:37:21-07:00 (6a1a467)",
   "schema": "Founding Order + Articles I-VII",
   "articleCount": 7,
   "foundingOrderDocumentCount": 6,
@@ -45,7 +44,8 @@ export const corpusStats: CorpusStats = {
   "reservedCommitmentCount": 44,
   "threatCount": 27,
   "patchCount": 31,
-  "validatorStatus": "pass"
+  "validatorStatus": "pass",
+  "buildStamp": "corpus-135f00131c4e"
 } as const
 
 export const corpusDocs: CorpusDoc[] = [

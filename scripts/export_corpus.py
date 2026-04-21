@@ -4,9 +4,8 @@
 from __future__ import annotations
 
 import json
+import hashlib
 import re
-import subprocess
-from datetime import datetime, UTC
 from pathlib import Path
 
 
@@ -155,30 +154,11 @@ def parse_article_count() -> int:
     return len(set(re.findall(r"^#{1,6}\s+(Article [IVX]+)\b", text, re.MULTILINE)))
 
 
-def git_build_stamp() -> str:
-    try:
-        short_sha = subprocess.check_output(
-            ["git", "rev-parse", "--short", "HEAD"],
-            cwd=ROOT,
-            text=True,
-        ).strip()
-        committed_at = subprocess.check_output(
-            ["git", "show", "-s", "--format=%cI", "HEAD"],
-            cwd=ROOT,
-            text=True,
-        ).strip()
-        return f"{committed_at} ({short_sha})"
-    except Exception:
-        return datetime.now(UTC).strftime("%Y-%m-%d %H:%M:%S UTC") + " (workspace)"
-
-
 def collect_stats(docs: list[dict[str, object]]) -> dict[str, object]:
     annexes = [doc for doc in docs if doc["section"] == "annex"]
     founding_order_docs = [doc for doc in docs if doc["section"] == "founding_order"]
     commitment_count, reserved_commitment_count = parse_commitment_stats()
-
-    return {
-        "buildStamp": git_build_stamp(),
+    stats = {
         "schema": "Founding Order + Articles I-VII",
         "articleCount": parse_article_count(),
         "foundingOrderDocumentCount": len(founding_order_docs),
@@ -192,6 +172,9 @@ def collect_stats(docs: list[dict[str, object]]) -> dict[str, object]:
         "patchCount": parse_heading_id_count(ROOT / "Patch_Log.md", "P"),
         "validatorStatus": "pass",
     }
+    fingerprint_input = json.dumps({"docs": docs, "stats": stats}, sort_keys=True).encode("utf-8")
+    stats["buildStamp"] = f"corpus-{hashlib.sha256(fingerprint_input).hexdigest()[:12]}"
+    return stats
 
 
 def write_output(docs: list[dict[str, object]], stats: dict[str, object]) -> None:
