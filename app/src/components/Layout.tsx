@@ -1,7 +1,17 @@
 import { useState, useCallback } from 'react'
 
+export type AppView =
+  | 'overview'
+  | 'constitution'
+  | 'annexes'
+  | 'registries'
+  | 'validation'
+  | 'settings'
+
 interface LayoutProps {
   children: React.ReactNode
+  activeNav: AppView
+  onNavChange: (view: AppView) => void
 }
 
 /* ─── Window Control Button ───────────────────────────────────────────────── */
@@ -76,20 +86,18 @@ function NavItem({ icon, label, active = false, onClick }: NavItemProps) {
 }
 
 /* ─── Layout ──────────────────────────────────────────────────────────────── */
-export function Layout({ children }: LayoutProps) {
-  const [activeNav, setActiveNav] = useState('dashboard')
-
+export function Layout({ children, activeNav, onNavChange }: LayoutProps) {
   const handleClose    = useCallback(() => { /* Tauri window close via IPC */ }, [])
   const handleMinimise = useCallback(() => { /* Tauri window minimise */ }, [])
   const handleMaximise = useCallback(() => { /* Tauri window maximise/restore */ }, [])
 
-  const navItems = [
-    { id: 'dashboard', icon: '◈', label: 'DASHBOARD'    },
-    { id: 'pillars',   icon: '⬡', label: 'PILLARS'      },
-    { id: 'threats',   icon: '⚠', label: 'THREAT REGISTER' },
-    { id: 'audit',     icon: '◎', label: 'AUDIT LOG'    },
-    { id: 'protocol',  icon: '⬟', label: 'PROTOCOL'     },
-    { id: 'settings',  icon: '⚙', label: 'SETTINGS'     },
+  const navItems: Array<{ id: AppView; icon: string; label: string }> = [
+    { id: 'overview',     icon: '◈', label: 'OVERVIEW' },
+    { id: 'constitution', icon: '⬟', label: 'CONSTITUTION' },
+    { id: 'annexes',      icon: '⬡', label: 'ANNEXES' },
+    { id: 'registries',   icon: '◎', label: 'REGISTRIES' },
+    { id: 'validation',   icon: '⚠', label: 'VALIDATION' },
+    { id: 'settings',     icon: '⚙', label: 'SETTINGS' },
   ]
 
   return (
@@ -215,14 +223,14 @@ export function Layout({ children }: LayoutProps) {
         {/* App wordmark — centre-ish, purely decorative */}
         <div className="flex-1 flex items-center justify-center pointer-events-none">
           <span className="text-[10px] font-mono tracking-[0.3em] text-white/25 uppercase">
-            ◈ Twelve Pillar Protocol
+            ◈ Humane Constitution
           </span>
         </div>
 
         {/* Status indicator — far right */}
         <div className="flex items-center gap-2" data-no-drag>
           <span className="w-1.5 h-1.5 rounded-full bg-neon-lime shadow-[0_0_6px_rgba(163,230,53,0.8)] animate-glow-pulse" />
-          <span className="text-[9px] font-mono text-white/25 tracking-wider">LIVE</span>
+          <span className="text-[9px] font-mono text-white/25 tracking-wider">SYNCED</span>
         </div>
       </header>
 
@@ -246,7 +254,7 @@ export function Layout({ children }: LayoutProps) {
                 icon={item.icon}
                 label={item.label}
                 active={activeNav === item.id}
-                onClick={() => setActiveNav(item.id)}
+                onClick={() => onNavChange(item.id)}
               />
             ))}
           </nav>
@@ -259,13 +267,13 @@ export function Layout({ children }: LayoutProps) {
             icon={navItems[5].icon}
             label={navItems[5].label}
             active={activeNav === 'settings'}
-            onClick={() => setActiveNav('settings')}
+            onClick={() => onNavChange('settings')}
           />
 
           {/* Sidebar footer — version badge */}
           <div className="mt-3 px-3">
             <span className="text-[9px] font-mono text-white/20 tracking-widest">
-              v0.1.0 — BUILD 001
+              v0.1.0 — CORPUS SHELL
             </span>
           </div>
         </aside>

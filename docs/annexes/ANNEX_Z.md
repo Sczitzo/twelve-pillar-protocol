@@ -6,7 +6,7 @@ This annex converts the prior single-ledger CC model into a two-track civic laye
 ### Z2. Deliberation Weight (DW)
 DW is the fast-decay civic instrument used only for quarterly agenda-setting, bounded budget prioritization, and other low-sovereignty deliberative choices expressly authorized by this Protocol.
 - **DW is non-transferable, non-convertible**, and may never purchase goods, privileges, offices, immunity, or survival access.
-- **DW is minted** from recent verified contribution activity under Pillar 8, subject to category balancing, caps, and diminishing returns.
+- **DW is minted** from recent verified contribution activity under Article VI, subject to category balancing, caps, and diminishing returns.
 - **DW has a short half-life** and no rollover, so agenda influence remains kinetic rather than cumulative.
 - **DW outputs are advisory only** for any matter that touches LC coverage, housing baseline rules, residency dignity floor, or other survival-adjacent outcomes; such matters require independent legitimacy confirmation through one-person-one-vote safeguards.
 

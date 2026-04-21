@@ -33,7 +33,7 @@ When the oracle system loses quorum (fewer than the N=5 BFT-tolerant minimum per
 
 Conservative Hold is the **designed default**, not a failure state — it is explicitly the correct system response to oracle silence during SQ. Detection-side alarms fire; operational-side behavior holds.
 
-The Pillar 11 public dashboard displays a prominent **SQ-Active-With-Oracle-Failure** indicator in real time, so oracle failure during active SQ is publicly visible — the existence of Conservative Hold cannot be hidden by the bodies operating it.
+The Article VII public dashboard displays a prominent **SQ-Active-With-Oracle-Failure** indicator in real time, so oracle failure during active SQ is publicly visible — the existence of Conservative Hold cannot be hidden by the bodies operating it.
 
 ---
 
@@ -58,7 +58,7 @@ The REB may **not**:
 
 REB decisions under this window rely on indicators collected outside the failed oracle system:
 - **Distribution fill rates** — from LC-redemption records, aggregated at regional scale.
-- **Vendor inventory reports** — from SQ-category retailers and distributors, reported under Pillar 11 transparency rules.
+- **Vendor inventory reports** — from SQ-category retailers and distributors, reported under Article VII transparency rules.
 - **Logistics indicators** — shipping manifests, wholesale flow rates, storage-facility inventory.
 - **Community reports** — aggregated from the CBPR oracle class (Annex AL Class 2), if those specific nodes remain available when the main oracle cohort is in failure.
 
@@ -67,7 +67,7 @@ These indicators are **not oracle outputs**. They are an REB operational-authori
 ### 2.3 — REB Decision Process and Publication
 
 REB decisions under this window:
-1. Must be made by a formally constituted REB quorum (per Master Protocol Pillar 9 REB quorum rules).
+1. Must be made by a formally constituted REB quorum under the published REB governance rules.
 2. Must be published **immediately** with full evidence base, named decision-makers, and the non-oracle indicator dataset used.
 3. Must include a statement of how the decision would differ if the failed oracle were operating (counterfactual reasoning), so the subsequent reconciliation review has a documented prediction.
 4. Carry personal civic-record attribution per the Annex AS attestation-stake mechanism scaled to the decision's scope — REB members attest to the physical-indicator basis of their decision and stake CR accordingly.
@@ -161,14 +161,14 @@ Ultimately, defense against sustained coordinated T-022 compound attacks is stru
 **This annex is governed as P-004 protected specification.** Core design elements — Conservative Hold default, REB authority scope and limits, CSM unconditionality, FC-100 verification window — cannot be modified without Tier 2 amendment. The FC-100 value itself is Tier 1 (H-3) under `/founding/commitments.md`.
 
 **Dependencies:**
-- REB formally constituted with defined authority for non-oracle physical indicator assessments (Master Protocol Pillar 9).
+- REB formally constituted with defined authority for non-oracle physical indicator assessments under the published governance rules.
 - Non-oracle physical indicator methodology published and reviewed annually (§2.2).
 - P-012 AE2.3 emergency deadlock protocol operative (prerequisite for §3 handoff).
 - Annex Y CSM ACTIVE (prerequisite for humane floor unconditionality).
 - Annex AL ACTIVE (prerequisite for restoration verification — FC-031, FC-032, FC-033 all apply at restoration).
 - Federated Ombuds (Annex AI, Proposal 8) — required for §3.1 arbitration-panel composition.
 
-**Annual Audit.** Pillar 11 publishes an Annual Oracle Resilience Audit that includes:
+**Annual Audit.** Article VII publishes an Annual Oracle Resilience Audit that includes:
 - All oracle-failure incidents during the year, their duration, and their Conservative Hold / REB / panel progression.
 - Reconciliation-review findings per incident.
 - Any deliberate-failure findings and enforcement referrals.
@@ -177,4 +177,4 @@ Ultimately, defense against sustained coordinated T-022 compound attacks is stru
 
 ---
 
-*This document is Annex AQ of the master protocol. Operative as an ACTIVE specification as of Proposal 6 close-out (2026-04-18). Closes T-024.*
+*This document is Annex AQ of the Humane Constitution. Operative as an ACTIVE specification as of Proposal 6 close-out (2026-04-18). Closes T-024.*

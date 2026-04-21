@@ -150,7 +150,7 @@ The bifurcation creates a structural accountability risk: the public cannot dire
 2. **Visible omission markers** — "[Restricted Annex — see AO]" makes every omission legible.
 3. **Access logging and review** — anomalous access is reported.
 4. **Constitutional Review Panel standing access** — the oversight body can read the full restricted version.
-5. **Ombuds Office access** — the accountability office has access to entries relevant to its functions.
+5. **Federated Ombuds access** — the accountability office has access to entries relevant to its functions.
 
 ### The bifurcation as a narrative risk
 
@@ -158,7 +158,7 @@ Publishing the fact of bifurcation (that a restricted version exists) may genera
 
 **Response:** The bifurcation is a responsible disclosure practice, not a secrecy practice. The public version discloses: what threats exist, what mitigations are in place, what residual risks remain, and what is omitted and why. The restricted version adds calibration data that provides no accountability value to the public but provides operational value to attackers. This distinction is the same one applied in every security context that publishes vulnerability disclosures while withholding specific exploit code.
 
-The CFRL (Citizen-Facing Rights Layer) and Pillar 11 public dashboard must include a plain-language explanation of the bifurcation and why it serves the interests of the people the system is designed to protect.
+The CFRL (Citizen-Facing Rights Layer) and Article VII public dashboard must include a plain-language explanation of the bifurcation and why it serves the interests of the people the system is designed to protect.
 
 ---
 
@@ -170,4 +170,4 @@ If other documents are identified as requiring bifurcation under this logic, a n
 
 ---
 
-*This document is Annex AO of the master protocol. It governs only as a PROPOSED patch until P-021 reaches ACTIVE status through the Formal Acceptance Protocol.*
+*This document is Annex AO of the Humane Constitution. It governs only as a PROPOSED patch until P-021 reaches ACTIVE status through the Formal Acceptance Protocol.*

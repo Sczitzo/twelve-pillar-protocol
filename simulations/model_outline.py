@@ -7,9 +7,10 @@ Purpose:   Model the flow of Life Credits (LC) vs. Enterprise Credits (EC)
            across a population of agents under varying demurrage rates,
            oracle accuracy levels, and adversarial actor configurations.
 
-This file is a structural scaffold. Parameter values marked [FOUNDING COMMITMENT]
-must be calibrated from pilot data before this simulation produces policy-relevant
-output. The architecture is specified; the numbers are not.
+This file is a structural scaffold. Bound constitutional values resolve through
+`/founding/commitments.md`; reserved FC identifiers must still be calibrated from
+pilot data before this simulation produces policy-relevant output. The
+architecture is specified; some activation parameters are not yet bound.
 
 Usage:
     python model_outline.py
@@ -37,7 +38,8 @@ from mesa.datacollection import DataCollector
 # CONSTANTS AND CONFIGURATION
 # =============================================================================
 
-# [FOUNDING COMMITMENT] — all values below require pilot calibration
+# NOTE: values below are simulation defaults. Bound constitutional values resolve
+# through `/founding/commitments.md`; reserved FC identifiers remain provisional.
 CONFIG = {
     # EC demurrage parameters (SPECIFICATIONS.md Section 2.3)
     "demurrage_rate_monthly": 0.01,        # 1.0% monthly; range 0.005–0.02
@@ -50,16 +52,16 @@ CONFIG = {
     "lc_enhanced_multiplier": 1.5,        # enhanced allocation above CSM [FC]
 
     # DW fast-decay (SPECIFICATIONS.md Section 4.2)
-    "dw_decay_rate_daily": 0.15,          # fast decay; [FOUNDING COMMITMENT]
+    "dw_decay_rate_daily": 0.15,          # fast decay; mirrors FC-062
 
     # CR slow-decay (SPECIFICATIONS.md Section 4.3)
-    "cr_decay_rate_normal": 0.02,         # normal decay rate [FC]
+    "cr_decay_rate_normal": 0.02,         # provisional until FC-063 is bound
     "cr_decay_rate_grace": 0.004,         # 20% of normal during grace (P-009)
     "cr_sector_ceiling": 0.20,            # max 20% per sector — P-025: reduced from 25%
                                           # to prevent 3-sector supermajority in 5-sector system
 
     # Oracle parameters (SPECIFICATIONS.md Section 7 / P-024)
-    "oracle_accuracy": 0.95,              # baseline accuracy [FC]
+    "oracle_accuracy": 0.95,              # simulation-only oracle baseline
     "oracle_failure_rate": 0.02,          # probability of oracle failure per cycle
     "min_oracle_nodes": 5,               # P-024: raised from 3 → 5 (BFT requires n≥3f+1;
                                           # at f=1, N=3 fails; N=5 provides honest-majority
@@ -286,7 +288,7 @@ class CitizenAgent(Agent):
         self.sector = sector
 
         # Instrument balances
-        self.ec_balance = np.random.exponential(10.0)  # initial EC [FC]
+        self.ec_balance = np.random.exponential(10.0)  # initial EC simulation seed
         self.lc_pending = CONFIG["csm_daily_units"]    # daily allocation
         self.lc_redeemed_today = False
         self.dw_balance = 0.0
@@ -368,7 +370,7 @@ class CitizenAgent(Agent):
         Simplified market participation. Productive agents keep EC in ACTIVE state.
         Idle agents accumulate demurrage pressure.
         """
-        if np.random.random() < 0.7:  # 70% daily participation rate [FC]
+        if np.random.random() < 0.7:  # 70% daily participation rate (simulation seed)
             self.ec_state = ECState.ACTIVE
             self.days_idle = 0
             self.last_productive_action = self.model.schedule.steps
@@ -380,7 +382,7 @@ class CitizenAgent(Agent):
         CR updates based on service events. Not a worth score (INV-003).
         Sector ceiling enforced at model level (P-008).
         """
-        if np.random.random() < 0.1:  # 10% daily service event probability [FC]
+        if np.random.random() < 0.1:  # 10% daily service event probability (simulation seed)
             self.cr_balance += 1.0
             self.cr_state = CRState.ACTIVE
 
@@ -425,8 +427,8 @@ class AdversarialAgent(CitizenAgent):
         Returns True if bypass succeeds (detection failed).
         """
         self.bypass_attempts += 1
-        # Detection probability scales with enforcement intensity [FC]
-        detection_prob = 0.85  # P-001 enforcement effectiveness [FC]
+        # Detection probability scales with enforcement intensity.
+        detection_prob = 0.85  # P-001 enforcement effectiveness assumption
         if np.random.random() > detection_prob:
             # Bypass detected — action blocked, flagged
             self.model.enforcement_log.append({
@@ -506,7 +508,7 @@ class ProtocolModel(Model):
         self.oracle_failure_log = []
 
         # True physical capacity (ground truth, unknown to agents)
-        self.true_physical_capacity = 1000.0  # arbitrary units [FC]
+        self.true_physical_capacity = 1000.0  # arbitrary simulation units
 
         # Spawn citizen agents
         for i in range(config["n_agents"]):
@@ -697,7 +699,7 @@ def run_adversarial_stress(n_steps: int = 365) -> dict:
 if __name__ == "__main__":
     print("The Humane Constitution — Agent-Based Simulation")
     print("=" * 60)
-    print("NOTE: All [FOUNDING COMMITMENT] parameters require")
+    print("NOTE: Reserved FC parameters still require")
     print("pilot data calibration before policy-relevant output.")
     print("=" * 60)
 

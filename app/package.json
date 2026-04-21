@@ -1,9 +1,12 @@
 {
-  "name": "twelve-pillar-protocol",
+  "name": "humane-constitution",
   "private": true,
   "version": "0.1.0",
   "type": "module",
   "scripts": {
+    "generate:corpus": "python3 ../scripts/export_corpus.py",
+    "predev": "npm run generate:corpus",
+    "prebuild": "npm run generate:corpus",
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview",

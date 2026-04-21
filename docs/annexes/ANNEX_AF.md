@@ -41,7 +41,7 @@ During a Protected Pause Window, CR decays at 20% of the normal quarterly rate r
 **Calibration rationale:** a 4-quarter pause (one typical hardship cycle) produces approximately 8% CR reduction — negligible for genuine users who will rebuild through resumed contribution. A 12-quarter rotation exploit produces approximately 22% reduction, draining high-impact service eligibility thresholds over time. The slow-decay must be clearly communicated: it is not punitive, and CR can be fully rebuilt through resumed verified contribution after the pause ends.
 
 ### AF5. Service Pool Pause-Saturation Monitoring
-Published quarterly in the Pillar 11 concentration dashboard (extending AC3.7): the percentage of each CR-governed service pool simultaneously in Protected Pause. When any pool exceeds 20% simultaneously paused, a pool-health alert fires. The alert triggers: (a) review of whether paused members' service eligibility should be temporarily suspended pending return to active status; (b) assessment of whether the pool requires emergency replenishment from the next eligible cohort. Pool saturation monitoring triggers review only — it never automatically bars any individual's Protected Pause activation.
+Published quarterly in the Article VII concentration dashboard (extending AC3.7): the percentage of each CR-governed service pool simultaneously in Protected Pause. When any pool exceeds 20% simultaneously paused, a pool-health alert fires. The alert triggers: (a) review of whether paused members' service eligibility should be temporarily suspended pending return to active status; (b) assessment of whether the pool requires emergency replenishment from the next eligible cohort. Pool saturation monitoring triggers review only — it never automatically bars any individual's Protected Pause activation.
 
 ### AF6. Capability Development Pathway During Pause [Ambitious]
 During a Protected Pause Window, a person may earn up to 15% of their normal quarterly CR through verified pause-appropriate stewardship. Qualifying activities: peer support for other hardship-affected persons; verified self-directed learning with completion evidence; community care activities that do not require the person's primary capacity. 'Pause-appropriate stewardship' is a protected term under P-004. The 15% cap is absolute; the pathway cannot be used to accumulate CR beyond the person's pre-pause baseline.
@@ -72,5 +72,3 @@ P-008 Annex AC3.5 (Cooling-Off Cohort Rule) is amended as follows. For the purpo
 *Session 4 complete. T-009 addressed. All named threats now have mitigation designs. Priority open items: White Paper sync (mandatory pre-launch), Technical Reference diagram update, formal acceptance of Annexes AC–AF.*
 
 ---
-
-# The Humane Constitution — Annex AG

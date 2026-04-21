@@ -7,7 +7,7 @@
 
 ## Purpose
 
-The identity system (Pillar 2, P-003) faces a structural calibration dilemma that cannot be resolved by design alone. Any identity assurance threshold stringent enough to prevent fraud at scale will also exclude some genuinely vulnerable people. Any threshold permissive enough to include all genuinely vulnerable people will allow some fraud. There is no threshold that achieves both simultaneously.
+The identity system (Article II, P-003) faces a structural calibration dilemma that cannot be resolved by design alone. Any identity assurance threshold stringent enough to prevent fraud at scale will also exclude some genuinely vulnerable people. Any threshold permissive enough to include all genuinely vulnerable people will allow some fraud. There is no threshold that achieves both simultaneously.
 
 The current P-003 open problem states: "calibrate fraud tolerance without making the system unusable for displaced, undocumented, or digitally fragile people." This is an accurate description of an unsolved problem. Without explicit, pre-committed targets, that calibration is permanently subject to political pressure — toward fraud-prevention (when a fraud incident is in the news) or toward inclusion (when an exclusion incident is in the news). Either direction, driven by political reaction rather than principled design, produces worse outcomes than a pre-committed doctrine.
 
@@ -26,7 +26,7 @@ The AED specifies six things:
 5. **Annual recalibration process** — how the targets are reviewed and by whom
 6. **Publication commitment** — what is published, how often, and in what form
 
-Each is specified below as a template. The **founding coalition must fill in the specific numbers** before deployment. The AED as a commitment architecture is Tier 2 at founding; the specific numbers are an evidence gate filled after first-year pilot data and before the first scale-up decision.
+Each is specified below as a commitment slot. The AED as a commitment architecture is Tier 2 at founding; the activation variables are tracked explicitly as reserved commitments **FC-140 through FC-150** in `/founding/commitments.md` until first-year pilot data is sufficient to bind them before the first scale-up decision.
 
 ---
 
@@ -36,9 +36,9 @@ Each is specified below as a template. The **founding coalition must fill in the
 
 | Instrument Tier | Fraud Rate Target (% of enrolled population per quarter) | Upper Tolerance Bound | Mandatory Audit Trigger |
 | :--- | :--- | :--- | :--- |
-| **LC — Life Access Ledger** | [FOUNDING COMMITMENT — e.g., ≤ 0.5%] | [e.g., 1.0%] | [e.g., Exceeded in 2 consecutive quarters] |
-| **DW — Deliberation Weight** | [FOUNDING COMMITMENT] | [FOUNDING COMMITMENT] | [FOUNDING COMMITMENT] |
-| **CR — Civic Record** | [FOUNDING COMMITMENT] | [FOUNDING COMMITMENT] | [FOUNDING COMMITMENT] |
+| **LC — Life Access Ledger** | FC-140 target (reserved; recommended anchor: ≤0.5%) | FC-140 upper bound (reserved; recommended anchor: 1.0%) | FC-140 trigger (reserved; recommended anchor: exceeded in 2 consecutive quarters) |
+| **DW — Deliberation Weight** | FC-141 target (reserved) | FC-141 upper bound (reserved) | FC-141 trigger (reserved) |
+| **CR — Civic Record** | FC-142 target (reserved) | FC-142 upper bound (reserved) | FC-142 trigger (reserved) |
 
 **Rationale for asymmetry between tiers:** LC fraud directly consumes physical supply — food, housing support, healthcare capacity. DW and CR fraud distorts civic process but does not directly consume physical resources. The founding coalition should set stricter fraud tolerances for LC than for DW/CR, recognising that LC fraud has immediate physical consequence while civic layer fraud has a slower and more diffuse effect.
 
@@ -54,15 +54,15 @@ Each is specified below as a template. The **founding coalition must fill in the
 
 | Vulnerable Category | Exclusion Rate Target (% of estimated vulnerable population in that category per quarter) | Upper Tolerance Bound | Mandatory Audit Trigger |
 | :--- | :--- | :--- | :--- |
-| **Displaced persons (internal migration, emergency relocation)** | [FOUNDING COMMITMENT] | [FOUNDING COMMITMENT] | [FOUNDING COMMITMENT] |
-| **Undocumented persons (no state-recognised documentation)** | [FOUNDING COMMITMENT] | [FOUNDING COMMITMENT] | [FOUNDING COMMITMENT] |
-| **Digitally fragile persons (no smartphone, limited literacy, disability)** | [FOUNDING COMMITMENT] | [FOUNDING COMMITMENT] | [FOUNDING COMMITMENT] |
-| **Recovery/crisis situations (domestic violence, trafficking, incapacity)** | [FOUNDING COMMITMENT] | [FOUNDING COMMITMENT] | [FOUNDING COMMITMENT] |
-| **Overall population (all enrolled persons)** | [FOUNDING COMMITMENT] | [FOUNDING COMMITMENT] | [FOUNDING COMMITMENT] |
+| **Displaced persons (internal migration, emergency relocation)** | FC-143 target (reserved) | FC-143 upper bound (reserved) | FC-143 trigger (reserved) |
+| **Undocumented persons (no state-recognised documentation)** | FC-144 target (reserved) | FC-144 upper bound (reserved) | FC-144 trigger (reserved) |
+| **Digitally fragile persons (no smartphone, limited literacy, disability)** | FC-145 target (reserved) | FC-145 upper bound (reserved) | FC-145 trigger (reserved) |
+| **Recovery/crisis situations (domestic violence, trafficking, incapacity)** | FC-146 target (reserved) | FC-146 upper bound (reserved) | FC-146 trigger (reserved) |
+| **Overall population (all enrolled persons)** | FC-147 target (reserved) | FC-147 upper bound (reserved) | FC-147 trigger (reserved) |
 
 **Rationale for tier-specific tracking:** Exclusion rates for vulnerable categories are tracked separately from the overall population because aggregate rates obscure concentrated harm. A 1% overall exclusion rate that is evenly distributed is a different problem than a 1% overall exclusion rate concentrated entirely among undocumented persons.
 
-**How to measure:** Exclusion rate requires active monitoring — it is not visible in successful-enrollment data alone. Measurement requires: (a) periodic sampling at access points where people attempt to enrol but do not complete; (b) Ombuds Office reporting from advocacy organisations; (c) cross-matching with estimated vulnerable population size from independent sources. The measurement methodology must include advocates and researchers from vulnerable communities.
+**How to measure:** Exclusion rate requires active monitoring — it is not visible in successful-enrollment data alone. Measurement requires: (a) periodic sampling at access points where people attempt to enrol but do not complete; (b) Federated Ombuds reporting from advocacy organisations; (c) cross-matching with estimated vulnerable population size from independent sources. The measurement methodology must include advocates and researchers from vulnerable communities.
 
 **The estimation problem:** Estimating the size of the vulnerable population is itself contested and uncertain. The founding coalition must specify the methodology for population size estimation and commit to using it consistently. A conservative (higher) estimate of vulnerable population size produces a lower apparent exclusion rate, which could mask real exclusion. The AED should specify that the founding coalition uses the most inclusive available estimate.
 
@@ -80,7 +80,7 @@ When either fraud rates or exclusion rates exceed the targets specified in Secti
 | Exclusion rate exceeds upper tolerance for any vulnerable category in one quarter | Independent audit and mandatory system review | Commissioned within 14 days; completed within 60 days |
 | Both fraud and exclusion rates simultaneously exceed targets | Joint audit with explicit trade-off analysis | Commissioned within 14 days; completed within 60 days |
 
-All published notices and audit findings are public. The Pillar 11 dashboard must publish current-quarter fraud and exclusion rates as standard operational metrics.
+All published notices and audit findings are public. The Article VII dashboard must publish current-quarter fraud and exclusion rates as standard operational metrics.
 
 ---
 
@@ -90,11 +90,11 @@ This is the most consequential section. It specifies what happens when the ident
 
 **Default rule:** When a calibration decision will push one rate above its target to bring the other below its target, the decision rule is:
 
-> **Exclusion reduction takes priority over fraud reduction when: the exclusion rate for any vulnerable category would exceed [FOUNDING COMMITMENT, e.g., twice the exclusion target] AND the fraud rate is below [FOUNDING COMMITMENT, e.g., the upper tolerance bound].**
+> **Exclusion reduction takes priority over fraud reduction when: the exclusion rate for any vulnerable category would exceed FC-148 (reserved exclusion-priority multiplier; recommended anchor: twice the exclusion target) AND the fraud rate is below FC-149 (reserved fraud-priority bound).**
 
-> **Fraud reduction takes priority over exclusion reduction when: the fraud rate exceeds [FOUNDING COMMITMENT, e.g., the upper tolerance bound] AND the exclusion rate for all vulnerable categories is below [FOUNDING COMMITMENT, e.g., the exclusion upper tolerance bound].**
+> **Fraud reduction takes priority over exclusion reduction when: the fraud rate exceeds FC-149 (reserved fraud-priority bound) AND the exclusion rate for all vulnerable categories is below the corresponding Section 2 upper-tolerance commitments (FC-143 through FC-147).**
 
-> **When both rates simultaneously exceed their upper tolerance bounds, an independent review panel convenes within 14 days to make a binding recommendation. The founding coalition's pre-committed preference is [FOUNDING COMMITMENT — e.g., exclusion / fraud].**
+> **When both rates simultaneously exceed their upper tolerance bounds, an independent review panel convenes within 14 days to make a binding recommendation. The founding coalition's pre-committed default preference is FC-150 (reserved; exclusion-first or fraud-first).**
 
 **Rationale for the asymmetry:** The protocol's foundational commitment is that survival is unconditional. An identity system that excludes genuinely vulnerable people from the survival floor is a more fundamental violation of the protocol's purpose than one that permits a higher rate of fraud. However, LC fraud directly consumes physical supply that is needed by genuine recipients — so fraud above the upper tolerance bound is not a minor concern. The founding coalition's pre-committed preference encodes the relative weight placed on these two failure modes.
 
@@ -113,7 +113,7 @@ The fraud and exclusion rate targets in this annex are not permanent. They are e
 **Recalibration panel composition:**
 - At least one member from a vulnerable-population advocacy organisation with no material funding relationship with the identity system operators.
 - At least one independent identity systems expert with no material funding relationship with the founding coalition.
-- At least one member nominated by the Ombuds Office.
+- At least one member nominated by the Federated Ombuds.
 - Recalibration findings and any proposed changes are published 30 days before taking effect.
 
 **Protected floor:** The exclusion rate upper tolerance bounds may not be loosened without H-2 amendment process. These represent the maximum harm the system is willing to inflict on vulnerable populations; they are treated as constitutional commitments, not operational parameters.
@@ -122,7 +122,7 @@ The fraud and exclusion rate targets in this annex are not permanent. They are e
 
 ## Section 6 — Publication Commitment
 
-The following is published quarterly as part of the Pillar 11 public dashboard:
+The following is published quarterly as part of the Article VII public dashboard:
 
 | Metric | Publication format |
 | :--- | :--- |
@@ -140,14 +140,14 @@ Publication of the AED targets themselves converts the doctrine from a private i
 
 To complete this annex before deployment, the founding coalition must:
 
-1. **Fill in all [FOUNDING COMMITMENT] fields** in Sections 1, 2, and 4, using first-year pilot data where available or conservative estimates where not.
+1. **Bind FC-140 through FC-150** in Sections 1, 2, and 4, using first-year pilot data where available or conservative estimates where not.
 2. **Specify the vulnerable population estimation methodology** for each category in Section 2, including the source and the rationale for choosing a conservative estimate.
 3. **State the pre-committed preference** in Section 4's third decision rule — whether, when both rates simultaneously exceed bounds, the default preference is to protect against exclusion or against fraud.
 4. **Convene the recalibration panel** before the first annual review, ensuring composition requirements are met.
-5. **Integrate AED metrics into the Pillar 11 dashboard** before any public launch — the commitment is only real if it is visible.
+5. **Integrate AED metrics into the Article VII dashboard** before any public launch — the commitment is only real if it is visible.
 
 The AED is Tier 2 once adopted. The decision rule in Section 4 (including the pre-committed preference) may not be changed without H-2 amendment process. Specific rate targets may be adjusted through the annual recalibration process within the bounds specified here.
 
 ---
 
-*This document is Annex AK of the master protocol. The commitment architecture is operative as a PROPOSED standard. The specific rate targets are an evidence gate: committed at founding as a design architecture, filled with specific numbers after first-year pilot data, and locked as Tier 2 before the first scale-up gate.*
+*This document is Annex AK of the Humane Constitution. The commitment architecture is operative as a PROPOSED standard. The specific rate targets remain an evidence gate: tracked today through reserved commitments FC-140 through FC-150, then bound from pilot evidence and locked as Tier 2 before the first scale-up gate.*

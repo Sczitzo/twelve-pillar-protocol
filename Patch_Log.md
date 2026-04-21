@@ -2,13 +2,13 @@
 
 **Current constitutional presentation:** *The Humane Constitution* uses **one Founding Order** and **Articles I–VII**. Historical patch entries may still use legacy v13 shorthand (`P0`, `P1–P7`) or older v12 pillar numbers where those terms were part of the original integration record.
 
-**Running change ledger aligned to the master protocol · Updated: Session 9 economic-governance integration (P-029 through P-033 added)**
+**Running change ledger aligned to the Humane Constitution · Updated: Session 9 economic-governance integration (P-029 through P-033 added)**
 
 ---
 
 **Purpose.** This log records the hardening changes introduced during the current cycle and keeps a traceable link between threats, mitigations, introduced risks, and remaining open questions.
 
-**Rule.** The patch log is not a substitute for the master. The master holds the law-like text; the patch log explains how and why the hardening evolved.
+**Rule.** The patch log is not a substitute for the constitution. The Humane Constitution holds the law-like text; the patch log explains how and why the hardening evolved.
 
 **Architecture nomenclature note (Proposal 2 continuity).** Patch entries in this log may use one of three naming layers:
 
@@ -207,7 +207,7 @@ The prior INV-007 enforcement relied on a single FAP reviewer checking patch pro
 
 ## Session 2 Patches — Detailed Entries
 
-**Status: PROPOSED.** These patches are not yet operative. They become operative only when formally integrated into the master protocol and status updated to ACTIVE.
+**Status: PROPOSED.** These patches are not yet operative. They become operative only when formally integrated into the Humane Constitution and status updated to ACTIVE.
 
 | Patch ID | Related Threat | Status | Priority | Change Type |
 | :--- | :--- | :--- | :--- | :--- |
@@ -267,7 +267,7 @@ The prior INV-007 enforcement relied on a single FAP reviewer checking patch pro
 - **Introduced design:** Rapid Public Communication Protocol (RPCP) — 4-hour structured template for any public-visibility operational event; covers what happened, system response, access status, next steps; does not replace 7-day post-mortem; pre-authorized publication authority required. Pre-committed failure communication doctrine — published pre-launch document acknowledging expected failures (PCRP false triggers, oracle disputes, SQ activations, enforcement errors, measurement uncertainty) with containment mechanisms; converts failures from surprises to acknowledged expected events. Citizen-Facing Rights Layer (CFRL) — one page, 8th-grade level, pre-launch, translated; governed as P-004 protected specification. Adversarial Narrative Simulation — added to Annex T annual mandate; hostile framing team publishes simulated attack; system responds within 4 hours; report published. Hostile Frame Pre-emption Registry — top 10 mischaracterizations with accurate rebuttals and Pillar 11 evidence; updated quarterly; published as 'Common Misunderstandings.' [Ambitious] Narrative Health Dashboard — public understanding accuracy surveys, hostile framing prevalence index, RPCP response time metric; Level 1 watch auto-trigger. [Ambitious] Pre-Launch Narrative Audit — independent adversarial audit by communications professionals; findings and mitigations published simultaneously.
 - **Clauses to integrate:** RPCP; Pre-Committed Failure Doctrine; CFRL (P-004 protected spec); Adversarial Narrative Simulation (Annex T extension); Hostile Frame Registry. See Annex AD.
 - **Dependencies:** P-008 ACTIVE is prerequisite for elite formation narrative rebuttal. Pillar 11 infrastructure must support 4-hour publication SLA. White Paper sync required before launch (AD6). CFRL added to P-004 protected terms registry.
-- **New risks introduced:** Pre-committed failure document weaponized to prime failure expectation — mitigated by simultaneous publication of containment mechanisms. CFRL creates false certainty — mitigated by 'master protocol governs' disclaimer. ANS report as hostile playbook — mitigated by publishing after exercise completion. Hostile frame registry amplifies framings — mitigated by 'common misunderstandings' framing.
+- **New risks introduced:** Pre-committed failure document weaponized to prime failure expectation — mitigated by simultaneous publication of containment mechanisms. CFRL creates false certainty — mitigated by 'Humane Constitution governs' disclaimer. ANS report as hostile playbook — mitigated by publishing after exercise completion. Hostile frame registry amplifies framings — mitigated by 'common misunderstandings' framing.
 - **Residual risk:** Narrative defense is bounded by actual system performance. No communication architecture survives sustained failure. Pre-launch framing window (18+ months before launch) cannot be closed by protocol — only by early CFRL and pre-commitment doctrine deployment.
 - **Compound linkages:** T-011 × T-008 (elite formation is factual hook for 'captured by professionals' narrative; P-008 concentration dashboard is the counter-narrative evidence base). T-011 × T-006 (PCRP false triggers are the highest-visibility predictable failure). T-011 × T-005 (governance paralysis generates narrative events).
 
@@ -394,7 +394,7 @@ The prior INV-007 enforcement relied on a single FAP reviewer checking patch pro
 | P-017 | T-020 / T-021 | **ACTIVE** | Critical | measurement architecture + accreditation + supply-chain transparency |
 
 ### P-017 — Oracle Epistemological and Algorithmic Independence
-**Status: ACTIVE (promoted 2026-04-18 via Proposal 3 close-out).** Numerical floors bound in `/founding/commitments.md` FC-030 (N≥5), FC-031 (≥3 methodology classes), FC-032 (pairwise correlation ≤0.30), FC-033 (≥1 adversarial seat), FC-100 (14-day quorum-loss restoration window). Annex AL promoted to ACTIVE with all [FOUNDING COMMITMENT] placeholders resolved.
+**Status: ACTIVE (promoted 2026-04-18 via Proposal 3 close-out).** Numerical floors bound in `/founding/commitments.md` FC-030 (N≥5), FC-031 (≥3 methodology classes), FC-032 (pairwise correlation ≤0.30), FC-033 (≥1 adversarial seat), FC-100 (14-day quorum-loss restoration window). Annex AL promoted to ACTIVE with its former founding-parameter slots fully bound.
 
 - **Change type:** measurement architecture + accreditation standards + supply-chain transparency.
 - **Addresses:** T-020 (Epistemological Oracle Capture), T-021 (Algorithmic Oracle Capture).
@@ -593,8 +593,8 @@ The following terms are added to the P-004 protected vocabulary: *milestone*, *p
 - If a patch only exists in the log and not in the master, it is not yet operative.
 - If a patch changes public explanation, the white paper and technical reference must be synced in the same cycle.
 - When a patch materially changes user experience or institutional authority, the diagram set must be updated too.
-- **PROPOSED** patches become ACTIVE only after formal master protocol integration and oversight sign-off.
-- If two patches conflict, the conflict belongs in the patch log and must be resolved explicitly in the master protocol.
+- **PROPOSED** patches become ACTIVE only after formal Humane Constitution integration and oversight sign-off.
+- If two patches conflict, the conflict belongs in the patch log and must be resolved explicitly in the Humane Constitution.
 
 ---
 
@@ -635,7 +635,7 @@ The following terms are added to the P-004 protected vocabulary: *milestone*, *p
 ### P-025 — Federated Ombuds Constitution
 
 - **Introduced design:** Single-commissioner Ombuds replaced with a five-node federation. Each sub-Ombuds is structurally dispersed along at least four of five dimensions (jurisdictional, institutional-origin, funding, infrastructure, personnel-recruitment). Operational decisions are handled by a rotating Duty Sub-Ombuds; protocol-level decisions require a 4-of-5 Plenum supermajority (FC-091). Staggered 730-day terms (FC-092) with two-consecutive-term limit. Oversight Assembly of 7 members (5-of-7 threshold) certifies structural dispersal annually and activates Concentration Response on loss of dispersal.
-- **Clauses to integrate:** Full rewrite of Annex AI (previously PROPOSED single-commissioner draft) to Annex AI ACTIVE federated constitution. References from Master Protocol, Threat Register, and other Annexes read through to the federation acting per §3 (operational vs protocol-level classes).
+- **Clauses to integrate:** Full rewrite of Annex AI (previously PROPOSED single-commissioner draft) to Annex AI ACTIVE federated constitution. References from the Humane Constitution, Threat Register, and other annexes read through to the federation acting per §3 (operational vs protocol-level classes).
 - **Load-bearing integrations:**
   - **Proposal 1** — Tier 1 Amendment Integrity Report (Plenum 4-of-5 within 60 days of signature registration under `/architecture/amendment_protocol.md`).
   - **Proposal 3** — Adversarial oracle seat certification (Annex AL §3.3).
@@ -655,7 +655,7 @@ The following terms are added to the P-004 protected vocabulary: *milestone*, *p
 ### P-026 — Founding Order: Subsidiarity, Consent & Exit
 
 - **Introduced design:** The protocol acquires a foundational scale-and-consent layer beneath the operational articles. The Founding Order defines *who* consents to be governed, *at what scale*, and *how they withdraw*. Six files under `/founding/order/` cover: (1) README orientation, (2) five-tier scale hierarchy (FC-122: household / neighborhood ≤500 / locality ≤5,000 / region ≤500,000 / federation), (3) three-prong subsidiarity competence test (informational, adjudicative, externality-containment) with default-against-escalation rule, (4) affirmative consent protocol (2/3 supermajority, 90-day notice, 60-day deliberation, roll-call, 2/3 minimum participation), (5) exit protocol (FC-120 2/3 supermajority, FC-121 730-day graceful unwind with LC continuity, no exit tax, no forfeiture, T-026 Exit Denial enforcement), (6) re-entry protocol (procedurally symmetric, no penalty, 365-day floor between cycles).
-- **Clauses to integrate:** Master Protocol §0 Founding Order paragraph (lines 140–149); every operational article reads through the Founding Order (smallest-competent-scale default).
+- **Clauses to integrate:** Humane Constitution §0 Founding Order paragraph; every operational article reads through the Founding Order (smallest-competent-scale default).
 - **Load-bearing integrations:**
   - Federated Ombuds (Annex AI §3.2 challenge process; §3.4 automatic Plenum convocation on exit denial).
   - Annex AJ §4 severity 3 (Institutional) penalties for Exit Denial violations.
@@ -674,7 +674,7 @@ The following terms are added to the P-004 protected vocabulary: *milestone*, *p
 ### P-027 — Seven Pillars + P0 Structural Consolidation
 
 - **Introduced design:** The operational architecture is restructured from twelve pillars into Seven Pillars on a P0 foundation (v13). Five redundant v12 pairs are consolidated: (a) P1 Constitutional Invariants + P10 Operations/Oversight → new P1 Rights & Rule of Law (rights-definition and rule-bound execution as one function); (b) P4 Life Support + LC-instrument portion of P5 → new P4 Survival (LC instrument AND delivery, closing the T-007 drift gap); (c) P6 Land/Housing + P7 Enterprise + EC-instrument portion of P5 + P12 PFCR → new P5 Markets, Commons & Public Finance (four faces of the economic surface unified); (d) DW/CR-instrument portion of P5 + P8 Contribution + P9 Civic Deliberation → new P6 Civic Layer (instruments, minting, and deliberation as one closed loop); (e) P11 Transparency with new Beer-VSM S4 environmental-scanning → new P7 Transparency & Environmental Scanning (S3*/S3 architecturally independent of P1 control). P3 Physics & Reserves is unchanged in content (resilience reserves were already in-pillar). The v12 resilience/reserves function that Proposal 2 anticipated in P12 was supplanted by the PFCR integration (external merge `00c5ca7`); PFCR is absorbed into new P5 as the commons-revenue-and-public-banking sub-function.
-- **Clauses to integrate:** Master Protocol §III fully rewritten (Architecture-at-a-glance, Pillar interfaces, Pillar-by-pillar detail, Legacy mapping tables); White Paper §4 restructured; banner notes in Threat Register and Patch Log providing v12 → v13 crosswalk for in-flight references.
+- **Clauses to integrate:** Humane Constitution §III fully rewritten (architecture-at-a-glance, interface detail, and legacy mapping tables); White Paper §4 restructured; banner notes in Threat Register and Patch Log providing v12 → v13 crosswalk for in-flight references.
 - **Load-bearing integrations:**
   - **Proposal 5 (P-026)** — P0 is the foundation of the v13 architecture; every operational pillar reads through P0.
   - **Proposal 1** — Architectural enforcement layer (Tier 1 invariants, 7-of-9 amendment, drift chain) now lives functionally inside new P1 Rights & Rule of Law.
@@ -684,6 +684,6 @@ The following terms are added to the P-004 protected vocabulary: *milestone*, *p
   - **PFCR (P-029 through P-033)** — commons-revenue and anti-dynasty architecture land in new P5 Markets, Commons & Public Finance.
 - **Dependencies:** v12 → v13 crosswalk must be published and stable before any downstream documents (annexes, PRDs) are rewritten. Legacy mapping table is the authoritative bridge during the transition.
 - **New risks introduced:** Consolidation concentrates four former pillars into new P5; this increases the attack surface of any single P5-integrity failure. Mitigation: new P5 contains explicit internal boundaries (EC vs housing-commons vs enterprise vs PFCR) with non-convertibility rules between them, and the Pillar interface table specifies the inputs each sub-function may accept. A second risk is naming drift — older *Twelve-Pillar Protocol* references can imply a different active architecture than the current *Humane Constitution* public title and `Seven Pillars + P0` operational model. Mitigation: legacy references are explicitly marked as historical; §III is the authoritative operational definition; public-facing materials now use the new title directly.
-- **Residual risk:** Annexes authored under v12 structure may reference pillar numbers that now span multiple v13 pillars (e.g., an Annex referencing "Pillar 5" could mean LC, EC, or DW/CR depending on context). Mitigation is the crosswalk banner in the Threat Register and Patch Log, plus the Master Protocol §III crosswalk table. A future housekeeping pass will rewrite inline annex references to v13.
+- **Residual risk:** Annexes authored under v12 structure may reference pillar numbers that now span multiple v13 pillars (e.g., an Annex referencing "Pillar 5" could mean LC, EC, or DW/CR depending on context). Mitigation is the crosswalk banner in the Threat Register and Patch Log, plus the Humane Constitution §III crosswalk table.
 - **Compound linkages:** P-027 × P-026 (P0 + 7-pillar collapse is one conceptual move — subsidiarity provides the foundation; consolidation removes redundant capture targets); P-027 × P-017 (oracle architecture in new P3 inherits the N=5/3-class/adversarial-seat requirements); P-027 × P-029 (PFCR function lands in new P5, not as a separate pillar); P-027 × P-008 (reduced pillar count reduces elite-formation surface area by eliminating redundant institutional homes).
 - **Auto-close clause:** P-027 is standing. The seven-pillar structure itself is Tier 1 architectural. Any subsequent collapse (e.g., to six or fewer) or expansion (to eight or more) requires Tier 1 amendment (7-of-9, 180-day timelock). Content within pillars may be amended by ordinary process subject to the existing Tier classifications of each clause.

@@ -18,7 +18,7 @@ If the pilot region is flagged as favorable on more than one dimension, a second
 
 | Timeline | Stage | Action |
 | :--- | :--- | :--- |
-| **Days 1–30** | Direct negotiation | Disputing authorities negotiate directly, facilitated by the Ombuds Office (if Ombuds is not a party). |
+| **Days 1–30** | Direct negotiation | Disputing authorities negotiate directly, facilitated by the Federated Ombuds (if the Ombuds is not a party). |
 | **Days 31–60** | Published mediation | Both positions published in full with written reasoning. Public comment window open for 20 days. Mediator proposes non-binding settlement. |
 | **Day 61** | CRP escalation | If unresolved, the dispute is classified as a constitutional boundary question and escalates to the CRP full panel as a first-priority item. |
 | **Days 61–75** | CRP ruling | CRP issues binding ruling within 14 days of escalation. Ruling is binding on all sign-off authorities. If CRP is tied, status quo ante is maintained. |
@@ -62,8 +62,8 @@ First bootstrap candidate: P-008 legibility gap audit (Annex AC3.1). This clause
 The four FAP sign-off authorities collectively constitute a new institutional cluster. The following controls apply to this cluster:
 - **Cohort cooling:** no more than 2 members of any co-service cohort (co-service within 12 months) may simultaneously hold sign-off positions across all four FAP authorities combined.
 - **Epistemic diversity:** the audit body must satisfy the same three-axis diversity standard as P-008 oversight bodies (Annex AC3.3: institutional origin, contribution type, geography).
-- **Published quarterly:** FAP sign-off cluster composition is published in the Pillar 11 concentration dashboard (extending AC3.7). A separate concentration monitoring function — independent of the Ombuds Office — maintains this publication, because the Ombuds is itself a sign-off authority.
-- The FAP concentration controls are self-executing from Pillar 11 infrastructure. They do not require a separate acceptance process.
+- **Published quarterly:** FAP sign-off cluster composition is published in the Article VII concentration dashboard (extending AC3.7). A separate concentration monitoring function — independent of the Federated Ombuds — maintains this publication, because the Ombuds is itself a sign-off authority.
+- The FAP concentration controls are self-executing from Article VII infrastructure. They do not require a separate acceptance process.
 
 ---
 
@@ -89,5 +89,3 @@ The four FAP sign-off authorities collectively constitute a new institutional cl
 *Session 5 complete. T-016 addressed via P-013. 14 threats total: 4 ACTIVE, 10 PROPOSED. The FAP itself is now hardened against the exploit surfaces identified in T-016.*
 
 ---
-
-# The Humane Constitution — Annex AH

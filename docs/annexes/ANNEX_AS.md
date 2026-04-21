@@ -2,7 +2,7 @@
 
 **Status: ACTIVE — founding commitments bound (FC-080, FC-081, FC-082) — Proposal 9 close-out, 2026-04-18**
 **Governs:** contribution attestation, hardship attestation, civic identity attestation, and any Civic Record (CR) or Deliberation Weight (DW) allocation that depends on third-party verification.
-**Related:** Pillar 8 (Civic Record); Annex AF (P-009 Grace Exploitation patches, hardship attestation); Master Protocol §Pillar 8 multi-attestation + random-audit clauses; Threat Register T-018 (PCRP False-Trigger Exhaustion), TR-07 (Contribution fraud / attestation rings).
+**Related:** Article VI civic-layer rules for Civic Record (CR); Annex AF (P-009 Grace Exploitation patches, hardship attestation); Humane Constitution Article VI multi-attestation and random-audit clauses; Threat Register T-018 (PCRP False-Trigger Exhaustion), TR-07 (Contribution fraud / attestation rings).
 
 ---
 
@@ -10,7 +10,7 @@
 
 Attestation is the infrastructure by which individuals without institutional standing can still produce legible evidence of contribution, hardship, identity, or need. Without attestation, the protocol excludes the undocumented, the informally-employed, and the isolated — the people the protocol most needs to reach. With attestation, the protocol exposes itself to a specific failure mode: **costless false attestation**.
 
-The existing Master Protocol mitigations (multi-attestation, random audits, verifier reputation scoring, collusion-graph analytics) are necessary but not sufficient. They raise the probability of detection after a false attestation is made. They do not change the calculation *before* the attestation is made. An attestor with no stake in the outcome has no reason to refuse a favor, a reciprocal arrangement, or a sympathetic lie — until after they are caught, at which point reputational loss is a lagging, socially-mediated signal that can be absorbed by thick networks.
+The existing constitutional mitigations (multi-attestation, random audits, verifier reputation scoring, collusion-graph analytics) are necessary but not sufficient. They raise the probability of detection after a false attestation is made. They do not change the calculation *before* the attestation is made. An attestor with no stake in the outcome has no reason to refuse a favor, a reciprocal arrangement, or a sympathetic lie — until after they are caught, at which point reputational loss is a lagging, socially-mediated signal that can be absorbed by thick networks.
 
 This annex adds **skin-in-the-game**. An attestor's CR (or DW, for civic attestations) is placed at measurable risk when they attest, proportional to the claim size. False attestations — adjudicated through the Ombuds process or the Enforcement Panel — slash the stake. Slashed stake is redistributed to whistleblowers and to restitution for those harmed by the false claim. Honest attestations are returned with time; skilled attestors accrue reputation along with their returned stake.
 
@@ -31,7 +31,7 @@ Covered attestation classes:
 | **Identity attestation** | Identity assurance where institutional documentation is not available (P-003 / P-016) | Long-standing community member or trusted institution | "I have known Subject X in community for ≥5 years and affirm their stated identity." |
 | **Civic-qualification attestation** | Eligibility for CRP seat, Ombuds role, audit panel, or other civic position requiring independent witness | Current or prior civic officeholders outside the nominee's direct network | "I affirm Subject X has no disqualifying conflict for the [body] seat." |
 
-**Not covered** (out of scope of this annex): ordinary social statements not entered into the Civic Record; character references for non-protocol purposes; statements by the subject about themselves (self-attestation is governed separately under Master Protocol Pillar 8 self-declaration rules).
+**Not covered** (out of scope of this annex): ordinary social statements not entered into the Civic Record; character references for non-protocol purposes; statements by the subject about themselves (self-attestation is governed separately under Annex K multi-path verification rules).
 
 ---
 
@@ -112,9 +112,9 @@ Slashed stake does not simply disappear — that would be deflationary and would
 
 | Recipient | Share | Conditions |
 | :--- | :--- | :--- |
-| **Whistleblower** (the party who raised the complaint leading to finding) | **40%** | Direct transfer to whistleblower's CR balance. If complaint was anonymous, share is held in a whistleblower-reserve account and released on claim with identity verification. If complaint was automated (e.g., collusion-graph detection), share routes to the Pillar 11 enforcement maintenance fund. |
-| **Subject harmed by false attestation** (when a false attestation harmed someone other than the subject of the attestation — e.g., someone excluded from a position the false claim helped secure) | **30%** | Restitution; paid into harmed party's CR. If no third-party harm is identified, share reallocates to the Pillar 11 enforcement maintenance fund. |
-| **Pillar 11 enforcement maintenance fund** | **20%** | Funds detection infrastructure (AF3 collusion-graph analytics, cross-attestation audit sampling, whistleblower protection infrastructure per P-021). |
+| **Whistleblower** (the party who raised the complaint leading to finding) | **40%** | Direct transfer to whistleblower's CR balance. If complaint was anonymous, share is held in a whistleblower-reserve account and released on claim with identity verification. If complaint was automated (e.g., collusion-graph detection), share routes to the Article VII enforcement maintenance fund. |
+| **Subject harmed by false attestation** (when a false attestation harmed someone other than the subject of the attestation — e.g., someone excluded from a position the false claim helped secure) | **30%** | Restitution; paid into harmed party's CR. If no third-party harm is identified, share reallocates to the Article VII enforcement maintenance fund. |
+| **Article VII enforcement maintenance fund** | **20%** | Funds detection infrastructure (AF3 collusion-graph analytics, cross-attestation audit sampling, whistleblower protection infrastructure per P-021). |
 | **Civic Record overall** (deflationary — permanently retired) | **10%** | A small deflationary share ensures the system does not reward detection without any cost to the civic-record aggregate. |
 
 The distribution is executed automatically on finality of the finding (post-appeal, or appeal deadline lapsed).
@@ -143,9 +143,9 @@ The Civic Record system computes, for each attestor cohort of ≥10 participants
 
 ## Section 5 — Interaction with Existing Mechanisms
 
-### 5.1 — Relationship to Master Protocol Pillar 8 Multi-Attestation
+### 5.1 — Relationship to Article VI Multi-Attestation
 
-Master Protocol Pillar 8 already requires **multi-attestation** (multiple independent attestors) for mid- and high-impact claims. This annex does not replace multi-attestation; it **stakes** each of the multiple attestors.
+Article VI already requires **multi-attestation** (multiple independent attestors) for mid- and high-impact claims. This annex does not replace multi-attestation; it **stakes** each of the multiple attestors.
 
 Effect: on a high claim requiring 3 attestations at 20% stake base each, the aggregate stake at risk across attestors is 60% of one attestor's balance (distributed across three people), or 20% × 3 = 60% aggregate equivalent. For the subject to obtain a false attestation set, they must find three attestors each willing to stake their own civic standing on a claim none of them can verify. This is qualitatively different from finding three people willing to sign a piece of paper at no cost.
 
@@ -155,11 +155,11 @@ Annex AF §AF3 establishes collusion-graph analytics for hardship attestation ne
 
 ### 5.3 — Relationship to TR-07 Contribution Fraud
 
-Master Protocol TR-07 addresses contribution fraud via multi-attestation + random audits + anomaly detection + reputation decay + sanctions. This annex adds the **pre-commitment stake** layer: sanctions become mechanical (automatic slashing on finding) rather than contingent on separate disciplinary action, and the economic cost of ring participation is calibrated to FC-080 regardless of whether social reputation penalties materialize.
+Threat Register TR-07 addresses contribution fraud via multi-attestation + random audits + anomaly detection + reputation decay + sanctions. This annex adds the **pre-commitment stake** layer: sanctions become mechanical (automatic slashing on finding) rather than contingent on separate disciplinary action, and the economic cost of ring participation is calibrated to FC-080 regardless of whether social reputation penalties materialize.
 
 ### 5.4 — Reputation Cap
 
-Reputation credit accrued via honest attestation (§2.2) is capped at a lifetime ceiling equivalent to 2 full civic cycles of successful attestation. This prevents the accumulation of reputation from becoming itself a status-currency surface for AJ-2.1 patterns (civic standing as allocation preference). The cap is a Tier 2 Founding Commitment; see FC-083 (reserved, to be added in next commitments.md revision with cap value bound).
+Reputation credit accrued via honest attestation (§2.2) is capped at a lifetime ceiling equivalent to **FC-083 = 2 civic cycles** of successful attestation reputation credit. This prevents the accumulation of reputation from becoming itself a status-currency surface for AJ-2.1 patterns (civic standing as allocation preference).
 
 ---
 
@@ -181,7 +181,7 @@ Reputation credit accrued via honest attestation (§2.2) is capped at a lifetime
    - FC-081 audit window length is sufficient for realistic detection latencies across attestation classes.
    Pilot findings are documented; any recommended recalibration proceeds through the Tier 2 amendment ladder.
 
-5. **Exclusion safety.** The stake mechanism excludes attestors with insufficient balance from acting as attestors. This is intentional — attestors should have civic standing to put at risk. However, for subjects who have few eligible attestors in their network (new arrivals, isolated individuals), the civic system must provide **alternative attestation paths**: institutional attestors who stake professional rather than personal balance, rotating-jury lightweight attestations for small claims, or self-declaration with augmented random audit. Exclusion of subjects because no one with sufficient balance knows them is an unacceptable failure mode. These alternative paths are specified in Master Protocol Pillar 8 multi-path verification clauses.
+5. **Exclusion safety.** The stake mechanism excludes attestors with insufficient balance from acting as attestors. This is intentional — attestors should have civic standing to put at risk. However, for subjects who have few eligible attestors in their network (new arrivals, isolated individuals), the civic system must provide **alternative attestation paths**: institutional attestors who stake professional rather than personal balance, rotating-jury lightweight attestations for small claims, or self-declaration with augmented random audit. Exclusion of subjects because no one with sufficient balance knows them is an unacceptable failure mode. These alternative paths are specified in Article VI and Annex K multi-path verification clauses.
 
 ---
 
@@ -193,6 +193,7 @@ Reputation credit accrued via honest attestation (§2.2) is capped at a lifetime
 - FC-080 `ATTESTATION_STAKE_RATIO` = 0.20 (Tier 2)
 - FC-081 `ATTESTATION_AUDIT_WINDOW` = 365 days (Tier 2)
 - FC-082 `ATTESTATION_GRAPH_DENSITY_THRESHOLD` = 0.40 (Tier 2)
+- FC-083 `ATTESTATION_REPUTATION_CREDIT_CAP` = 2 civic cycles (Tier 2)
 
 Numerical changes to these commitments proceed through the Tier 2 amendment ladder in `/founding/commitments.md`.
 
@@ -205,4 +206,4 @@ Numerical changes to these commitments proceed through the Tier 2 amendment ladd
 
 ---
 
-*This document is Annex AS of the master protocol. Operative as an ACTIVE specification as of Proposal 9 close-out (2026-04-18). Integration with Pillar 8 and Annex AF proceeds through the ordinary implementation sequence.*
+*This document is Annex AS of the Humane Constitution. Operative as an ACTIVE specification as of Proposal 9 close-out (2026-04-18). Integration with Article VI and Annex AF proceeds through the ordinary implementation sequence.*

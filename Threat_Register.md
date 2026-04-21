@@ -2,11 +2,11 @@
 
 **Current constitutional presentation:** *The Humane Constitution* uses **one Founding Order** and **Articles I–VII**. Historical references below may still use legacy v13 shorthand (`P0`, `P1–P7`) or older v12 pillar numbers.
 
-**Running adversarial control layer aligned to the master protocol · Updated: Session 8 (Red Team — T-018 through T-023 added; T-001/T-002/T-017 updated; Register Disclosure Protocol introduced)**
+**Running adversarial control layer aligned to the Humane Constitution · Updated: Session 8 (Red Team — T-018 through T-023 added; T-001/T-002/T-017 updated; Register Disclosure Protocol introduced)**
 
 ---
 
-**Purpose.** This register tracks the adversarial risks identified during the current hardening cycle and aligns them to the master protocol. It is the running control layer for red-team work, not a replacement for the master protocol.
+**Purpose.** This register tracks the adversarial risks identified during the current hardening cycle and aligns them to the Humane Constitution. It is the running control layer for red-team work, not a replacement for the constitution.
 
 **Architecture nomenclature note (Proposal 2 continuity).** Threat entries in this register may use one of three naming layers:
 
@@ -66,7 +66,7 @@ Inline references are preserved as-authored for audit traceability; the mapping 
 | T-026 | Exit Denial | **Critical** | **ADDRESSED** | Prevent federation actors from blocking or delaying a valid unit exit (FC-120/FC-121). Closed by P0 exit protocol + Annex AI §3.4 automatic Plenum convocation + Annex AJ §4 severity 3 remedies. | 48 |
 | T-027 | Subsidiarity Violation | High | **ADDRESSED** | Prevent federation action at a scale larger than the smallest-competent scale under the P0 subsidiarity rule. Closed by P0 subsidiarity rule + Federated Ombuds §3.2 challenge process + Proportionality Principle. | 36 |
 
-*\* ADDRESSED = mitigation patch designed (PROPOSED) but not yet ACTIVE. Status will update to ACTIVE when patches are integrated into master protocol.*
+*\* ADDRESSED = mitigation patch designed (PROPOSED) but not yet ACTIVE. Status will update to ACTIVE when patches are integrated into the Humane Constitution.*
 
 ---
 
@@ -81,7 +81,7 @@ Inline references are preserved as-authored for audit traceability; the mapping 
 - **Impact:** collapses the separation between survival access and market money, recreating leverage and inequality.
 - **Detection:** cluster anomalies, synchronized redemption patterns, broker signatures, and consumption deviation scoring.
 - **Mitigation direction:** LC-only essential access, non-delegable redemption, context-locked use, tolerance for low-level leakage, and broker-focused enforcement. → P-001 ACTIVE.
-- **Open problem (resolved):** ~~define the acceptable leakage threshold~~ — resolved by FC-010 in `/founding/commitments.md`: 3%/annum routine operational target; 7%/annum systemic-review trigger. Surveillance-vs-containment verification continues as a Pillar 11 annual audit responsibility.
+- **Open problem (resolved):** ~~define the acceptable leakage threshold~~ — resolved by FC-010 in `/founding/commitments.md`: 3%/annum routine operational target; 7%/annum systemic-review trigger. Surveillance-vs-containment verification continues as an Article VII annual audit responsibility.
 - **Session 8 addition (resolved):** Informal convertibility that does not touch the ledger is now covered by Annex AJ ACTIVE with nine worked prohibited patterns across LC/EC, DW-CR/resource, and SQ/EC boundaries. **Proposal 7 close-out (2026-04-18)** added Annex AJ §4 Penalty Schedule binding detected violations to a 5.0× base multiplier (FC-040) at assumed 0.85 detection probability (FC-041), with severity factors per pattern (1.0×–2.0×) and escalation ladder for repeat and systemic violations. Annex AJ is promoted from PROPOSED to ACTIVE. Enforcement Panel publishes Annual Deterrence Audit to verify EV-negative regime holds empirically. → See Annex AJ §4; Penalty Schedule.
 
 ---
@@ -122,7 +122,7 @@ Inline references are preserved as-authored for audit traceability; the mapping 
 - **Impact:** essential decisions slow down, frustrations rise, emergency governance is normalized, anti-capture mechanisms are bypassed.
 - **Detection:** decision latency, review backlog, unresolved appeals, emergency path overuse, rising informal workaround rates, deliberation quality metrics.
 - **Mitigation direction:** P-005 PROPOSED: CRP dual-queue separation; minimum operational throughput floor; sequential emergency re-declaration cap; intake throttle with priority scoring; cross-quarter interim authorization bridge; decision quality audit metrics. See Patch Log P-005 and Annex AC1.
-- **Open problem:** Operational sub-panel capture risk; throughput theater detection limits; interim bridge scope creep. Ombuds Office concentration risk inherited from P-008.
+- **Open problem:** Operational sub-panel capture risk; throughput theater detection limits; interim bridge scope creep. Legacy single-Ombuds concentration risk inherited from the pre-federation design was the relevant P-008 concern.
 - **Compound linkages:** T-005 × T-006 (PCRP window sync); T-005 × T-008 (PCRP as power locus); T-005 × T-001 (paralysis extends exploit windows).
 
 ---
@@ -163,7 +163,7 @@ Inline references are preserved as-authored for audit traceability; the mapping 
 - **Impact:** capture of verification, oversight, and constitutional interpretation infrastructure. Does not directly harm LC floor but undermines every other safeguard over time.
 - **Detection:** Very low (D=2). Visible only in aggregate metrics over multi-year horizon. P-008 creates the first detection infrastructure: legibility gap audit, concentration dashboard, cohort overlap index.
 - **Mitigation direction:** P-008 PROPOSED: legibility gap audit; CR sector ceiling specification (founding precondition); epistemic diversity requirement (three-axis); verification independence rule; cooling-off cohort rule; [ambitious] qualification standard governance; concentration dashboard with auto-escalation. See Patch Log P-008 and Annex AC3.
-- **Open problem (resolved Session 9):** ~~Ombuds Office carries three load-bearing P-008 functions — if Ombuds becomes elite formation site, all three fail simultaneously. Open question: who audits the auditors of elite formation?~~ **Closed by P-025 (Federated Ombuds, Annex AI ACTIVE).** The five-node federation with FC-090 = 5, FC-091 = 4/5 supermajority, and the Oversight Assembly (5-of-7) distributes the auditor function across structurally dispersed sub-nodes (§1.2 dispersal criteria) and subjects the federation itself to external oversight for dispersal compliance (§5). "Who audits the auditors" resolves to: the Oversight Assembly audits dispersal; the Plenum audits operational determinations post-hoc; the public record (§6 publication commitment) audits voting patterns. Residual-risk path is now informal coordination across nominally dispersed sub-Ombuds, mitigated by §5.1 institutional-health reporting on voting-pattern concentration.
+- **Open problem (resolved Session 9):** ~~The prior single-Ombuds design carried three load-bearing P-008 functions — if the Ombuds became an elite-formation site, all three failed simultaneously. Open question: who audits the auditors of elite formation?~~ **Closed by P-025 (Federated Ombuds, Annex AI ACTIVE).** The five-node federation with FC-090 = 5, FC-091 = 4/5 supermajority, and the Oversight Assembly (5-of-7) distributes the auditor function across structurally dispersed sub-nodes (§1.2 dispersal criteria) and subjects the federation itself to external oversight for dispersal compliance (§5). "Who audits the auditors" resolves to: the Oversight Assembly audits dispersal; the Plenum audits operational determinations post-hoc; the public record (§6 publication commitment) audits voting patterns. Residual-risk path is now informal coordination across nominally dispersed sub-Ombuds, mitigated by §5.1 institutional-health reporting on voting-pattern concentration.
 - **Compound linkages:** T-008 × T-011 (elite formation creates narrative attack surface); T-008 × T-005 (PCRP authority); T-008 × T-006 (REB PCRP authority); T-008 × P-025 (federation is the structural answer to the auditor-of-auditors open problem).
 
 ---
@@ -311,7 +311,7 @@ Inline references are preserved as-authored for audit traceability; the mapping 
 - **Impact:** PCRP blocked during a genuine supply shock. Potential double-deprivation: enforcement reduces EC availability while false demand-context flag reduces LC availability simultaneously.
 - **Detection:** D=2. The enforcement action is legitimate by construction; manipulation visible only by examining *timing* relative to supply indicators — requires cross-register monitoring not currently specified.
 - **Mitigation direction:** (1) Ombuds co-certification during demand-context periods must explicitly assess whether the triggering enforcement action was manufactured or strategically timed — required step, not optional. (2) Cross-register timing monitor flags enforcement actions initiated within 48 hours of sentinel indicator movement. (3) If Ombuds finds deliberate flag manufacture, demand-context designation is lifted. → P-015 PROPOSED.
-- **Open problem:** Ombuds assessment of "deliberate manufacture" requires judgment under time pressure. Criteria must be specified in advance in Annex AI (Ombuds Office constitution) with explicit authority and defined timeline.
+- **Open problem:** Ombuds assessment of "deliberate manufacture" requires judgment under time pressure. Criteria must be specified in advance in Annex AI (Federated Ombuds constitution) with explicit authority and defined timeline.
 - **Compound linkages:** T-019 × T-015 (demand-context flag is the legitimate mitigation T-019 exploits). T-019 × T-008 (Ombuds determination quality depends on Ombuds independence). T-019 × T-018 (compound execution is highest-risk PCRP attack surface).
 
 ---
@@ -430,9 +430,9 @@ Inline references are preserved as-authored for audit traceability; the mapping 
 
 - Do not mark a threat resolved because the idea sounds good. Resolution requires evidence, tests, and a residual-risk statement.
 - Every patch must name the threat it addresses and the new risk it introduces.
-- If two patches conflict, the conflict belongs in the patch log and must be resolved explicitly in the master protocol.
+- If two patches conflict, the conflict belongs in the patch log and must be resolved explicitly in the Humane Constitution.
 - Threat IDs remain stable across versions. The wording may sharpen; the ID should not drift.
-- **ADDRESSED** status indicates a patch has been designed (**PROPOSED**). Status moves to ACTIVE when integrated into master. **RESOLVED** requires evidence-backed test passage.
+- **ADDRESSED** status indicates a patch has been designed (**PROPOSED**). Status moves to ACTIVE when integrated into the Humane Constitution. **RESOLVED** requires evidence-backed test passage.
 - Compound threat linkages must be logged in both threat entries when identified.
 - Detectability scores must be reviewed quarterly — new monitoring infrastructure (e.g., P-008 concentration dashboard) may raise D scores and reduce risk scores.
 
@@ -508,8 +508,8 @@ Highest risk score: T-011 (Narrative Surface, score 80). Hardest to detect: T-00
 - **Status:** ADDRESSED (P0 `subsidiarity_rule.md` + Annex AI §3.2 challenge; Proportionality Principle)
 - **Risk Score:** 3×3×(6-2)=36
 - **Mechanism:** The federation (or a region acting above its scale competence) decides a matter that is properly resolvable at a smaller scale, imposing uniform rules where scale-appropriate differentiation is competent. Pathway vectors: (a) expanding the "federation-scale by construction" list without Tier 1 amendment; (b) using soft exceptions (cross-unit externality claims, measurement coordination claims) as a routine basis for federation preemption rather than last-resort; (c) declining to express federation rules as floors-plus-local-customization where floor-expression would suffice; (d) inconclusive subsidiarity challenge reviews resolving toward the larger scale despite the default-against-escalation rule; (e) slow erosion of the three-prong competence test through precedent accumulation.
-- **Impact:** The protocol drifts toward centralization without any single amendment being visibly centralizing. Ostrom's principle 2 (rules match local conditions) is violated by default. Units that would have handled matters competently are preempted, reducing local competence over time (principle-erosion feedback loop). The federation's default reach grows; every pillar that depends on local adaptation (Pillar 3 capacity measurement, Pillar 7 enterprise scaling, Pillar 10 enforcement) loses calibration to local context.
+- **Impact:** The protocol drifts toward centralization without any single amendment being visibly centralizing. Ostrom's principle 2 (rules match local conditions) is violated by default. Units that would have handled matters competently are preempted, reducing local competence over time (principle-erosion feedback loop). The federation's default reach grows; every article that depends on local adaptation (Article III capacity measurement, Article V enterprise scaling, Article I enforcement) loses calibration to local context.
 - **Detection:** Medium (D=2). Requires cross-scale comparison over time — which smaller-scale decisions were preempted when they could have been competent? The Federated Ombuds §4.3 cohort concentration tracking extended to decision-scale concentration (§4.3 "concentration of decision venue at federation scale") provides the detection infrastructure.
 - **Mitigation:** The subsidiarity rule (`subsidiarity_rule.md §Three-Prong Competence Test`) is Tier 1 protected. Federation-scale-by-construction list is exhaustive and Tier 1-locked; extensions require 7-of-9 amendment. Soft-exception invocations are logged and audited. The Proportionality Principle is enforceable by Ombuds appeal: a federation action adopting a uniform rule where a floor would suffice is challengeable, and the Plenum (Annex AI §3.2) may remand for reconsideration under FC-091.
-- **Residual risk:** The three-prong test applied at the margin can accommodate reasonable-seeming expansion over many individual decisions. Mitigation is aggregate monitoring — the Ombuds §4.3 federation-decision-concentration report is a Pillar 11 metric published annually; significant drift toward federation-scale decision venue is itself a trigger event.
+- **Residual risk:** The three-prong test applied at the margin can accommodate reasonable-seeming expansion over many individual decisions. Mitigation is aggregate monitoring — the Ombuds §4.3 federation-decision-concentration report is an Article VII metric published annually; significant drift toward federation-scale decision venue is itself a trigger event.
 - **Compound linkages:** T-027 × T-022 (electoral cycle capture often operates through subsidiarity violation — a captured federation adopts uniform rules that would otherwise be local prerogatives). T-027 × T-008 (centralization of decision venue is an elite-formation vector; decisions concentrated in federation bodies produce concentrated expertise pools). T-027 × T-007 (definition drift around "federation-scale by construction" categories; closed by explicit enumeration).*

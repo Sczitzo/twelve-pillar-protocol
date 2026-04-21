@@ -14,7 +14,7 @@ The T-020 open problem states: *"Defining 'fundamentally different methodology c
 
 Without this annex, a sophisticated actor can satisfy the letter of P-017 by submitting two measurement nodes that use nominally different methods but share the same epistemological foundations — the same standards body, the same theoretical assumptions, the same training data provenance — while being formally classified as different "classes." The protection against epistemic monoculture evaporates. The T-020 and T-021 mitigations fail.
 
-This annex provides the definitions, the worked examples (both qualifying and disqualifying), the anti-drift governance mechanism, and the audit requirement. All **[FOUNDING COMMITMENT]** fields must be filled before P-017 is operative.
+This annex provides the definitions, the worked examples (both qualifying and disqualifying), the anti-drift governance mechanism, and the audit requirement. Its numerical founding bindings now resolve through `/founding/commitments.md`; the remaining pre-launch gate is publication of the initial methodology-class registry.
 
 ---
 
@@ -233,7 +233,7 @@ The divergence report is the most operationally significant output. It surfaces 
 
 To complete this annex before deployment, the founding coalition must:
 
-1. ~~**Fill in all [FOUNDING COMMITMENT] fields**~~ — RESOLVED. All numerical commitments are now bound to `/founding/commitments.md` (FC-030 through FC-033, plus AI concentration threshold, panel composition, and lookback windows). Changes to these values require Tier 1 (H-3) amendment per Proposal 1.
+1. ~~**Bind the numerical founding parameters**~~ — RESOLVED. All numerical commitments are now bound to `/founding/commitments.md` (FC-030 through FC-033, plus AI concentration threshold, panel composition, and lookback windows). Changes to these values require Tier 1 (H-3) amendment per Proposal 1.
 
 2. **Conduct initial methodology-class diversity assessment** before the first oracle set is accredited. The three canonical classes in Section 3 are worked examples, not pre-approved classes — actual oracle nodes must be assessed against the Section 1 and Section 2 standards and documented in accreditation records.
 
@@ -247,4 +247,4 @@ To complete this annex before deployment, the founding coalition must:
 
 ---
 
-*This document is Annex AL of the master protocol. The definition architecture is operative as a PROPOSED standard. All [FOUNDING COMMITMENT] fields must be filled, and the initial methodology-class registry published, before P-017 is operative. Annex AL is a pre-launch blocking gate for any essential category in which SQ activation depends on methodology-class-diverse oracle coverage.*
+*This document is Annex AL of the Humane Constitution. The definition architecture is operative as an ACTIVE constitutional standard. The remaining implementation gate is publication of the initial methodology-class registry before any SQ activation that depends on methodology-class-diverse oracle coverage.*

@@ -407,7 +407,7 @@ At high attack intensity (70%), P-014's 14-day window had a 60.3% founding captu
 
 ---
 
-*This document is an adversarial audit output. It is not a patch memo and does not modify the master protocol. Findings that conflict with current master protocol language reflect identified weaknesses requiring patch design, not errors in the master. The master protocol remains the primary source of truth. This audit supplements the Threat Register (adversarial model) and Patch Log (change ledger) by adding framework-keyed simulation evidence for the highest-priority unresolved gaps.*
+*This document is an adversarial audit output. It is not a patch memo and does not modify the Humane Constitution. Findings that conflict with current constitutional language reflect identified weaknesses requiring patch design, not errors in the constitution. The Humane Constitution remains the primary source of truth. This audit supplements the Threat Register (adversarial model) and Patch Log (change ledger) by adding framework-keyed simulation evidence for the highest-priority unresolved gaps.*
 
 *Governed as an informational annex. Does not require FAP review. Does constitute input for the next red-team hardening cycle.*
 

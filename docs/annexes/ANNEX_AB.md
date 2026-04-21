@@ -1,9 +1,9 @@
 # ANNEX AB. Hardening Integration and Control Addendum
 
-**Purpose.** This annex integrates the first red-team hardening cycle into the master protocol without deleting predecessor content. It formalizes the running-document discipline, names the highest-priority threats, and converts the recent design decisions into controlling constitutional and operational language.
+**Purpose.** This annex integrates the first red-team hardening cycle into the Humane Constitution document set without deleting predecessor content. It formalizes the running-document discipline, names the highest-priority threats, and converts the recent design decisions into controlling constitutional and operational language.
 
 ### AB1. Merge Integrity and Running-Document Governance
-This edition shall be maintained as a controlled corpus rather than a chain of disconnected drafts. The Master Protocol governs substantive system design; the Threat Register governs adversarial modeling; the Patch Log governs change history; the White Paper governs public explanation; and the Diagrammed Technical Reference governs structural visualization. No supporting document may contradict the Master Protocol. Conflicts resolve upward to the Master Protocol, then to the Patch Log for implementation history.
+This edition shall be maintained as a controlled corpus rather than a chain of disconnected drafts. The Humane Constitution governs substantive system design; the Threat Register governs adversarial modeling; the Patch Log governs change history; the White Paper governs public explanation; and the Diagrammed Technical Reference governs structural visualization. No supporting document may contradict the Humane Constitution. Conflicts resolve upward to the Humane Constitution, then to the Patch Log for implementation history.
 
 ### AB2. T-001 Shadow Convertibility — Containment Architecture
 The protocol does not attempt to eliminate all informal exchange. It prevents scalable arbitrage that would collapse the separation between survival access and market money.

@@ -120,7 +120,7 @@ flowchart TD
 | [`Acceptance_Protocol.md`](./Acceptance_Protocol.md) | Process for moving patches from design to operation. |
 | [`Citizen_Facing_Rights_Layer.md`](./Citizen_Facing_Rights_Layer.md) | Plain-language summary of citizen rights and protections. |
 
-### Technical specifications (`docs/`)
+## Technical Specifications
 
 | Document | Purpose |
 |---|---|
@@ -134,6 +134,13 @@ flowchart TD
 ### Annexes (`docs/annexes/`)
 
 The annex corpus now lives entirely as standalone documents. Use [`docs/annexes/INDEX.md`](./docs/annexes/INDEX.md) as the entry point for constitutional annexes, hardening clauses, and legacy continuity material.
+
+## Validation
+
+The repository includes a corpus validator for the live constitutional document set:
+
+- `python3 scripts/validate_corpus.py` checks local markdown links, annex-index coverage, FC/T/P identifier integrity, and banned live legacy labels.
+- GitHub Actions runs the same validator on every push and pull request, alongside a basic frontend build for the desktop shell.
 
 ## Security and attack surface
 
@@ -174,7 +181,7 @@ The three highest-severity failure modes, their mechanisms, and the algorithmic 
 
 **Algorithmic mitigation (P-018):**
 - Entrenchment ladder: LC floor provisions require progressively higher supermajorities to amend as time-in-operation increases
-- LC floor minimum persistence: no successor government may reduce LC below CSM in fewer than N legislative cycles [FOUNDING COMMITMENT: N]
+- LC floor minimum persistence: no successor government may reduce LC below the self-executing 70% founding-basket floor without full Tier 1 repeal
 - Administrative hollowing triggers: defined operational metrics (delivery throughput, oracle response time, enforcement rate) that, when breached, automatically activate the Pre-Confirmation Response Protocol (PCRP) regardless of political direction
 - Transition protocol: mandatory handoff documentation, independent audit of operational capacity, and public status report required before any change-of-government that affects survival delivery or rule-bound execution operations
 

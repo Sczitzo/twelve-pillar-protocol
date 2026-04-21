@@ -1,18 +1,18 @@
 # ANNEX AC — Session 2 Hardening Clauses
 
-**Purpose.** This annex introduces the operative clauses produced during the second hardening cycle, covering T-005 Governance Throughput Failure (P-005), T-006 Measurement Lag and Supply Shock Behavior (P-006), and T-008 Bureaucratic Elite Formation (P-008). Where clauses in this annex conflict with earlier language, this annex governs. Clauses are PROPOSED and become operative only when formally accepted into the master.
+**Purpose.** This annex introduces the operative clauses produced during the second hardening cycle, covering T-005 Governance Throughput Failure (P-005), T-006 Measurement Lag and Supply Shock Behavior (P-006), and T-008 Bureaucratic Elite Formation (P-008). Where clauses in this annex conflict with earlier language, this annex governs. Clauses are PROPOSED and become operative only when formally accepted into the constitution.
 
 **Interpretive rule.** These clauses follow the same interpretive hierarchy as Annex AB. Unconditional survival, non-convertibility, and humane-floor protections are unaffected by any clause in this annex.
 
-**Naming note.** Annex AC preserves some earlier pillar references as-authored. In the current constitutional presentation, those functions resolve through the §III crosswalk into the Founding Order and Articles I-VII.
+**Naming note.** Annex AC preserves some earlier design chronology, but the live constitutional presentation resolves these functions through the §III crosswalk into the Founding Order and Articles I-VII.
 
 ### AC1. Governance Throughput Hardening (P-005)
-The following clauses extend Pillar 9, Pillar 10, Annex L, and the emergency cascade table.
+The following clauses extend Article VI, Article I, Annex L, and the emergency cascade table.
 
 #### AC1.1 CRP Dual-Queue Separation
 The Constitutional Review Panel shall operate two formally separated queues:
 - **Constitutional Queue.** Handles H-1/H-2/H-3 amendment classifications, mandatory pre-clearance items under Annex H, and any matter touching Tier 1 or Tier 2 invariants. Staffed by the full 11-member panel. No operational queue item may displace or delay a constitutional queue item.
-- **Operational Queue.** Handles Tier 3 operational adjustments that do not materially burden rights or cross pillar boundaries. Staffed by a 3-member rotating sub-panel drawn from the full CRP pool. Sub-panel composition must rotate each quarter; no member may sit on the same queue in consecutive quarters. Maximum SLA: 7 days from queue entry to decision. Operational queue decisions are subject to full-panel review on petition by any CRP member, the Ombuds Office, or a 1/3 minority bloc within 14 days of publication.
+- **Operational Queue.** Handles Tier 3 operational adjustments that do not materially burden rights or cross article boundaries. Staffed by a 3-member rotating sub-panel drawn from the full CRP pool. Sub-panel composition must rotate each quarter; no member may sit on the same queue in consecutive quarters. Maximum SLA: 7 days from queue entry to decision. Operational queue decisions are subject to full-panel review on petition by any CRP member, the Federated Ombuds, or a 1/3 minority bloc within 14 days of publication.
 
 #### AC1.2 Minimum Operational Throughput Floor
 At minimum, the five highest-priority operational proposals per quarterly cycle must reach a decision — approve, reject, or return for clarification with written reasons — regardless of pending constitutional challenges. Priority ranking uses the scoring defined in AC2.1 (impact × urgency × reversibility). Pending constitutional challenges suspend constitutional queue processing but do not suspend the operational floor. Failure to meet the operational floor triggers automatic Level 1 watch under the emergency cascade.
@@ -21,10 +21,10 @@ At minimum, the five highest-priority operational proposals per quarterly cycle 
 No region or deliberative body may declare a Level 3 or higher emergency in the same domain for more than two consecutive quarters without: (a) an independent audit of the original declaration's evidentiary basis, published before the third declaration takes effect; and (b) a mandatory written justification for continuation, published simultaneously. A third consecutive declaration that does not satisfy both conditions is void. This rule applies per-domain — concurrent emergencies in different domains are not affected.
 
 #### AC1.4 Proposal Intake Throttle and Priority Scoring
-All proposals entering the Pillar 9 pipeline must receive a priority score before queue placement. Priority score = impact × urgency × reversibility, each rated 1–5. The deliberative body sets total intake capacity per quarter. Proposals below the capacity threshold defer to the following quarter with published reasoning. Overflow proposals are published immediately — making congestion attacks visible as a public record. DW-weighted urgency preference signals may inform urgency scoring but may not override the impact or reversibility components. The priority scoring methodology is a published document subject to P-004 definition drift protections.
+All proposals entering the Article VI deliberation pipeline must receive a priority score before queue placement. Priority score = impact × urgency × reversibility, each rated 1–5. The deliberative body sets total intake capacity per quarter. Proposals below the capacity threshold defer to the following quarter with published reasoning. Overflow proposals are published immediately — making congestion attacks visible as a public record. DW-weighted urgency preference signals may inform urgency scoring but may not override the impact or reversibility components. The priority scoring methodology is a published document subject to P-004 definition drift protections.
 
 #### AC1.5 Cross-Quarter Interim Authorization Bridge
-For Level 3 and Level 4 emergencies only, an Interim Operational Authority is constituted automatically upon emergency declaration. Composition: the Ombuds Office, one rotating CRP member drawn by lot from the full panel, and the relevant regional executive body — all acting jointly. No single actor may activate interim authority unilaterally.
+For Level 3 and Level 4 emergencies only, an Interim Operational Authority is constituted automatically upon emergency declaration. Composition: the Federated Ombuds, one rotating CRP member drawn by lot from the full panel, and the relevant regional executive body — all acting jointly. No single actor may activate interim authority unilaterally.
 
 **Permitted actions.** The Interim Operational Authority may: (a) authorize affirmative operational decisions strictly within the scope stated in the emergency declaration; (b) reduce above-baseline LC issuance rate (humane floor issuance remains at 100%); (c) activate reserve release protocols for the declared domain; (d) issue public notices and operational directives within the declared scope.
 
@@ -32,8 +32,8 @@ For Level 3 and Level 4 emergencies only, an Interim Operational Authority is co
 
 All interim decisions are provisional, published within 1 hour of issuance, and subject to full quarterly cycle ratification or reversal. Any interim decision that exceeds declared scope is automatically void upon finding and triggers a CRP capture review.
 
-#### AC1.6 Decision Quality Metrics (Pillar 5 Extension)
-The Pillar 5 quarterly compliance report shall include the following decision quality metrics: (a) ratio of agenda items with substantive alternatives formally presented versus items with single-track framing — target floor: 50%; (b) decision reversal rate: proportion of decisions formally reversed or substantially amended within two subsequent quarterly cycles — published as a rolling 8-quarter metric; (c) minority dissent rate: proportion of decisions with published minority dissent — target floor: at least 15% of significant decisions. Material deviation from published targets for two consecutive quarters triggers a mandatory deliberation quality review conducted by an independent panel not drawn from the incumbent deliberative body.
+#### AC1.6 Decision Quality Metrics (Article VI Extension)
+The Article VI quarterly compliance report shall include the following decision quality metrics: (a) ratio of agenda items with substantive alternatives formally presented versus items with single-track framing — target floor: 50%; (b) decision reversal rate: proportion of decisions formally reversed or substantially amended within two subsequent quarterly cycles — published as a rolling 8-quarter metric; (c) minority dissent rate: proportion of decisions with published minority dissent — target floor: at least 15% of significant decisions. Material deviation from published targets for two consecutive quarters triggers a mandatory deliberation quality review conducted by an independent panel not drawn from the incumbent deliberative body.
 
 ---
 
@@ -58,7 +58,7 @@ LC redemption velocity is a native sentinel for all essential categories. A spik
 - The next scheduled oracle publication for the affected category is more than 24 hours away.
 
 **Authority and activation:**
-PCRP authority rests with the Regional Executive Body. Activation requires joint action — no single actor may activate unilaterally. The Ombuds Office must be notified within 1 hour of activation. PCRP activation is published immediately as a public record.
+PCRP authority rests with the Regional Executive Body. Activation requires joint action — no single actor may activate unilaterally. The Federated Ombuds must be notified within 1 hour of activation. PCRP activation is published immediately as a public record.
 
 **Permitted and prohibited actions:**
 - **Permitted:** Reduce LC issuance to 70% of above-baseline for the affected category only. Humane floor issuance remains at 100%. Activate reserve release protocol for the affected category. Trigger expedited oracle review — must complete within 48 hours, not the normal cycle. Issue public notice that PCRP is active, specifying the category, trigger evidence, and named sources.
@@ -79,10 +79,10 @@ The term 'supply shock' as used in AC2.2 and any implementing documentation is a
 ---
 
 ### AC3. Bureaucratic Elite Formation Hardening (P-008)
-The following clauses extend Pillar 8, Pillar 9, Annex Z (Civic Layer Refactor), Annex K (Basket and Civic Fairness), Annex N (Transition Preconditions), and the P-004 protected terms registry.
+The following clauses extend Article VI, Annex Z (Civic Layer Refactor), Annex K (Basket and Civic Fairness), Annex N (Transition Preconditions), and the P-004 protected terms registry.
 
 #### AC3.1 Legibility Gap Audit
-The Pillar 8 quarterly report shall include the following legibility gap metrics, published in aggregate form with privacy-preserving suppression of small cells:
+The Article VI quarterly report shall include the following legibility gap metrics, published in aggregate form with privacy-preserving suppression of small cells:
 - Verification approval rate by contribution category (institutional, informal, care, ecological, civic operations, other).
 - Average evidence burden imposed per claim, by category and by verifier pool — measured as number of evidence elements required and time to decision.
 - Appeals rate by category — proportion of verification decisions formally challenged.
@@ -101,21 +101,21 @@ Network concentration is a governed constraint in addition to sector concentrati
 Any CR-governed service pool, audit body, or review panel with more than five members must meet a published epistemic diversity standard before its composition is certified for service. The standard has three axes:
 - **Institutional origin diversity:** no more than 30% of members from the same employer type (government, academic institution, non-governmental organization, enterprise).
 - **Contribution-type diversity:** at least 30% of members must have their primary CR earned through informal, care, or non-institutional contribution categories as defined in Annex K3.
-- **Geographic diversity:** at least 25% of members from regions outside the nationally identified high-density professional class concentrations, as published by the Pillar 11 dashboard.
+- **Geographic diversity:** at least 25% of members from regions outside the nationally identified high-density professional class concentrations, as published by the Article VII dashboard.
 
 Epistemic diversity is a pool design requirement, not a draw-moment requirement. The eligible pool must be structured to produce diverse draws through normal sortition. Pool-depth targets for each axis are a system health metric published quarterly. A seat vacancy may not be filled if doing so would bring the body below the published diversity standard; the seat must remain temporarily vacant until a compliant draw is possible.
 
-#### AC3.4 Verification Independence Rule (Pillar 8 / Annex U7 Extension)
+#### AC3.4 Verification Independence Rule (Article VI / Annex U7 Extension)
 A verifier may not review contribution claims in their own primary contribution category. A verifier's primary category is the category that constitutes the largest single share of their lifetime CR balance. Cross-category verification is required for all mid-range and high-impact claims as defined in Annex U7. Cross-regional verification is additionally required for high-impact claims when the claimant's region shares more than 30% of its active verifier pool with the verifier's region of primary service. This rule does not apply to lightweight attestation for small claims, which retains community attestation as defined in Annex K3.
 
 #### AC3.5 Cooling-Off Cohort Rule
-In addition to individual cooling-off periods already established in Annex L and Annex S, the protocol establishes cohort cooling. A service cohort is defined as all individuals who held a significant governance role — CRP member, verifier pool lead, audit body chair, or Ombuds Office officer — within the same 12-month window. No more than two members of the same cohort may simultaneously hold positions that share review authority over the same subject matter. Cohort membership is determined by institutional co-service record, not inferred social relationship, and is maintained by the Ombuds Office in a published aggregate registry.
+In addition to individual cooling-off periods already established in Annex L and Annex S, the protocol establishes cohort cooling. A service cohort is defined as all individuals who held a significant governance role — CRP member, verifier pool lead, audit body chair, or Federated Ombuds officer — within the same 12-month window. No more than two members of the same cohort may simultaneously hold positions that share review authority over the same subject matter. Cohort membership is determined by institutional co-service record, not inferred social relationship, and is maintained by the Federated Ombuds in a published aggregate registry.
 
 #### AC3.6 Qualification Standard Governance (P-004 Extension)
 The criteria for 'demonstrated competence' required for CRP systems reviewer seats, certified pool membership, and verifier eligibility are added to the P-004 protected terms registry as Class H-1 protected specifications. Any change to what constitutes qualifying experience, qualifying training, or qualifying institutional background is a substantive change requiring full review under Annex AB5. The body that defines or revises qualification standards must include at least 40% of members from contribution backgrounds that would have been classified as non-qualifying under the prior standard — ensuring that exclusionary effects of prior standards are reviewed by people who experienced them.
 
-#### AC3.7 Concentration Dashboard (Pillar 11 Extension)
-The Pillar 11 real-time information commons shall publish the following elite concentration metrics on a rolling basis, with a 30-day publication lag to prevent threshold gaming:
+#### AC3.7 Concentration Dashboard (Article VII Extension)
+The Article VII transparency infrastructure shall publish the following elite concentration metrics on a rolling basis, with a 30-day publication lag to prevent threshold gaming:
 - Sector distribution of active members in each CR-governed service pool (aggregate, privacy-preserving, small-cell suppressed).
 - Institutional origin diversity score per major oversight body — measured against the AC3.3 standard.
 - Cohort overlap index: proportion of currently active governance role holders who share a service cohort with one or more other currently active holders.
@@ -149,8 +149,6 @@ The following threats remain in the hardening queue following Session 2:
 - **Ombuds Office concentration risk** (open question from P-008) — who audits the auditors of elite formation?
 - **T-006 cross-threat validation** — PCRP authority at Regional Executive Body level assessed for T-008 elite formation risk.
 
-*This annex is part of The Humane Constitution document set. It must be integrated into the Master Protocol before public distribution. Where this annex conflicts with earlier language, this annex governs. The patch log extension (P-005, P-006, P-008) and threat register additions (T-005, T-006, T-008) are companion documents to this annex.*
+*This annex is part of the Humane Constitution document set. It must be integrated into the Humane Constitution before public distribution. Where this annex conflicts with earlier language, this annex governs. The patch log extension (P-005, P-006, P-008) and threat register additions (T-005, T-006, T-008) are companion documents to this annex.*
 
 ---
-
-# The Humane Constitution — Annex AD

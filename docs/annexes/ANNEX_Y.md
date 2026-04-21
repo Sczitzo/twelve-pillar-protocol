@@ -62,7 +62,7 @@ The following minimums apply to every personhood-verified resident, regardless o
 ### Y1.6 Crisis mental-health stabilization
 - **Crisis access:** 24/7 crisis contact (call/text/in-person) with qualified responder. Response to in-person crisis contact ≤4 hours.
 - **Stabilization scope:** suicide and self-harm crisis response; acute psychosis stabilization; acute trauma response; dignity-preserving de-escalation; assisted access to continuing care.
-- **Coercion prohibition:** mental-health stabilization services may never be used to gate LC, civic standing, residency, or personhood verification. Involuntary hold powers are narrowly tied to imminent self-harm or harm-to-others and subject to Pillar 10 due-process review within 72 hours.
+- **Coercion prohibition:** mental-health stabilization services may never be used to gate LC, civic standing, residency, or personhood verification. Involuntary hold powers are narrowly tied to imminent self-harm or harm-to-others and subject to Article I due-process review within 72 hours.
 
 ### Y1.7 Essential medicines continuity
 - **Scope:** WHO Model List of Essential Medicines, current edition, as floor. Additional medicines added by regional published formulary cannot be removed without substitution equivalence.
@@ -74,8 +74,8 @@ The following minimums apply to every personhood-verified resident, regardless o
 
 CSM issuance is not a governance decision. It is a mechanical function of personhood verification.
 
-- **Trigger:** valid personhood commitment (Pillar 2) including provisional personhood states.
-- **Mechanism:** ledger-layer automatic LC tranche issuance against CSM basket per 72-hour rolling window. Governance actors — including the Constitutional Review Panel, Regional Executive Body, Ombuds Office, and any emergency authority — are architecturally *unable* to halt CSM issuance for any verified personhood.
+- **Trigger:** valid personhood commitment under Article II, including provisional personhood states.
+- **Mechanism:** ledger-layer automatic LC tranche issuance against CSM basket per 72-hour rolling window. Governance actors — including the Constitutional Review Panel, Regional Executive Body, Federated Ombuds, and any emergency authority — are architecturally *unable* to halt CSM issuance for any verified personhood.
 - **Identity uncertainty does not halt CSM.** Provisional personhood receives the humane-floor subset of the CSM basket while verification is in progress.
 - **Scarcity does not halt CSM.** During Scarcity L2/L3, the CSM is preserved by invoking the substitution rules in §Y3. Capacity below CSM × population is a declared System Failure triggering §Y4.
 - **Sanction does not halt CSM.** No judicial, regulatory, criminal, or contractual process may produce withdrawal of CSM access. Enforcement acts on EC, DW, CR, liberty (per due process), or civic privileges — never on CSM.
@@ -87,7 +87,7 @@ The CSM is preserved even during declared scarcity by substitution, not by narro
 
 - **Caloric substitution:** emergency food baskets with nutrient equivalence. Composition may vary by available supply; total kcal and protein floors may not fall below §Y1.1.
 - **Water substitution:** emergency minimum 15 L/day as specified in §Y1.2. Mandatory restoration timeline published within 72 hours of entering substitution mode.
-- **Shelter substitution:** temporary shared habitation at reduced sqm/person is permitted only when (a) individual dignity protections are preserved (privacy partitions, separate sleeping for vulnerable persons); (b) timeline to §Y1.3 restoration is published; (c) duration does not exceed 90 days without external review trigger under Pillar 3.
+- **Shelter substitution:** temporary shared habitation at reduced sqm/person is permitted only when (a) individual dignity protections are preserved (privacy partitions, separate sleeping for vulnerable persons); (b) timeline to §Y1.3 restoration is published; (c) duration does not exceed 90 days without external review trigger under Article III.
 - **Medical and mental-health stabilization: NO substitution.** Response time floors and stabilization scope are invariant.
 - **Medicines substitution:** therapeutic equivalents may be substituted only with prescriber review; no substitution is permitted where evidence of equivalence is absent.
 
@@ -98,7 +98,7 @@ All substitutions are published in real time through Article VII transparency in
 Any observed failure to deliver the §Y1 minimums to any personhood-verified resident is a Critical Incident.
 
 - **Mandatory disclosure:** published through Article VII transparency infrastructure within 24 hours.
-- **Mandatory investigation:** Ombuds Office (post-Proposal 8 federation) opens an investigation within 72 hours.
+- **Mandatory investigation:** the Federated Ombuds opens an investigation within 72 hours.
 - **Mandatory restitution:** the affected person receives retroactive CSM provision, plus dignity-preserving redress, within 7 days of confirmation.
 - **Mandatory root-cause review:** capacity gap, process failure, or capture is published within 30 days; patches registered per Patch Log.
 - **Mandatory pattern detection:** if more than `[ACCEPTABLE_CSM_FAILURE_THRESHOLD]` (Tier 2 Founding Commitment; see `/founding/commitments.md`) failures occur in any jurisdictional cluster within a 30-day window, the protocol enters Scarcity L3 for that cluster regardless of oracle status, and H-3 refounding review is initiated at the next scheduled opportunity.
@@ -116,13 +116,13 @@ The essential basket defined in `Humane_Constitution.md` §VIII is broader than 
 
 Example — the broader basket may include "basic clothing" or "basic local transit." These are essential-basket items but not CSM items. They may vary by region or period. The CSM items (food, water, shelter, emergency medicine, sanitation, mental-health stabilization, essential-medicines continuity) may not.
 
-## Y7. Interaction with Other Pillars
+## Y7. Interaction with Other Articles
 
-- **Pillar 2 (Identity):** CSM applies to provisional personhood, full personhood, and civic-activated personhood alike. Identity uncertainty reduces civic powers, not CSM access.
-- **Pillar 3 (Capacity):** the RCS publishes CSM × population estimates continuously. Any projected shortfall triggers §Y3 substitution planning immediately — not when the shortfall arrives.
-- **Pillar 10 (Operations):** enforcement actions are architecturally prohibited from targeting CSM channels. Account partitioning (per Master §Pillar 5 wallet partitioning) ensures enforcement on EC or other channels does not touch LC/CSM.
-- **Pillar 11 (Transparency):** CSM delivery rate, substitution events, and Critical Incidents are published in aggregate at the jurisdictional-cluster level. Individual-level CSM data is never published.
-- **Pillar 12 (Resilience):** resilience reserves are sized to cover CSM × population × [RESERVE_WINDOW_DAYS] (Tier 2 Founding Commitment).
+- **Article II (Identity):** CSM applies to provisional personhood, full personhood, and civic-activated personhood alike. Identity uncertainty reduces civic powers, not CSM access.
+- **Article III (Capacity):** the RCS publishes CSM × population estimates continuously. Any projected shortfall triggers §Y3 substitution planning immediately — not when the shortfall arrives.
+- **Article I (Rule-bound execution):** enforcement actions are architecturally prohibited from targeting CSM channels. Account partitioning in the constitutional monetary architecture ensures enforcement on EC or other channels does not touch LC/CSM.
+- **Article VII (Transparency):** CSM delivery rate, substitution events, and Critical Incidents are published in aggregate at the jurisdictional-cluster level. Individual-level CSM data is never published.
+- **Article III (Reserves):** resilience reserves are sized to cover CSM × population × [RESERVE_WINDOW_DAYS] (Tier 2 Founding Commitment).
 
 ---
 

@@ -30,7 +30,7 @@ This annex specifies five things:
 4. **Inspector pool governance** — pool size floors, rotation schedule, disqualification criteria
 5. **Publication commitment** — what is reported publicly, how often, and in what form
 
-Each section is a template. The founding coalition must fill in all **[FOUNDING COMMITMENT]** fields. Worked examples are provided to show how different values affect real outcomes. These worked examples use a placeholder EC demurrage rate of **5% per year** — the founding coalition must substitute the actual rate when calibrating these parameters.
+Each section is a parameter block. The founding coalition must bind the reserved commitments **FC-160 through FC-184** before deployment. Worked examples are provided to show how different values affect real outcomes. The worked examples retain a round-number annual demurrage illustration of **5% per year** for comparability; before activation they must be recalculated against FC-050 or its amended successor.
 
 ---
 
@@ -42,15 +42,15 @@ Each section is a template. The founding coalition must fill in all **[FOUNDING 
 
 | Tier | Release Size | Verification Required |
 | :--- | :--- | :--- |
-| **Standard** | Below [FOUNDING COMMITMENT — e.g., 100,000 EC] | Single independent verifier |
-| **Enhanced** | [e.g., 100,000 EC] to [FOUNDING COMMITMENT — e.g., 1,000,000 EC] | Dual independent verifier |
-| **Major** | Above [FOUNDING COMMITMENT — e.g., 1,000,000 EC] | Triple independent verifier + mandatory physical inspection with audit trail |
+| **Standard** | Below FC-160 (reserved; recommended anchor: 100,000 EC) | Single independent verifier |
+| **Enhanced** | FC-160 to FC-161 (both reserved; recommended anchor ceiling: 1,000,000 EC) | Dual independent verifier |
+| **Major** | Above FC-161 (reserved) | Triple independent verifier + mandatory physical inspection with audit trail |
 
 ### 1.2 — Project-Value Percentage Floor (Anti-Fragmentation Rule)
 
 *A contractor may not escape the Major tier by fragmenting a large deliverable into many smaller milestones. The percentage floor applies regardless of absolute amount.*
 
-Any single milestone release exceeding **[FOUNDING COMMITMENT — e.g., 15%]** of the total contracted project value triggers **Major tier verification**, regardless of the absolute EC amount.
+Any single milestone release exceeding **FC-162** (reserved; recommended anchor: 15% of total contracted project value) triggers **Major tier verification**, regardless of the absolute EC amount.
 
 **Rationale:** Without the percentage floor, a 20M EC project could define all milestones at 999,999 EC (just below the Major threshold), permanently avoiding triple verification. The percentage floor closes this. On a 20M EC project with a 15% floor, any release above 3M EC triggers Major verification — independent of the absolute threshold.
 
@@ -100,9 +100,9 @@ Result: At these thresholds, most milestones on a 10M project receive single ver
 
 | Programme Type | Deployment Window | Rationale |
 | :--- | :--- | :--- |
-| **LC-essential delivery** (housing floor, primary healthcare capacity, emergency food supply) | [FOUNDING COMMITMENT — e.g., 90 days] | LC delivery is a survival obligation. Idle funds in this category represent people not housed or not treated. The shorter window creates institutional urgency aligned with the protocol's first priority. |
-| **Standard infrastructure** (transport, utilities, civic facilities) | [FOUNDING COMMITMENT — e.g., 180 days] | Complex procurement cycles require more time. 180 days balances contracting quality against idle-fund accountability. |
-| **Large-scale or novel infrastructure** (projects above [FOUNDING COMMITMENT — e.g., 50M EC] contracted value, or first-of-type projects with no established procurement pathway) | [FOUNDING COMMITMENT — e.g., 365 days] | Procurement complexity is genuine at this scale. The longer window is compensated by stricter oversight: CRP review at 180 days (not just at end of window) and mandatory procurement progress reporting at 90-day intervals. |
+| **LC-essential delivery** (housing floor, primary healthcare capacity, emergency food supply) | FC-163 (reserved; recommended anchor: 90 days) | LC delivery is a survival obligation. Idle funds in this category represent people not housed or not treated. The shorter window creates institutional urgency aligned with the protocol's first priority. |
+| **Standard infrastructure** (transport, utilities, civic facilities) | FC-164 (reserved; recommended anchor: 180 days) | Complex procurement cycles require more time. 180 days balances contracting quality against idle-fund accountability. |
+| **Large-scale or novel infrastructure** (projects above FC-165 (reserved; recommended anchor: 50M EC) contracted value, or first-of-type projects with no established procurement pathway) | FC-166 (reserved; recommended anchor: 365 days) | Procurement complexity is genuine at this scale. The longer window is compensated by stricter oversight: CRP review at 180 days (not just at end of window) and mandatory procurement progress reporting at 90-day intervals. |
 
 ### 2.2 — Demurrage Interaction Worked Examples
 
@@ -139,14 +139,14 @@ Result: At these thresholds, most milestones on a 10M project receive single ver
 
 When the deployment window is exceeded without active contracting, the mandatory CRP review must:
 
-1. Require the commissioning authority to provide a written explanation for the delay within **[FOUNDING COMMITMENT — e.g., 14 days]** of review trigger.
+1. Require the commissioning authority to provide a written explanation for the delay within **FC-167** (reserved; recommended anchor: 14 days) of review trigger.
 2. Assess whether the delay reflects: (a) legitimate procurement complexity; (b) capacity failure; (c) deliberate deferral.
-3. Issue one of three outcomes within **[FOUNDING COMMITMENT — e.g., 30 days]** of review trigger:
-   - **Extension granted** (legitimate complexity confirmed): window extended by [FOUNDING COMMITMENT — e.g., 90 days]; additional progress reporting required.
+3. Issue one of three outcomes within **FC-168** (reserved; recommended anchor: 30 days) of review trigger:
+   - **Extension granted** (legitimate complexity confirmed): window extended by FC-169 (reserved; recommended anchor: 90 days); additional progress reporting required.
    - **Capacity support** (capacity failure confirmed): CRP assigns procurement assistance; original window continues.
    - **Escalation** (deliberate deferral confirmed or second extension requested): programme transferred to joint CRP/Ombuds oversight; authority's future escrow capacity may be conditioned.
 
-CRP review outcomes are published publicly within **[FOUNDING COMMITMENT — e.g., 14 days]** of the decision.
+CRP review outcomes are published publicly within **FC-170** (reserved; recommended anchor: 14 days) of the decision.
 
 ---
 
@@ -158,10 +158,10 @@ CRP review outcomes are published publicly within **[FOUNDING COMMITMENT — e.g
 
 | Cumulative freeze duration (per project) | Verification required to activate |
 | :--- | :--- |
-| First **[FOUNDING COMMITMENT — e.g., 90 days]** | Contractor self-certification with contemporaneous documentary evidence (permits, certified notices, supply chain disruption documentation) |
-| **[e.g., 91]** to **[FOUNDING COMMITMENT — e.g., 180 days]** | Independent third-party certification from a body with no financial relationship with the contractor or commissioning authority |
-| **[e.g., 181]** to **[FOUNDING COMMITMENT — e.g., 365 days]** | Independent assessment panel (P-017 oracle-independence standards); public notice published within 14 days of activation |
-| Beyond **[FOUNDING COMMITMENT — e.g., 365 days total]** | **Not available.** Project enters mandatory restructuring review. A second force majeure claim after the cap is exhausted does not activate a freeze; it activates a separate restructuring pathway. |
+| First **FC-171** (reserved; recommended anchor: 90 days) | Contractor self-certification with contemporaneous documentary evidence (permits, certified notices, supply chain disruption documentation) |
+| Above FC-171 up to **FC-172** (reserved; recommended anchor: 180 days total) | Independent third-party certification from a body with no financial relationship with the contractor or commissioning authority |
+| Above FC-172 up to **FC-173** (reserved; recommended anchor: 365 days total) | Independent assessment panel (P-017 oracle-independence standards); public notice published within 14 days of activation |
+| Beyond **FC-173** | **Not available.** Project enters mandatory restructuring review. A second force majeure claim after the cap is exhausted does not activate a freeze; it activates a separate restructuring pathway. |
 
 **The hard cap is non-negotiable.** No extension of the cap is available without a Tier 2 (H-2) amendment. The purpose of the hard cap is to make the certification panel economically irrelevant above the cap — beyond the cap, there is nothing to capture.
 
@@ -199,7 +199,7 @@ At a 365-day cap on a 2-year project, a contractor can eliminate ~50% of total d
 | 180 days | ~24,700 EC | 49.4% |
 | 365 days | ~50,000 EC | 100% — entire demurrage eliminated on a 1-year project |
 
-**Key finding for short LC-essential projects:** A 365-day cap on a 1-year project is effectively unlimited. For LC-essential programmes, the cap should be set relative to total project duration — e.g., cap cannot exceed **[FOUNDING COMMITMENT — e.g., 25%]** of the contracted project duration, regardless of the absolute day limit. This prevents the "1-year project, 365-day cap" outcome above.
+**Key finding for short LC-essential projects:** A 365-day cap on a 1-year project is effectively unlimited. For LC-essential programmes, the cap should be set relative to total project duration through **FC-174** (reserved; recommended anchor: 25% of contracted project duration), regardless of the absolute day limit. This prevents the "1-year project, 365-day cap" outcome above.
 
 ### 3.3 — Qualifying Events
 
@@ -223,17 +223,17 @@ At a 365-day cap on a 2-year project, a contractor can eliminate ~50% of total d
 
 | Jurisdiction scale | Minimum pool size | Rationale |
 | :--- | :--- | :--- |
-| **Pilot / single municipality** | [FOUNDING COMMITMENT — e.g., 12 qualified inspectors] | Minimum to enable rotation without repetition across a standard project's milestone set |
-| **Regional** | [FOUNDING COMMITMENT — e.g., 30 qualified inspectors] | Sufficient depth to prevent any single inspector from becoming critical-path bottleneck |
-| **National / multi-regional** | [FOUNDING COMMITMENT — e.g., 75 qualified inspectors per region] | Rotation frequency and geographic distribution become binding at this scale |
+| **Pilot / single municipality** | FC-175 (reserved; recommended anchor: 12 qualified inspectors) | Minimum to enable rotation without repetition across a standard project's milestone set |
+| **Regional** | FC-176 (reserved; recommended anchor: 30 qualified inspectors) | Sufficient depth to prevent any single inspector from becoming critical-path bottleneck |
+| **National / multi-regional** | FC-177 (reserved; recommended anchor: 75 qualified inspectors per region) | Rotation frequency and geographic distribution become binding at this scale |
 
 ### 4.2 — Rotation Schedule
 
 | Pool tier | Maximum consecutive assignments to same project | Cooling-off period before reassignment |
 | :--- | :--- | :--- |
-| Standard tier releases | [FOUNDING COMMITMENT — e.g., 3 consecutive milestones] | [FOUNDING COMMITMENT — e.g., 90 days] |
-| Enhanced tier releases | [FOUNDING COMMITMENT — e.g., 2 consecutive milestones] | [FOUNDING COMMITMENT — e.g., 120 days] |
-| Major tier releases | [FOUNDING COMMITMENT — e.g., 1 milestone] | [FOUNDING COMMITMENT — e.g., 180 days] |
+| Standard tier releases | FC-178 (reserved; recommended anchor: 3 consecutive milestones) | FC-179 (reserved; recommended anchor: 90 days) |
+| Enhanced tier releases | FC-180 (reserved; recommended anchor: 2 consecutive milestones) | FC-181 (reserved; recommended anchor: 120 days) |
+| Major tier releases | FC-182 (reserved; recommended anchor: 1 milestone) | FC-183 (reserved; recommended anchor: 180 days) |
 
 **Rationale:** At Major tier, no inspector should certify the same project twice without a 180-day gap. This makes sustained relationship-building between contractor and inspector structurally difficult. For Standard tier, three consecutive milestones are permitted because administrative continuity has value and the lower financial stakes reduce capture incentive.
 
@@ -251,7 +251,7 @@ An inspector may be temporarily suspended (pending investigation) on credible al
 ### 4.4 — Pool Composition Independence
 
 At the time of any inspector assignment:
-- No more than **[FOUNDING COMMITMENT — e.g., 25%]** of the active pool may have prior employment or consulting relationships with any single sector (construction, utilities, healthcare infrastructure — assessed at the three-digit industry classification level).
+- No more than **FC-184** (reserved; recommended anchor: 25% of the active pool) may have prior employment or consulting relationships with any single sector (construction, utilities, healthcare infrastructure — assessed at the three-digit industry classification level).
 - Pool diversity across professional background (engineering disciplines, quantity surveying, planning, environmental assessment) must be maintained at levels defined in the escrow agent's published pool composition report.
 
 ---
@@ -279,7 +279,7 @@ To complete this annex before deployment, the founding coalition must:
 
 1. **Determine the actual EC demurrage rate** and recalibrate the deployment window examples in Section 2 accordingly. If the demurrage rate is below 3% per year, deployment windows must be shortened or a separate rate must be specified for escrowed funds to maintain adequate institutional signal strength.
 
-2. **Fill in all [FOUNDING COMMITMENT] fields** in Sections 1 through 4, using first-year pilot data where available. Where pilot data is not yet available, use the recommended anchors as starting positions:
+2. **Bind FC-160 through FC-184** in Sections 1 through 4, using first-year pilot data where available. Where pilot data is not yet available, use the recommended anchors as starting positions:
    - High-value thresholds: 100k EC / 1M EC / 15% of project value
    - Deployment windows: 90 days (LC-essential) / 180 days (standard) / 365 days (large-scale)
    - Force majeure cap: 365 days absolute; capped at 25% of project duration for LC-essential programmes
@@ -291,7 +291,7 @@ To complete this annex before deployment, the founding coalition must:
 
 5. **Commission the inspector pool** before the first escrow account is opened. Pool size must meet the minimum for the deployment scale; pool composition must satisfy Section 4.4 before any inspector makes any certification.
 
-6. **Integrate contract-commitment architecture metrics into the Pillar 11 public dashboard** before any escrow account is opened. The publication commitment in Section 5 is a precondition of deployment, not a post-deployment addition.
+6. **Integrate contract-commitment architecture metrics into the Article VII public dashboard** before any escrow account is opened. The publication commitment in Section 5 is a precondition of deployment, not a post-deployment addition.
 
 ---
 
@@ -305,4 +305,4 @@ To complete this annex before deployment, the founding coalition must:
 
 ---
 
-*This document is Annex AR of the master protocol. The commitment architecture is operative as a PROPOSED standard. The specific numerical parameters are an evidence gate: committed at founding as design architecture, calibrated with specific numbers after first-year pilot data, and locked as Tier 2 before the first scale-up gate. The recommended anchor values in this annex are defensible starting positions, not pre-committed values — the founding coalition must explicitly accept, modify, or replace each one.*
+*This document is Annex AR of the Humane Constitution. The commitment architecture is operative as a PROPOSED standard. The specific numerical parameters are an evidence gate: committed at founding as design architecture, calibrated with specific numbers after first-year pilot data, and locked as Tier 2 before the first scale-up gate. The recommended anchor values in this annex are defensible starting positions, not pre-committed values — the founding coalition must explicitly accept, modify, or replace each one.*

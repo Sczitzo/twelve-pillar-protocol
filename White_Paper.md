@@ -271,13 +271,13 @@ The protocol is not a utopia machine. It is an attempt to build a civic operatin
 - **Identity** is treated as an adversarial surface; the humane floor survives even where higher-consequence powers must pause under uncertainty. 
 - **Definition drift** is treated as a constitutional threat; protected terms require visible governance and cannot be changed by technical laundering.
 
-**Document set note.** The authoritative set is now six documents: the master protocol, threat register, patch log, public white paper, corpus audit note, and diagrammed technical reference. The master remains the primary source of truth. The white paper remains the front door for public understanding and should be updated only in ways that stay consistent with the master.
+**Document set note.** The authoritative set is now six documents: the Humane Constitution, threat register, patch log, public white paper, corpus audit note, and diagrammed technical reference. The constitution remains the primary source of truth. The white paper remains the front door for public understanding and should be updated only in ways that stay consistent with the constitution.
 
 ---
 
 ### 1. Civic Layer Naming: CC → DW + CR
 
-The earlier white paper refers to 'CC' (Civic Influence Ledger) as a single instrument. The master protocol refactored this into two separate tracks (Annex Z):
+The earlier white paper refers to 'CC' (Civic Influence Ledger) as a single instrument. The Humane Constitution refactored this into two separate tracks (Annex Z):
 
 | Prior Term | New Term | What It Does | What It Is Not |
 | :--- | :--- | :--- | :--- |
@@ -326,11 +326,11 @@ The following is a summary of core rights. The full Humane Constitution governs 
 
 | How to challenge a decision |
 | :--- |
-| Any adverse decision has a published appeal path. The Ombuds Office can file on your behalf. Emergency review opens within 72 hours. |
+| Any adverse decision has a published appeal path. The Federated Ombuds can file on your behalf. Emergency review opens within 72 hours. |
 
 | Where to check system health |
 | :--- |
-| The Article VII public dashboard (legacy v13 P7; formerly Pillar 11 under v12) publishes real-time aggregate capacity, SLA performance, reserve levels, and governance queue status. |
+| The Article VII public dashboard publishes real-time aggregate capacity, SLA performance, reserve levels, and governance queue status. |
 
 ---
 
@@ -351,4 +351,4 @@ The white paper's Section 8 (Deployability) lists preconditions for launch. This
 
 ---
 
-*Document set note. The authoritative set is six documents: master protocol, threat register, patch log, public white paper, diagrammed technical reference, and corpus audit note. The master remains primary source of truth. This white paper addendum fulfills Annex AD6 pre-launch sync requirements.*
+*Document set note. The authoritative set is six documents: Humane Constitution, threat register, patch log, public white paper, diagrammed technical reference, and corpus audit note. The constitution remains the primary source of truth. This white paper addendum fulfills Annex AD6 pre-launch sync requirements.*

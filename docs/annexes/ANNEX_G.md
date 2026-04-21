@@ -53,7 +53,7 @@ Every materially adverse decision must be challengeable by a legible path. Autom
 - **Emergency relief windows** should be measured in hours or days, not months, whenever survival access, identity continuity, or liberty interests are at stake.
 - **Algorithmic systems** must preserve the inputs, rules, and model/version state necessary for retrospective review.
 
-### G4. Pillar 12 Public Finance & Commons Revenue Constitution
+### G4. Article V Public Finance & Commons Revenue Constitution
 Public institutions must be funded in a way that is transparent, capacity-aware, and resistant to quiet debt resurrection. The public side may spend, but it may not hide future obligations off-ledger, manufacture permanent emergency dependence, or fall back to taxing survival, ordinary labor, or basic household exchange.
 
 | Rule area | Default constitutional rule | Anti-capture control |

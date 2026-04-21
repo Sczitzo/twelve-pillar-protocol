@@ -16,6 +16,8 @@ This is an open design project. The design is not finished. The most valuable th
 
 **If you want to understand the hardening methodology:** Read [`Patch_Log.md`](./Patch_Log.md) — 26 patches, each with the threat it addresses, the new risk it introduces, and its residual risk.
 
+**Before opening a structural docs PR:** Run `python3 scripts/validate_corpus.py`. This checks local markdown links, annex index coverage, FC/T/P identifier integrity, and banned live legacy labels.
+
 ---
 
 ## Ways to contribute
@@ -47,7 +49,7 @@ If you know of a real-world system, historical case, natural experiment, or acad
 
 ### 4. Founding coalition decisions
 
-Several annexes contain explicit `[FOUNDING COMMITMENT]` placeholders — numerical parameters that must be set before deployment, requiring pilot data and coalition deliberation. If you have expertise in setting these kinds of thresholds (e.g., error tolerance standards, deployment window design), your input on the methodology is welcome via Issues or Discussions.
+Several annexes still contain **reserved FC commitments** that must be bound before deployment, requiring pilot data and coalition deliberation. If you have expertise in setting these kinds of thresholds (e.g., error tolerance standards, deployment window design), your input on the methodology is welcome via Issues or Discussions.
 
 ### 5. Plain-language and accessibility
 

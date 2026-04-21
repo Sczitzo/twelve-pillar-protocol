@@ -16,7 +16,7 @@ Federation resolves this at the structural layer:
 - **Geographic and institutional dispersal.** Five sub-nodes sited in structurally distinct jurisdictions cannot be simultaneously captured by any single legal, political, or coercive actor without producing observable, coordinated pressure.
 - **Redundancy without blocking.** Operational functions (see §4) that require rapid decisions under pressure do not need the full federation — they are handled by a single rotating duty sub-Ombuds with a post-hoc federation review. The federation threshold applies only where the decision is protocol-structural (see §3).
 
-This annex constitutes the Federated Ombuds. Prior references to "the Ombuds" or "the Ombuds Office" in Master Protocol, Patch Log, Threat Register, and other Annexes are read as references to the Federated Ombuds acting through the rule appropriate to the matter (§3 for protocol-level, §4 for operational).
+This annex constitutes the Federated Ombuds. Prior references to "the Ombuds" or "the Ombuds Office" in the Humane Constitution, Patch Log, Threat Register, and other annexes are read as references to the Federated Ombuds acting through the rule appropriate to the matter (§3 for protocol-level, §4 for operational).
 
 ---
 
@@ -261,7 +261,7 @@ The Oversight Assembly operates under a **5-of-7 supermajority** for all binding
 
 If the Assembly certifies that the federation has lost structural dispersal along two or more §1.2 dimensions, or that two or more sub-Ombuds are operating under common capture signals (e.g., concordant anomalous voting, shared-counsel engagements, coordinated personnel transfers), the Assembly activates the **Concentration Response**:
 
-1. Immediate public notice on Pillar 11 dashboards.
+1. Immediate public notice on Article VII dashboards.
 2. Suspension of Plenum authority on §3.2 matters pending remediation.
 3. Automatic activation of a reduced-Plenum unanimous rule (§2.3 option (a)) for all pending operational determinations.
 4. A 180-day remediation window in which the affected sub-Ombuds must either (a) restore dispersal (via personnel, funding, or infrastructure change) or (b) face removal under §2.4.
@@ -274,7 +274,7 @@ Concentration Response activation is itself a Tier 1–logged event — recorded
 The Oversight Assembly is small enough to face its own capture risk. Defences:
 - **Diversity lock.** No two members may share primary institutional origin.
 - **Rotation.** 3-year staggered non-renewable terms prevent entrenchment.
-- **Publication of all votes with rationale.** Voting pattern concentration is itself a Pillar 11 monitoring metric.
+- **Publication of all votes with rationale.** Voting pattern concentration is itself an Article VII monitoring metric.
 - **Right of complaint.** Any sub-Ombuds, any CRP member, or any advocacy organisation may file a complaint against an Assembly member; complaints are heard by a lot-drawn 5-member panel from the Assembly's alternates registry.
 
 The Oversight Assembly does not hold authority over the sub-Ombuds' §4 operational functions — it audits the federation's structural health, not its casework.
@@ -283,7 +283,7 @@ The Oversight Assembly does not hold authority over the sub-Ombuds' §4 operatio
 
 ## 6. Publication Commitment
 
-The Federated Ombuds publishes the following as a continuous public record, in coordination with Pillar 11:
+The Federated Ombuds publishes the following as a continuous public record, in coordination with Article VII:
 
 | Item | Publication format | Frequency | Responsible body |
 | :--- | :--- | :--- | :--- |
@@ -345,4 +345,4 @@ Mandate functions may be **extended** by Tier 2 amendment — new integrations m
 
 ---
 
-*This document is Annex AI of the Twelve Pillar Protocol. The Federated Ombuds is operative as of Proposal 8 close-out (2026-04-18). No patch that depends on Ombuds functions is active until at least four sub-Ombuds are seated and the Oversight Assembly has completed its pre-launch dispersal certification.*
+*This document is Annex AI of the Humane Constitution. The Federated Ombuds is operative as of Proposal 8 close-out (2026-04-18). No patch that depends on Ombuds functions is active until at least four sub-Ombuds are seated and the Oversight Assembly has completed its pre-launch dispersal certification.*

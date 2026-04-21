@@ -1,8 +1,8 @@
 # ANNEX AD — Narrative Attack Surface Hardening (P-011)
 
-**Purpose.** This annex introduces the operative clauses for P-011 (T-011 Narrative Attack Surface). It extends Pillar 11, the White Paper governance rules, and the annual simulation mandate. Where clauses here conflict with earlier language, this annex governs.
+**Purpose.** This annex introduces the operative clauses for P-011 (T-011 Narrative Attack Surface). It extends Article VII, the White Paper governance rules, and the annual simulation mandate. Where clauses here conflict with earlier language, this annex governs.
 
-**Status:** PROPOSED. Clauses become operative only when formally accepted into the master.
+**Status:** PROPOSED. Clauses become operative only when formally accepted into the constitution.
 
 ### AD1. Rapid Public Communication Protocol (RPCP)
 For any operational event that crosses the public visibility threshold — defined as: affects more than the published population threshold, involves any restriction or modification of access, or generates confirmed external media coverage — a public communication must be published within 4 hours of confirmed event detection.
@@ -26,13 +26,13 @@ Before public launch, the system must publish a plain-language document titled '
 For each failure category, the document must explain the containment mechanism and the correction path. Commitment to public disclosure of each failure category is binding — operational failures in these categories that are not published within the RPCP timeline constitute a transparency violation. This doctrine converts future failures from surprise revelations into acknowledged expected events.
 
 ### AD3. Citizen-Facing Rights Layer (CFRL)
-A document separate from the White Paper and Master Protocol must be published before launch. Maximum length: one page. Reading level: 8th grade or below. Translated into every language spoken by more than 1% of the affected population. Contains exactly four sections:
+A document separate from the White Paper and Humane Constitution must be published before launch. Maximum length: one page. Reading level: 8th grade or below. Translated into every language spoken by more than 1% of the affected population. Contains exactly four sections:
 - **What you are entitled to** — survival floor, appeal rights, privacy protections.
 - **What the system cannot do to you** — cannot remove survival access as punishment; cannot use civic weight to gate dignity; cannot track you without aggregation thresholds.
 - **How to challenge a decision** — single-sentence appeal path with named contact.
-- **Where to check system health** — link to Pillar 11 dashboard with plain-language metric definitions.
+- **Where to check system health** — link to the Article VII public dashboard with plain-language metric definitions.
 
-The CFRL must include: 'This document is a summary. Your full rights are in the Master Protocol, which governs in all cases.' The CFRL is governed as a protected specification under P-004: any update that alters what rights are stated or how appeal paths are described is a substantive change requiring full review. The CFRL is not a marketing document and may not be edited for tone or brand without simultaneously updating the substantive content.
+The CFRL must include: 'This document is a summary. Your full rights are in the Humane Constitution, which governs in all cases.' The CFRL is governed as a protected specification under P-004: any update that alters what rights are stated or how appeal paths are described is a substantive change requiring full review. The CFRL is not a marketing document and may not be edited for tone or brand without simultaneously updating the substantive content.
 
 ### AD4. Adversarial Narrative Simulation (Annex T Extension)
 The annual simulation mandate (Annex T) is extended to include at least one adversarial narrative simulation per year. Structure:
@@ -45,7 +45,7 @@ The annual simulation mandate (Annex T) is extended to include at least one adve
 *A system that passes technical operational simulations but fails narrative simulations is not scale-ready. Simulation reports are public.*
 
 ### AD5. Hostile Frame Pre-emption Registry
-The system must maintain and publish a document titled 'Common Misunderstandings.' This document lists the top 10 most likely mischaracterizations of the system, with: (a) the accurate factual statement; (b) the specific Pillar 11 data that supports it; (c) the section of the CFRL or White Paper where the clarification appears. Updated quarterly. When a mischaracterization in the registry appears in external media or public discourse, the registry provides the fastest pre-built path to an accurate counter, available to any journalist, researcher, or citizen. The registry is published under 'Common Misunderstandings,' not 'Anticipated Attacks,' to avoid amplifying hostile framings by naming them as threats.
+The system must maintain and publish a document titled 'Common Misunderstandings.' This document lists the top 10 most likely mischaracterizations of the system, with: (a) the accurate factual statement; (b) the specific Article VII data that supports it; (c) the section of the CFRL or White Paper where the clarification appears. Updated quarterly. When a mischaracterization in the registry appears in external media or public discourse, the registry provides the fastest pre-built path to an accurate counter, available to any journalist, researcher, or citizen. The registry is published under 'Common Misunderstandings,' not 'Anticipated Attacks,' to avoid amplifying hostile framings by naming them as threats.
 
 ### AD6. White Paper Sync Requirements (P-011 Activation)
 Before public launch, the White Paper must be updated to include:
@@ -72,5 +72,3 @@ White Paper updates for P-011 activation are governed as Tier 3 operational chan
 *Session 2 hardening complete. Next queue: compound interface tests (Annex T).*
 
 ---
-
-# The Humane Constitution — Annex AE

@@ -1,5 +1,5 @@
 # ANNEX A. Red-Team Pass (Option B Baseline)
-This annex operationalizes Pillar 8 by defining how the protocol is continuously stress-tested against coercion, fraud, capture, and technical failure. It expands the threat-summary in Section IV into a repeatable test program.
+This annex operationalizes the protocol's adversarial testing discipline by defining how the system is continuously stress-tested against coercion, fraud, capture, and technical failure. It expands the threat-summary in Section IV into a repeatable test program.
 
 ### A1. Red-Team method (repeatable)
 **23. Define invariants (non-negotiables):** (1) no survival denial via LC; (2) no rights denial via the civic layer or EC; (3) coercion must be detectable and punishable without punishing innocents broadly; (4) system must be patchable without elite permission.

@@ -110,7 +110,7 @@ Ten proposals, prioritized. Each has a structured brief. All optimize for less g
 - **[SUPPORTING REASON]** Ockham's razor applied to governance surface: every pillar is a capture target. Twelve targets is three times the attack surface of four. Ostrom principle 8 requires nested enterprises — the 12-pillar flat architecture currently gestures at this without implementing it. Biblical precedent (Exodus 18:17–26, Jethro's counsel to Moses): authority must be distributed hierarchically from household upward, not arrayed as equal horizontal departments at the top. Beer VSM: S3 (control) and S3* (audit) must be architecturally independent; currently they share P10 + P11, which is structurally unsound.
 
 - **[SYSTEMIC IMPACT / BLAST RADIUS]**
-  - Major rewrite of Master Protocol §III and White Paper §4 (but preserves all substantive content by consolidation, not deletion).
+  - Major rewrite of Humane Constitution §III and White Paper §4 (but preserves all substantive content by consolidation, not deletion).
   - Threat Register pillar-tags must be re-mapped (roughly: each existing T-### keeps its content, its pillar label updates).
   - Patch Log pillar-tags same remapping.
   - Simulation suite parameter names need relabeling, not reparameterization.
@@ -326,7 +326,7 @@ Ten proposals, prioritized. Each has a structured brief. All optimize for less g
 
 - **[TARGET]** Pillar 5 (EC portion under new P5), `Annex AJ`, Threat Register T-001 (ACTIVE, PARTIAL).
 
-- **[THE FLAW]** From `docs/ADVERSARIAL_AUDIT.md` Test 5: *"Minimum deterrent penalty: 0.18 EC per bypass attempt. Any penalty above ~18% of gain deters bypass at 85% detection. The penalty structure is currently unspecified — T-001's open problem explicitly flags this."* And Master Protocol Annex AB2: *"The system shall define an explicit acceptable leakage threshold"* — deferred, never published. The current state: P-001 is ACTIVE, but its penalty parameter is missing. T-001 remains PARTIAL.
+- **[THE FLAW]** From `docs/ADVERSARIAL_AUDIT.md` Test 5: *"Minimum deterrent penalty: 0.18 EC per bypass attempt. Any penalty above ~18% of gain deters bypass at 85% detection. The penalty structure is currently unspecified — T-001's open problem explicitly flags this."* And Annex AB2 of the Humane Constitution: *"The system shall define an explicit acceptable leakage threshold"* — deferred, never published. The current state: P-001 is ACTIVE, but its penalty parameter is missing. T-001 remains PARTIAL.
 
 - **[THE PROPOSED SOLUTION]** Publish a penalty schedule as an amendment to `Annex AJ`:
   - Minimum deterrent penalty = **5× the detected gain**, at a detection probability assumed to be ≥85%. This sets expected-loss at ≥4.25× gain, far above any rational bypass threshold.
@@ -523,7 +523,7 @@ No proposal expands government, centralizes power, introduces coercion, or viola
 
 ## E. What This Document Does Not Do
 
-- Does not modify any authoritative file (Master Protocol, White Paper, Threat Register, Patch Log, any Annex, or Diagrammed Technical Reference).
+- Does not modify any authoritative file (Humane Constitution, White Paper, Threat Register, Patch Log, any Annex, or Diagrammed Technical Reference).
 - Does not pre-select which proposals should be implemented — that is a human decision.
 - Does not claim the existing protocol is broken beyond repair. It identifies structural weaknesses and offers architectural corrections consistent with the protocol's own stated principles.
 - Does not solve the founding problem. Proposal 5 makes it smaller and more tractable; it does not dissolve it.

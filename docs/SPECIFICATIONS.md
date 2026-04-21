@@ -3,7 +3,7 @@
 **Document type:** Technical specification  
 **Scope:** Three-instrument model (EC, LC, DW/CR) — state machine definition, transition rules, decay functions, and public-money constraints
 **Format:** Systems design / formal state machine  
-**Status:** Specification-grade (parameters marked [FOUNDING COMMITMENT] require pilot data before activation)
+**Status:** Specification-grade (bound values resolve through `/founding/commitments.md`; unresolved activation gates use reserved FC identifiers until they are bound)
 
 ---
 
@@ -60,7 +60,7 @@ States:
 
 Transitions:
   UNISSUED  → ACTIVE      : issuance event (verified productive commitment)
-  ACTIVE    → IDLE        : balance held beyond activity threshold [FOUNDING COMMITMENT: threshold period]
+  ACTIVE    → IDLE        : balance held beyond activity threshold (FC-052 reserved)
   ACTIVE    → COMMITTED   : contract-commitment escrow trigger (P-023)
   IDLE      → ACTIVE      : productive deployment event
   IDLE      → DECAYED     : demurrage application cycle (see 2.3)
@@ -78,9 +78,9 @@ Demurrage is a time-decay and carrying charge applied to idle EC balances. It is
 ```
 Let:
   B(t)     = EC balance at time t
-  r        = demurrage rate per period [FOUNDING COMMITMENT: target range 0.5%–2.0% monthly]
+  r        = demurrage rate per period (FC-050 baseline; FC-051 review corridor)
   t_idle   = time elapsed since last productive deployment
-  θ        = idle threshold (deployment below which demurrage begins) [FOUNDING COMMITMENT]
+  θ        = idle threshold (deployment below which demurrage begins) (FC-052 reserved)
 
 Demurrage function:
   If t_idle < θ:
@@ -93,12 +93,12 @@ Demurrage function:
     B(t+1) = B(t) × (1 − r)             [per-period decay]
 
 Retirement:
-  When B(t) < ε (minimum balance threshold [FOUNDING COMMITMENT]),
+  When B(t) < ε (minimum balance threshold, FC-053 reserved),
   the balance is retired from circulation.
 
 Charge routing:
   Let C(t) = B_before(t) − B_after(t)
-  Let α = PFCR routing share [FOUNDING COMMITMENT]
+  Let α = PFCR routing share (FC-054 reserved)
 
   PFCR_receipt(t) = α × C(t)
   Retired_EC(t)   = (1 − α) × C(t)
@@ -125,7 +125,7 @@ Issuance conditions (all must be satisfied):
 
 Issuance ceiling:
   Total EC in circulation ≤ f(verified productive commitments)
-  [FOUNDING COMMITMENT: exact multiplier function]
+  where f is the published issuance-ceiling function (FC-055 reserved).
 ```
 
 ### 2.5 Retail Banking and Household Finance Constraints
@@ -180,8 +180,7 @@ Transitions:
 ### 3.3 Validity and Expiry
 
 ```
-Validity window: 72 hours from issuance timestamp
-  [FOUNDING COMMITMENT: window may be adjusted based on delivery infrastructure]
+Validity window: FC-057 = 72 hours from issuance timestamp
 
 Expiry behavior:
   - Expired LC is destroyed, not rolled over
@@ -202,7 +201,7 @@ Non-transferability enforcement:
 CSM is the minimum LC allocation that may never be reduced (INV-001).
 
 CSM = f(verified physical capacity, basket composition, regional variation)
-  [FOUNDING COMMITMENT: exact basket composition and regional adjustment factors]
+  where basket composition and regional adjustment factors bind through FC-058.
 
 CSM floor enforcement:
   - Even during SUSPENDED state, LC issuance continues at CSM
@@ -218,7 +217,7 @@ LC issuance is automatic and unconditional for all confirmed identity holders.
 
 Issuance trigger: daily system cycle
 Issuance amount: CSM ≤ allocation ≤ enhanced allocation
-  [FOUNDING COMMITMENT: enhanced allocation criteria above CSM floor]
+  per the enhanced-allocation rule bound through FC-056.
 
 Issuance is NOT conditional on:
   - Contribution record
@@ -260,7 +259,7 @@ Transitions:
 
 Decay function (DW):
   DW(t) = DW(0) × e^(−r_dw × t)
-  r_dw [FOUNDING COMMITMENT: fast-decay rate; expected significantly higher than EC demurrage]
+  r_dw = FC-062 = 0.15 / day
   
   Design intent: DW must not accumulate. Influence is a flow, not a stock.
   An actor who was influential last cycle should not carry that influence
@@ -291,8 +290,8 @@ Transitions:
 Decay function (CR):
   During SLOW_DECAY:
     CR(t) = CR(0) × (1 − r_cr)^t
-    r_cr [FOUNDING COMMITMENT: slow-decay rate; P-009 establishes 20% of normal decay rate
-          during grace period transitions]
+    r_cr = normal slow-decay rate (FC-063 reserved)
+          P-009 establishes 20% of the normal decay rate during grace-period transitions
 
 Sector ceiling (P-008):
   No single sector may hold > 20% of total active CR positions. (P-025)
@@ -311,7 +310,7 @@ SQ is not a primary instrument. It is an emergency overlay activated only
 under verified scarcity conditions.
 
 Activation conditions (all required):
-  1. Oracle consensus: verified physical supply below threshold [FOUNDING COMMITMENT]
+  1. Oracle consensus: verified physical supply below the category threshold rule bound through FC-072
   2. PCRP sentinel indicator breach (P-006)
   3. Governance authorization: CRP decision within 48h (P-022)
 
@@ -346,7 +345,8 @@ Prohibited operations (rejected at ledger):
 Ledger enforcement mechanism:
   Each instrument operates on a separate ledger namespace.
   Cross-namespace transactions are structurally impossible, not merely prohibited.
-  [FOUNDING COMMITMENT: specific ledger architecture and namespace isolation implementation]
+  Detailed namespace isolation and ledger implementation belong in the architecture docs;
+  the constitutional requirement is structural impossibility of cross-namespace conversion.
 
 Above-ledger bypass risk:
   The non-convertibility constraint holds at the ledger layer.

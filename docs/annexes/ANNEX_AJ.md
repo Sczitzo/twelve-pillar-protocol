@@ -198,7 +198,7 @@ For EV ≤ 0: *k* ≥ (1 − *p*) / *p*. At the assumed detection probability **
 - For operator/vendor violations: the incremental revenue or margin attributable to the violating pattern, measured against a non-violating baseline cohort.
 - For institutional violations (employer-sponsored CR accumulation, directed civic positions): the EC-equivalent value of the civic-standing advantage conferred, valued at the cost of securing equivalent standing through non-violating means.
 
-Gain is measured by the enforcement body at the time of adjudication and is documented on the public Enforcement Ledger per Pillar 11 (without PII).
+Gain is measured by the enforcement body at the time of adjudication and is documented on the public Enforcement Ledger under Article VII (without PII).
 
 ### 4.2 — Graduated Penalty Matrix
 
@@ -219,7 +219,7 @@ Penalties are calibrated per-actor-scale and per-boundary-severity. The schedule
 **Notes on the matrix:**
 - Severity factor is applied to the FC-040 base multiplier (5×), so AJ-1.1 = 5.0× gain, AJ-1.2 = 6.0× gain, AJ-2.3 = 10.0× gain, etc.
 - "CR −0.X for cycle" is a deduction from the violator's civic record balance proportional to severity; CR deduction is independent of the gain-multiplier and is not netted against it.
-- Vendor/operator license actions are administered by the licensing authority named in Pillar 11 §3; suspension and revocation are appealable only through the Ombuds process per Annex AI.
+- Vendor/operator license actions are administered by the licensing authority named in the Article VII enforcement architecture; suspension and revocation are appealable only through the Ombuds process per Annex AI.
 - "Criminal referral" indicates a finding that meets the threshold for separate prosecution under the convertibility-violation statute (out of scope of this annex); the civil/administrative penalty in this matrix applies regardless of prosecution outcome.
 
 ### 4.3 — Escalation Ladder for Repeat and Systemic Violations
@@ -235,14 +235,14 @@ The **routine leakage ceiling of 3% / annum (FC-010)** is the operational target
 
 ### 4.4 — Enforcement Body and Process
 
-Penalty adjudication is administered by the **Enforcement Panel** (a sub-body of the authority named in Pillar 11 §3). Process:
+Penalty adjudication is administered by the **Enforcement Panel** (a sub-body of the authority named in the Article VII enforcement architecture). Process:
 
 1. **Finding.** Detection signal triggers investigation; investigation produces a factual finding with documented evidence.
 2. **Gain quantification.** The enforcement body quantifies the functional gain per §4.1. Quantification methodology is documented and subject to the P-017 oracle-independence standards (Annex AL) where gain estimation requires measurement of market prices or cohort comparisons.
 3. **Notice and response.** The accused actor receives notice with the factual finding, the gain quantification, and the scheduled penalty. Actor has 30 days to contest findings or accept.
-4. **Adjudication.** Contested cases proceed to the Enforcement Panel. Panel composition: 3 seats drawn from the Pillar 11 enforcement staff, 2 seats drawn from the Ombuds roster per Annex AI, 1 seat drawn from the affected-party advocacy roster. No Enforcement Panel member may have a prior relationship with the accused actor within 3 years.
+4. **Adjudication.** Contested cases proceed to the Enforcement Panel. Panel composition: 3 seats drawn from the Article VII enforcement staff, 2 seats drawn from the Ombuds roster per Annex AI, 1 seat drawn from the affected-party advocacy roster. No Enforcement Panel member may have a prior relationship with the accused actor within 3 years.
 5. **Appeal.** Adjudicated penalties are appealable once, through the federated Ombuds process per Annex AI §AI-7 (appeal tier). Appeal pauses license actions but not gain-recoupment until resolved.
-6. **Publication.** Final findings are published on the Enforcement Ledger (Pillar 11) in aggregate form, with individual findings published only where necessary for statutory notice or where the actor has consented. PII is stripped per Annex AM.
+6. **Publication.** Final findings are published on the Enforcement Ledger (Article VII) in aggregate form, with individual findings published only where necessary for statutory notice or where the actor has consented. PII is stripped per Annex AM.
 
 ### 4.5 — Deterrence Audit
 
@@ -265,8 +265,8 @@ The numerical values of FC-040 (5.0× multiplier) and FC-041 (0.85 detection pro
 
 New worked examples may be added through the standard P-004 amendment process as new above-ledger bypass patterns are identified in operation. The annex should be reviewed annually and updated with patterns identified through enforcement activity. Penalty schedule matrix updates for new patterns must maintain deterrence identity (§4.1) and are subject to Tier 2 amendment authority.
 
-**Detection infrastructure requirement:** Pillar 11 monitoring must extend to the social-layer detection signals identified in each worked example above. These signals are not ledger-based; they require vendor-level data collection, population-level outcome analysis, and complaint-pattern monitoring. The specific detection thresholds are maintained in the Restricted Register Annex per P-021 (Annex AO).
+**Detection infrastructure requirement:** Article VII monitoring must extend to the social-layer detection signals identified in each worked example above. These signals are not ledger-based; they require vendor-level data collection, population-level outcome analysis, and complaint-pattern monitoring. The specific detection thresholds are maintained in the Restricted Register Annex per P-021 (Annex AO).
 
 ---
 
-*This document is Annex AJ of the master protocol. Operative as an ACTIVE specification as of Proposal 7 close-out. Penalty schedule (§4) and Founding Commitments FC-010, FC-040, FC-041 are binding on the Enforcement Panel per Pillar 11 §3.*
+*This document is Annex AJ of the Humane Constitution. Operative as an ACTIVE specification as of Proposal 7 close-out. Penalty schedule (§4) and Founding Commitments FC-010, FC-040, FC-041 are binding on the Enforcement Panel through the Article VII enforcement architecture.*

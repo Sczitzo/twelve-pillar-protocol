@@ -5,7 +5,7 @@
 
 **Continuity note:** This project was previously released as *The Twelve-Pillar Protocol*; legacy references remain in historical materials and crosswalk tables.
 
-**Integrated master edition** — current constitutional presentation: one Founding Order + Articles I-VII (current public framing of `v13`, Proposal 2 close-out 2026-04-18).
+**Current constitutional edition** — one Founding Order + Articles I-VII (current public framing of `v13`, Proposal 2 close-out 2026-04-18).
 
 ---
 
@@ -329,7 +329,7 @@ Real-time public dashboards (the S3* audit channel, genuinely independent of Art
 - **Commons return principle:** exclusive control over commons, scarce public interfaces, or large idle asset positions may incur public charges; personhood, basic work, and household continuity may not be treated as taxable extraction bases.
 - **Transparency and anti-capture:** PFCR flows, demurrage routing, gateway revenues, and major appropriations are published in aggregate (via Article VII) and subject to independent audit, anti-concentration review, and automatic challenge rights when hidden debt or favoritism appears.
 
-**Why these functions share one article.** EC, housing/commons use-rights, enterprise activity, and commons-revenue routing are the four faces of the same economic surface. Keeping them in separate v12 pillars (P5 EC, P6 housing, P7 enterprise, P12 PFCR) produced four boundary disputes (co-ops fall between P6 and P7; public banking straddles P5 and P12; commons-revenue intersects all four) and four capture targets. Consolidation preserves every substantive rule while reducing attack surface by a factor of four.
+**Why these functions share one article.** EC, housing/commons use-rights, enterprise activity, and commons-revenue routing are the four faces of the same economic surface. Keeping them separate in the prior architecture (v12 P5 EC, P6 housing, P7 enterprise, P12 PFCR) produced four boundary disputes (co-ops fall between P6 and P7; public banking straddles P5 and P12; commons-revenue intersects all four) and four capture targets. Consolidation preserves every substantive rule while reducing attack surface by a factor of four.
 
 #### Article VI: Civic Layer & Deliberation
 **DW and CR instruments (absorbed from v12 P5 civic portion)**
@@ -411,7 +411,7 @@ Real-time public dashboards (the S3* audit channel, genuinely independent of Art
 | **Pillar 7: Enterprise Platform** | Pillar 7 (housing carved into Pillar 6) | New P5 |
 | **Pillar 8: Immune System** | Distributed across Pillar 1, Pillar 10, Pillar 11, and Annexes A-C | Distributed across new P1 (rights/oversight), P7 (transparency), and Annexes A–C |
 
-**Note on preserved v12 terminology in downstream sections.** Many annexes, threat records, and patch entries continue to reference v12 pillar numbers (e.g., "Pillar 11 dashboard", "Pillar 12 PFCR") where the cross-reference was already baked into integration commits. Where such references occur, they resolve to the v13 pillar as shown in the crosswalk above. A future housekeeping pass will update downstream references to v13 nomenclature; the crosswalk above is the authoritative mapping until then.
+**Note on preserved v12 terminology in downstream sections.** Most live annexes now use the current constitutional terminology. Remaining v12 references are preserved mainly in the crosswalks, patch records, and proposal history for traceability. Where such references occur, the mapping above is authoritative.
 
 ---
 

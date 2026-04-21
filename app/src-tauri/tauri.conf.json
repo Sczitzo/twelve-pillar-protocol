@@ -1,8 +1,8 @@
 {
   "$schema": "https://schema.tauri.app/config/2",
-  "productName": "Twelve Pillar Protocol",
+  "productName": "Humane Constitution",
   "version": "0.1.0",
-  "identifier": "org.twelve-pillar.protocol",
+  "identifier": "org.humane.constitution",
   "build": {
     "beforeDevCommand": "npm run dev",
     "devUrl": "http://localhost:1420",
@@ -13,7 +13,7 @@
     "withGlobalTauri": false,
     "windows": [
       {
-        "title": "Twelve Pillar Protocol",
+        "title": "Humane Constitution",
         "width": 1280,
         "height": 800,
         "minWidth": 900,

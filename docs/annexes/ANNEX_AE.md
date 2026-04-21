@@ -50,12 +50,12 @@ An Emergency Deadlock is declared automatically when a mandatory emergency decis
 The arbitration panel has no authority over constitutional classification. It ensures the humane floor survives while the classification dispute resolves through normal channels. Second-generation deadlock (arbitration panel itself blocked) escalates immediately to Level 5 structural review.
 
 #### AE2.4 Demand-Context Flag for LC Velocity Oracle
-The Pillar 10 operations layer must maintain a demand-context register. When any of the following conditions are active, the LC velocity oracle applies a demand-surge discount before triggering sentinel signals:
+The Article I operations layer must maintain a demand-context register. When any of the following conditions are active, the LC velocity oracle applies a demand-surge discount before triggering sentinel signals:
 - Any active EC enforcement action or issuance unwind affecting more than the published population threshold.
 - Any active mass identity re-verification campaign affecting more than the published threshold.
 - Any declared regional defection or inter-regional supply route disruption.
 
-The discount flags the signal as 'demand-context modified' — it does not suppress it. Ombuds Office co-certification is required for any PCRP activation during a demand-context period. Single-authority PCRP activation is suspended until demand-context flag clears or Ombuds co-certifies.
+The discount flags the signal as 'demand-context modified' — it does not suppress it. Federated Ombuds co-certification is required for any PCRP activation during a demand-context period. Single-authority PCRP activation is suspended until demand-context flag clears or the Ombuds co-certifies.
 
 #### AE2.5 RPCP Contested-Status Template
 When an operational event requiring RPCP communication has legally contested status — meaning classification, scope, or continuation is under active CRP review — the contested-status template must be used:
@@ -91,5 +91,3 @@ The P-004 definition drift controls (Annex AB5) are extended to procedural accum
 *P-012 addresses four threats (T-012 through T-015) through six interface hardening clauses. T-009 (Grace Exploitation Loop) remains OPEN — next hardening target.*
 
 ---
-
-# The Humane Constitution — Annex AF
