@@ -44,7 +44,7 @@ export const corpusStats: CorpusStats = {
   "threatCount": 27,
   "patchCount": 31,
   "validatorStatus": "pass",
-  "buildStamp": "corpus-d3822f357aa7"
+  "buildStamp": "corpus-673a8fb2c478"
 } as const
 
 export const corpusDocs: CorpusDoc[] = [
@@ -89,8 +89,41 @@ export const corpusDocs: CorpusDoc[] = [
     "status": "",
     "statusBucket": "reference",
     "summary": "The Humane Constitution is a constitutional systems design for a society in which survival is unconditional, markets remain productive, and governance cannot be purchased. It is built on a single core diagnosis: when survival, enterprise, and political influence all ride on the same money, wealth converts into coercion. Every major social system fails at this interface. This constitutional project is an attempt to escape that failure mode by design.",
-    "wordCount": 2636,
-    "headingCount": 22
+    "wordCount": 2716,
+    "headingCount": 23
+  },
+  {
+    "id": "docs__One_Page_Overview_md",
+    "path": "docs/One_Page_Overview.md",
+    "section": "constitution",
+    "title": "One-Page Overview",
+    "status": "",
+    "statusBucket": "reference",
+    "summary": "The Humane Constitution is a constitutional design that tries to make three things true at the same time: baseline survival is secure, markets still function, and wealth cannot buy civic rule.",
+    "wordCount": 453,
+    "headingCount": 7
+  },
+  {
+    "id": "docs__Public_FAQ_md",
+    "path": "docs/Public_FAQ.md",
+    "section": "constitution",
+    "title": "Public FAQ",
+    "status": "",
+    "statusBucket": "reference",
+    "summary": "It is a constitutional design for a society where survival is unconditional, markets remain productive, and governance cannot be purchased. Its core idea is to stop wealth from automatically becoming coercive power.",
+    "wordCount": 557,
+    "headingCount": 14
+  },
+  {
+    "id": "docs__Source_Grounded_Content_Prompts_md",
+    "path": "docs/Source_Grounded_Content_Prompts.md",
+    "section": "constitution",
+    "title": "Source-Grounded Content Prompts",
+    "status": "",
+    "statusBucket": "reference",
+    "summary": "These prompts are designed for source-grounded tools such as NotebookLM or any assistant that can answer from selected documents instead of free-associating from memory.",
+    "wordCount": 665,
+    "headingCount": 21
   },
   {
     "id": "Threat_Register_md",
@@ -667,8 +700,10 @@ export const corpusDocs: CorpusDoc[] = [
 ]
 
 export const featuredPaths = [
+  "docs/One_Page_Overview.md",
   "Humane_Constitution.md",
   "White_Paper.md",
+  "docs/Public_FAQ.md",
   "founding/commitments.md",
   "Threat_Register.md",
   "Patch_Log.md",

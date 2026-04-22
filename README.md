@@ -33,10 +33,11 @@ This is not just a manifesto and not just a technical spec. It is a public const
 
 Use this reading order:
 
-1. [`White_Paper.md`](./White_Paper.md) for the public explanation
-2. [`Citizen_Facing_Rights_Layer.md`](./Citizen_Facing_Rights_Layer.md) for the plain-language rights summary
-3. [`Humane_Constitution.md`](./Humane_Constitution.md) for the governing text
-4. [`Threat_Register.md`](./Threat_Register.md) if you want to test the design against failure and bad actors
+1. [`docs/One_Page_Overview.md`](./docs/One_Page_Overview.md) for the shortest public introduction
+2. [`White_Paper.md`](./White_Paper.md) for the fuller public explanation
+3. [`Citizen_Facing_Rights_Layer.md`](./Citizen_Facing_Rights_Layer.md) for the plain-language rights summary
+4. [`Humane_Constitution.md`](./Humane_Constitution.md) for the governing text
+5. [`Threat_Register.md`](./Threat_Register.md) if you want to test the design against failure and bad actors
 
 ## The core separation
 
@@ -119,16 +120,24 @@ flowchart TD
 
 ## Document set
 
+### Public release docs
+
+| Document | Purpose |
+|---|---|
+| [`docs/One_Page_Overview.md`](./docs/One_Page_Overview.md) | One-page introduction for first-time readers. |
+| [`docs/Public_FAQ.md`](./docs/Public_FAQ.md) | Public-facing answers to the most common objections and questions. |
+| [`docs/Source_Grounded_Content_Prompts.md`](./docs/Source_Grounded_Content_Prompts.md) | Reusable prompt pack for source-grounded explainers, interviews, FAQs, and short-form content. |
+| [`White_Paper.md`](./White_Paper.md) | Plain-language public explanation. |
+| [`Citizen_Facing_Rights_Layer.md`](./Citizen_Facing_Rights_Layer.md) | Plain-language summary of citizen rights and protections. |
+
 ### Core documents
 
 | Document | Purpose |
 |---|---|
 | [`Humane_Constitution.md`](./Humane_Constitution.md) | Primary constitutional source of truth. Lean constitutional text with links into the standalone annex corpus. |
-| [`White_Paper.md`](./White_Paper.md) | Plain-language public explanation. Start here. |
 | [`Threat_Register.md`](./Threat_Register.md) | Adversarial risk model. 27 threat IDs — 17 ADDRESSED, 5 PARTIAL, 4 OPEN (T-003 retired). T-017/P-014 is the FOUNDING instrument. |
 | [`Patch_Log.md`](./Patch_Log.md) | Change and mitigation history. 31 patches — 16 ACTIVE, 15 PROPOSED (1 FOUNDING: P-014). |
 | [`Acceptance_Protocol.md`](./Acceptance_Protocol.md) | Process for moving patches from design to operation. |
-| [`Citizen_Facing_Rights_Layer.md`](./Citizen_Facing_Rights_Layer.md) | Plain-language summary of citizen rights and protections. |
 
 ## Technical Specifications
 
@@ -254,7 +263,9 @@ The Formal Acceptance Protocol defines the pathway from design to operation.
 
 ## How to engage
 
-**If you want the public case first:** read the White Paper, then the Citizen-Facing Rights Layer.
+**If you want the shortest public intro:** read the One-Page Overview first.
+
+**If you want the public case first:** read the White Paper, then the Citizen-Facing Rights Layer and Public FAQ.
 
 **If you want to stress-test the design:** read the Threat Register after the White Paper.
 
