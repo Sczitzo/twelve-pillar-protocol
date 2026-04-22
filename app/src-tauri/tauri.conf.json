@@ -22,7 +22,6 @@
         "fullscreen": false,
         "decorations": false,
         "transparent": true,
-        "vibrancy": "under-window",
         "center": true,
         "shadow": true
       }
