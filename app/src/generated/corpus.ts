@@ -44,7 +44,7 @@ export const corpusStats: CorpusStats = {
   "threatCount": 27,
   "patchCount": 31,
   "validatorStatus": "pass",
-  "buildStamp": "corpus-673a8fb2c478"
+  "buildStamp": "corpus-5005c720340c"
 } as const
 
 export const corpusDocs: CorpusDoc[] = [
@@ -89,7 +89,7 @@ export const corpusDocs: CorpusDoc[] = [
     "status": "",
     "statusBucket": "reference",
     "summary": "The Humane Constitution is a constitutional systems design for a society in which survival is unconditional, markets remain productive, and governance cannot be purchased. It is built on a single core diagnosis: when survival, enterprise, and political influence all ride on the same money, wealth converts into coercion. Every major social system fails at this interface. This constitutional project is an attempt to escape that failure mode by design.",
-    "wordCount": 2716,
+    "wordCount": 2762,
     "headingCount": 23
   },
   {
@@ -201,6 +201,39 @@ export const corpusDocs: CorpusDoc[] = [
     "summary": "This directory holds the standalone annex corpus for the Humane Constitution. The constitution itself lives in /HumaneConstitution.md; annexes extend, specify, or document that text without bloating the constitutional body.",
     "wordCount": 279,
     "headingCount": 5
+  },
+  {
+    "id": "docs__content__FAQ_Video_Set_md",
+    "path": "docs/content/FAQ_Video_Set.md",
+    "section": "constitution",
+    "title": "FAQ Video Set",
+    "status": "",
+    "statusBucket": "reference",
+    "summary": "These are short source-grounded video answers built from the public docs. Each entry is designed for roughly 30 to 60 seconds on camera.",
+    "wordCount": 560,
+    "headingCount": 10
+  },
+  {
+    "id": "docs__content__First_60_Second_Explainer_md",
+    "path": "docs/content/First_60_Second_Explainer.md",
+    "section": "constitution",
+    "title": "First 60-Second Explainer",
+    "status": "",
+    "statusBucket": "reference",
+    "summary": "Most systems force too much through one rail: money. The same money that decides whether you can eat or stay housed also helps decide who can invest, who gets influence, and who can shape institutions. That is how wealth turns into coercion.",
+    "wordCount": 211,
+    "headingCount": 4
+  },
+  {
+    "id": "docs__content__Short_Form_Hooks_md",
+    "path": "docs/content/Short_Form_Hooks.md",
+    "section": "constitution",
+    "title": "Short-Form Hooks",
+    "status": "",
+    "statusBucket": "reference",
+    "summary": "These are written for short video openings, captions, or title cards. Keep delivery direct.",
+    "wordCount": 244,
+    "headingCount": 4
   },
   {
     "id": "founding__order__README_md",

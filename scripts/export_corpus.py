@@ -100,6 +100,7 @@ def status_bucket(relative_path: str, status: str) -> str:
 def collect_docs() -> list[dict[str, object]]:
     docs: list[dict[str, object]] = []
     paths = [ROOT / path for path in CORE_DOCS]
+    paths.extend(sorted((ROOT / "docs" / "content").glob("*.md")))
     paths.extend(sorted((ROOT / "founding" / "order").glob("*.md")))
     paths.extend(sorted((ROOT / "docs" / "annexes").glob("ANNEX_*.md")))
 
