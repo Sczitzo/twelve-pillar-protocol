@@ -1,5 +1,5 @@
 # ANNEX T. Compound Failure Scenarios and Interface Stress Tests
-**Purpose.** Complex systems fail at interfaces. This Annex supplements the single-threat register by defining compound stress tests that deliberately cross pillars and institutions.
+**Purpose.** Complex systems fail at interfaces. This Annex supplements the single-threat register by defining compound stress tests that deliberately cross articles, instruments, and institutions.
 
 ### T1. Scenario class A - regional food shortage plus oracle manipulation plus LC coercion
 - Test whether scarcity activation can be challenged quickly when regional actors overstate shortage or undercount usable supply.

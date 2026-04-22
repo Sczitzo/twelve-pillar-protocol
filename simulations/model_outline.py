@@ -13,18 +13,18 @@ pilot data before this simulation produces policy-relevant output. The
 architecture is specified; some activation parameters are not yet bound.
 
 Usage:
-    python model_outline.py
+    python -m simulations.model_outline
 
 Dependencies:
     mesa >= 2.0
     numpy
-    pandas
+    pandas (optional, for downstream analysis)
     matplotlib (optional, for visualization)
 
 Reference documents:
     docs/SPECIFICATIONS.md   — formal state machine definitions
     docs/INVARIANTS.md       — constraints that simulation must never violate
-    ANNEX_AR.md              — demurrage parameter worked examples
+    docs/annexes/ANNEX_AR.md — demurrage parameter worked examples
     Threat_Register.md       — adversarial scenarios to simulate
 """
 

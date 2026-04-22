@@ -8,7 +8,7 @@ Every change proposal must declare its class before deliberation begins. Misclas
 - **Class H-0 - clerical correction:** citation fixes, typo repair, formatting cleanup, and cross-reference repair only. No semantic effect is allowed.
 - **Class H-1 - Tier 3 operational parameter change:** adjusts a bounded dial already authorized elsewhere in the protocol, such as thresholds, refresh cadences, reserve ratios, or workflow timings.
 - **Class H-2 - Tier 2 charter / statutory amendment:** creates, deletes, or rewrites durable operating rules below the constitutional invariant layer but above day-to-day parameter tuning.
-- **Class H-3 - Tier 1 invariant amendment:** touches rights, non-convertibility, survival guarantees, personhood protections, due-process minima, privacy boundaries, or any hard boundary between pillars; this class is not available through ordinary amendment and requires a Refounding Convention.
+- **Class H-3 - Tier 1 invariant amendment:** touches rights, non-convertibility, survival guarantees, personhood protections, due-process minima, privacy boundaries, or any hard boundary between constitutional articles or instruments; this class is not available through ordinary amendment and requires a Refounding Convention.
 
 *Every proposal must be single-subject. Bundling unrelated changes into one package is prohibited.*
 *Every proposal must publish five attachments at filing: plain-language summary, redline text, invariant impact statement, fiscal / capacity note, and privacy / surveillance note.*
@@ -24,7 +24,7 @@ For avoidance of doubt, any DW-based tally in this annex uses the quarterly cap,
 - **Effective date:** 7 days after publication of the final text.
 
 #### H2.2 Class H-1 - Tier 3 operational parameter change
-- **Who may file:** the relevant pillar authority, the Operations / Oversight body, or a public petition equal to at least 1% of active persons nationally or 3% in the directly affected region.
+- **Who may file:** the relevant article or instrument authority, the Operations / Oversight body, or a public petition equal to at least 1% of active persons nationally or 3% in the directly affected region.
 - **Public notice window:** 30 days, including at least one public simulation or worked example showing expected effects.
 - **Passage rule:** both (a) at least 60% of valid weighted DW cast in the quarterly decision cycle and (b) support from a simple majority of participating regions. Any H-1 change touching DW or CR rules, verification, caps, half-life, proxy rules, tally math, challenge rights, or amendment-repair mechanics also requires a concurrent legitimacy check showing majority support in a stratified one-person-one-vote sample or equivalent low-burden referendum instrument; material divergence between the DW result and the legitimacy check triggers mandatory CRP review before certification.
 - **Legality gate:** the Constitutional Review Panel must certify that the proposal stays within pre-authorized Tier 3 bounds and does not alter Tier 1 or Tier 2 by implication.
@@ -48,7 +48,7 @@ For avoidance of doubt, any DW-based tally in this annex uses the quarterly cap,
 Standing must be broad where constitutional drift is the risk. The inability to show personal financial harm does not defeat standing in a structural challenge.
 - **Any directly affected person** has standing to challenge an adverse action, amendment, suspension, or rule interpretation.
 - **A guardian, caregiver, dependent advocate, or Ombuds Office** may file on behalf of a person whose continuity, survival access, or legal capacity is impaired.
-- **Any region, municipal authority, or public institution** may challenge a higher-level rule as ultra vires if it crosses a pillar boundary or violates subsidiarity.
+- **Any region, municipal authority, or public institution** may challenge a higher-level rule as ultra vires if it crosses an article or instrument boundary or violates subsidiarity.
 - **A public petition** equal to 1% of active persons nationally, or 5% in an affected region, has standing to bring a facial challenge to a Class H-1 or H-2 change.
 - **Any one-third minority bloc** within a recognized deliberative body may seek pre-enforcement judicial review before a disputed rule takes effect.
 
@@ -65,7 +65,7 @@ The following changes require pre-clearance review even if no petition is filed.
 - **Emergency review:** when survival access, identity continuity, or cross-boundary restrictions are implicated, the court or review panel must open review within 72 hours.
 - **Ordinary pre-clearance review:** Class H-1 proposals within 21 days; Class H-2 proposals within 45 days; convention-ratified H-3 text within 60 days.
 - **Burden of justification** lies with the authority proposing the change or imposing the adverse effect.
-- **If a court finds misclassification**, inadequate notice, bundled subjects, hidden semantic effect, or pillar-boundary violation, the proposal is void and automatically reverts to the last known valid rule.
+- **If a court finds misclassification**, inadequate notice, bundled subjects, hidden semantic effect, or article/instrument-boundary violation, the proposal is void and automatically reverts to the last known valid rule.
 - **No adverse amendment** may apply retroactively unless the retroactive effect is solely protective or corrective for affected persons.
 - **Where a rule is partially invalid**, the severable remainder survives only if the court expressly finds it coherent, independently adopted, and non-misleading to prior voters.
 

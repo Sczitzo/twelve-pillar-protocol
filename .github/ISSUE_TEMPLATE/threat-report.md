@@ -10,7 +10,7 @@ assignees: ''
 <!-- What is the mechanism? How does a bad actor exploit this? -->
 
 ## Affected section / clause
-<!-- Which pillar, annex, or patch does this affect? -->
+<!-- Which article, founding-order rule, annex, patch, or threat does this affect? -->
 
 ## Impact assessment
 <!-- What happens if this exploit succeeds? Who is harmed? -->

@@ -1,5 +1,8 @@
 # Protocol Optimization Proposals
 
+**Status:** Historical advisory memo retained for design traceability, not a current-state summary.  
+**Snapshot note:** Quantitative counts, missing-file statements, and some legacy pillar references below reflect repository state on 2026-04-18 and are not authoritative for current `main`.
+
 **Auditor role:** Principal Systems Architect & Macroeconomic Auditor (adversarial red-team).
 **Date:** 2026-04-18.
 **Posture:** Hostile but constructive. No praise for the protocol as a whole. Proposals optimize for **less government, decentralization, non-coercion, subsidiarity, and voluntary stewardship**.

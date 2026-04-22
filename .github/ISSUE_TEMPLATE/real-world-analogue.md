@@ -12,7 +12,7 @@ assignees: ''
 
 ## Relevant section
 
-<!-- Which pillar, annex, patch (P-XXX), or threat (T-XXX) does this apply to? -->
+<!-- Which article, founding-order rule, annex, patch (P-XXX), or threat (T-XXX) does this apply to? -->
 
 ## What the analogue shows
 

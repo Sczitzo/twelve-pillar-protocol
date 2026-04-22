@@ -1,0 +1,29 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "humane-constitution-simulations"
+version = "0.1.0"
+description = "Simulation and validation tooling for the Humane Constitution repository."
+readme = "README.md"
+requires-python = ">=3.11"
+
+[project.optional-dependencies]
+test = [
+  "mesa>=2,<3",
+  "numpy>=1.26,<3",
+  "pytest>=8,<9",
+]
+analysis = [
+  "mesa>=2,<3",
+  "numpy>=1.26,<3",
+  "pandas>=2,<3",
+  "matplotlib>=3.8,<4",
+]
+
+[tool.setuptools.packages.find]
+include = ["simulations"]
+
+[tool.pytest.ini_options]
+testpaths = ["simulations"]

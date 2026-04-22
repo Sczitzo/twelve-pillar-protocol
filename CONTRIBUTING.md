@@ -14,9 +14,11 @@ This is an open design project. The design is not finished. The most valuable th
 
 **If you want the operative language:** Read [`Humane_Constitution.md`](./Humane_Constitution.md).
 
-**If you want to understand the hardening methodology:** Read [`Patch_Log.md`](./Patch_Log.md) — 26 patches, each with the threat it addresses, the new risk it introduces, and its residual risk.
+**If you want to understand the hardening methodology:** Read [`Patch_Log.md`](./Patch_Log.md) — 31 patches, each with the threat it addresses, the new risk it introduces, and its residual risk.
 
 **Before opening a structural docs PR:** Run `python3 scripts/validate_corpus.py`. This checks local markdown links, annex index coverage, FC/T/P identifier integrity, and banned live legacy labels.
+
+**Before opening a simulation or mechanics PR:** Run `python3 -m pip install -e .[test]` once, then `python3 -m pytest -q`.
 
 ---
 
@@ -24,7 +26,7 @@ This is an open design project. The design is not finished. The most valuable th
 
 ### 1. Find a threat we haven't modeled (most valuable)
 
-The threat register has 25 identified threats. There are more. If you can identify an adversarial failure mode — a way a motivated actor could exploit, corrupt, or collapse the system — open an Issue with:
+The threat register currently tracks 27 total threat IDs, 25 of them active. There are more. If you can identify an adversarial failure mode — a way a motivated actor could exploit, corrupt, or collapse the system — open an Issue with:
 
 - **Mechanism:** how the attack works, step by step
 - **Impact:** what fails, and for whom
@@ -76,7 +78,7 @@ Every threat follows the same structure:
 
 ```
 T-XXX — [Threat Name]
-- Layer: which article, legacy pillar, or mechanism is targeted
+- Layer: which article, legacy crosswalk, annex, or mechanism is targeted
 - Severity: Critical / High / Med-High / Medium
 - Risk Score: I × L × (6 - D)
 - Mechanism: how the attack works

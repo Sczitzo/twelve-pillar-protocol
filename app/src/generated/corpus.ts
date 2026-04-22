@@ -45,7 +45,7 @@ export const corpusStats: CorpusStats = {
   "threatCount": 27,
   "patchCount": 31,
   "validatorStatus": "pass",
-  "buildStamp": "corpus-135f00131c4e"
+  "buildStamp": "corpus-b8a10f2356ee"
 } as const
 
 export const corpusDocs: CorpusDoc[] = [
@@ -93,7 +93,7 @@ export const corpusDocs: CorpusDoc[] = [
     "status": "",
     "statusBucket": "reference",
     "summary": "![License: CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)",
-    "wordCount": 2543,
+    "wordCount": 2569,
     "headingCount": 21,
     "legacy": false
   },
@@ -525,7 +525,7 @@ export const corpusDocs: CorpusDoc[] = [
     "status": "",
     "statusBucket": "reference",
     "summary": "Design principle: the harder a rule is to see, the easier it is to capture; therefore every substantive change must be classified, published, reviewable, and time-bounded.",
-    "wordCount": 1783,
+    "wordCount": 1791,
     "headingCount": 13,
     "legacy": false
   },
@@ -573,7 +573,7 @@ export const corpusDocs: CorpusDoc[] = [
     "status": "",
     "statusBucket": "reference",
     "summary": "Design principle: no single office should be able to quietly reinterpret the constitution.",
-    "wordCount": 464,
+    "wordCount": 467,
     "headingCount": 6,
     "legacy": false
   },
@@ -669,7 +669,7 @@ export const corpusDocs: CorpusDoc[] = [
     "status": "",
     "statusBucket": "reference",
     "summary": "",
-    "wordCount": 333,
+    "wordCount": 334,
     "headingCount": 6,
     "legacy": false
   },

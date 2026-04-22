@@ -5,7 +5,7 @@
 
 ### L1. Review bodies
 - **Local Review Offices** handle ordinary administrative appeals, evidence disputes, and continuity triage.
-- **Regional Constitutional Chambers** handle regional charter questions, inter-pillar disputes within region, and first-instance review of serious rights deprivations.
+- **Regional Constitutional Chambers** handle regional charter questions, inter-article or instrument disputes within region, and first-instance review of serious rights deprivations.
 - **The Constitutional Review Panel (CRP)** is the federation-level boundary guardian for amendment classification, Tier 1/Tier 2 drift, instrument separation, and mandatory pre-clearance review.
 
 ### L2. Constitutional Review Panel composition
@@ -25,7 +25,7 @@
 ### L4. Standards of review
 - **Strict review** applies to Tier 1 invariants, personhood/identity continuity, LC narrowing, convertibility risk, surveillance expansion, and civic-rights restrictions.
 - **Heightened review** applies to Tier 2 changes affecting housing, migration, public finance, oracle thresholds, or major vendor/pricing rules.
-- **Ordinary reasonableness review** applies to Tier 3 operational adjustments that do not materially burden rights or cross pillar boundaries.
+- **Ordinary reasonableness review** applies to Tier 3 operational adjustments that do not materially burden rights or cross article/instrument boundaries.
 - **Where uncertainty is high**, the burden remains on the authority that seeks to narrow access, expand data exposure, or create new coercive discretion.
 
 ### L5. Remedy ladder

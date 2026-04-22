@@ -1,4 +1,5 @@
 import { useState, useCallback } from 'react'
+import { getCurrentWindow } from '@tauri-apps/api/window'
 
 export type AppView =
   | 'overview'
@@ -87,9 +88,17 @@ function NavItem({ icon, label, active = false, onClick }: NavItemProps) {
 
 /* ─── Layout ──────────────────────────────────────────────────────────────── */
 export function Layout({ children, activeNav, onNavChange }: LayoutProps) {
-  const handleClose    = useCallback(() => { /* Tauri window close via IPC */ }, [])
-  const handleMinimise = useCallback(() => { /* Tauri window minimise */ }, [])
-  const handleMaximise = useCallback(() => { /* Tauri window maximise/restore */ }, [])
+  const handleClose = useCallback(() => {
+    void getCurrentWindow().close()
+  }, [])
+
+  const handleMinimise = useCallback(() => {
+    void getCurrentWindow().minimize()
+  }, [])
+
+  const handleMaximise = useCallback(() => {
+    void getCurrentWindow().toggleMaximize()
+  }, [])
 
   const navItems: Array<{ id: AppView; icon: string; label: string }> = [
     { id: 'overview',     icon: '◈', label: 'OVERVIEW' },

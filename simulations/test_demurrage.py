@@ -1,6 +1,6 @@
 import pytest
 import numpy as np
-from model_outline import CitizenAgent, ProtocolModel, ECState, CONFIG
+from simulations.model_outline import CitizenAgent, ProtocolModel, ECState, CONFIG
 
 @pytest.fixture
 def agent():

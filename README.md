@@ -116,7 +116,7 @@ flowchart TD
 | [`Humane_Constitution.md`](./Humane_Constitution.md) | Primary constitutional source of truth. Lean constitutional text with links into the standalone annex corpus. |
 | [`White_Paper.md`](./White_Paper.md) | Plain-language public explanation. Start here. |
 | [`Threat_Register.md`](./Threat_Register.md) | Adversarial risk model. 27 threat IDs — 17 ADDRESSED, 5 PARTIAL, 4 OPEN (T-003 retired). T-017/P-014 is the FOUNDING instrument. |
-| [`Patch_Log.md`](./Patch_Log.md) | Change and mitigation history. 30 patches — 15 ACTIVE, 15 PROPOSED (1 FOUNDING: P-014). |
+| [`Patch_Log.md`](./Patch_Log.md) | Change and mitigation history. 31 patches — 16 ACTIVE, 15 PROPOSED (1 FOUNDING: P-014). |
 | [`Acceptance_Protocol.md`](./Acceptance_Protocol.md) | Process for moving patches from design to operation. |
 | [`Citizen_Facing_Rights_Layer.md`](./Citizen_Facing_Rights_Layer.md) | Plain-language summary of citizen rights and protections. |
 
@@ -139,7 +139,9 @@ The annex corpus now lives entirely as standalone documents. Use [`docs/annexes/
 
 The repository includes a corpus validator for the live constitutional document set:
 
+- `python3 -m pip install -e .[test]` installs the reproducible simulation and test dependencies.
 - `python3 scripts/validate_corpus.py` checks local markdown links, annex-index coverage, FC/T/P identifier integrity, and banned live legacy labels.
+- `python3 -m pytest -q` runs the simulation test suite from the packaged environment.
 - GitHub Actions runs the same validator on every push and pull request, alongside a basic frontend build for the desktop shell.
 
 ## Security and attack surface
@@ -204,7 +206,7 @@ The system has been adversarially stress-tested:
 | T-022 Electoral Cycle Capture | Hostile successor government routes identified; entrenchment ladder, LC floor persistence, transition protocol designed (P-018) |
 | T-023–T-025 Pilot validity, SQ oracle failure, demurrage capture | External validity gate (P-019), SQ oracle-failure fallback (P-022), demurrage sector-capture resolved: contract-commitment architecture, zero exemptions (P-023) |
 
-**Current status: 15 patches ACTIVE, 15 PROPOSED (1 FOUNDING instrument: P-014), 4 threat IDs OPEN, 5 PARTIAL, 17 ADDRESSED.** 30 patches total across 27 threat IDs. The design continues to harden. What remains is pilot evidence and patch acceptance.
+**Current status: 16 patches ACTIVE, 15 PROPOSED (1 FOUNDING instrument: P-014), 4 threat IDs OPEN, 5 PARTIAL, 17 ADDRESSED.** 31 patches total across 27 threat IDs. The design continues to harden. What remains is pilot evidence and patch acceptance.
 
 ## What this system is not
 

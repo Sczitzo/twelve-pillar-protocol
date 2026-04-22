@@ -1,5 +1,7 @@
 # Logical Fallacy Review and Revision Proposals
 
+**Status:** Historical editorial memo retained for reference. It is advisory, not controlling text, and may not match the latest wording line-for-line.
+
 ## Scope reviewed
 - `README.md`
 - `White_Paper.md`
