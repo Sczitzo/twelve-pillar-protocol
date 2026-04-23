@@ -1,5 +1,4 @@
-import { useState, useCallback } from 'react'
-import { getCurrentWindow } from '@tauri-apps/api/window'
+import { DotMatrixField } from './DotMatrixField'
 
 export type AppView =
   | 'overview'
@@ -15,284 +14,150 @@ interface LayoutProps {
   onNavChange: (view: AppView) => void
 }
 
-/* ─── Window Control Button ───────────────────────────────────────────────── */
-interface WinBtnProps {
-  color: string
-  hoverColor: string
-  title: string
-  onClick: () => void
-}
-
-function WinBtn({ color, hoverColor, title, onClick }: WinBtnProps) {
-  const [hovered, setHovered] = useState(false)
-  return (
-    <button
-      title={title}
-      onClick={onClick}
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
-      data-no-drag
-      className="w-3 h-3 rounded-full flex items-center justify-center
-                 transition-all duration-150 focus:outline-none focus-visible:ring-1
-                 focus-visible:ring-white/40"
-      style={{ backgroundColor: hovered ? hoverColor : color }}
-      aria-label={title}
-    >
-      {/* Icon only visible on hover */}
-      <span
-        className="text-[7px] font-bold leading-none select-none"
-        style={{
-          color: 'rgba(0,0,0,0.7)',
-          opacity: hovered ? 1 : 0,
-          transition: 'opacity 120ms',
-        }}
-      >
-        {title === 'Close' ? '✕' : title === 'Minimise' ? '−' : '⤢'}
-      </span>
-    </button>
-  )
-}
-
-/* ─── Sidebar nav item ────────────────────────────────────────────────────── */
 interface NavItemProps {
-  icon: string
+  glyph: string
   label: string
+  detail: string
   active?: boolean
   onClick?: () => void
 }
 
-function NavItem({ icon, label, active = false, onClick }: NavItemProps) {
+function NavItem({ glyph, label, detail, active = false, onClick }: NavItemProps) {
   return (
     <button
       onClick={onClick}
-      className={`
-        w-full flex items-center gap-3 px-3 py-2 rounded-xl text-left
-        transition-all duration-200 group
-        ${
-          active
-            ? 'backdrop-refract refract-lens bg-white/[0.07] text-white shadow-glass'
-            : 'text-white/40 hover:text-white/75 hover:bg-white/[0.04]'
-        }
-      `}
+      className={`group w-full rounded-[22px] border px-4 py-3.5 text-left transition ${
+        active
+          ? 'border-[rgba(230,207,172,0.34)] bg-[linear-gradient(180deg,rgba(253,249,242,0.14),rgba(253,249,242,0.06))] text-[var(--nav-text-strong)] shadow-[inset_0_1px_0_rgba(255,255,255,0.08),0_18px_34px_rgba(12,16,15,0.2)]'
+          : 'border-[rgba(230,207,172,0.08)] bg-[rgba(255,255,255,0.02)] text-[var(--nav-text)] shadow-[inset_0_1px_0_rgba(255,255,255,0.015)] hover:border-[rgba(230,207,172,0.16)] hover:bg-[rgba(253,249,242,0.05)] hover:text-[var(--nav-text-strong)] hover:shadow-[0_14px_24px_rgba(12,16,15,0.12)]'
+      }`}
     >
-      <span className={`text-base transition-all duration-200 ${active ? 'text-plasma-glow' : 'group-hover:text-plasma-glow'}`}>
-        {icon}
-      </span>
-      <span className="text-xs font-mono tracking-wide truncate">{label}</span>
-      {active && (
-        <span className="ml-auto w-1 h-1 rounded-full bg-plasma-glow shadow-[0_0_6px_rgba(168,85,247,0.8)]" />
-      )}
+      <div className="flex items-start gap-3">
+        <span
+          className={`mt-0.5 flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-full border text-sm transition ${
+            active
+              ? 'border-[rgba(230,207,172,0.42)] bg-[rgba(230,207,172,0.12)] text-[var(--accent-soft)] shadow-[inset_0_1px_0_rgba(255,255,255,0.06)]'
+              : 'border-[rgba(230,207,172,0.14)] text-[var(--nav-text-muted)] group-hover:border-[rgba(230,207,172,0.28)] group-hover:text-[var(--accent-soft)]'
+          }`}
+        >
+          {glyph}
+        </span>
+        <div className="min-w-0">
+          <p className="text-[11px] font-mono uppercase tracking-[0.26em]">{label}</p>
+          <p className="mt-1 text-[12px] leading-6 text-[var(--nav-text-muted)] transition group-hover:text-[var(--nav-text)]">
+            {detail}
+          </p>
+        </div>
+      </div>
     </button>
   )
 }
 
-/* ─── Layout ──────────────────────────────────────────────────────────────── */
 export function Layout({ children, activeNav, onNavChange }: LayoutProps) {
-  const handleClose = useCallback(() => {
-    void getCurrentWindow().close()
-  }, [])
-
-  const handleMinimise = useCallback(() => {
-    void getCurrentWindow().minimize()
-  }, [])
-
-  const handleMaximise = useCallback(() => {
-    void getCurrentWindow().toggleMaximize()
-  }, [])
-
-  const navItems: Array<{ id: AppView; icon: string; label: string }> = [
-    { id: 'overview',     icon: '◈', label: 'OVERVIEW' },
-    { id: 'constitution', icon: '⬟', label: 'CONSTITUTION' },
-    { id: 'annexes',      icon: '⬡', label: 'ANNEXES' },
-    { id: 'registries',   icon: '◎', label: 'REGISTRIES' },
-    { id: 'validation',   icon: '⚠', label: 'VALIDATION' },
-    { id: 'settings',     icon: '⚙', label: 'SETTINGS' },
+  const navItems: Array<{ id: AppView; glyph: string; label: string; detail: string }> = [
+    {
+      id: 'overview',
+      glyph: '§',
+      label: 'Overview',
+      detail: 'Start here: featured documents and orientation.',
+    },
+    {
+      id: 'constitution',
+      glyph: 'I',
+      label: 'Constitution',
+      detail: 'Charter text, white paper, and founding order.',
+    },
+    {
+      id: 'annexes',
+      glyph: 'A',
+      label: 'Annexes',
+      detail: 'Operational clauses, specifications, and extensions.',
+    },
+    {
+      id: 'registries',
+      glyph: 'R',
+      label: 'Registries',
+      detail: 'Threats, patches, commitments, and governance logs.',
+    },
+    {
+      id: 'validation',
+      glyph: 'V',
+      label: 'Validation',
+      detail: 'Activation gates, integrity status, and checks.',
+    },
+    {
+      id: 'settings',
+      glyph: '·',
+      label: 'Settings',
+      detail: 'Shell behavior and operator shortcuts.',
+    },
   ]
 
   return (
-    <div className="relative h-screen overflow-hidden bg-void-900 select-none">
-
-      {/* ── LAYER 0: Fixed Canvas Artwork ─────────────────────────────────── */}
-      <div className="canvas-layer" aria-hidden="true">
-        {/*
-         * SVG Brushstrokes — organic, expressive strokes in the cyber palette.
-         * These float as "painted marks" over the gradient blobs beneath.
-         * Rendered as bezier curves with heavy stroke-width + filter: blur().
-         */}
-        <svg
-          className="brushstroke absolute inset-0 w-full h-full"
-          viewBox="0 0 1440 900"
-          preserveAspectRatio="xMidYMid slice"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <defs>
-            {/* Plasma blur filter */}
-            <filter id="blur-plasma" x="-50%" y="-50%" width="200%" height="200%">
-              <feGaussianBlur stdDeviation="28" />
-            </filter>
-            {/* Cyan blur filter */}
-            <filter id="blur-cyan" x="-50%" y="-50%" width="200%" height="200%">
-              <feGaussianBlur stdDeviation="22" />
-            </filter>
-            {/* Lime blur filter — softest */}
-            <filter id="blur-lime" x="-50%" y="-50%" width="200%" height="200%">
-              <feGaussianBlur stdDeviation="34" />
-            </filter>
-          </defs>
-
-          {/* Stroke 1: Wide plasma arc — sweeps upper third of canvas */}
-          <path
-            d="M -80 280 C 200 180, 520 120, 760 200 S 1100 320, 1520 180"
-            fill="none"
-            stroke="rgba(168, 85, 247, 0.22)"
-            strokeWidth="90"
-            strokeLinecap="round"
-            filter="url(#blur-plasma)"
-          />
-
-          {/* Stroke 2: Hot magenta counter-sweep — lower right quadrant */}
-          <path
-            d="M 900 900 C 1000 750, 1150 680, 1300 600 S 1420 480, 1500 350"
-            fill="none"
-            stroke="rgba(192, 38, 211, 0.18)"
-            strokeWidth="70"
-            strokeLinecap="round"
-            filter="url(#blur-plasma)"
-          />
-
-          {/* Stroke 3: Cyan whip — fast diagonal, top-right corner */}
-          <path
-            d="M 850 -40 C 980 80, 1100 120, 1200 80 S 1380 -20, 1460 60"
-            fill="none"
-            stroke="rgba(34, 211, 238, 0.16)"
-            strokeWidth="55"
-            strokeLinecap="round"
-            filter="url(#blur-cyan)"
-          />
-
-          {/* Stroke 4: Lime scatter — bottom-left accent */}
-          <path
-            d="M -60 700 C 80 680, 160 720, 260 680 S 380 600, 420 650"
-            fill="none"
-            stroke="rgba(163, 230, 53, 0.13)"
-            strokeWidth="50"
-            strokeLinecap="round"
-            filter="url(#blur-lime)"
-          />
-
-          {/* Stroke 5: Secondary plasma loop — mid-canvas depth layer */}
-          <path
-            d="M 300 900 C 350 800, 500 780, 620 820 S 780 880, 900 820"
-            fill="none"
-            stroke="rgba(124, 58, 237, 0.14)"
-            strokeWidth="65"
-            strokeLinecap="round"
-            filter="url(#blur-plasma)"
-          />
-
-          {/* Orb 1: Floating plasma sphere — subtle radial fill, animated pulse */}
-          <circle
-            cx="200"
-            cy="160"
-            r="120"
-            fill="rgba(124, 58, 237, 0.08)"
-            filter="url(#blur-plasma)"
-            style={{ animation: 'glowPulse 6s ease-in-out infinite' }}
-          />
-
-          {/* Orb 2: Cyan accent orb — top right */}
-          <circle
-            cx="1280"
-            cy="120"
-            r="80"
-            fill="rgba(34, 211, 238, 0.07)"
-            filter="url(#blur-cyan)"
-            style={{ animation: 'glowPulse 8s ease-in-out infinite 2s' }}
-          />
-        </svg>
+    <div className="relative min-h-screen overflow-hidden bg-[var(--page-bg)] text-[var(--ink)]">
+      <div aria-hidden="true" className="pointer-events-none absolute inset-0 overflow-hidden">
+        <DotMatrixField />
+        <div className="absolute left-[-8rem] top-[5rem] h-[28rem] w-[28rem] rounded-full bg-[radial-gradient(circle_at_center,rgba(214,188,139,0.14),transparent_68%)] blur-3xl" />
+        <div className="absolute right-[-10rem] top-[-6rem] h-[30rem] w-[30rem] rounded-full bg-[radial-gradient(circle_at_center,rgba(77,86,80,0.14),transparent_68%)] blur-3xl" />
+        <div className="absolute bottom-[-12rem] right-[14rem] h-[26rem] w-[26rem] rounded-full bg-[radial-gradient(circle_at_center,rgba(126,142,118,0.1),transparent_68%)] blur-3xl" />
       </div>
 
-      {/* ── LAYER 1: Titlebar (glass strip, drag region) ───────────────────── */}
       <header
         data-tauri-drag-region
-        className="
-          fixed top-0 left-0 right-0 z-50 h-9
-          flex items-center gap-3 px-4
-          backdrop-refract border-b border-glass-border
-        "
-        style={{ borderRadius: 0 }}
+        className="fixed inset-x-0 top-0 z-50 flex h-14 items-center gap-4 border-b border-[var(--chrome-line)] bg-[rgba(250,246,238,0.88)] px-5 backdrop-blur-md"
       >
-        {/* macOS-style traffic lights — left side */}
-        <div className="flex items-center gap-[6px]" data-no-drag>
-          <WinBtn color="#ff5f57" hoverColor="#ff3b30" title="Close"    onClick={handleClose}    />
-          <WinBtn color="#febc2e" hoverColor="#ffcc00" title="Minimise" onClick={handleMinimise} />
-          <WinBtn color="#28c840" hoverColor="#34c759" title="Maximise" onClick={handleMaximise} />
+        <div className="min-w-0 flex-1">
+          <p className="text-[10px] font-mono uppercase tracking-[0.34em] text-[var(--ink-faint)]">
+            Humane Constitution
+          </p>
+          <p className="truncate font-serif text-[17px] text-[var(--ink-strong)]">
+            Civic Reader Edition
+          </p>
         </div>
 
-        {/* App wordmark — centre-ish, purely decorative */}
-        <div className="flex-1 flex items-center justify-center pointer-events-none">
-          <span className="text-[10px] font-mono tracking-[0.3em] text-white/25 uppercase">
-            ◈ Humane Constitution
-          </span>
-        </div>
-
-        {/* Status indicator — far right */}
-        <div className="flex items-center gap-2" data-no-drag>
-          <span className="w-1.5 h-1.5 rounded-full bg-neon-lime shadow-[0_0_6px_rgba(163,230,53,0.8)] animate-glow-pulse" />
-          <span className="text-[9px] font-mono text-white/25 tracking-wider">SYNCED</span>
+        <div className="flex items-center gap-3" data-no-drag>
+          <div className="hidden items-center gap-2 rounded-full border border-[rgba(111,124,103,0.18)] bg-[rgba(253,249,242,0.74)] px-3 py-1 lg:flex">
+            <span className="h-2 w-2 rounded-full bg-[var(--sage)]" />
+            <span className="text-[9px] font-mono uppercase tracking-[0.22em] text-[var(--ink-faint)]">
+              Live corpus
+            </span>
+          </div>
+          <span className="text-[9px] font-mono uppercase tracking-[0.24em] text-[var(--ink-faint)]">Synced</span>
         </div>
       </header>
 
-      {/* ── LAYER 1: Body — sidebar + main content ────────────────────────── */}
-      <div className="relative z-10 flex h-full pt-9">
-
-        {/* Sidebar */}
-        <aside
-          className="
-            w-52 flex-shrink-0 flex flex-col
-            backdrop-refract border-r border-glass-border
-            px-3 py-4 gap-1
-          "
-          style={{ borderRadius: 0 }}
-        >
-          {/* Nav items */}
-          <nav className="flex flex-col gap-1 flex-1">
-            {navItems.slice(0, 5).map(item => (
-              <NavItem
-                key={item.id}
-                icon={item.icon}
-                label={item.label}
-                active={activeNav === item.id}
-                onClick={() => onNavChange(item.id)}
-              />
+      <div className="relative z-10 flex min-h-screen flex-col pt-14 lg:grid lg:grid-cols-[18.5rem_minmax(0,1fr)]">
+        <aside className="border-b border-[rgba(60,54,46,0.12)] bg-[var(--nav-surface)] px-4 py-5 text-[var(--nav-text-strong)] shadow-[inset_-1px_0_0_rgba(255,255,255,0.02)] lg:flex lg:h-[calc(100vh-3.5rem)] lg:min-h-0 lg:flex-col lg:overflow-y-auto lg:overscroll-contain lg:border-b-0 lg:border-r lg:border-r-[rgba(60,54,46,0.14)] lg:px-5 lg:py-7">
+          <nav className="mt-0 flex gap-2 overflow-x-auto pb-1 lg:flex-col lg:gap-3 lg:overflow-visible lg:pb-0">
+            {navItems.slice(0, 5).map((item) => (
+              <div key={item.id} className="min-w-[15rem] lg:min-w-0">
+                <NavItem
+                  glyph={item.glyph}
+                  label={item.label}
+                  detail={item.detail}
+                  active={activeNav === item.id}
+                  onClick={() => onNavChange(item.id)}
+                />
+              </div>
             ))}
           </nav>
 
-          {/* Divider */}
-          <div className="h-px bg-gradient-to-r from-transparent via-white/10 to-transparent my-2" />
-
-          {/* Settings at bottom */}
-          <NavItem
-            icon={navItems[5].icon}
-            label={navItems[5].label}
-            active={activeNav === 'settings'}
-            onClick={() => onNavChange('settings')}
-          />
-
-          {/* Sidebar footer — version badge */}
-          <div className="mt-3 px-3">
-            <span className="text-[9px] font-mono text-white/20 tracking-widest">
-              v0.1.0 — CORPUS READER
-            </span>
+          <div className="mt-4 border-t border-[rgba(230,207,172,0.12)] pt-4 lg:mt-auto">
+            <NavItem
+              glyph={navItems[5].glyph}
+              label={navItems[5].label}
+              detail={navItems[5].detail}
+              active={activeNav === 'settings'}
+              onClick={() => onNavChange('settings')}
+            />
+            <p className="mt-4 px-1 text-[9px] font-mono uppercase tracking-[0.22em] text-[var(--nav-text-muted)]">
+              v0.1.0 · Reader shell
+            </p>
           </div>
         </aside>
 
-        {/* Main scrollable content area */}
-        <main
-          className="flex-1 overflow-y-auto overflow-x-hidden"
-          style={{ scrollbarWidth: 'thin' }}
-        >
-          {children}
+        <main className="min-h-[calc(100vh-3.5rem)] overflow-y-auto px-4 pb-8 pt-5 lg:h-[calc(100vh-3.5rem)] lg:min-h-0 lg:px-8 lg:pb-10 lg:pt-8">
+          <div className="mx-auto w-full max-w-[97rem]">{children}</div>
         </main>
       </div>
     </div>

@@ -1,4 +1,4 @@
-import { startTransition, useDeferredValue, useEffect, useState } from 'react'
+import { startTransition, useDeferredValue, useEffect, useState, type WheelEvent as ReactWheelEvent } from 'react'
 import { invoke } from '@tauri-apps/api/core'
 import type { CorpusDoc, CorpusPayload } from '../generated/corpus'
 import type { AppView } from './Layout'
@@ -61,37 +61,37 @@ type MarkdownBlock =
   | MarkdownRule
   | MarkdownTable
 
-const VIEW_META: Record<AppView, { title: string; subtitle: string }> = {
+const VIEW_META: Record<AppView, { title: string; subtitle: string; railLabel: string }> = {
   overview: {
     title: 'Corpus Overview',
-    subtitle: 'Generated directly from the live constitutional repository.',
+    subtitle: 'Begin with the public-facing documents, then move inward to the formal constitutional body.',
+    railLabel: 'Featured Shelf',
   },
   constitution: {
     title: 'Constitution & Founding Order',
-    subtitle: 'Core charter texts, explanatory documents, and founding-order instruments.',
+    subtitle: 'The governing text, interpretive documents, and the foundational order that frames the entire corpus.',
+    railLabel: 'Core Texts',
   },
   annexes: {
     title: 'Annex Corpus',
-    subtitle: 'Operational annexes, hardening clauses, and supporting specifications.',
+    subtitle: 'Detailed clauses, hardening instruments, and the operational extension layer behind the core charter.',
+    railLabel: 'Annex Shelf',
   },
   registries: {
     title: 'Registries & Governance Logs',
-    subtitle: 'Threats, patches, commitments, activation protocols, and public disclosures.',
+    subtitle: 'Threats, patches, commitments, acceptance records, and public disclosures that harden the system over time.',
+    railLabel: 'Registry Shelf',
   },
   validation: {
     title: 'Validation State',
-    subtitle: 'Corpus integrity, reserved commitments, and prelaunch evidence gates.',
+    subtitle: 'Prelaunch evidence gates, reserved commitments, and the integrity checks that govern activation readiness.',
+    railLabel: 'Validation Shelf',
   },
   settings: {
     title: 'Shell Settings',
-    subtitle: 'The reader is now live; the remaining shell work is convenience tooling around it.',
+    subtitle: 'This reader now prioritizes the corpus itself; remaining shell work is convenience tooling around it.',
+    railLabel: 'Settings',
   },
-}
-
-const STATUS_STYLES: Record<string, string> = {
-  active: 'bg-neon-lime/10 text-neon-lime border border-neon-lime/20',
-  proposed: 'bg-neon-amber/10 text-neon-amber border border-neon-amber/20',
-  reference: 'bg-neon-cyan/10 text-neon-cyan border border-neon-cyan/20',
 }
 
 const SECTION_LABELS: Record<CorpusDoc['section'], string> = {
@@ -99,13 +99,6 @@ const SECTION_LABELS: Record<CorpusDoc['section'], string> = {
   founding_order: 'Founding Order',
   registry: 'Registry',
   annex: 'Annex',
-}
-
-function metricTone(label: string): string {
-  if (label === 'pass') {
-    return 'text-neon-lime'
-  }
-  return 'text-white/80'
 }
 
 function docsForView(view: AppView, docs: CorpusDoc[], featuredPaths: string[]): CorpusDoc[] {
@@ -161,6 +154,10 @@ function matchesQuery(doc: CorpusDoc, query: string): boolean {
 
 function estimatedReadMinutes(wordCount: number): number {
   return Math.max(1, Math.round(wordCount / 220))
+}
+
+function normalizeComparable(text: string): string {
+  return text.toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim()
 }
 
 function isHeadingLine(trimmed: string): boolean {
@@ -331,7 +328,7 @@ function renderInline(text: string, keyPrefix: string): React.ReactNode[] {
       parts.push(
         <code
           key={`${keyPrefix}-code-${match.index}`}
-          className="rounded bg-white/[0.06] px-1.5 py-0.5 text-[0.92em] text-neon-cyan"
+          className="rounded-md bg-[rgba(60,54,46,0.08)] px-1.5 py-0.5 font-mono text-[0.88em] text-[var(--ink-strong)]"
         >
           {match[1].slice(1, -1)}
         </code>,
@@ -343,20 +340,20 @@ function renderInline(text: string, keyPrefix: string): React.ReactNode[] {
           href={match[3]}
           target="_blank"
           rel="noreferrer"
-          className="text-neon-cyan underline decoration-white/15 underline-offset-4 transition hover:text-white"
+          className="font-medium text-[var(--accent-deep)] underline decoration-[rgba(159,108,49,0.3)] underline-offset-4 transition hover:text-[var(--ink-strong)]"
         >
           {match[2]}
         </a>,
       )
     } else if (match[4]) {
       parts.push(
-        <strong key={`${keyPrefix}-strong-${match.index}`} className="font-semibold text-white/86">
+        <strong key={`${keyPrefix}-strong-${match.index}`} className="font-semibold text-[var(--ink-strong)]">
           {match[4]}
         </strong>,
       )
     } else if (match[5]) {
       parts.push(
-        <em key={`${keyPrefix}-em-${match.index}`} className="italic text-white/80">
+        <em key={`${keyPrefix}-em-${match.index}`} className="italic text-[var(--ink)]">
           {match[5]}
         </em>,
       )
@@ -373,6 +370,29 @@ function renderInline(text: string, keyPrefix: string): React.ReactNode[] {
   return parts
 }
 
+function parseTable(lines: string[]): { headers: string[]; rows: string[][] } | null {
+  if (lines.length < 2) {
+    return null
+  }
+
+  const parseRow = (line: string) =>
+    line
+      .trim()
+      .replace(/^\|/, '')
+      .replace(/\|$/, '')
+      .split('|')
+      .map((cell) => cell.trim())
+
+  const headers = parseRow(lines[0])
+  const rows = lines.slice(2).map(parseRow).filter((row) => row.some((cell) => cell.length > 0))
+
+  if (!headers.length || !rows.length) {
+    return null
+  }
+
+  return { headers, rows }
+}
+
 function headingScrollId(doc: CorpusDoc, slug: string): string {
   return `${doc.id}--${slug}`
 }
@@ -382,17 +402,13 @@ function jumpToHeading(doc: CorpusDoc, slug: string) {
   element?.scrollIntoView({ behavior: 'smooth', block: 'start' })
 }
 
-function headingClass(level: number): string {
-  if (level === 1) {
-    return 'text-2xl text-white/88'
-  }
-  if (level === 2) {
-    return 'text-xl text-white/84'
-  }
-  if (level === 3) {
-    return 'text-lg text-white/78'
-  }
-  return 'text-base text-white/72'
+function visibleHeadings(doc: CorpusDoc): CorpusDoc['headings'] {
+  return doc.headings.filter((heading, index) => {
+    if (index !== 0) {
+      return true
+    }
+    return normalizeComparable(heading.text) !== normalizeComparable(doc.title)
+  })
 }
 
 async function openSourceDocument(doc: CorpusDoc): Promise<SourceFeedback> {
@@ -410,57 +426,52 @@ async function openSourceDocument(doc: CorpusDoc): Promise<SourceFeedback> {
   window.setTimeout(() => URL.revokeObjectURL(blobUrl), 60_000)
   return {
     tone: 'warning',
-    message: 'Opened an embedded markdown snapshot in a new tab. Native source launch is available in the desktop shell.',
+    message: 'Opened an embedded markdown snapshot in a new tab. Native source launch remains available in the desktop shell.',
   }
 }
 
 function feedbackClass(tone: SourceFeedback['tone']): string {
   if (tone === 'success') {
-    return 'text-neon-lime'
+    return 'text-[var(--sage-deep)]'
   }
   if (tone === 'warning') {
-    return 'text-neon-amber'
+    return 'text-[var(--accent-deep)]'
   }
   if (tone === 'error') {
-    return 'text-red-300'
+    return 'text-[#8b2d2d]'
   }
-  return 'text-white/32'
+  return 'text-[var(--ink-soft)]'
 }
 
-function StatusBadge({ doc }: { doc: CorpusDoc }) {
-  const bucket = doc.statusBucket || 'reference'
-  const badgeClass = STATUS_STYLES[bucket] ?? STATUS_STYLES.reference
-  const label = doc.status ? doc.status.replace(/^Status:\s*/i, '') : bucket.toUpperCase()
+function routeVerticalWheelToSelf(event: ReactWheelEvent<HTMLElement>) {
+  if (Math.abs(event.deltaY) <= Math.abs(event.deltaX)) {
+    return
+  }
 
-  return (
-    <span
-      className={`inline-flex items-center gap-1.5 rounded-full px-2 py-1 text-[9px] font-mono uppercase tracking-[0.18em] ${badgeClass}`}
-    >
-      <span className="h-1.5 w-1.5 rounded-full bg-current opacity-80" />
-      {label}
-    </span>
-  )
+  const node = event.currentTarget
+
+  if (node.scrollHeight <= node.clientHeight) {
+    return
+  }
+
+  event.preventDefault()
+  node.scrollTop += event.deltaY
 }
 
-function MetricCard({
+function MetaStat({
   label,
   value,
-  detail,
 }: {
   label: string
   value: string
-  detail: string
 }) {
   return (
-    <article className="backdrop-refract refract-lens glass-shimmer rounded-2xl p-4">
-      <p className="text-[10px] font-mono uppercase tracking-[0.2em] text-white/25">{label}</p>
-      <div className="mt-3 flex items-end justify-between gap-4">
-        <p className={`text-3xl font-mono font-semibold ${metricTone(value.toLowerCase())}`}>{value}</p>
-        <p className="max-w-[12rem] text-right text-[10px] font-mono leading-relaxed text-white/30">
-          {detail}
-        </p>
-      </div>
-    </article>
+    <div className="rounded-[18px] border border-[rgba(60,54,46,0.14)] bg-[rgba(253,249,242,0.8)] px-5 py-4 shadow-[inset_0_1px_0_rgba(255,255,255,0.5),0_14px_24px_rgba(35,30,20,0.06)]">
+      <p className="text-[10px] font-mono uppercase tracking-[0.22em] text-[var(--ink-faint)]">
+        {label}
+      </p>
+      <p className="mt-2 font-serif text-[1.3rem] leading-tight text-[var(--ink-strong)]">{value}</p>
+    </div>
   )
 }
 
@@ -475,20 +486,20 @@ function ActionButton({
 }) {
   const toneClass =
     tone === 'accent'
-      ? 'border-neon-cyan/20 bg-neon-cyan/10 text-neon-cyan hover:bg-neon-cyan/15'
-      : 'border-white/10 bg-white/[0.04] text-white/58 hover:bg-white/[0.07] hover:text-white/82'
+      ? 'border-[rgba(159,108,49,0.3)] bg-[rgba(159,108,49,0.14)] text-[var(--accent-deep)] shadow-[inset_0_1px_0_rgba(255,255,255,0.22)] hover:bg-[rgba(159,108,49,0.2)]'
+      : 'border-[rgba(60,54,46,0.14)] bg-[rgba(253,249,242,0.8)] text-[var(--ink-soft)] shadow-[inset_0_1px_0_rgba(255,255,255,0.35)] hover:bg-[rgba(253,249,242,0.96)] hover:text-[var(--ink-strong)]'
 
   return (
     <button
       onClick={onClick}
-      className={`rounded-full border px-3 py-1.5 text-[10px] font-mono uppercase tracking-[0.18em] transition ${toneClass}`}
+      className={`rounded-full border px-4 py-2 text-[10px] font-mono uppercase tracking-[0.2em] transition ${toneClass}`}
     >
       {label}
     </button>
   )
 }
 
-function DocListItem({
+function DocumentRow({
   doc,
   selected,
   onSelect,
@@ -501,27 +512,25 @@ function DocListItem({
 }) {
   return (
     <article
-      className={`rounded-2xl border p-4 transition ${
+      className={`rounded-[24px] border p-4 transition ${
         selected
-          ? 'border-neon-cyan/20 bg-neon-cyan/10'
-          : 'border-white/8 bg-white/[0.03] hover:bg-white/[0.05]'
+          ? 'border-[rgba(159,108,49,0.26)] bg-[rgba(253,249,242,0.92)] shadow-[inset_0_1px_0_rgba(255,255,255,0.5),0_16px_28px_rgba(35,30,20,0.08)]'
+          : 'border-[rgba(60,54,46,0.1)] bg-[rgba(253,249,242,0.46)] shadow-[inset_0_1px_0_rgba(255,255,255,0.28)] hover:border-[rgba(159,108,49,0.14)] hover:bg-[rgba(253,249,242,0.7)] hover:shadow-[0_14px_24px_rgba(35,30,20,0.06)]'
       }`}
     >
-      <div className="flex items-start justify-between gap-3">
-        <button className="min-w-0 flex-1 text-left" onClick={onSelect}>
-          <p className="text-[9px] font-mono uppercase tracking-[0.22em] text-white/25">
+      <button className="w-full text-left" onClick={onSelect}>
+        <div className="min-w-0">
+          <p className="text-[10px] font-mono uppercase tracking-[0.22em] text-[var(--ink-faint)]">
             {SECTION_LABELS[doc.section]}
           </p>
-          <h3 className="mt-2 text-sm font-mono uppercase tracking-[0.12em] text-white/84">
+          <h3 className="mt-2 font-serif text-[1.18rem] leading-7 text-[var(--ink-strong)]">
             {doc.title}
           </h3>
-        </button>
-        <StatusBadge doc={doc} />
-      </div>
+        </div>
+        <p className="mt-3 line-clamp-2 text-[13px] leading-6 text-[var(--ink-soft)]">{doc.summary}</p>
+      </button>
 
-      <p className="mt-4 text-[11px] font-mono leading-relaxed text-white/38">{doc.summary}</p>
-
-      <div className="mt-4 flex flex-wrap items-center gap-2 text-[9px] font-mono uppercase tracking-[0.16em] text-white/28">
+      <div className="mt-4 flex flex-wrap items-center gap-1.5 text-[9px] font-mono uppercase tracking-[0.18em] text-[var(--ink-faint)]">
         <span>{estimatedReadMinutes(doc.wordCount)} min read</span>
         <span>•</span>
         <span>{doc.headingCount} headings</span>
@@ -539,17 +548,26 @@ function DocListItem({
 
 function MarkdownDocument({ doc }: { doc: CorpusDoc }) {
   const blocks = parseMarkdown(doc)
+  const hiddenFirstHeading = normalizeComparable(doc.title)
 
   return (
-    <article className="space-y-5 text-[13px] font-mono leading-7 text-white/68">
+    <article className="reader-prose">
       {blocks.map((block, index) => {
         if (block.type === 'heading') {
+          if (index === 0 && normalizeComparable(block.text) === hiddenFirstHeading) {
+            return null
+          }
+
           const Tag = `h${Math.min(block.level, 6)}` as keyof JSX.IntrinsicElements
           return (
             <Tag
               key={`${doc.id}-heading-${block.slug}-${index}`}
               id={headingScrollId(doc, block.slug)}
-              className={`scroll-mt-24 font-mono uppercase tracking-[0.08em] ${headingClass(block.level)}`}
+              className={`scroll-mt-24 ${block.level === 1 ? 'reader-h1' : ''} ${
+                block.level === 2 ? 'reader-h2' : ''
+              } ${block.level === 3 ? 'reader-h3' : ''} ${
+                block.level >= 4 ? 'reader-h4' : ''
+              }`}
             >
               {renderInline(block.text, `${doc.id}-heading-inline-${index}`)}
             </Tag>
@@ -558,7 +576,7 @@ function MarkdownDocument({ doc }: { doc: CorpusDoc }) {
 
         if (block.type === 'paragraph') {
           return (
-            <p key={`${doc.id}-paragraph-${index}`} className="text-white/64">
+            <p key={`${doc.id}-paragraph-${index}`}>
               {renderInline(block.text, `${doc.id}-paragraph-inline-${index}`)}
             </p>
           )
@@ -569,7 +587,7 @@ function MarkdownDocument({ doc }: { doc: CorpusDoc }) {
           return (
             <ListTag
               key={`${doc.id}-list-${index}`}
-              className={`space-y-2 pl-5 text-white/64 ${block.ordered ? 'list-decimal' : 'list-disc'}`}
+              className={block.ordered ? 'reader-list reader-list-ordered' : 'reader-list'}
             >
               {block.items.map((item, itemIndex) => (
                 <li key={`${doc.id}-list-item-${index}-${itemIndex}`}>
@@ -582,15 +600,8 @@ function MarkdownDocument({ doc }: { doc: CorpusDoc }) {
 
         if (block.type === 'code') {
           return (
-            <div
-              key={`${doc.id}-code-${index}`}
-              className="rounded-2xl border border-white/8 bg-black/30 p-4 text-[12px] text-neon-cyan"
-            >
-              {block.language ? (
-                <p className="mb-3 text-[9px] font-mono uppercase tracking-[0.18em] text-white/30">
-                  {block.language}
-                </p>
-              ) : null}
+            <div key={`${doc.id}-code-${index}`} className="reader-code">
+              {block.language ? <p className="reader-code-label">{block.language}</p> : null}
               <pre className="whitespace-pre-wrap break-words">{block.code}</pre>
             </div>
           )
@@ -598,29 +609,85 @@ function MarkdownDocument({ doc }: { doc: CorpusDoc }) {
 
         if (block.type === 'quote') {
           return (
-            <blockquote
-              key={`${doc.id}-quote-${index}`}
-              className="border-l-2 border-neon-cyan/30 pl-4 text-white/58"
-            >
+            <blockquote key={`${doc.id}-quote-${index}`} className="reader-quote">
               {renderInline(block.text, `${doc.id}-quote-inline-${index}`)}
             </blockquote>
           )
         }
 
         if (block.type === 'table') {
+          const parsedTable = parseTable(block.lines)
+          if (!parsedTable) {
+            return (
+              <div key={`${doc.id}-table-fallback-${index}`} className="reader-code">
+                <pre className="whitespace-pre-wrap break-words">{block.lines.join('\n')}</pre>
+              </div>
+            )
+          }
+
           return (
-            <div
-              key={`${doc.id}-table-${index}`}
-              className="rounded-2xl border border-white/8 bg-white/[0.03] p-4 text-[12px] text-white/58"
-            >
-              <pre className="whitespace-pre-wrap break-words">{block.lines.join('\n')}</pre>
+            <div key={`${doc.id}-table-${index}`} className="reader-table-wrap">
+              <table className="reader-table">
+                <thead>
+                  <tr>
+                    {parsedTable.headers.map((header, headerIndex) => (
+                      <th key={`${doc.id}-table-header-${index}-${headerIndex}`}>
+                        {renderInline(header, `${doc.id}-table-header-inline-${index}-${headerIndex}`)}
+                      </th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {parsedTable.rows.map((row, rowIndex) => (
+                    <tr key={`${doc.id}-table-row-${index}-${rowIndex}`}>
+                      {row.map((cell, cellIndex) => (
+                        <td key={`${doc.id}-table-cell-${index}-${rowIndex}-${cellIndex}`}>
+                          {renderInline(cell, `${doc.id}-table-cell-inline-${index}-${rowIndex}-${cellIndex}`)}
+                        </td>
+                      ))}
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
             </div>
           )
         }
 
-        return <div key={`${doc.id}-rule-${index}`} className="h-px bg-white/10" />
+        return <div key={`${doc.id}-rule-${index}`} className="my-10 h-px bg-[rgba(60,54,46,0.12)]" />
       })}
     </article>
+  )
+}
+
+function ReaderOutline({ doc, independentScroll = false }: { doc: CorpusDoc; independentScroll?: boolean }) {
+  const headings = visibleHeadings(doc)
+  if (!headings.length) {
+    return null
+  }
+
+  return (
+    <aside
+      className={`rounded-[26px] border border-[rgba(60,54,46,0.16)] bg-[linear-gradient(180deg,rgba(252,248,241,0.96),rgba(248,242,232,0.9))] p-5 shadow-[inset_0_1px_0_rgba(255,255,255,0.6),0_20px_36px_rgba(35,30,20,0.08)] ${
+        independentScroll ? 'h-full overflow-y-auto' : 'self-start'
+      }`}
+    >
+      <div className="mb-4 h-px w-full bg-[linear-gradient(90deg,rgba(159,108,49,0.28),rgba(159,108,49,0.08),transparent)]" />
+      <p className="text-[10px] font-mono uppercase tracking-[0.22em] text-[var(--ink-faint)]">
+        Outline
+      </p>
+      <div className="mt-4 space-y-1">
+        {headings.map((heading) => (
+          <button
+            key={`${doc.id}-${heading.slug}`}
+            onClick={() => jumpToHeading(doc, heading.slug)}
+            className="block w-full rounded-[16px] px-3 py-2 text-left text-[12px] leading-5 text-[var(--ink-soft)] transition hover:bg-[rgba(60,54,46,0.05)] hover:text-[var(--ink-strong)]"
+            style={{ paddingLeft: `${12 + Math.max(0, heading.level - 1) * 10}px` }}
+          >
+            {heading.text}
+          </button>
+        ))}
+      </div>
+    </aside>
   )
 }
 
@@ -634,60 +701,48 @@ function ReaderPanel({
   onOpenSource: () => void
 }) {
   return (
-    <aside className="backdrop-refract refract-lens glass-shimmer rounded-3xl p-5 xl:sticky xl:top-6 xl:max-h-[calc(100vh-7rem)] xl:overflow-y-auto">
-      <div className="flex flex-wrap items-start justify-between gap-4">
-        <div>
-          <p className="text-[10px] font-mono uppercase tracking-[0.22em] text-white/25">
+    <section id="reader-panel-start" className="space-y-6">
+      <header className="rounded-[30px] border border-[rgba(60,54,46,0.18)] bg-[linear-gradient(180deg,rgba(253,249,242,1),rgba(247,240,229,0.95))] px-6 py-6 shadow-[inset_0_1px_0_rgba(255,255,255,0.72),0_28px_48px_rgba(35,30,20,0.11)] sm:px-8">
+        <div className="mb-5 h-px w-full bg-[linear-gradient(90deg,rgba(159,108,49,0.32),rgba(159,108,49,0.1),transparent)]" />
+        <div className="min-w-0">
+          <p className="text-[10px] font-mono uppercase tracking-[0.24em] text-[var(--ink-faint)]">
             {SECTION_LABELS[doc.section]}
           </p>
-          <h2 className="mt-2 text-base font-mono font-semibold uppercase tracking-[0.14em] text-white/88">
+          <h2 className="mt-3 font-serif text-[2rem] leading-tight text-[var(--ink-strong)] sm:text-[2.55rem]">
             {doc.title}
           </h2>
-          <p className="mt-3 max-w-3xl text-[11px] font-mono leading-relaxed text-white/38">
+          <p className="mt-4 max-w-3xl text-[15px] leading-7 text-[var(--ink-soft)]">
             {doc.summary}
           </p>
         </div>
-        <StatusBadge doc={doc} />
-      </div>
 
-      <div className="mt-5 flex flex-wrap gap-3 text-[9px] font-mono uppercase tracking-[0.16em] text-white/28">
-        <span>{doc.path}</span>
-        <span>•</span>
-        <span>{estimatedReadMinutes(doc.wordCount)} min read</span>
-        <span>•</span>
-        <span>{doc.wordCount} words</span>
-      </div>
+        <div className="mt-5 flex flex-wrap items-center gap-3 text-[10px] font-mono uppercase tracking-[0.2em] text-[var(--ink-faint)]">
+          <span>{doc.path}</span>
+          <span>•</span>
+          <span>{estimatedReadMinutes(doc.wordCount)} min read</span>
+          <span>•</span>
+          <span>{doc.wordCount} words</span>
+          <span>•</span>
+          <span>{doc.headingCount} headings</span>
+        </div>
 
-      <div className="mt-5 flex flex-wrap gap-2">
-        <ActionButton label="Open Source" onClick={onOpenSource} tone="accent" />
-      </div>
+        <div className="mt-5 flex flex-wrap gap-3">
+          <ActionButton label="Open Source" onClick={onOpenSource} tone="accent" />
+        </div>
 
-      <p className={`mt-3 text-[10px] font-mono leading-relaxed ${feedbackClass(feedback.tone)}`}>
-        {feedback.message}
-      </p>
+        <p className={`mt-4 text-[12px] leading-6 ${feedbackClass(feedback.tone)}`}>
+          {feedback.message}
+        </p>
+      </header>
 
-      {doc.headings.length > 0 ? (
-        <div className="mt-6 rounded-2xl border border-white/8 bg-white/[0.03] p-4">
-          <p className="text-[9px] font-mono uppercase tracking-[0.2em] text-white/25">Outline</p>
-          <div className="mt-4 flex flex-wrap gap-2">
-            {doc.headings.map((heading) => (
-              <button
-                key={`${doc.id}-${heading.slug}`}
-                onClick={() => jumpToHeading(doc, heading.slug)}
-                className="rounded-full border border-white/10 bg-white/[0.04] px-3 py-1.5 text-[10px] font-mono text-white/54 transition hover:bg-white/[0.08] hover:text-white/78"
-                style={{ marginLeft: `${Math.max(0, heading.level - 1) * 6}px` }}
-              >
-                {heading.text}
-              </button>
-            ))}
+      <article className="rounded-[30px] border border-[rgba(60,54,46,0.18)] bg-[linear-gradient(180deg,rgba(252,246,238,0.98),rgba(245,238,227,0.92))] p-3 shadow-[inset_0_1px_0_rgba(255,255,255,0.78),0_28px_48px_rgba(35,30,20,0.12)] sm:p-4">
+        <div className="rounded-[24px] border border-[rgba(60,54,46,0.12)] bg-[var(--paper-strong)] px-6 py-8 shadow-[inset_0_1px_0_rgba(255,255,255,0.76),0_1px_0_rgba(60,54,46,0.04)] sm:px-10 sm:py-10">
+          <div className="mx-auto max-w-[47rem]">
+            <MarkdownDocument doc={doc} />
           </div>
         </div>
-      ) : null}
-
-      <div className="mt-6 rounded-3xl border border-white/8 bg-black/15 p-5">
-        <MarkdownDocument doc={doc} />
-      </div>
-    </aside>
+      </article>
+    </section>
   )
 }
 
@@ -697,154 +752,193 @@ function ReaderWorkspace({
   onSelect,
   onOpenSource,
   feedback,
+  railLabel,
   emptyLabel,
+  independentScroll = false,
 }: {
   docs: CorpusDoc[]
   selectedDoc: CorpusDoc | null
   onSelect: (doc: CorpusDoc) => void
   onOpenSource: (doc: CorpusDoc) => void
   feedback: SourceFeedback
+  railLabel: string
   emptyLabel: string
+  independentScroll?: boolean
 }) {
   if (!docs.length || !selectedDoc) {
     return (
-      <article className="backdrop-refract refract-lens glass-shimmer rounded-3xl p-6">
-        <p className="text-[10px] font-mono uppercase tracking-[0.22em] text-white/25">No Matches</p>
-        <p className="mt-4 max-w-2xl text-[11px] font-mono leading-relaxed text-white/34">{emptyLabel}</p>
+      <article className="rounded-[32px] border border-[rgba(60,54,46,0.14)] bg-[rgba(250,246,238,0.92)] px-6 py-8 shadow-[inset_0_1px_0_rgba(255,255,255,0.5),0_24px_40px_rgba(35,30,20,0.08)]">
+        <p className="text-[10px] font-mono uppercase tracking-[0.22em] text-[var(--ink-faint)]">No Matches</p>
+        <p className="mt-4 max-w-2xl text-[15px] leading-7 text-[var(--ink-soft)]">{emptyLabel}</p>
       </article>
     )
   }
 
   return (
-    <div className="grid gap-4 xl:grid-cols-[minmax(18rem,0.95fr),minmax(24rem,1.35fr)]">
-      <section className="space-y-4">
-        {docs.map((doc) => (
-          <DocListItem
-            key={doc.id}
-            doc={doc}
-            selected={selectedDoc.id === doc.id}
-            onSelect={() => onSelect(doc)}
-            onOpenSource={() => onOpenSource(doc)}
-          />
-        ))}
-      </section>
+    <div
+      className={`grid gap-6 xl:grid-cols-[21.5rem_minmax(0,1fr)] 2xl:grid-cols-[21.5rem_minmax(0,1fr)_15.5rem] ${
+        independentScroll ? 'items-start' : ''
+      }`}
+    >
+        <section
+          className={`space-y-4 ${
+            independentScroll
+              ? 'xl:sticky xl:top-6 xl:max-h-[calc(100vh-9rem)] xl:overflow-y-auto xl:overscroll-contain xl:pr-1'
+            : 'xl:sticky xl:top-6 xl:self-start xl:max-h-[calc(100vh-9rem)] xl:overflow-y-auto xl:overscroll-contain xl:pr-1'
+          }`}
+          onWheelCapture={routeVerticalWheelToSelf}
+        >
+          <div className="space-y-4 rounded-[30px] border border-[rgba(60,54,46,0.18)] bg-[linear-gradient(180deg,rgba(246,239,228,0.82),rgba(238,230,218,0.68))] p-3 shadow-[inset_0_1px_0_rgba(255,255,255,0.55),0_24px_42px_rgba(35,30,20,0.1)]">
+            <div className="rounded-[26px] border border-[rgba(60,54,46,0.16)] bg-[linear-gradient(180deg,rgba(252,248,241,0.96),rgba(248,242,232,0.9))] px-5 py-5 shadow-[inset_0_1px_0_rgba(255,255,255,0.55),0_18px_30px_rgba(35,30,20,0.08)]">
+              <div className="mb-4 h-px w-full bg-[linear-gradient(90deg,rgba(159,108,49,0.28),rgba(159,108,49,0.08),transparent)]" />
+              <p className="text-[10px] font-mono uppercase tracking-[0.22em] text-[var(--ink-faint)]">
+                {railLabel}
+              </p>
+              <div className="mt-3 flex items-end justify-between gap-4">
+                <p className="font-serif text-[1.55rem] leading-tight text-[var(--ink-strong)]">
+                  {docs.length} documents
+                </p>
+                <span className="text-[9px] font-mono uppercase tracking-[0.22em] text-[var(--ink-faint)]">
+                  browse + read
+                </span>
+              </div>
+              <p className="mt-3 text-[13px] leading-6 text-[var(--ink-soft)]">
+                Select a document from the shelf, then stay in one stable reading surface while the corpus remains browseable.
+              </p>
+            </div>
 
-      <ReaderPanel doc={selectedDoc} feedback={feedback} onOpenSource={() => onOpenSource(selectedDoc)} />
+            <div className="overflow-hidden rounded-[26px] border border-[rgba(60,54,46,0.16)] bg-[linear-gradient(180deg,rgba(252,248,241,0.92),rgba(247,240,230,0.86))] shadow-[inset_0_1px_0_rgba(255,255,255,0.45),0_18px_30px_rgba(35,30,20,0.08)]">
+              <div className="space-y-2 p-3">
+                {docs.map((doc) => (
+                  <DocumentRow
+                    key={doc.id}
+                    doc={doc}
+                    selected={selectedDoc.id === doc.id}
+                    onSelect={() => onSelect(doc)}
+                    onOpenSource={() => onOpenSource(doc)}
+                  />
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <div
+          key={`reader-pane-${selectedDoc.id}`}
+          className={`min-w-0 ${
+            independentScroll
+              ? 'xl:sticky xl:top-6 xl:max-h-[calc(100vh-9rem)] xl:overflow-y-auto xl:overscroll-contain xl:pr-1'
+              : ''
+          }`}
+          onWheelCapture={independentScroll ? routeVerticalWheelToSelf : undefined}
+        >
+          <div className="rounded-[34px] border border-[rgba(60,54,46,0.18)] bg-[linear-gradient(180deg,rgba(244,236,224,0.84),rgba(236,227,214,0.66))] p-3 shadow-[inset_0_1px_0_rgba(255,255,255,0.6),0_28px_50px_rgba(35,30,20,0.11)]">
+            <ReaderPanel
+              doc={selectedDoc}
+              feedback={feedback}
+              onOpenSource={() => onOpenSource(selectedDoc)}
+            />
+          </div>
+        </div>
+
+        <div
+          key={`outline-pane-${selectedDoc.id}`}
+          className={`hidden 2xl:block ${
+            independentScroll
+              ? '2xl:sticky 2xl:top-6 2xl:max-h-[calc(100vh-9rem)] 2xl:overflow-y-auto 2xl:overscroll-contain 2xl:pr-1'
+              : ''
+          }`}
+          onWheelCapture={independentScroll ? routeVerticalWheelToSelf : undefined}
+        >
+          <div className={independentScroll ? '' : 'sticky top-8'}>
+            <div className="rounded-[30px] border border-[rgba(60,54,46,0.18)] bg-[linear-gradient(180deg,rgba(244,236,224,0.78),rgba(236,227,214,0.62))] p-3 shadow-[inset_0_1px_0_rgba(255,255,255,0.5),0_20px_36px_rgba(35,30,20,0.08)]">
+              <ReaderOutline doc={selectedDoc} independentScroll={false} />
+            </div>
+          </div>
+        </div>
     </div>
   )
 }
 
 function OverviewPanels({ corpus }: { corpus: CorpusPayload }) {
   const constitutionDocs = corpus.docs.filter((doc) => doc.section === 'constitution').length
-  const foundingDocs = corpus.docs.filter((doc) => doc.section === 'founding_order').length
+  const annexDocs = corpus.docs.filter((doc) => doc.section === 'annex').length
   const registryDocs = corpus.docs.filter((doc) => doc.section === 'registry').length
-  const featuredDocs = corpus.docs.filter((doc) => corpus.featuredPaths.includes(doc.path))
 
   return (
-    <>
-      <div className="grid gap-4 xl:grid-cols-4">
-        <MetricCard
-          label="Schema"
-          value={`${corpus.stats.articleCount} Articles`}
-          detail={`${corpus.stats.schema} with ${corpus.stats.foundingOrderDocumentCount} founding-order documents.`}
-        />
-        <MetricCard
-          label="Annexes"
-          value={`${corpus.stats.annexCount}`}
-          detail={`${corpus.stats.activeAnnexCount} active, ${corpus.stats.proposedAnnexCount} proposed, ${corpus.stats.referenceAnnexCount} reference.`}
-        />
-        <MetricCard
-          label="Registries"
-          value={`${corpus.stats.threatCount}/${corpus.stats.patchCount}`}
-          detail="Threat and patch registries remain first-class live sources in the shell."
-        />
-        <MetricCard
-          label="Validator"
-          value={corpus.stats.validatorStatus.toUpperCase()}
-          detail={`${corpus.stats.buildStamp} generated from the live repository corpus.`}
-        />
+    <section className="rounded-[30px] border border-[rgba(60,54,46,0.14)] bg-[rgba(250,246,238,0.94)] px-6 py-7 shadow-[inset_0_1px_0_rgba(255,255,255,0.5),0_18px_30px_rgba(35,30,20,0.06)] sm:px-8">
+      <p className="text-[10px] font-mono uppercase tracking-[0.26em] text-[var(--ink-faint)]">
+        Reading Room
+      </p>
+      <div className="mt-4 grid gap-8 xl:grid-cols-[minmax(0,1.28fr)_minmax(22rem,0.92fr)] xl:items-start">
+        <div>
+          <h2 className="max-w-4xl font-serif text-[2rem] leading-tight text-[var(--ink-strong)] sm:text-[2.45rem]">
+            Read the corpus as a constitutional archive, not a dashboard.
+          </h2>
+          <p className="mt-4 max-w-3xl text-[15px] leading-8 text-[var(--ink-soft)]">
+            This shell now prioritizes reading comfort, collection navigation, and direct source access. Start with the public overview
+            documents on the shelf below, then move through the formal constitutional and governance layers as needed.
+          </p>
+        </div>
+
+        <div className="grid gap-3 sm:grid-cols-3 xl:grid-cols-1">
+          <MetaStat label="Schema" value={`${corpus.stats.articleCount} articles`} />
+          <MetaStat label="Annexes" value={`${corpus.stats.annexCount} annexes`} />
+          <MetaStat label="Registries" value={`${corpus.stats.threatCount} threats · ${corpus.stats.patchCount} patches`} />
+        </div>
       </div>
 
-      <div className="grid gap-4 lg:grid-cols-[1.35fr,0.9fr]">
-        <article className="backdrop-refract refract-lens glass-shimmer rounded-2xl p-5">
-          <p className="text-[10px] font-mono uppercase tracking-[0.22em] text-white/25">
-            Section Breakdown
+      <div className="mt-7 grid gap-5 border-t border-[rgba(60,54,46,0.1)] pt-7 sm:grid-cols-3">
+        <div>
+          <p className="text-[10px] font-mono uppercase tracking-[0.22em] text-[var(--ink-faint)]">Constitution shelf</p>
+          <p className="mt-3 font-serif text-[1.35rem] leading-tight text-[var(--ink-strong)]">{constitutionDocs}</p>
+          <p className="mt-2 text-[14px] leading-7 text-[var(--ink-soft)]">
+            {constitutionDocs} documents spanning the charter, public white paper, rights layer, and formal specifications.
           </p>
-          <div className="mt-5 grid gap-3 sm:grid-cols-3">
-            {[
-              ['Constitution', constitutionDocs, 'Primary charter, white paper, README, and formal specifications.'],
-              ['Founding Order', foundingDocs, 'Consent, exit, reentry, subsidiarity, and jurisdictional scale rules.'],
-              ['Registries', registryDocs, 'Threats, patches, commitments, disclosures, and acceptance pathways.'],
-            ].map(([label, count, detail]) => (
-              <div key={label} className="rounded-2xl border border-white/8 bg-white/[0.03] p-4">
-                <p className="text-[9px] font-mono uppercase tracking-[0.18em] text-white/22">{label}</p>
-                <p className="mt-2 text-2xl font-mono text-white/78">{count}</p>
-                <p className="mt-3 text-[10px] font-mono leading-relaxed text-white/32">{detail}</p>
-              </div>
-            ))}
-          </div>
-        </article>
-
-        <article className="backdrop-refract refract-lens glass-shimmer rounded-2xl p-5">
-          <p className="text-[10px] font-mono uppercase tracking-[0.22em] text-white/25">
-            Activation Gates
+        </div>
+        <div>
+          <p className="text-[10px] font-mono uppercase tracking-[0.22em] text-[var(--ink-faint)]">Annex shelf</p>
+          <p className="mt-3 font-serif text-[1.35rem] leading-tight text-[var(--ink-strong)]">{annexDocs}</p>
+          <p className="mt-2 text-[14px] leading-7 text-[var(--ink-soft)]">
+            {annexDocs} annexes for hardening clauses, operational mechanics, and deeper implementation detail.
           </p>
-          <div className="mt-5 space-y-4">
-            <div className="rounded-2xl border border-neon-amber/15 bg-neon-amber/5 p-4">
-              <p className="text-[9px] font-mono uppercase tracking-[0.18em] text-neon-amber">
-                Reserved Commitments
-              </p>
-              <p className="mt-2 text-2xl font-mono text-white/78">
-                {corpus.stats.reservedCommitmentCount}
-              </p>
-              <p className="mt-3 text-[10px] font-mono leading-relaxed text-white/32">
-                Unbound founding gates are now explicit FC records instead of free-form placeholders.
-              </p>
-            </div>
-            <div className="rounded-2xl border border-white/8 bg-white/[0.03] p-4">
-              <p className="text-[9px] font-mono uppercase tracking-[0.18em] text-white/22">
-                Featured Files
-              </p>
-              <p className="mt-2 text-[10px] font-mono leading-relaxed text-white/38">
-                {featuredDocs.length} generated entries feed this shell directly from the repo.
-              </p>
-            </div>
-          </div>
-        </article>
+        </div>
+        <div>
+          <p className="text-[10px] font-mono uppercase tracking-[0.22em] text-[var(--ink-faint)]">Registry shelf</p>
+          <p className="mt-3 font-serif text-[1.35rem] leading-tight text-[var(--ink-strong)]">{registryDocs}</p>
+          <p className="mt-2 text-[14px] leading-7 text-[var(--ink-soft)]">
+            {registryDocs} living governance logs covering threats, patches, commitments, and activation discipline.
+          </p>
+        </div>
       </div>
-    </>
+    </section>
   )
 }
 
 function ValidationPanels({ corpus }: { corpus: CorpusPayload }) {
   return (
-    <div className="grid gap-4 xl:grid-cols-3">
-      <MetricCard
-        label="Corpus Check"
-        value={corpus.stats.validatorStatus.toUpperCase()}
-        detail="`python3 scripts/validate_corpus.py` passes with zero errors after the full-reader export pass."
-      />
-      <MetricCard
-        label="Commitments"
-        value={`${corpus.stats.commitmentCount}`}
-        detail={`${corpus.stats.reservedCommitmentCount} commitments remain intentionally reserved behind activation gates.`}
-      />
-      <MetricCard
-        label="Snapshot"
-        value={corpus.stats.buildStamp}
-        detail="Deterministic content fingerprint for the generated corpus snapshot."
-      />
-    </div>
+    <section className="rounded-[30px] border border-[rgba(60,54,46,0.14)] bg-[rgba(250,246,238,0.9)] px-6 py-6 shadow-[inset_0_1px_0_rgba(255,255,255,0.45),0_18px_30px_rgba(35,30,20,0.06)]">
+      <div className="grid gap-4 lg:grid-cols-3">
+        <MetaStat label="Corpus check" value={corpus.stats.validatorStatus.toUpperCase()} />
+        <MetaStat label="Commitments" value={`${corpus.stats.commitmentCount}`} />
+        <MetaStat label="Reserved" value={`${corpus.stats.reservedCommitmentCount}`} />
+      </div>
+      <p className="mt-5 max-w-4xl text-[14px] leading-7 text-[var(--ink-soft)]">
+        The validation view is the activation shelf: it keeps the remaining prelaunch uncertainty visible instead of hiding it in prose.
+        Use it to inspect reserved commitments, specification dependencies, and the corpus snapshot that the reader is currently serving.
+      </p>
+    </section>
   )
 }
 
 function EmptySettings() {
   return (
-    <article className="backdrop-refract refract-lens glass-shimmer rounded-2xl p-6">
-      <p className="text-[10px] font-mono uppercase tracking-[0.22em] text-white/25">Next Useful Shell Work</p>
-      <p className="mt-4 max-w-2xl text-[11px] font-mono leading-relaxed text-white/34">
-        The core reader is now live. The next useful settings pass would be search persistence, document pinning,
-        and explicit validator / build command shortcuts for local operators.
+    <article className="rounded-[30px] border border-[rgba(60,54,46,0.14)] bg-[rgba(250,246,238,0.9)] px-6 py-6 shadow-[inset_0_1px_0_rgba(255,255,255,0.45),0_18px_30px_rgba(35,30,20,0.06)]">
+      <p className="text-[10px] font-mono uppercase tracking-[0.22em] text-[var(--ink-faint)]">Shell Settings</p>
+      <h2 className="mt-3 font-serif text-[2rem] leading-tight text-[var(--ink-strong)]">The reader is ready; operator tooling is next.</h2>
+      <p className="mt-4 max-w-3xl text-[15px] leading-8 text-[var(--ink-soft)]">
+        The highest-value settings work from here would be search persistence, pinned documents, and explicit one-click shortcuts for
+        validation, build, and corpus refresh tasks.
       </p>
     </article>
   )
@@ -855,7 +949,7 @@ export function Dashboard({ view, corpus, loadError }: DashboardProps) {
   const [selectedDocId, setSelectedDocId] = useState<string | null>(null)
   const [sourceFeedback, setSourceFeedback] = useState<SourceFeedback>({
     tone: 'neutral',
-    message: 'Read in-app, or open the source document directly from the reader toolbar.',
+    message: 'Read in-app, or open the source document directly from the reader header.',
   })
 
   const deferredQuery = useDeferredValue(query)
@@ -863,6 +957,7 @@ export function Dashboard({ view, corpus, loadError }: DashboardProps) {
   const visibleDocs = baseDocs.filter((doc) => matchesQuery(doc, deferredQuery))
   const selectedDoc = visibleDocs.find((doc) => doc.id === selectedDocId) ?? visibleDocs[0] ?? null
   const meta = VIEW_META[view]
+  const independentPaneView = view === 'constitution' || view === 'annexes' || view === 'registries'
 
   useEffect(() => {
     if (!visibleDocs.length) {
@@ -906,14 +1001,23 @@ export function Dashboard({ view, corpus, loadError }: DashboardProps) {
 
   function handleSelectDoc(doc: CorpusDoc) {
     startTransition(() => setSelectedDocId(doc.id))
+
+    if (typeof window !== 'undefined' && window.matchMedia('(max-width: 1279px)').matches) {
+      window.requestAnimationFrame(() => {
+        document.getElementById('reader-panel-start')?.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start',
+        })
+      })
+    }
   }
 
   if (loadError) {
     return (
-      <div className="p-6">
-        <article className="backdrop-refract refract-lens glass-shimmer rounded-3xl p-6">
-          <p className="text-[10px] font-mono uppercase tracking-[0.22em] text-red-300">Corpus Load Failure</p>
-          <p className="mt-4 max-w-2xl text-[11px] font-mono leading-relaxed text-white/40">{loadError}</p>
+      <div className="space-y-6">
+        <article className="rounded-[32px] border border-[rgba(139,45,45,0.22)] bg-[rgba(255,248,246,0.92)] px-6 py-8 shadow-[0_18px_30px_rgba(35,30,20,0.07)]">
+          <p className="text-[10px] font-mono uppercase tracking-[0.22em] text-[#8b2d2d]">Corpus Load Failure</p>
+          <p className="mt-4 max-w-2xl text-[15px] leading-7 text-[var(--ink-soft)]">{loadError}</p>
         </article>
       </div>
     )
@@ -921,10 +1025,10 @@ export function Dashboard({ view, corpus, loadError }: DashboardProps) {
 
   if (!corpus) {
     return (
-      <div className="p-6">
-        <article className="backdrop-refract refract-lens glass-shimmer rounded-3xl p-6">
-          <p className="text-[10px] font-mono uppercase tracking-[0.22em] text-white/25">Loading Corpus</p>
-          <p className="mt-4 max-w-2xl text-[11px] font-mono leading-relaxed text-white/34">
+      <div className="space-y-6">
+        <article className="rounded-[32px] border border-[rgba(60,54,46,0.14)] bg-[rgba(250,246,238,0.9)] px-6 py-8 shadow-[inset_0_1px_0_rgba(255,255,255,0.45),0_18px_30px_rgba(35,30,20,0.06)]">
+          <p className="text-[10px] font-mono uppercase tracking-[0.22em] text-[var(--ink-faint)]">Loading Corpus</p>
+          <p className="mt-4 max-w-2xl text-[15px] leading-7 text-[var(--ink-soft)]">
             Pulling the generated constitutional corpus into the reader shell.
           </p>
         </article>
@@ -933,52 +1037,64 @@ export function Dashboard({ view, corpus, loadError }: DashboardProps) {
   }
 
   return (
-    <div className="p-6">
-      <div className="flex flex-col gap-6">
-        <header className="flex flex-col gap-4 xl:flex-row xl:items-end xl:justify-between">
-          <div>
-            <p className="text-[10px] font-mono uppercase tracking-[0.28em] text-white/22">
-              Humane Constitution Reader
-            </p>
-            <h1 className="mt-2 text-sm font-mono font-semibold uppercase tracking-[0.18em] text-white/84">
-              {meta.title}
-            </h1>
-            <p className="mt-2 max-w-3xl text-[11px] font-mono leading-relaxed text-white/34">
-              {meta.subtitle}
-            </p>
-          </div>
-
-          {view !== 'settings' && (
-            <div className="backdrop-refract rounded-2xl px-4 py-3 xl:w-[24rem]">
-              <label className="block text-[9px] font-mono uppercase tracking-[0.2em] text-white/20" htmlFor="corpus-search">
-                Filter Current View
-              </label>
-              <input
-                id="corpus-search"
-                value={query}
-                onChange={(event) => setQuery(event.target.value)}
-                placeholder="title, path, heading, status"
-                className="mt-2 w-full border-0 bg-transparent p-0 text-[12px] font-mono text-white/72 outline-none placeholder:text-white/20"
-              />
-            </div>
-          )}
-        </header>
-
-        {view === 'overview' && <OverviewPanels corpus={corpus} />}
-        {view === 'validation' && <ValidationPanels corpus={corpus} />}
-        {view === 'settings' && <EmptySettings />}
+    <div
+      className={`space-y-6 ${
+        independentPaneView ? 'xl:grid xl:grid-rows-[auto_minmax(0,1fr)] xl:gap-6 xl:space-y-0' : ''
+      }`}
+    >
+      <header className="flex flex-col gap-5 xl:flex-row xl:items-end xl:justify-between">
+        <div>
+          <p className="text-[10px] font-mono uppercase tracking-[0.3em] text-[var(--ink-faint)]">
+            Humane Constitution Reader
+          </p>
+          <h1 className="mt-3 font-serif text-[2.1rem] leading-tight text-[var(--ink-strong)] sm:text-[2.75rem]">
+            {meta.title}
+          </h1>
+          <p className="mt-4 max-w-4xl text-[15px] leading-8 text-[var(--ink-soft)]">
+            {meta.subtitle}
+          </p>
+        </div>
 
         {view !== 'settings' && (
-          <ReaderWorkspace
-            docs={visibleDocs}
-            selectedDoc={selectedDoc}
-            onSelect={handleSelectDoc}
-            onOpenSource={handleOpenSource}
-            feedback={sourceFeedback}
-            emptyLabel="No documents match the current filter. Try a broader query or switch to a different corpus view."
-          />
+          <div className="w-full max-w-[23rem] rounded-[20px] border border-[rgba(60,54,46,0.14)] bg-[rgba(250,246,238,0.86)] px-4 py-4 shadow-[inset_0_1px_0_rgba(255,255,255,0.42),0_12px_20px_rgba(35,30,20,0.05)]">
+            <label
+              className="block text-[10px] font-mono uppercase tracking-[0.22em] text-[var(--ink-faint)]"
+              htmlFor="corpus-search"
+            >
+              Filter this shelf
+            </label>
+            <input
+              id="corpus-search"
+              value={query}
+              onChange={(event) => setQuery(event.target.value)}
+              placeholder="Search title, path, or headings"
+              className="mt-3 w-full border-0 bg-transparent p-0 font-serif text-[1.05rem] text-[var(--ink-strong)] outline-none placeholder:font-sans placeholder:text-[var(--ink-faint)]"
+            />
+            <div className="mt-3 flex flex-wrap items-center gap-2 text-[10px] font-mono uppercase tracking-[0.18em] text-[var(--ink-faint)]">
+              <span>{visibleDocs.length} matches</span>
+              <span>•</span>
+              <span>{corpus.stats.buildStamp}</span>
+            </div>
+          </div>
         )}
-      </div>
+      </header>
+
+      {view === 'overview' && <OverviewPanels corpus={corpus} />}
+      {view === 'validation' && <ValidationPanels corpus={corpus} />}
+      {view === 'settings' && <EmptySettings />}
+
+      {view !== 'settings' && (
+        <ReaderWorkspace
+          docs={visibleDocs}
+          selectedDoc={selectedDoc}
+          onSelect={handleSelectDoc}
+          onOpenSource={handleOpenSource}
+          feedback={sourceFeedback}
+          railLabel={meta.railLabel}
+          emptyLabel="No documents match the current filter. Broaden the query or move to another shelf."
+          independentScroll={independentPaneView}
+        />
+      )}
     </div>
   )
 }
