@@ -172,6 +172,10 @@ function normalizeComparable(text: string): string {
   return text.toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim()
 }
 
+function escapeRegExp(text: string): string {
+  return text.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+}
+
 function isHeadingLine(trimmed: string): boolean {
   return /^#{1,6}\s+/.test(trimmed)
 }
@@ -325,7 +329,33 @@ function parseMarkdown(doc: CorpusDoc): MarkdownBlock[] {
   return blocks
 }
 
-function renderInline(text: string, keyPrefix: string): React.ReactNode[] {
+function renderTextWithHighlights(text: string, query: string, keyPrefix: string): React.ReactNode[] {
+  if (!query.trim()) {
+    return [text]
+  }
+
+  const pattern = new RegExp(`(${escapeRegExp(query)})`, 'gi')
+  const parts = text.split(pattern)
+  const normalizedQuery = query.trim().toLowerCase()
+
+  return parts.filter(Boolean).map((part, index) => {
+    if (part.toLowerCase() === normalizedQuery) {
+      return (
+        <mark
+          key={`${keyPrefix}-hit-${index}`}
+          data-reader-search-hit="true"
+          className="reader-search-hit"
+        >
+          {part}
+        </mark>
+      )
+    }
+
+    return <span key={`${keyPrefix}-text-${index}`}>{part}</span>
+  })
+}
+
+function renderInline(text: string, keyPrefix: string, query = ''): React.ReactNode[] {
   const parts: React.ReactNode[] = []
   const tokenPattern = /(`[^`]+`|\[([^\]]+)\]\(([^)]+)\)|\*\*([^*]+)\*\*|\*([^*]+)\*)/g
   let lastIndex = 0
@@ -333,7 +363,7 @@ function renderInline(text: string, keyPrefix: string): React.ReactNode[] {
 
   while (match) {
     if (match.index > lastIndex) {
-      parts.push(text.slice(lastIndex, match.index))
+      parts.push(...renderTextWithHighlights(text.slice(lastIndex, match.index), query, `${keyPrefix}-plain-${match.index}`))
     }
 
     if (match[1]?.startsWith('`')) {
@@ -342,7 +372,7 @@ function renderInline(text: string, keyPrefix: string): React.ReactNode[] {
           key={`${keyPrefix}-code-${match.index}`}
           className="rounded-md bg-[rgba(60,54,46,0.08)] px-1.5 py-0.5 font-mono text-[0.88em] text-[var(--ink-strong)]"
         >
-          {match[1].slice(1, -1)}
+          {renderTextWithHighlights(match[1].slice(1, -1), query, `${keyPrefix}-code-inline-${match.index}`)}
         </code>,
       )
     } else if (match[2] && match[3]) {
@@ -354,19 +384,19 @@ function renderInline(text: string, keyPrefix: string): React.ReactNode[] {
           rel="noreferrer"
           className="font-medium text-[var(--accent-deep)] underline decoration-[rgba(159,108,49,0.3)] underline-offset-4 transition hover:text-[var(--ink-strong)]"
         >
-          {match[2]}
+          {renderTextWithHighlights(match[2], query, `${keyPrefix}-link-inline-${match.index}`)}
         </a>,
       )
     } else if (match[4]) {
       parts.push(
         <strong key={`${keyPrefix}-strong-${match.index}`} className="font-semibold text-[var(--ink-strong)]">
-          {match[4]}
+          {renderTextWithHighlights(match[4], query, `${keyPrefix}-strong-inline-${match.index}`)}
         </strong>,
       )
     } else if (match[5]) {
       parts.push(
         <em key={`${keyPrefix}-em-${match.index}`} className="italic text-[var(--ink)]">
-          {match[5]}
+          {renderTextWithHighlights(match[5], query, `${keyPrefix}-em-inline-${match.index}`)}
         </em>,
       )
     }
@@ -376,7 +406,7 @@ function renderInline(text: string, keyPrefix: string): React.ReactNode[] {
   }
 
   if (lastIndex < text.length) {
-    parts.push(text.slice(lastIndex))
+    parts.push(...renderTextWithHighlights(text.slice(lastIndex), query, `${keyPrefix}-tail`))
   }
 
   return parts
@@ -529,10 +559,12 @@ function ActionButton({
   label,
   onClick,
   tone = 'default',
+  disabled = false,
 }: {
   label: string
   onClick: () => void
   tone?: 'default' | 'accent'
+  disabled?: boolean
 }) {
   const toneClass =
     tone === 'accent'
@@ -541,8 +573,11 @@ function ActionButton({
 
   return (
     <button
+      disabled={disabled}
       onClick={onClick}
-      className={`rounded-full border px-4 py-2 text-[10px] font-mono uppercase tracking-[0.2em] transition ${toneClass}`}
+      className={`rounded-full border px-4 py-2 text-[10px] font-mono uppercase tracking-[0.2em] transition ${
+        disabled ? 'cursor-not-allowed opacity-45' : ''
+      } ${toneClass}`}
     >
       {label}
     </button>
@@ -598,7 +633,13 @@ function DocumentRow({
   )
 }
 
-function MarkdownDocument({ doc }: { doc: CorpusDoc }) {
+function MarkdownDocument({
+  doc,
+  searchQuery,
+}: {
+  doc: CorpusDoc
+  searchQuery: string
+}) {
   const blocks = parseMarkdown(doc)
   const hiddenFirstHeading = normalizeComparable(doc.title)
 
@@ -621,7 +662,7 @@ function MarkdownDocument({ doc }: { doc: CorpusDoc }) {
                 block.level >= 4 ? 'reader-h4' : ''
               }`}
             >
-              {renderInline(block.text, `${doc.id}-heading-inline-${index}`)}
+              {renderInline(block.text, `${doc.id}-heading-inline-${index}`, searchQuery)}
             </Tag>
           )
         }
@@ -629,7 +670,7 @@ function MarkdownDocument({ doc }: { doc: CorpusDoc }) {
         if (block.type === 'paragraph') {
           return (
             <p key={`${doc.id}-paragraph-${index}`}>
-              {renderInline(block.text, `${doc.id}-paragraph-inline-${index}`)}
+              {renderInline(block.text, `${doc.id}-paragraph-inline-${index}`, searchQuery)}
             </p>
           )
         }
@@ -643,7 +684,7 @@ function MarkdownDocument({ doc }: { doc: CorpusDoc }) {
             >
               {block.items.map((item, itemIndex) => (
                 <li key={`${doc.id}-list-item-${index}-${itemIndex}`}>
-                  {renderInline(item, `${doc.id}-list-inline-${index}-${itemIndex}`)}
+                  {renderInline(item, `${doc.id}-list-inline-${index}-${itemIndex}`, searchQuery)}
                 </li>
               ))}
             </ListTag>
@@ -662,7 +703,7 @@ function MarkdownDocument({ doc }: { doc: CorpusDoc }) {
         if (block.type === 'quote') {
           return (
             <blockquote key={`${doc.id}-quote-${index}`} className="reader-quote">
-              {renderInline(block.text, `${doc.id}-quote-inline-${index}`)}
+              {renderInline(block.text, `${doc.id}-quote-inline-${index}`, searchQuery)}
             </blockquote>
           )
         }
@@ -684,7 +725,7 @@ function MarkdownDocument({ doc }: { doc: CorpusDoc }) {
                   <tr>
                     {parsedTable.headers.map((header, headerIndex) => (
                       <th key={`${doc.id}-table-header-${index}-${headerIndex}`}>
-                        {renderInline(header, `${doc.id}-table-header-inline-${index}-${headerIndex}`)}
+                        {renderInline(header, `${doc.id}-table-header-inline-${index}-${headerIndex}`, searchQuery)}
                       </th>
                     ))}
                   </tr>
@@ -694,7 +735,7 @@ function MarkdownDocument({ doc }: { doc: CorpusDoc }) {
                     <tr key={`${doc.id}-table-row-${index}-${rowIndex}`}>
                       {row.map((cell, cellIndex) => (
                         <td key={`${doc.id}-table-cell-${index}-${rowIndex}-${cellIndex}`}>
-                          {renderInline(cell, `${doc.id}-table-cell-inline-${index}-${rowIndex}-${cellIndex}`)}
+                          {renderInline(cell, `${doc.id}-table-cell-inline-${index}-${rowIndex}-${cellIndex}`, searchQuery)}
                         </td>
                       ))}
                     </tr>
@@ -711,7 +752,15 @@ function MarkdownDocument({ doc }: { doc: CorpusDoc }) {
   )
 }
 
-function ReaderOutline({ doc, independentScroll = false }: { doc: CorpusDoc; independentScroll?: boolean }) {
+function ReaderOutline({
+  doc,
+  independentScroll = false,
+  activeHeadingSlug,
+}: {
+  doc: CorpusDoc
+  independentScroll?: boolean
+  activeHeadingSlug: string | null
+}) {
   const headings = visibleHeadings(doc)
   if (!headings.length) {
     return null
@@ -732,8 +781,14 @@ function ReaderOutline({ doc, independentScroll = false }: { doc: CorpusDoc; ind
         {headings.map((heading) => (
           <button
             key={`${doc.id}-${heading.slug}`}
+            data-testid={`outline-heading-${heading.slug}`}
+            data-active-heading={activeHeadingSlug === heading.slug ? 'true' : 'false'}
             onClick={() => jumpToHeading(doc, heading.slug)}
-            className="block w-full rounded-[16px] px-3 py-2 text-left text-[12px] leading-5 text-[var(--ink-soft)] transition hover:bg-[rgba(60,54,46,0.05)] hover:text-[var(--ink-strong)]"
+            className={`block w-full rounded-[16px] px-3 py-2 text-left text-[12px] leading-5 transition ${
+              activeHeadingSlug === heading.slug
+                ? 'bg-[rgba(159,108,49,0.12)] text-[var(--accent-deep)] shadow-[inset_0_0_0_1px_rgba(159,108,49,0.16)]'
+                : 'text-[var(--ink-soft)] hover:bg-[rgba(60,54,46,0.05)] hover:text-[var(--ink-strong)]'
+            }`}
             style={{ paddingLeft: `${12 + Math.max(0, heading.level - 1) * 10}px` }}
           >
             {heading.text}
@@ -748,10 +803,22 @@ function ReaderPanel({
   doc,
   feedback,
   onOpenSource,
+  searchQuery,
+  onSearchChange,
+  matchCount,
+  currentMatchIndex,
+  onJumpToPreviousMatch,
+  onJumpToNextMatch,
 }: {
   doc: CorpusDoc
   feedback: SourceFeedback
   onOpenSource: () => void
+  searchQuery: string
+  onSearchChange: (value: string) => void
+  matchCount: number
+  currentMatchIndex: number
+  onJumpToPreviousMatch: () => void
+  onJumpToNextMatch: () => void
 }) {
   return (
     <section id="reader-panel-start" data-testid="reader-panel" className="space-y-6">
@@ -783,6 +850,42 @@ function ReaderPanel({
           <ActionButton label="Open Source" onClick={onOpenSource} tone="accent" />
         </div>
 
+        <div className="mt-5 rounded-[22px] border border-[rgba(60,54,46,0.12)] bg-[rgba(252,248,241,0.72)] px-4 py-4 shadow-[inset_0_1px_0_rgba(255,255,255,0.45)]">
+          <div className="flex flex-col gap-3 lg:flex-row lg:items-end lg:justify-between">
+            <div className="min-w-0 flex-1">
+              <label
+                htmlFor="reader-search"
+                className="block text-[10px] font-mono uppercase tracking-[0.22em] text-[var(--ink-faint)]"
+              >
+                Search this document
+              </label>
+              <input
+                id="reader-search"
+                data-testid="reader-search-input"
+                value={searchQuery}
+                onChange={(event) => onSearchChange(event.target.value)}
+                placeholder="Find a term, phrase, or heading"
+                className="mt-3 w-full border-0 bg-transparent p-0 font-serif text-[1.08rem] text-[var(--ink-strong)] outline-none placeholder:font-sans placeholder:text-[var(--ink-faint)]"
+              />
+            </div>
+
+            <div className="flex flex-wrap items-center gap-2 lg:justify-end">
+              <span
+                data-testid="reader-search-status"
+                className="rounded-full border border-[rgba(60,54,46,0.12)] bg-[rgba(253,249,242,0.8)] px-3 py-2 text-[10px] font-mono uppercase tracking-[0.2em] text-[var(--ink-faint)]"
+              >
+                {searchQuery.trim()
+                  ? matchCount
+                    ? `${currentMatchIndex + 1} of ${matchCount} hits`
+                    : 'No matches'
+                  : 'Find in text'}
+              </span>
+              <ActionButton label="Prev" onClick={onJumpToPreviousMatch} disabled={!matchCount} />
+              <ActionButton label="Next" onClick={onJumpToNextMatch} disabled={!matchCount} />
+            </div>
+          </div>
+        </div>
+
         <p className={`mt-4 text-[12px] leading-6 ${feedbackClass(feedback.tone)}`}>
           {feedback.message}
         </p>
@@ -791,7 +894,7 @@ function ReaderPanel({
       <article data-testid="reader-paper-shell" className="rounded-[30px] border border-[rgba(60,54,46,0.18)] bg-[linear-gradient(180deg,rgba(252,246,238,0.98),rgba(245,238,227,0.92))] p-3 shadow-[inset_0_1px_0_rgba(255,255,255,0.78),0_28px_48px_rgba(35,30,20,0.12)] sm:p-4">
         <div className="rounded-[24px] border border-[rgba(60,54,46,0.12)] bg-[var(--paper-strong)] px-6 py-8 shadow-[inset_0_1px_0_rgba(255,255,255,0.76),0_1px_0_rgba(60,54,46,0.04)] sm:px-10 sm:py-10">
           <div data-testid="reader-document" className="mx-auto max-w-[47rem]">
-            <MarkdownDocument doc={doc} />
+            <MarkdownDocument doc={doc} searchQuery={searchQuery} />
           </div>
         </div>
       </article>
@@ -812,6 +915,13 @@ function ReaderWorkspace({
   readerPaneRef,
   outlinePaneRef,
   onPaneScroll,
+  activeHeadingSlug,
+  searchQuery,
+  onSearchChange,
+  matchCount,
+  currentMatchIndex,
+  onJumpToPreviousMatch,
+  onJumpToNextMatch,
 }: {
   docs: CorpusDoc[]
   selectedDoc: CorpusDoc | null
@@ -825,6 +935,13 @@ function ReaderWorkspace({
   readerPaneRef: (node: HTMLDivElement | null) => void
   outlinePaneRef: (node: HTMLDivElement | null) => void
   onPaneScroll: (event: ReactUIEvent<HTMLElement>) => void
+  activeHeadingSlug: string | null
+  searchQuery: string
+  onSearchChange: (value: string) => void
+  matchCount: number
+  currentMatchIndex: number
+  onJumpToPreviousMatch: () => void
+  onJumpToNextMatch: () => void
 }) {
   if (!docs.length || !selectedDoc) {
     return (
@@ -904,6 +1021,12 @@ function ReaderWorkspace({
               doc={selectedDoc}
               feedback={feedback}
               onOpenSource={() => onOpenSource(selectedDoc)}
+              searchQuery={searchQuery}
+              onSearchChange={onSearchChange}
+              matchCount={matchCount}
+              currentMatchIndex={currentMatchIndex}
+              onJumpToPreviousMatch={onJumpToPreviousMatch}
+              onJumpToNextMatch={onJumpToNextMatch}
             />
           </div>
         </div>
@@ -922,7 +1045,7 @@ function ReaderWorkspace({
         >
           <div className={independentScroll ? '' : 'sticky top-8'}>
             <div className="rounded-[30px] border border-[rgba(60,54,46,0.18)] bg-[linear-gradient(180deg,rgba(244,236,224,0.78),rgba(236,227,214,0.62))] p-3 shadow-[inset_0_1px_0_rgba(255,255,255,0.5),0_20px_36px_rgba(35,30,20,0.08)]">
-              <ReaderOutline doc={selectedDoc} independentScroll={false} />
+              <ReaderOutline doc={selectedDoc} independentScroll={false} activeHeadingSlug={activeHeadingSlug} />
             </div>
           </div>
         </div>
@@ -1016,17 +1139,22 @@ function EmptySettings() {
 
 export function Dashboard({ view, corpus, loadError }: DashboardProps) {
   const [query, setQuery] = useState('')
+  const [documentQuery, setDocumentQuery] = useState('')
   const [selectedDocId, setSelectedDocId] = useState<string | null>(() => readStoredSelectedDocId(view))
   const [sourceFeedback, setSourceFeedback] = useState<SourceFeedback>({
     tone: 'neutral',
     message: 'Read in-app, or open the source document directly from the reader header.',
   })
+  const [documentMatchCount, setDocumentMatchCount] = useState(0)
+  const [activeMatchIndex, setActiveMatchIndex] = useState(0)
+  const [activeHeadingSlug, setActiveHeadingSlug] = useState<string | null>(null)
   const shelfPaneRef = useRef<HTMLElement | null>(null)
   const readerPaneRef = useRef<HTMLDivElement | null>(null)
   const outlinePaneRef = useRef<HTMLDivElement | null>(null)
   const restorePaneScrollRef = useRef(true)
   const lastViewRef = useRef<AppView>(view)
   const scrollWriteFrameRef = useRef<number | null>(null)
+  const shouldScrollToActiveMatchRef = useRef(false)
 
   const deferredQuery = useDeferredValue(query)
   const baseDocs = corpus ? docsForView(view, corpus.docs, corpus.featuredPaths) : []
@@ -1094,6 +1222,10 @@ export function Dashboard({ view, corpus, loadError }: DashboardProps) {
   }, [selectedDoc?.id])
 
   useEffect(() => {
+    setActiveMatchIndex(0)
+  }, [selectedDoc?.id, documentQuery])
+
+  useEffect(() => {
     return () => {
       if (scrollWriteFrameRef.current !== null) {
         window.cancelAnimationFrame(scrollWriteFrameRef.current)
@@ -1122,10 +1254,72 @@ export function Dashboard({ view, corpus, loadError }: DashboardProps) {
     })
   }, [independentPaneView, selectedDoc?.id, view])
 
-  function handlePaneScroll() {
+  useEffect(() => {
+    if (!selectedDoc) {
+      setDocumentMatchCount(0)
+      setActiveHeadingSlug(null)
+      return
+    }
+
+    window.requestAnimationFrame(() => {
+      const hits = readerPaneRef.current?.querySelectorAll<HTMLElement>('mark[data-reader-search-hit="true"]') ?? []
+      setDocumentMatchCount(hits.length)
+      setActiveMatchIndex((index) => (hits.length ? Math.min(index, hits.length - 1) : 0))
+    })
+  }, [selectedDoc?.id, documentQuery])
+
+  useEffect(() => {
+    if (!selectedDoc || !readerPaneRef.current) {
+      setActiveHeadingSlug(null)
+      return
+    }
+
+    const headings = visibleHeadings(selectedDoc)
+    const readerNode = readerPaneRef.current
+    const readerTop = readerNode.getBoundingClientRect().top
+    let nextActiveSlug = headings[0]?.slug ?? null
+
+    for (const heading of headings) {
+      const element = document.getElementById(headingScrollId(selectedDoc, heading.slug))
+      if (!element) {
+        continue
+      }
+
+      if (element.getBoundingClientRect().top - readerTop <= 150) {
+        nextActiveSlug = heading.slug
+        continue
+      }
+
+      break
+    }
+
+    setActiveHeadingSlug(nextActiveSlug)
+  }, [selectedDoc?.id])
+
+  useEffect(() => {
+    const hits = readerPaneRef.current?.querySelectorAll<HTMLElement>('mark[data-reader-search-hit="true"]') ?? []
+
+    hits.forEach((hit, index) => {
+      hit.dataset.activeHit = index === activeMatchIndex ? 'true' : 'false'
+    })
+
+    if (!shouldScrollToActiveMatchRef.current || !hits.length) {
+      return
+    }
+
+    shouldScrollToActiveMatchRef.current = false
+    hits[activeMatchIndex]?.scrollIntoView({
+      behavior: 'smooth',
+      block: 'center',
+    })
+  }, [activeMatchIndex, documentMatchCount, selectedDoc?.id, documentQuery])
+
+  function handlePaneScroll(event: ReactUIEvent<HTMLElement>) {
     if (!independentPaneView || typeof window === 'undefined') {
       return
     }
+
+    const scrolledPane = event.currentTarget
 
     if (scrollWriteFrameRef.current !== null) {
       return
@@ -1141,6 +1335,48 @@ export function Dashboard({ view, corpus, loadError }: DashboardProps) {
           outline: outlinePaneRef.current?.scrollTop ?? 0,
         }),
       )
+
+      if (scrolledPane !== readerPaneRef.current || !selectedDoc || !readerPaneRef.current) {
+        return
+      }
+
+      const headings = visibleHeadings(selectedDoc)
+      const readerTop = readerPaneRef.current.getBoundingClientRect().top
+      let nextActiveSlug = headings[0]?.slug ?? null
+
+      for (const heading of headings) {
+        const element = document.getElementById(headingScrollId(selectedDoc, heading.slug))
+        if (!element) {
+          continue
+        }
+
+        if (element.getBoundingClientRect().top - readerTop <= 150) {
+          nextActiveSlug = heading.slug
+          continue
+        }
+
+        break
+      }
+
+      setActiveHeadingSlug((current) => (current === nextActiveSlug ? current : nextActiveSlug))
+    })
+  }
+
+  function jumpSearchMatch(direction: 1 | -1) {
+    if (!documentMatchCount) {
+      return
+    }
+
+    shouldScrollToActiveMatchRef.current = true
+    setActiveMatchIndex((current) => {
+      const nextIndex = current + direction
+      if (nextIndex < 0) {
+        return documentMatchCount - 1
+      }
+      if (nextIndex >= documentMatchCount) {
+        return 0
+      }
+      return nextIndex
     })
   }
 
@@ -1260,6 +1496,13 @@ export function Dashboard({ view, corpus, loadError }: DashboardProps) {
           readerPaneRef={bindReaderPaneRef}
           outlinePaneRef={bindOutlinePaneRef}
           onPaneScroll={handlePaneScroll}
+          activeHeadingSlug={activeHeadingSlug}
+          searchQuery={documentQuery}
+          onSearchChange={setDocumentQuery}
+          matchCount={documentMatchCount}
+          currentMatchIndex={activeMatchIndex}
+          onJumpToPreviousMatch={() => jumpSearchMatch(-1)}
+          onJumpToNextMatch={() => jumpSearchMatch(1)}
         />
       )}
     </div>

@@ -174,6 +174,21 @@
   color: var(--ink-soft);
 }
 
+.reader-search-hit {
+  border-radius: 0.32rem;
+  background: rgba(214, 188, 139, 0.44);
+  color: inherit;
+  padding: 0 0.08rem;
+  box-shadow: inset 0 -1px 0 rgba(159, 108, 49, 0.18);
+}
+
+.reader-search-hit[data-active-hit='true'] {
+  background: rgba(159, 108, 49, 0.28);
+  box-shadow:
+    inset 0 0 0 1px rgba(159, 108, 49, 0.24),
+    0 0 0 1px rgba(159, 108, 49, 0.12);
+}
+
 .reader-list {
   margin: 0;
   padding-left: 1.3rem;

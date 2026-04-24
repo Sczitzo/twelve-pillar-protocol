@@ -135,4 +135,42 @@ test.describe('reader shell regression coverage', () => {
     await expect(page.getByTestId('reader-title')).toHaveText(secondTitle)
     await expect.poll(() => paneScrollTop(page.getByTestId('reader-scroll-pane'))).toBeGreaterThan(1000)
   })
+
+  test('document search highlights matches and cycles through them', async ({ page }) => {
+    await page.setViewportSize({ width: 1660, height: 1100 })
+    await openConstitutionView(page)
+
+    const searchInput = page.getByTestId('reader-search-input')
+    const searchStatus = page.getByTestId('reader-search-status')
+    const readerPane = page.getByTestId('reader-scroll-pane')
+
+    await searchInput.fill('survival')
+    await expect(searchStatus).toContainText('1 of')
+    await expect(page.locator('mark[data-reader-search-hit="true"]')).toHaveCount(46)
+
+    await readerPane.evaluate((node) => {
+      node.scrollTop = 0
+    })
+
+    await page.getByRole('button', { name: 'Next' }).click()
+    await expect(searchStatus).toContainText('2 of')
+    await expect(page.locator('mark[data-active-hit="true"]')).toHaveCount(1)
+    await expect.poll(() => paneScrollTop(readerPane)).toBeGreaterThan(0)
+  })
+
+  test('outline tracks the active heading as the reader scrolls', async ({ page }) => {
+    await page.setViewportSize({ width: 1800, height: 1100 })
+    await openConstitutionView(page)
+
+    const readerPane = page.getByTestId('reader-scroll-pane')
+    const activeOutlineHeading = page.locator('[data-active-heading="true"]')
+
+    await expect(activeOutlineHeading).toHaveCount(1)
+    await expect(activeOutlineHeading.first()).toContainText('Philosophical Preamble')
+
+    await wheelInside(page, readerPane, 2600)
+
+    await expect(activeOutlineHeading.first()).not.toContainText('Philosophical Preamble')
+    await expect(activeOutlineHeading.first()).toContainText('0. Scope, Assumptions, and Design Invariants')
+  })
 })
