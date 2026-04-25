@@ -263,4 +263,21 @@ test.describe('reader shell regression coverage', () => {
     await expect(recentButtons.nth(0)).toContainText(thirdTitle)
     await expect(recentButtons.nth(1)).toContainText(secondTitle)
   })
+
+  test('copy heading link updates the hash and deep-links to the selected section', async ({ page }) => {
+    await page.setViewportSize({ width: 1660, height: 1100 })
+    await openConstitutionView(page)
+
+    const copyButton = page.getByTestId('copy-heading-link-0-scope-assumptions-and-design-invariants')
+    await copyButton.click()
+    await expect(copyButton).toContainText('Copied')
+    await expect(page).toHaveURL(/#.+--0-scope-assumptions-and-design-invariants$/)
+
+    await page.reload()
+
+    await expect(page.getByTestId('reader-title')).toHaveText('The Humane Constitution')
+    await expect.poll(() => page.evaluate(() => window.location.hash)).toBe(
+      '#Humane_Constitution_md--0-scope-assumptions-and-design-invariants',
+    )
+  })
 })

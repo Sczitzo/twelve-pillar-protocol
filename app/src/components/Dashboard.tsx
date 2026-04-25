@@ -476,6 +476,31 @@ function headingScrollId(doc: CorpusDoc, slug: string): string {
   return `${doc.id}--${slug}`
 }
 
+function parseHeadingHash(hash: string): { docId: string; slug: string } | null {
+  const normalized = hash.replace(/^#/, '')
+  if (!normalized) {
+    return null
+  }
+
+  const separatorIndex = normalized.indexOf('--')
+  if (separatorIndex <= 0 || separatorIndex >= normalized.length - 2) {
+    return null
+  }
+
+  return {
+    docId: normalized.slice(0, separatorIndex),
+    slug: normalized.slice(separatorIndex + 2),
+  }
+}
+
+function escapeSelectorValue(value: string): string {
+  if (typeof window !== 'undefined' && 'CSS' in window && typeof window.CSS.escape === 'function') {
+    return window.CSS.escape(value)
+  }
+
+  return value.replace(/["\\]/g, '\\$&')
+}
+
 function selectedDocStorageKey(view: AppView): string {
   return `humane-reader:selected-doc:${view}`
 }
@@ -535,6 +560,35 @@ function readStoredPaneScroll(view: AppView): PaneScrollState {
 function jumpToHeading(doc: CorpusDoc, slug: string) {
   const element = document.getElementById(headingScrollId(doc, slug))
   element?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+}
+
+async function copyHeadingLink(doc: CorpusDoc, slug: string): Promise<string> {
+  const headingId = headingScrollId(doc, slug)
+  const url = new URL(window.location.href)
+  url.hash = headingId
+  window.history.replaceState(null, '', url.toString())
+
+  const value = url.toString()
+
+  if (navigator.clipboard?.writeText) {
+    try {
+      await navigator.clipboard.writeText(value)
+      return value
+    } catch {
+      // Fall through to the textarea copy path when the browser denies clipboard access.
+    }
+  }
+
+  const textarea = document.createElement('textarea')
+  textarea.value = value
+  textarea.setAttribute('readonly', 'true')
+  textarea.style.position = 'absolute'
+  textarea.style.left = '-9999px'
+  document.body.appendChild(textarea)
+  textarea.select()
+  document.execCommand('copy')
+  document.body.removeChild(textarea)
+  return value
 }
 
 function visibleHeadings(doc: CorpusDoc): CorpusDoc['headings'] {
@@ -746,9 +800,13 @@ function QuickAccessSection({
 function MarkdownDocument({
   doc,
   searchQuery,
+  copiedHeadingSlug,
+  onCopyHeadingLink,
 }: {
   doc: CorpusDoc
   searchQuery: string
+  copiedHeadingSlug: string | null
+  onCopyHeadingLink: (slug: string) => void
 }) {
   const blocks = parseMarkdown(doc)
   const hiddenFirstHeading = normalizeComparable(doc.title)
@@ -763,17 +821,26 @@ function MarkdownDocument({
 
           const Tag = `h${Math.min(block.level, 6)}` as keyof JSX.IntrinsicElements
           return (
-            <Tag
-              key={`${doc.id}-heading-${block.slug}-${index}`}
-              id={headingScrollId(doc, block.slug)}
-              className={`scroll-mt-24 ${block.level === 1 ? 'reader-h1' : ''} ${
-                block.level === 2 ? 'reader-h2' : ''
-              } ${block.level === 3 ? 'reader-h3' : ''} ${
-                block.level >= 4 ? 'reader-h4' : ''
-              }`}
-            >
-              {renderInline(block.text, `${doc.id}-heading-inline-${index}`, searchQuery)}
-            </Tag>
+            <div key={`${doc.id}-heading-wrap-${block.slug}-${index}`} className="group/heading relative">
+              <Tag
+                id={headingScrollId(doc, block.slug)}
+                className={`scroll-mt-24 pr-20 ${block.level === 1 ? 'reader-h1' : ''} ${
+                  block.level === 2 ? 'reader-h2' : ''
+                } ${block.level === 3 ? 'reader-h3' : ''} ${
+                  block.level >= 4 ? 'reader-h4' : ''
+                }`}
+              >
+                {renderInline(block.text, `${doc.id}-heading-inline-${index}`, searchQuery)}
+              </Tag>
+              <button
+                type="button"
+                data-testid={`copy-heading-link-${block.slug}`}
+                onClick={() => onCopyHeadingLink(block.slug)}
+                className="absolute right-0 top-1/2 -translate-y-1/2 rounded-full border border-[rgba(60,54,46,0.14)] bg-[rgba(253,249,242,0.9)] px-3 py-1.5 text-[9px] font-mono uppercase tracking-[0.18em] text-[var(--ink-faint)] opacity-0 shadow-[inset_0_1px_0_rgba(255,255,255,0.4)] transition group-hover/heading:opacity-100 hover:border-[rgba(159,108,49,0.24)] hover:text-[var(--accent-deep)] focus:opacity-100"
+              >
+                {copiedHeadingSlug === block.slug ? 'Copied' : 'Copy link'}
+              </button>
+            </div>
           )
         }
 
@@ -892,6 +959,7 @@ function ReaderOutline({
           <button
             key={`${doc.id}-${heading.slug}`}
             data-testid={`outline-heading-${heading.slug}`}
+            data-heading-slug={heading.slug}
             data-active-heading={activeHeadingSlug === heading.slug ? 'true' : 'false'}
             onClick={() => jumpToHeading(doc, heading.slug)}
             className={`block w-full rounded-[16px] px-3 py-2 text-left text-[12px] leading-5 transition ${
@@ -915,6 +983,8 @@ function ReaderPanel({
   onOpenSource,
   pinned,
   onTogglePinned,
+  copiedHeadingSlug,
+  onCopyHeadingLink,
   searchQuery,
   onSearchChange,
   searchInputRef,
@@ -928,6 +998,8 @@ function ReaderPanel({
   onOpenSource: () => void
   pinned: boolean
   onTogglePinned: () => void
+  copiedHeadingSlug: string | null
+  onCopyHeadingLink: (slug: string) => void
   searchQuery: string
   onSearchChange: (value: string) => void
   searchInputRef: (node: HTMLInputElement | null) => void
@@ -1016,7 +1088,12 @@ function ReaderPanel({
       <article data-testid="reader-paper-shell" className="rounded-[30px] border border-[rgba(60,54,46,0.18)] bg-[linear-gradient(180deg,rgba(252,246,238,0.98),rgba(245,238,227,0.92))] p-3 shadow-[inset_0_1px_0_rgba(255,255,255,0.78),0_28px_48px_rgba(35,30,20,0.12)] sm:p-4">
         <div className="rounded-[24px] border border-[rgba(60,54,46,0.12)] bg-[var(--paper-strong)] px-6 py-8 shadow-[inset_0_1px_0_rgba(255,255,255,0.76),0_1px_0_rgba(60,54,46,0.04)] sm:px-10 sm:py-10">
           <div data-testid="reader-document" className="mx-auto max-w-[47rem]">
-            <MarkdownDocument doc={doc} searchQuery={searchQuery} />
+            <MarkdownDocument
+              doc={doc}
+              searchQuery={searchQuery}
+              copiedHeadingSlug={copiedHeadingSlug}
+              onCopyHeadingLink={onCopyHeadingLink}
+            />
           </div>
         </div>
       </article>
@@ -1043,6 +1120,8 @@ function ReaderWorkspace({
   outlinePaneRef,
   onPaneScroll,
   activeHeadingSlug,
+  copiedHeadingSlug,
+  onCopyHeadingLink,
   searchQuery,
   onSearchChange,
   searchInputRef,
@@ -1069,6 +1148,8 @@ function ReaderWorkspace({
   outlinePaneRef: (node: HTMLDivElement | null) => void
   onPaneScroll: (event: ReactUIEvent<HTMLElement>) => void
   activeHeadingSlug: string | null
+  copiedHeadingSlug: string | null
+  onCopyHeadingLink: (slug: string) => void
   searchQuery: string
   onSearchChange: (value: string) => void
   searchInputRef: (node: HTMLInputElement | null) => void
@@ -1169,6 +1250,8 @@ function ReaderWorkspace({
               feedback={feedback}
               pinned={pinnedDocIds.includes(selectedDoc.id)}
               onTogglePinned={onTogglePinned}
+              copiedHeadingSlug={copiedHeadingSlug}
+              onCopyHeadingLink={onCopyHeadingLink}
               onOpenSource={() => onOpenSource(selectedDoc)}
               searchQuery={searchQuery}
               onSearchChange={onSearchChange}
@@ -1300,6 +1383,7 @@ export function Dashboard({ view, corpus, loadError, onViewChange }: DashboardPr
   const [documentMatchCount, setDocumentMatchCount] = useState(0)
   const [activeMatchIndex, setActiveMatchIndex] = useState(0)
   const [activeHeadingSlug, setActiveHeadingSlug] = useState<string | null>(null)
+  const [copiedHeadingSlug, setCopiedHeadingSlug] = useState<string | null>(null)
   const shelfPaneRef = useRef<HTMLElement | null>(null)
   const readerPaneRef = useRef<HTMLDivElement | null>(null)
   const outlinePaneRef = useRef<HTMLDivElement | null>(null)
@@ -1308,6 +1392,8 @@ export function Dashboard({ view, corpus, loadError, onViewChange }: DashboardPr
   const lastViewRef = useRef<AppView>(view)
   const scrollWriteFrameRef = useRef<number | null>(null)
   const shouldScrollToActiveMatchRef = useRef(false)
+  const copiedHeadingTimeoutRef = useRef<number | null>(null)
+  const pendingHashTargetRef = useRef<{ docId: string; slug: string } | null>(null)
 
   const deferredQuery = useDeferredValue(query)
   const allDocs = corpus?.docs ?? []
@@ -1414,6 +1500,10 @@ export function Dashboard({ view, corpus, loadError, onViewChange }: DashboardPr
   }, [selectedDoc?.id])
 
   useEffect(() => {
+    setCopiedHeadingSlug(null)
+  }, [selectedDoc?.id])
+
+  useEffect(() => {
     setActiveMatchIndex(0)
   }, [selectedDoc?.id, documentQuery])
 
@@ -1421,6 +1511,9 @@ export function Dashboard({ view, corpus, loadError, onViewChange }: DashboardPr
     return () => {
       if (scrollWriteFrameRef.current !== null) {
         window.cancelAnimationFrame(scrollWriteFrameRef.current)
+      }
+      if (copiedHeadingTimeoutRef.current !== null) {
+        window.clearTimeout(copiedHeadingTimeoutRef.current)
       }
     }
   }, [])
@@ -1486,6 +1579,75 @@ export function Dashboard({ view, corpus, loadError, onViewChange }: DashboardPr
     }
 
     setActiveHeadingSlug(nextActiveSlug)
+  }, [selectedDoc?.id])
+
+  useEffect(() => {
+    if (!activeHeadingSlug || !outlinePaneRef.current) {
+      return
+    }
+
+    const activeNode = outlinePaneRef.current.querySelector<HTMLElement>(
+      `[data-heading-slug="${escapeSelectorValue(activeHeadingSlug)}"]`,
+    )
+    activeNode?.scrollIntoView({ block: 'center' })
+  }, [activeHeadingSlug, selectedDoc?.id])
+
+  useEffect(() => {
+    if (typeof window === 'undefined' || !allDocs.length) {
+      return
+    }
+
+    const applyHashTarget = () => {
+      const target = parseHeadingHash(window.location.hash)
+      pendingHashTargetRef.current = target
+      if (!target) {
+        return
+      }
+
+      const targetDoc = allDocs.find((doc) => doc.id === target.docId)
+      if (!targetDoc) {
+        return
+      }
+
+      const targetView = viewForDoc(targetDoc)
+      if (targetView !== view) {
+        window.localStorage.setItem(selectedDocStorageKey(targetView), targetDoc.id)
+        onViewChange(targetView)
+        return
+      }
+
+      if (!visibleDocs.some((doc) => doc.id === targetDoc.id)) {
+        startTransition(() => setQuery(''))
+      }
+
+      startTransition(() => setSelectedDocId(targetDoc.id))
+    }
+
+    applyHashTarget()
+    window.addEventListener('hashchange', applyHashTarget)
+    return () => {
+      window.removeEventListener('hashchange', applyHashTarget)
+    }
+  }, [allDocs, onViewChange, view, visibleDocs])
+
+  useEffect(() => {
+    if (!selectedDoc || !pendingHashTargetRef.current) {
+      return
+    }
+
+    const pending = pendingHashTargetRef.current
+    if (pending.docId !== selectedDoc.id) {
+      return
+    }
+
+    window.requestAnimationFrame(() => {
+      document.getElementById(headingScrollId(selectedDoc, pending.slug))?.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start',
+      })
+    })
+
+    pendingHashTargetRef.current = null
   }, [selectedDoc?.id])
 
   useEffect(() => {
@@ -1663,6 +1825,33 @@ export function Dashboard({ view, corpus, loadError, onViewChange }: DashboardPr
     })
   }
 
+  async function handleCopyHeadingLink(slug: string) {
+    if (!selectedDoc) {
+      return
+    }
+
+    try {
+      await copyHeadingLink(selectedDoc, slug)
+      setCopiedHeadingSlug(slug)
+      setSourceFeedback({
+        tone: 'success',
+        message: `Copied a direct link to “${slug.replace(/-/g, ' ')}”.`,
+      })
+      if (copiedHeadingTimeoutRef.current !== null) {
+        window.clearTimeout(copiedHeadingTimeoutRef.current)
+      }
+      copiedHeadingTimeoutRef.current = window.setTimeout(() => {
+        setCopiedHeadingSlug((current) => (current === slug ? null : current))
+      }, 1800)
+    } catch (error) {
+      const message = error instanceof Error ? error.message : 'Unknown copy failure.'
+      setSourceFeedback({
+        tone: 'error',
+        message: `Could not copy the section link: ${message}`,
+      })
+    }
+  }
+
   useEffect(() => {
     function handleKeyDown(event: KeyboardEvent) {
       if (event.defaultPrevented || event.metaKey || event.ctrlKey || event.altKey) {
@@ -1822,6 +2011,8 @@ export function Dashboard({ view, corpus, loadError, onViewChange }: DashboardPr
           outlinePaneRef={bindOutlinePaneRef}
           onPaneScroll={handlePaneScroll}
           activeHeadingSlug={activeHeadingSlug}
+          copiedHeadingSlug={copiedHeadingSlug}
+          onCopyHeadingLink={handleCopyHeadingLink}
           searchQuery={documentQuery}
           onSearchChange={setDocumentQuery}
           searchInputRef={bindReaderSearchInputRef}
