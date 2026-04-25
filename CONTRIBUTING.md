@@ -24,6 +24,19 @@ This is an open design project. The design is not finished. The most valuable th
 
 ## Ways to contribute
 
+### Use the right issue template
+
+The issue templates are part of the quality system:
+
+- **Threat Report** — a new adversarial failure mode or exploit path
+- **Design Critique** — a mechanism, incentive, clause, or implementation risk you believe fails
+- **Claim Audit** — a public claim that is overstated, understated, or assigned the wrong evidence status
+- **Pilot Evidence** — pilot design, pilot results, measurement evidence, simulations, cost models, or field observations
+- **Reader Comprehension** — a public explanation that confused, misled, or failed to persuade a general reader
+- **Real-World Analogue** — historical cases, academic literature, operational systems, or failure cases relevant to the design
+
+If your contribution changes what the project can honestly claim, update or reference [`docs/Claims_Evidence_Register.md`](./docs/Claims_Evidence_Register.md). If it changes scale readiness, update or reference [`docs/Pilot_Evidence_Roadmap.md`](./docs/Pilot_Evidence_Roadmap.md).
+
 ### 1. Find a threat we haven't modeled (most valuable)
 
 The threat register currently tracks 27 total threat IDs, 25 of them active. There are more. If you can identify an adversarial failure mode — a way a motivated actor could exploit, corrupt, or collapse the system — open an Issue with:

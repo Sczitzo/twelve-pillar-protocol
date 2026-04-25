@@ -1,5 +1,11 @@
 blank_issues_enabled: false
 contact_links:
-  - name: Read the White Paper first
-    url: https://github.com/Sczitzo/humane-constitution/blob/main/White_Paper.pdf
-    about: Start here before opening an issue — 14 pages, general audience.
+  - name: Start with the public readiness guide
+    url: https://github.com/Sczitzo/humane-constitution/blob/main/docs/Public_Readiness_Guide.md
+    about: Use this if you are new, skeptical, or deciding whether the project deserves serious critique.
+  - name: Check the claims and evidence register
+    url: https://github.com/Sczitzo/humane-constitution/blob/main/docs/Claims_Evidence_Register.md
+    about: Use this before challenging whether a public claim is proven, designed, or unresolved.
+  - name: Check the pilot evidence roadmap
+    url: https://github.com/Sczitzo/humane-constitution/blob/main/docs/Pilot_Evidence_Roadmap.md
+    about: Use this before submitting pilot evidence or scale-readiness claims.
