@@ -11,6 +11,7 @@
 
 - [What this is](#what-this-is)
 - [Current status](#current-status)
+- [If you're skeptical](#if-youre-skeptical)
 - [The core separation](#the-core-separation)
 - [The current architecture](#the-current-architecture)
 - [Architecture flow](#architecture-flow)
@@ -50,15 +51,20 @@ What must still be proven:
 
 The right response is neither blind belief nor dismissal. The useful response is specific critique, hard testing, and evidence.
 
+## If you're skeptical
+
+Start with [`docs/Public_Readiness_Guide.md`](./docs/Public_Readiness_Guide.md). It states what the project claims, what is only designed, what still needs evidence, and which objections deserve the most pressure.
+
 ## If you're new
 
 Use this reading order:
 
 1. [`docs/One_Page_Overview.md`](./docs/One_Page_Overview.md) for the shortest public introduction
-2. [`White_Paper.md`](./White_Paper.md) for the fuller public explanation
-3. [`Citizen_Facing_Rights_Layer.md`](./Citizen_Facing_Rights_Layer.md) for the plain-language rights summary
-4. [`Humane_Constitution.md`](./Humane_Constitution.md) for the governing text
-5. [`Threat_Register.md`](./Threat_Register.md) if you want to test the design against failure and bad actors
+2. [`docs/Public_Readiness_Guide.md`](./docs/Public_Readiness_Guide.md) for the claims, readiness status, and strongest objections
+3. [`White_Paper.md`](./White_Paper.md) for the fuller public explanation
+4. [`Citizen_Facing_Rights_Layer.md`](./Citizen_Facing_Rights_Layer.md) for the plain-language rights summary
+5. [`Humane_Constitution.md`](./Humane_Constitution.md) for the governing text
+6. [`Threat_Register.md`](./Threat_Register.md) if you want to test the design against failure and bad actors
 
 ## The core separation
 
@@ -146,6 +152,7 @@ flowchart TD
 | Document | Purpose |
 |---|---|
 | [`docs/One_Page_Overview.md`](./docs/One_Page_Overview.md) | One-page introduction for first-time readers. |
+| [`docs/Public_Readiness_Guide.md`](./docs/Public_Readiness_Guide.md) | Skeptic reading path, claims audit, readiness dashboard, and evidence map. |
 | [`docs/Public_FAQ.md`](./docs/Public_FAQ.md) | Public-facing answers to the most common objections and questions. |
 | [`docs/Source_Grounded_Content_Prompts.md`](./docs/Source_Grounded_Content_Prompts.md) | Reusable prompt pack for source-grounded explainers, interviews, FAQs, and short-form content. |
 | [`docs/content/Visual_Assets.md`](./docs/content/Visual_Assets.md) | Index of reusable public deck assets and social carousel files. |
@@ -281,6 +288,7 @@ The system's commitment: every failure in these categories is published publicly
 
 Scale readiness requires:
 
+- [x] Public readiness guide — see [`docs/Public_Readiness_Guide.md`](./docs/Public_Readiness_Guide.md)
 - [ ] Formal acceptance of PROPOSED patches (pilot evidence required)
 - [x] CFRL one-page publication — see [`Citizen_Facing_Rights_Layer.md`](./Citizen_Facing_Rights_Layer.md)
 - [x] Adversarial narrative simulation — see [`docs/Adversarial_Narrative_Simulation.md`](./docs/Adversarial_Narrative_Simulation.md)

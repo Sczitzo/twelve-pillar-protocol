@@ -6,7 +6,7 @@ This script is for audiences whose first reaction is: `this sounds like socialis
 
 ## Core script
 
-If your first reaction to the Humane Constitution is skepticism, that is reasonable. A design that talks about survival guarantees, civic instruments, and anti-capture rules should be pressured hard.
+If your first reaction to the Humane Constitution is skepticism, that is reasonable. A design that talks about a survival floor, civic instruments, and anti-capture rules should be pressured hard.
 
 But the first thing to understand is what the project is actually trying to prevent.
 

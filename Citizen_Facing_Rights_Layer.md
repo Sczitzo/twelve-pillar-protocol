@@ -10,7 +10,7 @@ If this system were live, the basic promise would be simple: losing money, statu
 
 ## What you would be unconditionally entitled to
 
-Under a live protocol, the constitution would guarantee a **survival floor**: a set of essentials you receive as a matter of right, not favor. This would be delivered through **Essential Access**:
+Under a live protocol, the constitution would establish a **survival floor**: a set of essentials you receive as a matter of right, not favor. This would be delivered through **Essential Access**:
 
 - Food
 - Water
