@@ -45,7 +45,7 @@ Do not claim the Humane Constitution:
 - can remove all bureaucracy
 - can guarantee perfect measurement of real-world capacity
 
-The accurate claim is narrower: the repo contains a serious constitutional design, a public explanation layer, a threat model, a patch history, simulations, and a validation pipeline. It is ready for critique and deeper testing, not deployment.
+The accurate claim is narrower: the repo contains a serious constitutional design, a public explanation layer, a threat model, a patch history, simulations, a validation pipeline, and a pilot roadmap. It is ready for critique and deeper testing, not deployment.
 
 ## Evidence priorities
 
@@ -67,3 +67,5 @@ When editing public-facing material:
 2. Use status-accurate language: `specified`, `designed`, `needs evidence`, or `unresolved`.
 3. Avoid deployment language unless the mechanism has pilot or implementation proof.
 4. If a new claim does not fit this register, either add it here or soften the claim.
+
+For the staged testing path, use [`Pilot_Evidence_Roadmap.md`](./Pilot_Evidence_Roadmap.md).
