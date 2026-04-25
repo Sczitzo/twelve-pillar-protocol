@@ -216,4 +216,51 @@ test.describe('reader shell regression coverage', () => {
     await page.keyboard.press('[')
     await expect(page.getByRole('heading', { name: 'Constitution & Founding Order' })).toBeVisible()
   })
+
+  test('pinning the current document adds it to quick access and lets you jump back to it', async ({ page }) => {
+    await page.setViewportSize({ width: 1660, height: 1100 })
+    await openConstitutionView(page)
+
+    const rows = page.locator('[data-testid^="document-row-"]')
+    const firstRow = rows.nth(0)
+    const secondRow = rows.nth(1)
+    const firstTitle = await rowTitle(firstRow)
+    const secondTitle = await rowTitle(secondRow)
+
+    await page.getByRole('button', { name: 'Pin' }).click()
+    const pinnedSection = page.getByTestId('quick-access-pinned')
+    await expect(pinnedSection).toBeVisible()
+    const pinnedButton = pinnedSection.locator('button').filter({ hasText: firstTitle }).first()
+    await expect(pinnedButton).toBeVisible()
+
+    await secondRow.locator('button').first().click()
+    await expect(page.getByTestId('reader-title')).toHaveText(secondTitle)
+
+    await pinnedButton.click()
+    await expect(page.getByTestId('reader-title')).toHaveText(firstTitle)
+  })
+
+  test('recent documents keep the latest reading trail', async ({ page }) => {
+    await page.setViewportSize({ width: 1660, height: 1100 })
+    await openConstitutionView(page)
+
+    const rows = page.locator('[data-testid^="document-row-"]')
+    const secondRow = rows.nth(1)
+    const thirdRow = rows.nth(2)
+    const secondTitle = await rowTitle(secondRow)
+    const thirdTitle = await rowTitle(thirdRow)
+
+    await secondRow.locator('button').first().click()
+    await expect(page.getByTestId('reader-title')).toHaveText(secondTitle)
+
+    await thirdRow.locator('button').first().click()
+    await expect(page.getByTestId('reader-title')).toHaveText(thirdTitle)
+
+    const recentSection = page.getByTestId('quick-access-recent')
+    await expect(recentSection).toBeVisible()
+
+    const recentButtons = recentSection.locator('button')
+    await expect(recentButtons.nth(0)).toContainText(thirdTitle)
+    await expect(recentButtons.nth(1)).toContainText(secondTitle)
+  })
 })

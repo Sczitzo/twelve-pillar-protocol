@@ -122,6 +122,10 @@ const KEYBOARD_NAV_VIEWS: AppView[] = [
   'validation',
 ]
 
+const PINNED_DOCS_STORAGE_KEY = 'humane-reader:pinned-docs'
+const RECENT_DOCS_STORAGE_KEY = 'humane-reader:recent-docs'
+const MAX_RECENT_DOCS = 8
+
 function isTypingElement(target: EventTarget | null): boolean {
   if (!(target instanceof HTMLElement)) {
     return false
@@ -166,6 +170,16 @@ function docsForView(view: AppView, docs: CorpusDoc[], featuredPaths: string[]):
     )
   }
   return []
+}
+
+function viewForDoc(doc: CorpusDoc): AppView {
+  if (doc.section === 'annex') {
+    return 'annexes'
+  }
+  if (doc.section === 'registry') {
+    return 'registries'
+  }
+  return 'constitution'
 }
 
 function matchesQuery(doc: CorpusDoc, query: string): boolean {
@@ -478,6 +492,24 @@ function readStoredSelectedDocId(view: AppView): string | null {
   return window.localStorage.getItem(selectedDocStorageKey(view))
 }
 
+function readStoredDocList(storageKey: string): string[] {
+  if (typeof window === 'undefined') {
+    return []
+  }
+
+  const raw = window.localStorage.getItem(storageKey)
+  if (!raw) {
+    return []
+  }
+
+  try {
+    const parsed = JSON.parse(raw)
+    return Array.isArray(parsed) ? parsed.filter((value): value is string => typeof value === 'string') : []
+  } catch {
+    return []
+  }
+}
+
 function readStoredPaneScroll(view: AppView): PaneScrollState {
   if (typeof window === 'undefined') {
     return EMPTY_PANE_SCROLL_STATE
@@ -610,11 +642,13 @@ function ActionButton({
 function DocumentRow({
   doc,
   selected,
+  pinned = false,
   onSelect,
   onOpenSource,
 }: {
   doc: CorpusDoc
   selected: boolean
+  pinned?: boolean
   onSelect: () => void
   onOpenSource: () => void
 }) {
@@ -633,6 +667,11 @@ function DocumentRow({
           <p className="text-[10px] font-mono uppercase tracking-[0.22em] text-[var(--ink-faint)]">
             {SECTION_LABELS[doc.section]}
           </p>
+          {pinned ? (
+            <p className="mt-2 text-[9px] font-mono uppercase tracking-[0.2em] text-[var(--accent-deep)]">
+              Pinned
+            </p>
+          ) : null}
           <h3 className="mt-2 font-serif text-[1.18rem] leading-7 text-[var(--ink-strong)]">
             {doc.title}
           </h3>
@@ -653,6 +692,54 @@ function DocumentRow({
         <ActionButton label="Open Source" onClick={onOpenSource} />
       </div>
     </article>
+  )
+}
+
+function QuickAccessSection({
+  label,
+  testId,
+  docs,
+  onSelect,
+}: {
+  label: string
+  testId: string
+  docs: CorpusDoc[]
+  onSelect: (doc: CorpusDoc) => void
+}) {
+  if (!docs.length) {
+    return null
+  }
+
+  return (
+    <section
+      data-testid={testId}
+      className="rounded-[24px] border border-[rgba(60,54,46,0.12)] bg-[rgba(253,249,242,0.82)] px-4 py-4 shadow-[inset_0_1px_0_rgba(255,255,255,0.45)]"
+    >
+      <div className="flex items-center justify-between gap-3">
+        <p className="text-[10px] font-mono uppercase tracking-[0.22em] text-[var(--ink-faint)]">
+          {label}
+        </p>
+        <span className="text-[9px] font-mono uppercase tracking-[0.18em] text-[var(--ink-faint)]">
+          {docs.length}
+        </span>
+      </div>
+
+      <div className="mt-3 flex flex-wrap gap-2">
+        {docs.map((doc) => (
+          <button
+            key={`${testId}-${doc.id}`}
+            data-testid={`${testId}-${doc.id}`}
+            onClick={() => onSelect(doc)}
+            className="max-w-full rounded-full border border-[rgba(60,54,46,0.12)] bg-[rgba(250,246,238,0.92)] px-3 py-2 text-left text-[11px] leading-5 text-[var(--ink-soft)] transition hover:border-[rgba(159,108,49,0.22)] hover:text-[var(--ink-strong)]"
+          >
+            <span className="block truncate font-medium text-[var(--ink-strong)]">{doc.title}</span>
+            <span className="mt-0.5 block truncate text-[9px] font-mono uppercase tracking-[0.18em] text-[var(--ink-faint)]">
+              {SECTION_LABELS[doc.section]}
+            </span>
+          </button>
+        ))}
+      </div>
+    </section>
   )
 }
 
@@ -826,6 +913,8 @@ function ReaderPanel({
   doc,
   feedback,
   onOpenSource,
+  pinned,
+  onTogglePinned,
   searchQuery,
   onSearchChange,
   searchInputRef,
@@ -837,6 +926,8 @@ function ReaderPanel({
   doc: CorpusDoc
   feedback: SourceFeedback
   onOpenSource: () => void
+  pinned: boolean
+  onTogglePinned: () => void
   searchQuery: string
   onSearchChange: (value: string) => void
   searchInputRef: (node: HTMLInputElement | null) => void
@@ -872,6 +963,11 @@ function ReaderPanel({
         </div>
 
         <div className="mt-5 flex flex-wrap gap-3">
+          <ActionButton
+            label={pinned ? 'Unpin' : 'Pin'}
+            onClick={onTogglePinned}
+            tone={pinned ? 'accent' : 'default'}
+          />
           <ActionButton label="Open Source" onClick={onOpenSource} tone="accent" />
         </div>
 
@@ -931,7 +1027,12 @@ function ReaderPanel({
 function ReaderWorkspace({
   docs,
   selectedDoc,
+  pinnedDocIds,
+  pinnedDocs,
+  recentDocs,
   onSelect,
+  onSelectQuickDoc,
+  onTogglePinned,
   onOpenSource,
   feedback,
   railLabel,
@@ -952,7 +1053,12 @@ function ReaderWorkspace({
 }: {
   docs: CorpusDoc[]
   selectedDoc: CorpusDoc | null
+  pinnedDocIds: string[]
+  pinnedDocs: CorpusDoc[]
+  recentDocs: CorpusDoc[]
   onSelect: (doc: CorpusDoc) => void
+  onSelectQuickDoc: (doc: CorpusDoc) => void
+  onTogglePinned: () => void
   onOpenSource: (doc: CorpusDoc) => void
   feedback: SourceFeedback
   railLabel: string
@@ -1017,12 +1123,25 @@ function ReaderWorkspace({
             </div>
 
             <div className="overflow-hidden rounded-[26px] border border-[rgba(60,54,46,0.16)] bg-[linear-gradient(180deg,rgba(252,248,241,0.92),rgba(247,240,230,0.86))] shadow-[inset_0_1px_0_rgba(255,255,255,0.45),0_18px_30px_rgba(35,30,20,0.08)]">
-              <div data-testid="shelf-list" className="space-y-2 p-3">
+              <div data-testid="shelf-list" className="space-y-3 p-3">
+                <QuickAccessSection
+                  label="Pinned"
+                  testId="quick-access-pinned"
+                  docs={pinnedDocs}
+                  onSelect={onSelectQuickDoc}
+                />
+                <QuickAccessSection
+                  label="Recent"
+                  testId="quick-access-recent"
+                  docs={recentDocs}
+                  onSelect={onSelectQuickDoc}
+                />
                 {docs.map((doc) => (
                   <DocumentRow
                     key={doc.id}
                     doc={doc}
                     selected={selectedDoc.id === doc.id}
+                    pinned={pinnedDocIds.includes(doc.id)}
                     onSelect={() => onSelect(doc)}
                     onOpenSource={() => onOpenSource(doc)}
                   />
@@ -1048,6 +1167,8 @@ function ReaderWorkspace({
             <ReaderPanel
               doc={selectedDoc}
               feedback={feedback}
+              pinned={pinnedDocIds.includes(selectedDoc.id)}
+              onTogglePinned={onTogglePinned}
               onOpenSource={() => onOpenSource(selectedDoc)}
               searchQuery={searchQuery}
               onSearchChange={onSearchChange}
@@ -1170,6 +1291,8 @@ export function Dashboard({ view, corpus, loadError, onViewChange }: DashboardPr
   const [query, setQuery] = useState('')
   const [documentQuery, setDocumentQuery] = useState('')
   const [selectedDocId, setSelectedDocId] = useState<string | null>(() => readStoredSelectedDocId(view))
+  const [pinnedDocIds, setPinnedDocIds] = useState<string[]>(() => readStoredDocList(PINNED_DOCS_STORAGE_KEY))
+  const [recentDocIds, setRecentDocIds] = useState<string[]>(() => readStoredDocList(RECENT_DOCS_STORAGE_KEY))
   const [sourceFeedback, setSourceFeedback] = useState<SourceFeedback>({
     tone: 'neutral',
     message: 'Read in-app, or open the source document directly from the reader header.',
@@ -1187,9 +1310,18 @@ export function Dashboard({ view, corpus, loadError, onViewChange }: DashboardPr
   const shouldScrollToActiveMatchRef = useRef(false)
 
   const deferredQuery = useDeferredValue(query)
+  const allDocs = corpus?.docs ?? []
   const baseDocs = corpus ? docsForView(view, corpus.docs, corpus.featuredPaths) : []
   const visibleDocs = baseDocs.filter((doc) => matchesQuery(doc, deferredQuery))
   const selectedDoc = visibleDocs.find((doc) => doc.id === selectedDocId) ?? visibleDocs[0] ?? null
+  const docById = new Map(allDocs.map((doc) => [doc.id, doc]))
+  const pinnedDocs = pinnedDocIds
+    .map((docId) => docById.get(docId))
+    .filter((doc): doc is CorpusDoc => Boolean(doc))
+  const recentDocs = recentDocIds
+    .filter((docId) => !pinnedDocIds.includes(docId))
+    .map((docId) => docById.get(docId))
+    .filter((doc): doc is CorpusDoc => Boolean(doc))
   const meta = VIEW_META[view]
   const independentPaneView = view === 'constitution' || view === 'annexes' || view === 'registries'
   const bindShelfPaneRef = (node: HTMLElement | null) => {
@@ -1244,6 +1376,33 @@ export function Dashboard({ view, corpus, loadError, onViewChange }: DashboardPr
 
     window.localStorage.removeItem(selectedDocStorageKey(view))
   }, [selectedDocId, view])
+
+  useEffect(() => {
+    if (typeof window === 'undefined') {
+      return
+    }
+
+    window.localStorage.setItem(PINNED_DOCS_STORAGE_KEY, JSON.stringify(pinnedDocIds))
+  }, [pinnedDocIds])
+
+  useEffect(() => {
+    if (typeof window === 'undefined') {
+      return
+    }
+
+    window.localStorage.setItem(RECENT_DOCS_STORAGE_KEY, JSON.stringify(recentDocIds))
+  }, [recentDocIds])
+
+  useEffect(() => {
+    if (!selectedDoc?.id) {
+      return
+    }
+
+    setRecentDocIds((current) => {
+      const next = [selectedDoc.id, ...current.filter((docId) => docId !== selectedDoc.id)].slice(0, MAX_RECENT_DOCS)
+      return next.every((docId, index) => docId === current[index]) && next.length === current.length ? current : next
+    })
+  }, [selectedDoc?.id])
 
   useEffect(() => {
     setSourceFeedback({
@@ -1476,6 +1635,34 @@ export function Dashboard({ view, corpus, loadError, onViewChange }: DashboardPr
     }
   }
 
+  function handleSelectQuickDoc(doc: CorpusDoc) {
+    const targetView = viewForDoc(doc)
+    if (typeof window !== 'undefined') {
+      window.localStorage.setItem(selectedDocStorageKey(targetView), doc.id)
+    }
+
+    if (targetView !== view) {
+      onViewChange(targetView)
+      return
+    }
+
+    handleSelectDoc(doc)
+  }
+
+  function handleTogglePinned() {
+    if (!selectedDoc) {
+      return
+    }
+
+    setPinnedDocIds((current) => {
+      if (current.includes(selectedDoc.id)) {
+        return current.filter((docId) => docId !== selectedDoc.id)
+      }
+
+      return [selectedDoc.id, ...current.filter((docId) => docId !== selectedDoc.id)]
+    })
+  }
+
   useEffect(() => {
     function handleKeyDown(event: KeyboardEvent) {
       if (event.defaultPrevented || event.metaKey || event.ctrlKey || event.altKey) {
@@ -1619,7 +1806,12 @@ export function Dashboard({ view, corpus, loadError, onViewChange }: DashboardPr
         <ReaderWorkspace
           docs={visibleDocs}
           selectedDoc={selectedDoc}
+          pinnedDocIds={pinnedDocIds}
+          pinnedDocs={pinnedDocs}
+          recentDocs={recentDocs}
           onSelect={handleSelectDoc}
+          onSelectQuickDoc={handleSelectQuickDoc}
+          onTogglePinned={handleTogglePinned}
           onOpenSource={handleOpenSource}
           feedback={sourceFeedback}
           railLabel={meta.railLabel}
