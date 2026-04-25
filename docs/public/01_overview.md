@@ -73,10 +73,10 @@ So the right stance is neither blind belief nor dismissal. The right stance is s
 
 ## Read next
 
-- [`Public_Readiness_Guide.md`](./Public_Readiness_Guide.md)
+- [`03_readiness.md`](./03_readiness.md)
 - [`Claims_Evidence_Register.md`](./Claims_Evidence_Register.md)
 - [`Pilot_Evidence_Roadmap.md`](./Pilot_Evidence_Roadmap.md)
-- [`../White_Paper.md`](../White_Paper.md)
-- [`../Citizen_Facing_Rights_Layer.md`](../Citizen_Facing_Rights_Layer.md)
+- [`./04_white_paper.md`](./04_white_paper.md)
+- [`./05_rights_layer.md`](./05_rights_layer.md)
 - [`../Humane_Constitution.md`](../Humane_Constitution.md)
 - [`../Threat_Register.md`](../Threat_Register.md)

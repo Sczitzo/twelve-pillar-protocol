@@ -55,3 +55,6 @@ annex_*.pdf
 *_s[0-9].pdf
 outreach/
 .claude/
+
+# Marketing/content materials kept offline (not for public repo)
+docs/content/

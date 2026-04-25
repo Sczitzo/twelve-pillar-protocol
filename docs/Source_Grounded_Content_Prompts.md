@@ -7,16 +7,16 @@ These prompts are designed for **source-grounded** tools such as NotebookLM or a
 For most public-facing content, select:
 
 - [`../README.md`](../README.md)
-- [`One_Page_Overview.md`](./One_Page_Overview.md)
-- [`../White_Paper.md`](../White_Paper.md)
-- [`../Citizen_Facing_Rights_Layer.md`](../Citizen_Facing_Rights_Layer.md)
+- [`docs/public/01_overview.md`](./public/01_overview.md)
+- [`../docs/public/04_white_paper.md`](../docs/public/04_white_paper.md)
+- [`../docs/public/05_rights_layer.md`](../docs/public/05_rights_layer.md)
 - [`../Humane_Constitution.md`](../Humane_Constitution.md)
 
 For a shorter public set, use just:
 
-- [`One_Page_Overview.md`](./One_Page_Overview.md)
-- [`../White_Paper.md`](../White_Paper.md)
-- [`../Citizen_Facing_Rights_Layer.md`](../Citizen_Facing_Rights_Layer.md)
+- [`docs/public/01_overview.md`](./public/01_overview.md)
+- [`../docs/public/04_white_paper.md`](../docs/public/04_white_paper.md)
+- [`../docs/public/05_rights_layer.md`](../docs/public/05_rights_layer.md)
 
 ## Public explainer prompts
 

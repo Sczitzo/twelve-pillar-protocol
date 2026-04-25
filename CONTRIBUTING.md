@@ -8,7 +8,7 @@ This is an open design project. The design is not finished. The most valuable th
 
 ## Start here
 
-**If you're new:** Read [`White_Paper.md`](./White_Paper.md) first (14 pages, general audience). Then [`Citizen_Facing_Rights_Layer.md`](./Citizen_Facing_Rights_Layer.md) for the one-page rights summary.
+**If you're new:** Read [`docs/public/04_white_paper.md`](./docs/public/04_white_paper.md) first (14 pages, general audience). Then [`docs/public/05_rights_layer.md`](./docs/public/05_rights_layer.md) for the one-page rights summary.
 
 **If you want to stress-test:** Read [`Threat_Register.md`](./Threat_Register.md). Every adversarial failure mode we've found is documented there with its risk score. The open problems are explicitly marked. If you find one we haven't, that's a contribution.
 

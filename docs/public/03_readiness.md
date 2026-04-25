@@ -8,12 +8,12 @@ The short answer is: **it deserves pressure, not blind trust**. The project is a
 
 Read in this order:
 
-1. [`One_Page_Overview.md`](./One_Page_Overview.md) - the shortest public explanation.
-2. [`Public_FAQ.md`](./Public_FAQ.md) - direct answers to common objections.
+1. [`01_overview.md`](./01_overview.md) - the shortest public explanation.
+2. [`02_faq.md`](./02_faq.md) - direct answers to common objections.
 3. [`Claims_Evidence_Register.md`](./Claims_Evidence_Register.md) - what is designed, what is tested, and what still needs proof.
 4. [`Pilot_Evidence_Roadmap.md`](./Pilot_Evidence_Roadmap.md) - what should be tested before any scale-up claim.
 5. [`content/Skeptical_Audience_Rebuttal.md`](./content/Skeptical_Audience_Rebuttal.md) - the strongest public-facing framing for skeptical audiences.
-6. [`../White_Paper.md`](../White_Paper.md) - the fuller public explanation.
+6. [`./04_white_paper.md`](./04_white_paper.md) - the fuller public explanation.
 7. [`../Threat_Register.md`](../Threat_Register.md) - the adversarial model; this is where the design is easiest to test seriously.
 
 Do not start with the annexes unless you already want the technical layer. The public question comes first: does separating survival, markets, and civic power solve a real failure mode without creating a worse one?
